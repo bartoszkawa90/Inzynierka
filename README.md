@@ -12,6 +12,13 @@
 - najlepiej trzymać się wersji OpenCv  4.5.5.62  ,  dla tej wersji działa dokumentacja w pycharmie Profesional na Linux
 - 
 
+## Przydatne tak jakby co 
+- python3 -m pip install --force-reinstall --no-cache -U opencv-python==4.5.5.62   -    to w terminalu w pycharm zeby przeinstalować opencv
+- pip3 install opencv-python
+
+
+
+
 
 ## Add your files
 
