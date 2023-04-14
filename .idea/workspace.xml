@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Zdjecia/Ki-67 60%.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Zdjecia/NET G2, Ki-67 około 5%.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Zdjecia/PTCL, Ki-67 około 70%.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Zdjecia/Rak jasnokomórkowy jajnika, Ki-67 około 70%.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Zdjecia/Rak surowiczy high-grade, Ki-67 ok. 65%.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +111,7 @@
       <workItem from="1681408492989" duration="7917000" />
       <workItem from="1681429110484" duration="527000" />
       <workItem from="1681455641250" duration="248000" />
-      <workItem from="1681471476313" duration="1178000" />
+      <workItem from="1681471476313" duration="2264000" />
     </task>
     <servers />
   </component>
