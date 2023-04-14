@@ -8,13 +8,16 @@
 - Klasyfikacja komórek , jak to ostatecznie zrobić , czy jakis machine learning czy nie ( niby może byc ale na pewno nie będzie to sieć neuronowa bo to nie ma sensu)
 - Prezentacja/GUI  albo program na kompa(łatwo)  ,  albo  aplikacja na telefon(raczej trudniejsze)   ,   albo strona internetowa(nie wiadomo) // coś że wysyła sie komuj link I ktoś moze sobie otworzyć w przeglądarce I tam jest apka
 
-## Istotne rzeczy
+## Istotne rzeczy 
 - najlepiej trzymać się wersji OpenCv  4.5.5.62  ,  dla tej wersji działa dokumentacja w pycharmie Profesional na Linux
-- 
+- Machine Learning tutaj raczej cieżko z kminieniem Sieci Neuronowych ale możnaby użyć do klasyfikacji inaczej ML
+      Możnaby wykorzystać uczenie maszynowe bez sieci neuronowych , cos w tą strone powinno być w OpenCV
+      Ewentualnie ciekawsza rzecz to żeby jednak użyć tych sieci neuronowych ale do rozpoznawania komórek  , podzielić zdjęcia na pojedyncze komórki i nauczyć sieć rozpoznawania czy jest 
+      jasna czy ciemna , ALEEE nie wiadomo czy jest tu sens się wgl w to bawić  CHOCIAZZZ  mogłoby być fajne
 
 ## Przydatne tak jakby co 
 - python3 -m pip install --force-reinstall --no-cache -U opencv-python==4.5.5.62   -    to w terminalu w pycharm zeby przeinstalować opencv
-- pip3 install opencv-python
+- pip3 install Shift+CShift+Copencv-python
 
 
 

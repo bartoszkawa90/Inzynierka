@@ -18,7 +18,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import image as mpimg
 
-# JESLI JUZ MACHINE LEARNING TO JEST COS W OPENCV  +  TensorFlow
+
 
 def plot_photo(title, image,height, widht):
     ''' Plots photo is given  resolution
@@ -37,12 +37,20 @@ def plot_photo(title, image,height, widht):
 
 
 
-
 if __name__ == '__main__':
     print("Start")
 
     # Reading an image in default mode
     image = cv.imread('Zdjecia/Ki-67 60%.jpg')
+    
+    # Edge Detection
+    kernel = np.array([
+         [-1,0,1],
+         [-1,0,1],
+         [-1,0,1]
+    ])
+
+    #Splot 2d
 
     # DISPLAY
     #plot_photo("Photo",image,900,900)
@@ -89,5 +97,5 @@ if __name__ == '__main__':
 #
 # # cv.imshow('res',img1)
 # # cv.waitKey(0)
-# # cv.destroyAllWindows()
+https://jupyter.org/# # cv.destroyAllWindows()
 
