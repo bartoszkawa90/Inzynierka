@@ -13,47 +13,70 @@ if __name__ == '__main__':
 
 # Reading an image in default mode
     img = cv2.imread('Zdjecia/NET G2, Ki-67 około 5% --copy.jpg')
-    gray_img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
-## METODA K-Means
-    # twoDimage = img.reshape((-1, 3))
-    # twoDimage = np.float32(twoDimage)
+
+# Extracting edges and cells contours from image
+
+    # do adaptive threshold on gray image
+    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 3)
+
+    # apply morphology open then close
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+    blob = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9))
+    blob = cv2.morphologyEx(blob, cv2.MORPH_CLOSE, kernel)
+
+    edged = cv2.Canny(blob, 10, 250)
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+# CLEANING too small and too large contours
+    largest,smallest = find_extreme_contours(contours)
+    if (largest.shape[0] > 1000 or smallest.shape[0] < 100):
+        conts = tuple(con for con in contours if (con.shape[0] < 1000 or con.shape[0] > 100))
+    else:
+        conts = contours
+
+
+
+    # Collecting part of image with one cell
+    x,y,z,w = cv2.boundingRect(contours[2000])
+    cell = img[y:y+w,x:x + z]
+
+    cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
+
+
+
+
+
+# raczej bezuzyteczne
+    # invert blob
+    # blob = (255 - blob)
+
+    # Get contours
+    # cnts = cv2.findContours(blob, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    # cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+    # big_contour = max(cnts, key=cv2.contourArea)
+
+    # # test blob size
+    # blob_area_thresh = 1000
+    # blob_area = cv2.contourArea(big_contour)
+    # if blob_area < blob_area_thresh:
+    #     print("Blob Is Too Small")
     #
-    # criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
-    # K = 4
-    # attempts = 10
-    #
-    # ret, label, center = cv2.kmeans(twoDimage, K, None, criteria, attempts, cv2.KMEANS_PP_CENTERS)
-    # center = np.uint8(center)
-    # res = center[label.flatten()]
-    # print(img.shape)
-    # result_image = res.reshape((img.shape))
-    # cv2.imwrite('Segmentowanie_metoda_k-means.jpg',result_image)
+    # # draw contour
+    # result = img.copy()
+    # cv2.drawContours(result, [big_contour], -1, (0, 0, 255), 1)
 
-
-# Łapanie Komórek  /  Tworzenie Kontórów
-    assert img is not None, "file could not be read, check with os.path.exists()"
-
-    # contours, hierarchy = cv2.findContours(edged,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-
-    # Adaptive threshold , raczej widać czarno na białym
-    thresh = cv2.adaptiveThreshold(gray_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 163, 3)
-    edged = cv2.Canny(thresh, 10, 250)
-
-    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-
-    # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
-
-    contours_new = tuple(con for con in contours if con.shape[0] > 100)
-    # print(len(contours_new))
-
-    cv2.drawContours(gray_img, contours_new, -1, (0, 255, 0), 3)
+    # zapis
+    # cv2.imwrite("doco3_threshold.jpg", thresh)
+    # cv2.imwrite("doco3_blob.jpg", blob)
+    # cv2.imwrite("doco3_contour.jpg", result)
 
 
 
-
-    # DISPLAY
-    plot_photo("Contours",gray_img,900,900)
+# DISPLAY
+    plot_photo("Contours",cell,900,900)
     # plt.title("Photo")
     # plt.xlabel("X pixel scaling")
     # plt.ylabel("Y pixels scaling")
