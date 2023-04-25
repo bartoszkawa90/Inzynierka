@@ -38,7 +38,9 @@ def find_extreme_contours(contours):
     return contours[ID_MAX], contours[id_min]
 
 
-def collect_cell():
-    pass
+def collect_cell(contour=None,img=None):
+    x, y, z, w = cv2.boundingRect(contour)
+    cell = img[y:y + w, x:x + z]
+    blob = []
 
 # 2D Convolution

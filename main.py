@@ -2,7 +2,6 @@
 '''
 
 '''
-import cv2
 
 from resources import *
 
@@ -30,7 +29,6 @@ if __name__ == '__main__':
 
 # CLEANING too small and too large contours
     largest, smallest = find_extreme_contours(contours)
-
     if (largest.shape[0] > 1000 or smallest.shape[0] < 55):
         conts = tuple([con for con in contours if (con.shape[0] < 1000 and con.shape[0] > 55)])
 
@@ -43,19 +41,12 @@ if __name__ == '__main__':
     else:
         conts = contours
 
-
-    # id = 0
-    # for i in conts:
-    #     print(id, "  ",i.shape)
-    #     id +=1
-    # print(largest.shape[0],smallest.shape[0])
-
     #Collecting part of image with one cell
     x,y,z,w = cv2.boundingRect(conts[1000])
     cell = img[y:y+w,x:x + z]
 
     # Draw Contours
-    cv2.drawContours(gray, conts, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, conts[1000], -1, (0, 255, 0), 3)
 
 
 
@@ -67,7 +58,7 @@ if __name__ == '__main__':
 
 
 # DISPLAY
-#     plot_photo("Contours",cell,900,900)
+    plot_photo("Contours",img,900,900)
     # plt.title("Photo")
     # plt.xlabel("X pixel scaling")
     # plt.ylabel("Y pixels scaling")
