@@ -8,6 +8,13 @@
 - Klasyfikacja komórek , jak to ostatecznie zrobić , czy jakis machine learning czy nie ( niby może byc ale na pewno nie będzie to sieć neuronowa bo to nie ma sensu)
 - Prezentacja/GUI  albo program na kompa(łatwo)  ,  albo  aplikacja na telefon(raczej trudniejsze)   ,   albo strona internetowa(nie wiadomo) // coś że wysyła sie komuj link I ktoś moze sobie otworzyć w przeglądarce I tam jest apka
 
+## Co można dorobić
+
+- Można jakoś spróbować ogarnąć lepsze wybieranie konturów :
+      Pętla po wszystkich pikselach działa i zamienia co ciemniejsze piksele na czarne zeby threshold lepiej zadziałał ale trwa to ok. 15 min.
+      ale nawet ta metoda nie koniecznie działa lepiej niż adaptiveThreshold
+
+
 ## Istotne rzeczy 
 - najlepiej trzymać się wersji OpenCv  4.5.5.62  ,  dla tej wersji działa dokumentacja w pycharmie Profesional na Linux
 - Machine Learning tutaj raczej cieżko z kminieniem Sieci Neuronowych ale możnaby użyć do klasyfikacji inaczej ML
