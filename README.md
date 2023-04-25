@@ -4,15 +4,17 @@
 
 ## Co zrobic
 
-- Zacząć trzeba od udanej detekcji komórek na zdjęciu , najpierw z OpenCv I potem się zobaczy czy jest to dość  “MOJE” zeby mogło zostać ale pewnie trzeba będzie po tym zrobić moje własne główne funkcje
-- Klasyfikacja komórek , jak to ostatecznie zrobić , czy jakis machine learning czy nie ( niby może byc ale na pewno nie będzie to sieć neuronowa bo to nie ma sensu)
-- Prezentacja/GUI  albo program na kompa(łatwo)  ,  albo  aplikacja na telefon(raczej trudniejsze)   ,   albo strona internetowa(nie wiadomo) // coś że wysyła sie komuj link I ktoś moze sobie otworzyć w przeglądarce I tam jest apka
+1. Zacząć trzeba od udanej detekcji komórek na zdjęciu , najpierw z OpenCv I potem się zobaczy czy jest to dość  “MOJE” zeby mogło zostać ale pewnie trzeba będzie po tym zrobić moje własne główne funkcje
+2. Klasyfikacja komórek , jak to ostatecznie zrobić , czy jakis machine learning czy nie ( niby może byc ale na pewno nie będzie to sieć neuronowa bo to nie ma sensu)
+3. Prezentacja/GUI  albo program na kompa(łatwo)  ,  albo  aplikacja na telefon(raczej trudniejsze)   ,   albo strona internetowa(nie wiadomo) // coś że wysyła sie komuj link I ktoś moze sobie otworzyć w przeglądarce I tam jest apka
 
-## Co można dorobić
+## UWAGI
 
 - Można jakoś spróbować ogarnąć lepsze wybieranie konturów :
       Pętla po wszystkich pikselach działa i zamienia co ciemniejsze piksele na czarne zeby threshold lepiej zadziałał ale trwa to ok. 15 min.
       ale nawet ta metoda nie koniecznie działa lepiej niż adaptiveThreshold
+- Można ogarnąć jakoś jak lepiej wybrać samą komórkę z wycinka zdjecia z komórką , narazie wybielanie tła wycinka z jedną komórką wydaje się najlepsze 
+
 
 
 ## Istotne rzeczy 
@@ -23,8 +25,8 @@
       jasna czy ciemna , ALEEE nie wiadomo czy jest tu sens się wgl w to bawić  CHOCIAZZZ  mogłoby być fajne
 
 ## Przydatne tak jakby co 
-- python3 -m pip install --force-reinstall --no-cache -U opencv-python==4.5.5.62   -    to w terminalu w pycharm zeby przeinstalować opencv
-- pip3 install Shift+CShift+Copencv-python
+-- python3 -m pip install --force-reinstall --no-cache -U opencv-python==4.5.5.62   -    to w terminalu w pycharm zeby przeinstalować opencv
+-- pip3 install Shift+CShift+Copencv-python
 
 
 

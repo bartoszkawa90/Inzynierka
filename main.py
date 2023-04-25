@@ -41,13 +41,19 @@ if __name__ == '__main__':
     else:
         conts = contours
 
-    #Collecting part of image with one cell
-    x,y,z,w = cv2.boundingRect(conts[1000])
-    cell = img[y:y+w,x:x + z]
+#Collecting part of image with one cell and extracting only cell from part of image
+    x_min, y_min, x_max, y_max = cv2.boundingRect(conts[1000])
+    cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+    grayCell = gray[y_min:y_min + y_max, x_min:x_min + x_max]
 
-    # Draw Contours
-    cv2.drawContours(img, conts[1000], -1, (0, 255, 0), 3)
+    extracted_cell = collect_cell(contour=conts[1000], gray_img=gray)
 
+
+
+
+
+# Draw Contours
+    # cv2.drawContours(gray, conts, -1, (0, 255, 0), 3)
 
 
 # SAVE
@@ -56,14 +62,13 @@ if __name__ == '__main__':
     # cv2.imwrite("doco3_contour.jpg", result)
 
 
-
 # DISPLAY
-    plot_photo("Contours",img,900,900)
-    # plt.title("Photo")
-    # plt.xlabel("X pixel scaling")
-    # plt.ylabel("Y pixels scaling")
-    # plt.imshow(thresh,cmap='gray')
-    # plt.show()
+    plot_photo("Contours",grayCell,900,900)
+#     plt.title("Photo")
+#     plt.xlabel("X pixel scaling")
+#     plt.ylabel("Y pixels scaling")
+#     plt.imshow(extracted_cell,cmap='gray')
+#     plt.show()
 
     # sys.exit()
 

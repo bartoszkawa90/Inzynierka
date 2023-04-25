@@ -5,7 +5,11 @@ from resources import *
 cell = cv2.imread('example_cell.jpg')
 gray = cv2.cvtColor(cell, cv2.COLOR_BGRA2GRAY)
 
-# cell contour =
+lista = [1,2,3,4]
+print(lista)
+lista.clear()
+print(lista)
+
 
 
 # DISPLAY

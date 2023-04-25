@@ -1,3 +1,5 @@
+import numpy as np
+
 from variables import *
 
 
@@ -38,9 +40,41 @@ def find_extreme_contours(contours):
     return contours[ID_MAX], contours[id_min]
 
 
-def collect_cell(contour=None,img=None):
-    x, y, z, w = cv2.boundingRect(contour)
-    cell = img[y:y + w, x:x + z]
-    blob = []
+def collect_cell(contour=None,gray_img=None):
+    x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
+    cell = gray_img[y_min:y_min + y_max, x_min:x_min + x_max]
+
+    for line_id in range(cell.shape[0]):
+        for pixel_id in range(cell.shape[1]):
+            # print('line ', line_id, ' pixel ', pixel_id)
+            print(cell[line_id][pixel_id])
+            if cell[line_id][pixel_id] > 150:
+                cell[line_id][pixel_id] = 255
+
+    return cell
+
+
+
 
 # 2D Convolution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
