@@ -24,8 +24,8 @@
       jasna czy ciemna , ALEEE nie wiadomo czy jest tu sens się wgl w to bawić  CHOCIAZZZ  mogłoby być fajne
 
 ## Przydatne tak jakby co 
--- python3 -m pip install --force-reinstall --no-cache -U opencv-python==4.5.5.62   -    to w terminalu w pycharm zeby przeinstalować opencv
--- pip3 install Shift+CShift+Copencv-python
+- > python3 -m pip install --force-reinstall --no-cache -U opencv-python==4.5.5.62   -    to w terminalu w pycharm zeby przeinstalować opencv
+- > pip3 install Shift+CShift+Copencv-python
 
 
 

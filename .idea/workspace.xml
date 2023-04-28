@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="28.04 - narazie ostateczne wyciąganie komórki">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.xdp-.~otatki.docx-Ycyydh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notatki.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Notatki.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
-    </list>
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="28.04 v3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +67,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$USER_HOME$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -127,7 +124,7 @@
       <workItem from="1682461495161" duration="3851000" />
       <workItem from="1682465448802" duration="1351000" />
       <workItem from="1682641022506" duration="3005000" />
-      <workItem from="1682696757340" duration="2300000" />
+      <workItem from="1682696757340" duration="2346000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -171,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682645562509</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="28.04 v3">
+      <created>1682701061667</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682701061667</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +200,8 @@
     <MESSAGE value="25.04 - początek próby wyciągania poprawnej komórki" />
     <MESSAGE value="26.04 - wybielenie tła wycinka z jedną komórką" />
     <MESSAGE value="28.04 - narazie ostateczne wyciąganie komórki" />
-    <option name="LAST_COMMIT_MESSAGE" value="28.04 - narazie ostateczne wyciąganie komórki" />
+    <MESSAGE value="28.04 v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="28.04 v3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
