@@ -1,7 +1,10 @@
 # Main program
-'''
+ #/*
 
-'''
+  #MOZNABY POUZYWAC JAKOS LEPSZYCH  ITERATORÓW
+
+ #/*
+
 
 from resources import *
 

@@ -1,10 +1,12 @@
 # IMPORTS
 import cv2
-import sys
+# import sys
 import numpy as np
-import scipy.signal as sig
+import itertools
+# import scipy.signal as sig
 from matplotlib import pyplot as plt
 from matplotlib import image as mpimg
+from PIL import Image
 from skimage.filters import threshold_otsu
 
 
