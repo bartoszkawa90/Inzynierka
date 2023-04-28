@@ -10,10 +10,9 @@
 
 ## UWAGI
 
-- Można jakoś spróbować ogarnąć lepsze wybieranie konturów :
-      Pętla po wszystkich pikselach działa i zamienia co ciemniejsze piksele na czarne zeby threshold lepiej zadziałał ale trwa to ok. 15 min.
-      ale nawet ta metoda nie koniecznie działa lepiej niż adaptiveThreshold
 - Można ogarnąć jakoś jak lepiej wybrać samą komórkę z wycinka zdjecia z komórką , narazie wybielanie tła wycinka z jedną komórką wydaje się najlepsze 
+- MOŻNA użyć jakoś itertools , ta biblioteka do iterowania mogłaby przyspieszyć i ułatwić pętle a tego na pewno trochę jeszcze będzie
+- moze tez pamietać o map() i lambda bo też mogą poprawić działanie całości
 
 
 
