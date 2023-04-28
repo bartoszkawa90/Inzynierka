@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="25.04 - początek próby wyciągania poprawnej komórki">
-      <change afterPath="$PROJECT_DIR$/kontur_jednej_komórki.jpg" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="26.04 - wybielenie tła wycinka z jedną komórką">
+      <change afterPath="$PROJECT_DIR$/doco3_blob.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_cell.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/example_cell.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -125,7 +126,8 @@
       <workItem from="1682423258890" duration="1359000" />
       <workItem from="1682424627871" duration="62000" />
       <workItem from="1682461495161" duration="3851000" />
-      <workItem from="1682465448802" duration="1277000" />
+      <workItem from="1682465448802" duration="1351000" />
+      <workItem from="1682641022506" duration="2914000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -155,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682424674393</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="26.04 - wybielenie tła wycinka z jedną komórką">
+      <created>1682466763535</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682466763535</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +187,8 @@
     <MESSAGE value="16.04" />
     <MESSAGE value="18.04 - juz dobre kontury" />
     <MESSAGE value="25.04 - początek próby wyciągania poprawnej komórki" />
-    <option name="LAST_COMMIT_MESSAGE" value="25.04 - początek próby wyciągania poprawnej komórki" />
+    <MESSAGE value="26.04 - wybielenie tła wycinka z jedną komórką" />
+    <option name="LAST_COMMIT_MESSAGE" value="26.04 - wybielenie tła wycinka z jedną komórką" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

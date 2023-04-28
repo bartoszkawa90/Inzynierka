@@ -40,18 +40,22 @@ def find_extreme_contours(contours):
     return contours[ID_MAX], contours[id_min]
 
 
-def collect_cell(contour=None,gray_img=None):
+def extract_cell(contour=None, img=None, clear=0):
     x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
-    cell = gray_img[y_min:y_min + y_max, x_min:x_min + x_max]
+    cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
-    for line_id in range(cell.shape[0]):
-        for pixel_id in range(cell.shape[1]):
-            # print('line ', line_id, ' pixel ', pixel_id)
-            print(cell[line_id][pixel_id])
-            if cell[line_id][pixel_id] > 150:
-                cell[line_id][pixel_id] = 255
+    # clear background => set to white //255
+    if clear == 1:
+        for line_id in range(cell.shape[0]):
+            for pixel_id in range(cell.shape[1]):
+                if cell[line_id][pixel_id] > 150:
+                    cell[line_id][pixel_id] = 255
+        # remove single pixels outsize of cell
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+        cell = cv2.morphologyEx(cell, cv2.MORPH_OPEN, kernel)
 
     return cell
+
 
 
 

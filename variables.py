@@ -10,6 +10,7 @@ from skimage.filters import threshold_otsu
 
 
 # VARIABLES
+CLEAR_BACKGROUND = 1
 
 # Horizontal Edge Detection
 kernel_hor = np.array([
