@@ -20,7 +20,7 @@ def plot_photo(title, image,height, widht):
     sys.exit()
 
 
-@jit
+# @jit(nopython=False)
 def find_extreme_contours(contours):
     SIZE_MAX = contours[0].shape[0]
     size_min = contours[0].shape[0]
@@ -40,7 +40,7 @@ def find_extreme_contours(contours):
     return contours[ID_MAX], contours[id_min]
 
 
-@jit
+# @jit(nopython=False)
 def extract_cell(contour=None, img=None, clear=0):
     x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
@@ -58,12 +58,12 @@ def extract_cell(contour=None, img=None, clear=0):
     return cell
 
 
-@njit
+# @njit
 def Edge_Detection():
     pass
 
 
-@njit
+# @njit
 def Convolution2D():
     pass
 

@@ -1,8 +1,9 @@
 # IMPORTS
 import cv2
-from numba import jit,vectorize,njit
+# from numba import jit,vectorize,njit
 import sys
 import numpy as np
+import  pandas
 import itertools
 import time
 # import scipy.signal as sig
