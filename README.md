@@ -3,16 +3,21 @@
 
 
 ## Aktualnie
+- Testować na wycinkach zdjec
 - Poprawić Version_1 czyli detekcja z użyciem OpenCV
 - Przerobić zdjęcia
 - Implementacja własnej wersji Canny
 - Rozważenie półautomatycznej wersji programu
 
-
 ## UWAGI
 - Wybierać raczej trzeba środki konturów żeby uzyskać konkretny kolor i zeby się na badanym wycikku nie mieszały
 - Raczej trzeba zwracać uwagę na kolory komórki i nie przechodzić na GRAY
 - Żeby to wszystko lepiej działało można zmienić wymiary tych zdjęć na jakieś  +-  3000x2000 
+
+## PYTANIA
+- czy połączone komórki traktować jako jedną czy jako więcej na oko
+- czy komórka po częsci brązowa i po czesci niebieska to dobra czy zła
+- do jakiego stopnia nalerzy brac komórke a do jakiego stopnia tło
 
 ## Konkretne Cele
 1. Zacząć trzeba od udanej detekcji komórek na zdjęciu , najpierw z OpenCv I potem się zobaczy czy jest to dość  “MOJE” zeby mogło zostać ale pewnie trzeba będzie po tym zrobić moje własne główne funkcje

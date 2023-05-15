@@ -1,6 +1,6 @@
 # IMPORTS
 import cv2
-# from numba import jit,vectorize,njit
+from numba import jit,vectorize,njit
 import sys
 import numpy as np
 import  pandas
@@ -16,5 +16,7 @@ from skimage.filters import threshold_otsu
 
 # VARIABLES
 CLEAR_BACKGROUND = 1
-
+LEAVE_BACKGROUND = 0
+MAX_AREA_OF_SINGLE_CELL = 0
+MIN_AREA_OF_SINGLE_CELL = 0
 
