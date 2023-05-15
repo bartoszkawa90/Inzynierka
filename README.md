@@ -2,19 +2,22 @@
 
 
 
-## Co zrobic
+## Aktualnie
+- Poprawić Version_1 czyli detekcja z użyciem OpenCV
+- Przerobić zdjęcia
+- Implementacja własnej wersji Canny
+- Rozważenie półautomatycznej wersji programu
 
+
+## UWAGI
+- Wybierać raczej trzeba środki konturów żeby uzyskać konkretny kolor i zeby się na badanym wycikku nie mieszały
+- Raczej trzeba zwracać uwagę na kolory komórki i nie przechodzić na GRAY
+- Żeby to wszystko lepiej działało można zmienić wymiary tych zdjęć na jakieś  +-  3000x2000 
+
+## Konkretne Cele
 1. Zacząć trzeba od udanej detekcji komórek na zdjęciu , najpierw z OpenCv I potem się zobaczy czy jest to dość  “MOJE” zeby mogło zostać ale pewnie trzeba będzie po tym zrobić moje własne główne funkcje
 2. Klasyfikacja komórek , jak to ostatecznie zrobić , czy jakis machine learning czy nie ( niby może byc ale na pewno nie będzie to sieć neuronowa bo to nie ma sensu)
 3. Prezentacja/GUI  albo program na kompa(łatwo)  ,  albo  aplikacja na telefon(raczej trudniejsze)   ,   albo strona internetowa(nie wiadomo) // coś że wysyła sie komuj link I ktoś moze sobie otworzyć w przeglądarce I tam jest apka
-
-## UWAGI
-
-- Można ogarnąć jakoś jak lepiej wybrać samą komórkę z wycinka zdjecia z komórką , narazie wybielanie tła wycinka z jedną komórką wydaje się najlepsze 
-- MOŻNA użyć jakoś itertools , ta biblioteka do iterowania mogłaby przyspieszyć i ułatwić pętle a tego na pewno trochę jeszcze będzie
-- moze tez pamietać o map() i lambda bo też mogą poprawić działanie całości
-
-
 
 ## Istotne rzeczy 
 - najlepiej trzymać się wersji OpenCv  4.5.5.62  ,  dla tej wersji działa dokumentacja w pycharmie Profesional na Linux

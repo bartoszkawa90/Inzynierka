@@ -1,10 +1,12 @@
 # Main program
- #/*
+ #
 
-# MOZNABY POUZYWAC JAKOS LEPSZYCH  ITERATORÓW
-# MOZNABY OGARNĄC Multiprocessing  ZEBY DZIAŁALO SZYBCIEJ
+# Mozna zmienic rozmiary zdjec na 3000x2000 zeby
+# mozna sie skupic na typu : kliknąc na referencyjne pixele i potem wybierac komórki
+# wybierac tylko srodek komórki
 
- #/*
+
+ #
  
 
 from resources import *
@@ -15,11 +17,12 @@ if __name__ == '__main__':
 
 # Reading an image in default mode
     img = cv2.imread('Zdjecia/NET G2, Ki-67 około 5% --copy.jpg')
-    gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    gray = img
 
     # Extracting edges and cells contours from image
     # do adaptive threshold on gray image
-    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 3)
+    # thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 3)
 
     # apply morphology -- get getStructuringElement składa nam maciez o zadanych wymiarach która bedzie nam potrzebna
     #   -- morphologyEx pozwala wyłapać kontur : MORPH_OPEN czysci tło ze smieci a MORPH_CLOSE czysci kontury komórek
@@ -52,12 +55,9 @@ if __name__ == '__main__':
 
 
 # Draw Contours
-    # cv2.drawContours(gray, conts, -1, (0, 255, 0), 3)
-
+#     cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
 
 #WORK WITH CELLS
-
-
 
 
 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     #     iter += 1
 
 # DISPLAY
-#     plot_photo("Contours",Cells[100],900,900)
+    plot_photo("Contours",img,900,900)
 #     plt.title("Photo")
 #     plt.xlabel("X pixel scaling")
 #     plt.ylabel("Y pixels scaling")
