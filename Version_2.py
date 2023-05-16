@@ -1,3 +1,8 @@
+# metoda HED z wykorzystaniem przetrenowanej sieci
+
+from resources import *
+
+
 # Notes
 # import cv2
 #
@@ -18,22 +23,6 @@
 # cv2.imshow("Detected Edges", edges)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
-
-def plot_photo(title, image,height, widht):
-    ''' Plots photo is given  resolution
-        title - title of ploted photo
-        image - image to plot
-        height - height of ploted photo
-        width - width of ploted photo
-    '''
-    # while True:
-    cv2.namedWindow(title, cv2.WINDOW_NORMAL)
-    cv2.resizeWindow(title, height, widht)
-    cv2.imshow(title, image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-import cv2
-import numpy as np
 
 # Load the pre-trained HED model
 model_path = "deploy.prototxt"

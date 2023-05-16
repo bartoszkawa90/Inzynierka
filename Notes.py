@@ -20,15 +20,23 @@ from resources import *
 
 
 # zapisywanie wycinków
-# img = cv2.imread('Zdjecia/Rak surowiczy high-grade, Ki-67 ok. 65%.jpg')
-# res = img[7000:9000, 3000:7000]
-# cv2.imwrite("Wycinki/wycinek_4.jpg", res)
+# img = cv2.imread('Resized/Zdj_2.jpg')
+# res = img[1000:1500, 1800:2300]
+# cv2.imwrite("Wycinki/wycinek_5.jpg", res)
 # plot_photo("Contours",res,900,900)
 
 
 
 
 # # reshape images
+
+#     ONE
+# img = cv2.imread('Wycinki/wycinek_3.jpg')
+# new_image = cv2.resize(img, (1200,900), cv2.INTER_AREA)
+# cv2.imwrite("/home/bartosz/Desktop/astudia/inzynierka/Wycinki/resized_wycinek_3.jpg", new_image)
+
+
+#     ALL
 # folder = "/home/bartosz/Desktop/astudia/inzynierka/Zdjecia/"
 # iter = 1
 # for img in os.listdir(folder):

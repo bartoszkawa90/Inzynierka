@@ -8,6 +8,7 @@
 - Rozważenie półautomatycznej wersji programu
 
 ## UWAGI
+- ZMIANA ROZDZIELCZOSCI JEDNAK KLUCZOWA !!! 
 - do detekcji krawędzi raczej przechodzimy na Gray ale potem działamy na kolorowym zdjęciu
 - EWENTUALNIE JESZCZE POPRÓBOWAĆ  HED   ale   Raczej nalerzy sobie odpuścic detekcje krawędzi z użyciem HED i 
   przetrenowanej sieci bo to dobrze znajduje mało szczegółwych konturów a nie tak jak tu trzeba
@@ -15,6 +16,7 @@
 ## PYTANIA
 - czy połączone komórki traktować jako jedną czy jako więcej na oko
 - czy komórka po częsci brązowa i po czesci niebieska to dobra czy zła
+- kiedy dana komórka jest rzeczywiście do jednej grupy albo do drugiej
 - do jakiego stopnia nalerzy brac komórke a do jakiego stopnia tło
 
 ## Konkretne Cele

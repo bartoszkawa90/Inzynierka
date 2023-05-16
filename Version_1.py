@@ -8,13 +8,13 @@ if __name__ == '__main__':
     start_time = time.time()
 
 # Reading an image in default mode
-    img = cv2.imread('Wycinki/wycinek_4.jpg')
+    img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 # Finding edges
     # Extracting edges and cells contours from image
     # do adaptive threshold on gray image
-    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 231, 8)
+    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 131, 6)
 
     # apply morphology -- get getStructuringElement składa nam maciez o zadanych wymiarach która bedzie nam potrzebna
     #   -- morphologyEx pozwala wyłapać kontur : MORPH_OPEN czysci tło ze smieci a MORPH_CLOSE czysci kontury komórek
@@ -28,9 +28,25 @@ if __name__ == '__main__':
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 
-
 # Extracting and Cleaning?? cells
+#     conts = tuple(con for con in contours if con.shape[0].__gt__(40) and con.shape[0].__lt__(1000))
     cells = [extract_cell(c, img, LEAVE_BACKGROUND) for c in contours]
+
+
+# CALCULATE
+    # do dupy taka klasyfikacja
+    dark = 0
+    light = 0
+    iter = 1
+    for cell in cells:
+        print(iter,'  ', np.mean(cell))
+        iter += 1
+        if np.mean(cell).__gt__(160):
+            light += 1
+        else:
+            dark += 1
+
+    print('ciemne : {dark} , jasne : {light}'.format(dark=dark, light=light))
 
 
 
@@ -46,7 +62,7 @@ if __name__ == '__main__':
 
 #SAVE Cells in ./Cells
     # iter = 1
-    # for c in Cells:
+    # for c in cells:
     #     cv2.imwrite("Cells/cell"+str(iter)+".jpg", c)
     #     iter += 1
 
