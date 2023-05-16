@@ -70,12 +70,12 @@ def extract_cell(contour=None, img=None, clear=0):
     return cell
 
 
-def fun(cell):
+def background_procentage(cell):
     white_count = 0
     cell_count = 0
     for i in cell:
         for j in i:
-            if len(j[j>158]) != 0:
+            if len(j[j.__gt__(158)]) != 0:
                 white_count += 1
             cell_count += 1
     return white_count/cell_count
