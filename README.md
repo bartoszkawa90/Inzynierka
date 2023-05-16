@@ -3,16 +3,14 @@
 
 
 ## Aktualnie
-- Testować na wycinkach zdjec
-- Poprawić Version_1 czyli detekcja z użyciem OpenCV
-- Przerobić zdjęcia
+- dorobić pierwszą Version_1
 - Implementacja własnej wersji Canny
 - Rozważenie półautomatycznej wersji programu
 
 ## UWAGI
-- Wybierać raczej trzeba środki konturów żeby uzyskać konkretny kolor i zeby się na badanym wycikku nie mieszały
-- Raczej trzeba zwracać uwagę na kolory komórki i nie przechodzić na GRAY
-- Żeby to wszystko lepiej działało można zmienić wymiary tych zdjęć na jakieś  +-  3000x2000 
+- do detekcji krawędzi raczej przechodzimy na Gray ale potem działamy na kolorowym zdjęciu
+- EWENTUALNIE JESZCZE POPRÓBOWAĆ  HED   ale   Raczej nalerzy sobie odpuścic detekcje krawędzi z użyciem HED i 
+  przetrenowanej sieci bo to dobrze znajduje mało szczegółwych konturów a nie tak jak tu trzeba
 
 ## PYTANIA
 - czy połączone komórki traktować jako jedną czy jako więcej na oko
