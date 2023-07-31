@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Początek wersji półautomatycznej i cos ju działa w Version_1 ale dalejklasyfikacja słabiutko">
+      <change afterPath="$PROJECT_DIR$/Document.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HalfAutomatic_Version.py" beforeDir="false" afterPath="$PROJECT_DIR$/HalfAutomatic_Version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +54,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -158,6 +163,11 @@
       <workItem from="1684278564836" duration="3210000" />
       <workItem from="1684282183839" duration="599000" />
       <workItem from="1684284059025" duration="162000" />
+      <workItem from="1687382488669" duration="4336000" />
+      <workItem from="1688250744952" duration="604000" />
+      <workItem from="1689158234485" duration="903000" />
+      <workItem from="1690747440896" duration="491000" />
+      <workItem from="1690840112706" duration="1141000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>

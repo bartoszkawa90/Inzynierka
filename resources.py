@@ -84,7 +84,7 @@ def background_procentage(cell):
 
 
 # @njit
-def Edge_Detection():
+def Canny():
     pass
 
 
