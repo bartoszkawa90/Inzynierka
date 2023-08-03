@@ -63,3 +63,9 @@ from resources import *
 # print("Finish")
 # print("--- %s seconds ---" % (time.time() - start_time))
 
+a = np.zeros((4,2))
+for i in range(-1,2):
+    print(i)
+print(a)
+print(a[0:3, 0:1])
+

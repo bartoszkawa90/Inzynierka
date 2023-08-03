@@ -1,3 +1,5 @@
+import numpy as np
+
 from variables import *
 
 
@@ -88,10 +90,48 @@ def Canny():
     pass
 
 
-# @njit
-def Convolution2D():
-    pass
+def MAC(M1, M2):    # Multiply-accumulate
+    result = 0
+    for i, j in zip(np.nditer(M1), np.nditer(M2)):
+        result += i*j
+    return result
 
+# @njit
+def Convolution2D(I, K):
+    """
+    :param I: Input array
+    :param K: kernel
+    :return result: result = I * K
+    """
+    result = np.zeros((I.shape[0] + K.shape[0] - 1, I.shape[1] + K.shape[1] - 1))
+    fliped_kernel = np.flip(K)
+    # for i in range(result.shape[0] * result.shape[1]):
+    #     temp = I[0:N, 0:N]
+    #     for j, k in zip(temp, fliped_kernel):
+    #         result[i] += j*k
+    for i in range(result.shape[0]):
+        for j in range(result.shape[1]):
+            for m in range(-1, 2):
+                sum = 0
+                for n in range(-1, 2):
+                    sum += fliped_kernel[m, n] * I[i-m, j-n]
+
+                result[i, j] += sum
+
+    return result
+
+
+# a = np.ones(1) * 2
+# b = np.ones((2,2)) * 3
+# print(a)
+# print(b)
+# print(exampleKernel[2:3, 1:3])
+# print(exampleArray[0:1, 0:2])
+# print(MAC(exampleArray[0:1, 0:2], exampleKernel[2:3, 1:3]))
+
+
+# TEST
+print(Convolution2D(exampleArray, exampleKernel))
 
 
 

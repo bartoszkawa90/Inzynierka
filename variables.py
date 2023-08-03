@@ -21,3 +21,13 @@ LEAVE_BACKGROUND = 0
 MAX_AREA_OF_SINGLE_CELL = 0
 MIN_AREA_OF_SINGLE_CELL = 0
 
+exampleArray = np.array([[25, 100, 75, 49, 130],
+                         [50, 80, 0, 70, 100],
+                         [5, 10, 20, 30, 0],
+                         [60, 50, 12, 24, 32],
+                         [37, 53, 55, 21, 90],
+                         [140, 17, 0, 23, 222]])
+exampleKernel = np.array([[1, 0, 0],
+                          [0, 1, 0],
+                          [1, 0, 1]])
+sobelKernel = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
