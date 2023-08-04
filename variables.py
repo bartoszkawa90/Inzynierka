@@ -4,6 +4,7 @@ from numba import jit,vectorize,njit
 import sys
 import os
 import numpy as np
+import scipy
 import  pandas
 import itertools
 import time
@@ -27,7 +28,7 @@ exampleArray = np.array([[25, 100, 75, 49, 130],
                          [60, 50, 12, 24, 32],
                          [37, 53, 55, 21, 90],
                          [140, 17, 0, 23, 222]])
-exampleKernel = np.array([[1, 0, 0],
+exampleKernel = np.array([[1, 0, 1],
                           [0, 1, 0],
-                          [1, 0, 1]])
+                          [0, 0, 1]])
 sobelKernel = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
