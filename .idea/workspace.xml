@@ -165,6 +165,7 @@
       <workItem from="1690840112706" duration="1179000" />
       <workItem from="1691084891628" duration="10515000" />
       <workItem from="1691168180356" duration="5644000" />
+      <workItem from="1691407037918" duration="8945000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -340,13 +341,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/resources.py</url>
-          <line>125</line>
-          <option name="timeStamp" value="6" />
+          <line>122</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/resources.py</url>
-          <line>100</line>
-          <option name="timeStamp" value="7" />
+          <line>127</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -366,6 +367,6 @@
     <SUITE FILE_PATH="coverage/inzynierka$Version_1.coverage" NAME="Version_1 Coverage Results" MODIFIED="1684176869134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/inzynierka$HalfAutomatic_Version.coverage" NAME="HalfAutomatic_Version Coverage Results" MODIFIED="1684279123546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/inzynierka$Notes.coverage" NAME="Notes Coverage Results" MODIFIED="1684130811746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/inzynierka$resources.coverage" NAME="resources Coverage Results" MODIFIED="1691192078083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/inzynierka$resources.coverage" NAME="resources Coverage Results" MODIFIED="1691408662948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

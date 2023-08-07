@@ -63,6 +63,25 @@ from resources import *
 # print("Finish")
 # print("--- %s seconds ---" % (time.time() - start_time))
 
-a = exampleKernel[::-1, ::-1]
-print("a", a)
+h = exampleKernel[::-1, ::-1]
+# shape[0]  -  | num of rows
+# shape[1]  -  - num of columns
+x = MALAexample
+zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
+result = zeros.copy()
+y_shift = h.shape[0] // 2
+x_shift = h.shape[1] // 2
+zeros[y_shift+1:y_shift + x.shape[0]+1, x_shift+1:x_shift + x.shape[1]+1] = x
+
+print(zeros)
+for i in range(y_shift, y_shift + result.shape[0]-2):
+    for j in range(x_shift, x_shift + result.shape[1]-2):
+        print(h)
+        print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+        print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+        print("-----------------------------------------------------------------------------------------------")
+        result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+
+print("result : \n", result)
+print(zeros)
 

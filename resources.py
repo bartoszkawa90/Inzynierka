@@ -83,151 +83,65 @@ def background_procentage(cell):
     return white_count/cell_count
 
 
+def MAC(M1, M2):    # Multiply-accumulate function
+    """
+
+    :param M1: first array
+    :param M2: second array
+    :return: returns product of multiply and accumulate operation
+    """
+    return np.sum(M1 * M2)
+
+
+def Convolution2D(x, h, mode="full"):
+    """
+    :param x: Input array
+    :param h: kernel
+    :param mode: mode of convolution ( determine how the output will look like
+    :return result: returns product of 2D convolution ==>  x * h
+    """
+
+    if h.shape[0] != h.shape[1]:
+        raise ValueError('Kernel must be square matrix.')
+
+    elif h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
+        raise ValueError('Kernel must have odd number of elements so it can have a center.')
+
+    h = h[::-1, ::-1]
+    # shape[0]  -  | num of rows
+    # shape[1]  -  - num of columns
+    y_shift = h.shape[0] // 2
+    x_shift = h.shape[1] // 2
+
+    if mode == "zero padding":
+        zeros = np.zeros((x.shape[0] + h.shape[0] - 1, x.shape[1] + h.shape[1] - 1))
+        zeros[y_shift:y_shift + x.shape[0], x_shift:x_shift + x.shape[1]] = x
+        result = zeros.copy()
+        for i in range(y_shift, y_shift + x.shape[0]):
+            for j in range(x_shift, x_shift + x.shape[1]):
+                # print(h)
+                # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+                # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+                result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+
+    if mode == "full":
+        zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
+        result = zeros.copy()
+        zeros[y_shift + 1:y_shift + x.shape[0] + 1, x_shift + 1:x_shift + x.shape[1] + 1] = x
+        for i in range(y_shift, y_shift + result.shape[0]-2):
+            for j in range(x_shift, x_shift + result.shape[1]-2):
+                # print(h)
+                # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+                # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+                result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+        result = result[1:result.shape[0]-1, 1:result.shape[1]-1]
+
+    return result
 
 
 # @njit
 def Canny():
     pass
-
-
-def MAC(M1, M2):    # Multiply-accumulate
-    result = 0
-    # for i, j in zip(np.nditer(M1), np.nditer(M2)):
-    #     print("i j ", i, j)
-    #     result += i*j
-    for i in range(M1.shape[0]):
-        for j in range(M1.shape[1]):
-            print("i j ", i, j)
-            result += M1[i][j] * M2[i][j]
-    return result
-
-# @njit
-def Convolution2D(x, h):
-    """
-    :param I: Input array
-    :param K: kernel
-    :return result: result = I * K
-    """
-
-    if h.shape[0] != h.shape[1]:
-        raise ValueError('Kernel should be a square matrix.')
-    elif h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
-        raise ValueError('Kernel should have a center (odd number or elements in rows and columns).')
-    N = h.shape[0]
-    result = np.zeros((x.shape[0] + h.shape[0] - 1, x.shape[1] + h.shape[1] - 1))
-    # y_shift = h.shape[0] // 2
-    # x_shift = h.shape[1] // 2
-    h = np.flip(h)
-
-    for i in range(result.shape[0]):
-        for j in range(result.shape[1]):
-            print("x", x[:i+1, :j+1])
-            print("h", h[N-1-i:N, N-1-j:N])
-            result[i, j] = MAC(x[:i+1, :j+1], h[N-1-i:N, N-1-j:N])
-            print(result[i, j])
-    # for i in range(result.shape[0]):
-    #     for j in range(result.shape[1]):
-    #         for m in range(-1, 2):
-    #             sum = 0
-    #             for n in range(-1, 2):
-    #                 sum += fliped_kernel[m, n] * x[i-m, j-n]
-    #
-    #             result[i, j] += sum
-
-    return result
-
-
-def conv2(x, h):
-    """
-    This function performs the 2D convolution.
-
-    Parameters:
-        x - An input array.
-        h - 2D impulse response (kernel).
-    Returns:
-        y - 2D convolution of x and h.
-    """
-
-    if h.shape[0] != h.shape[1]:
-        raise ValueError('Kernel should be a square matrix.')
-
-    elif h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
-        raise ValueError('Kernel should have a center (odd number or elements in rows and columns).')
-
-    "Your code goes below here."
-    h = h[::-1, ::-1]
-    y_kernel, x_kernel = h.shape
-    y_image, x_image = x.shape
-    x_zeros = np.zeros((y_image + y_kernel - 1, x_image + x_kernel - 1))
-    y = x_zeros.copy()
-    y_shift = y_kernel // 2
-    x_shift = x_kernel // 2
-    x_zeros[y_shift:y_shift + y_image, x_shift:x_shift + x_image] = x
-
-    for i in range(y_shift, y_shift + y_image):
-        for j in range(x_shift, x_shift + x_image):
-            y[i, j] = np.sum(h * x_zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-
-    return y
-
-def convolve2D(image, kernel, padding=0, strides=1):
-    # Cross Correlation
-    kernel = np.flipud(np.fliplr(kernel))
-
-    # Gather Shapes of Kernel + Image + Padding
-    xKernShape = kernel.shape[0]
-    yKernShape = kernel.shape[1]
-    xImgShape = image.shape[0]
-    yImgShape = image.shape[1]
-
-    # Shape of Output Convolution
-    xOutput = int(((xImgShape - xKernShape + 2 * padding) / strides) + 1)
-    yOutput = int(((yImgShape - yKernShape + 2 * padding) / strides) + 1)
-    output = np.zeros((xOutput, yOutput))
-
-    # Apply Equal Padding to All Sides
-    if padding != 0:
-        imagePadded = np.zeros((image.shape[0] + padding*2, image.shape[1] + padding*2))
-        imagePadded[int(padding):int(-1 * padding), int(padding):int(-1 * padding)] = image
-        print(imagePadded)
-    else:
-        imagePadded = image
-
-    # Iterate through image
-    for y in range(image.shape[1]):
-        # Exit Convolution
-        if y > image.shape[1] - yKernShape:
-            break
-        # Only Convolve if y has gone down by the specified Strides
-        if y % strides == 0:
-            for x in range(image.shape[0]):
-                # Go to next row once kernel is out of bounds
-                if x > image.shape[0] - xKernShape:
-                    break
-                try:
-                    # Only Convolve if x has moved by the specified Strides
-                    if x % strides == 0:
-                        output[x, y] = (kernel * imagePadded[x: x + xKernShape, y: y + yKernShape]).sum()
-                except:
-                    break
-
-    return output
-
-# a = np.ones(1) * 2
-# b = np.ones((2,2)) * 3
-# print(a)
-# print(b)
-# print(exampleKernel[2:3, 1:3])
-# print("a", exampleKernel[:1, :1])
-# print(exampleArray[0:1, 0:2])
-# print(MAC(exampleArray[0:1, 0:2], exampleKernel[2:3, 1:3]))
-
-
-# TEST
-print(Convolution2D(exampleArray, exampleKernel))
-# print(conv2(exampleArray, exampleKernel))
-# print(convolve2D(exampleArray, exampleKernel))
-# print(scipy.signal.convolve2d(exampleArray, exampleKernel))
 
 
 
