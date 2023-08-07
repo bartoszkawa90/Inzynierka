@@ -4,11 +4,11 @@ from numba import jit,vectorize,njit
 import sys
 import os
 import numpy as np
-import scipy
+import scipy.signal as sig
 import  pandas
 import itertools
 import time
-# import scipy.signal as sig
+
 from matplotlib import pyplot as plt
 from matplotlib import image as mpimg
 from PIL import Image

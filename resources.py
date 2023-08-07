@@ -1,10 +1,13 @@
+import sys
+
 import numpy as np
+import scipy.signal
 
 from variables import *
 
 
 # FUNCTIONS / KEYWORDS
-def plot_photo(title, image,height, widht):
+def plot_photo(title="None", image=None, height=900, widht=900):
     ''' Plots photo is given  resolution
         title - title of ploted photo
         image - image to plot
@@ -85,7 +88,6 @@ def background_procentage(cell):
 
 def MAC(M1, M2):    # Multiply-accumulate function
     """
-
     :param M1: first array
     :param M2: second array
     :return: returns product of multiply and accumulate operation
@@ -128,8 +130,8 @@ def Convolution2D(x, h, mode="full"):
         zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
         result = zeros.copy()
         zeros[y_shift + 1:y_shift + x.shape[0] + 1, x_shift + 1:x_shift + x.shape[1] + 1] = x
-        for i in range(y_shift, y_shift + result.shape[0]-2):
-            for j in range(x_shift, x_shift + result.shape[1]-2):
+        for i in range(y_shift, y_shift + result.shape[0]-x.shape[0]-1):
+            for j in range(x_shift, x_shift + result.shape[1]-x.shape[1]-1):
                 # print(h)
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
@@ -139,10 +141,49 @@ def Convolution2D(x, h, mode="full"):
     return result
 
 
-# @njit
-def Canny():
-    pass
+def gaussianFilterGenerator(size = 3, sigma = 1):
+    X = np.zeros((size, size))
+    Y = np.zeros((size, size))
+    for i in range(2*size):
+        if i < size:
+            X[0, i] = Y[i, 0] = -1
+        else:
+            X[size-1, i-size-1] = Y[i-size-1, size-1] = 1
+    result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma)  )
+    return result
 
+
+# @njit
+def Canny(gray):
+    pass
+    # zastosowanie filtru Gaussa w celu ograniczenia szumów
+    gauss = gaussianFilterGenerator()
+    gImage = cv2.filter2D(gray, -1, gauss)
+
+    # nałozenie maski Laplace'a
+
+
+
+    return gImage
+
+
+
+
+
+
+# test Canny 1
+img = cv2.imread('spodnie.jpeg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+plot_photo("From Canny", Canny(gray))
+
+
+# test Canny 2
+# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg)
+# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# plot_photo("From Canny", Canny(gray))
+
+# print(gaussianFilterGenerator())
+# print(gaussian_kernel(3, 0.6))
 
 
 

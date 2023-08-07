@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="3.08">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="7.08 &#10;Convolution 2D gotowe">
+      <change afterPath="$PROJECT_DIR$/babaCANNY.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spodnie.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
@@ -165,7 +167,7 @@
       <workItem from="1690840112706" duration="1179000" />
       <workItem from="1691084891628" duration="10515000" />
       <workItem from="1691168180356" duration="5644000" />
-      <workItem from="1691407037918" duration="8945000" />
+      <workItem from="1691407037918" duration="14244000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -300,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691105090030</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="7.08 &#10;Convolution 2D gotowe">
+      <created>1691416478398</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1691416478398</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,22 +343,11 @@
     <MESSAGE value="Początek wersji półautomatycznej i cos ju działa w Version_1 ale dalejklasyfikacja słabiutko" />
     <MESSAGE value="Multiple threads in python" />
     <MESSAGE value="3.08" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.08" />
+    <MESSAGE value="7.08 &#10;Convolution 2D gotowe" />
+    <option name="LAST_COMMIT_MESSAGE" value="7.08 &#10;Convolution 2D gotowe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/resources.py</url>
-          <line>122</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/resources.py</url>
-          <line>127</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
