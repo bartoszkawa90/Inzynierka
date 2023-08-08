@@ -153,15 +153,20 @@ def gaussianFilterGenerator(size = 3, sigma = 1):
     return result
 
 
+def Laplace_Mask(alfa = 0.5):
+    pass
+
+
 # @njit
 def Canny(gray):
     pass
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
     gauss = gaussianFilterGenerator()
-    gImage = cv2.filter2D(gray, -1, gauss)
+    # gImage = cv2.filter2D(gray, -1, gauss)
+    gImage = scipy.ndimage.filters.convolve(gray, gauss)
 
     # nałozenie maski Laplace'a
-
+    # Lmask = Laplace_Mask()
 
 
     return gImage
@@ -172,9 +177,9 @@ def Canny(gray):
 
 
 # test Canny 1
-img = cv2.imread('spodnie.jpeg')
-gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-plot_photo("From Canny", Canny(gray))
+# img = cv2.imread('spodnie.jpeg')
+# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# plot_photo("From Canny", Canny(gray))
 
 
 # test Canny 2
@@ -182,8 +187,8 @@ plot_photo("From Canny", Canny(gray))
 # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # plot_photo("From Canny", Canny(gray))
 
-# print(gaussianFilterGenerator())
-# print(gaussian_kernel(3, 0.6))
+print(Convolution2D(MALAexample, exampleKernel, mode="full"))
+print(scipy.ndimage.filters.convolve(MALAexample, exampleKernel))
 
 
 

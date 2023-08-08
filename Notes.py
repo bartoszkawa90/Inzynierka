@@ -64,7 +64,13 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-size = 1
-x, y = np.mgrid[-size:size+1, -size:size+1]
-print(x, y)
+
+
+
+
+
+
+
+
+
 
