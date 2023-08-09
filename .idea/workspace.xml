@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Zaczete Canny">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Zaczete Canny i jednak splot do poprawy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +165,8 @@
       <workItem from="1691168180356" duration="5644000" />
       <workItem from="1691407037918" duration="14261000" />
       <workItem from="1691500325535" duration="243000" />
-      <workItem from="1691508430024" duration="2735000" />
+      <workItem from="1691508430024" duration="2758000" />
+      <workItem from="1691569870135" duration="944000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -315,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691436435118</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Zaczete Canny i jednak splot do poprawy">
+      <created>1691517805883</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1691517805883</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +358,8 @@
     <MESSAGE value="3.08" />
     <MESSAGE value="7.08 &#10;Convolution 2D gotowe" />
     <MESSAGE value="Zaczete Canny" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zaczete Canny" />
+    <MESSAGE value="Zaczete Canny i jednak splot do poprawy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zaczete Canny i jednak splot do poprawy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -130,18 +130,17 @@ def Convolution2D(x, h, mode="full"):
         zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
         result = zeros.copy()
         zeros[y_shift + 1:y_shift + x.shape[0] + 1, x_shift + 1:x_shift + x.shape[1] + 1] = x
-        for i in range(y_shift, y_shift + result.shape[0]-x.shape[0]-1):
-            for j in range(x_shift, x_shift + result.shape[1]-x.shape[1]-1):
+        for i in range(y_shift, y_shift + result.shape[0]-(x.shape[0]-1)):
+            for j in range(x_shift, x_shift + result.shape[1]-(x.shape[1]-1)):
                 # print(h)
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
         result = result[1:result.shape[0]-1, 1:result.shape[1]-1]
-
     return result
 
 
-def gaussianFilterGenerator(size = 3, sigma = 1):
+def gaussianFilterGenerator(size=3, sigma=1):
     X = np.zeros((size, size))
     Y = np.zeros((size, size))
     for i in range(2*size):
@@ -153,7 +152,7 @@ def gaussianFilterGenerator(size = 3, sigma = 1):
     return result
 
 
-def Laplace_Mask(alfa = 0.5):
+def Laplace_Mask(alfa=0.5):
     pass
 
 
@@ -188,7 +187,9 @@ def Canny(gray):
 # plot_photo("From Canny", Canny(gray))
 
 print(Convolution2D(MALAexample, exampleKernel, mode="full"))
-print(scipy.ndimage.filters.convolve(MALAexample, exampleKernel))
+print(sig.convolve2d(MALAexample, exampleKernel))
+print(scipy.ndimage.convolve(MALAexample, exampleKernel))
+# print(scipy.ndimage.filters.convolve(MALAexample, exampleKernel))   # to samo co wyzej
 
 
 
