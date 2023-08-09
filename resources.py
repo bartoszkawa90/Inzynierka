@@ -125,8 +125,9 @@ def Convolution2D(x, h, mode="full"):
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
+        return result.astype('i')
 
-    if mode == "full":
+    else:
         zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
         result = zeros.copy()
         zeros[y_shift + 1:y_shift + x.shape[0] + 1, x_shift + 1:x_shift + x.shape[1] + 1] = x
@@ -136,8 +137,12 @@ def Convolution2D(x, h, mode="full"):
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-        result = result[1:result.shape[0]-1, 1:result.shape[1]-1]
-    return result
+    if mode == "nd":
+        # return result[(result.shape[0]//2)-(x.shape[0]//2):(result.shape[0]//2)+(1+x.shape[0]//2),
+        #               (result.shape[1]//2)-(x.shape[1]//2):(result.shape[1]//2)+(1+x.shape[1]//2)].astype('i')
+        return result
+    elif mode == "full":
+        return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype('i')
 
 
 def gaussianFilterGenerator(size=3, sigma=1):
@@ -158,11 +163,17 @@ def Laplace_Mask(alfa=0.5):
 
 # @njit
 def Canny(gray):
-    pass
+    print(gray.shape)
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
     gauss = gaussianFilterGenerator()
     # gImage = cv2.filter2D(gray, -1, gauss)
-    gImage = scipy.ndimage.filters.convolve(gray, gauss)
+    # gImage = Convolution2D(gray, gauss, mode="nd")
+    gImage = sig.convolve2d(gray, gauss, mode='same')
+    gImage = gImage.astype('i')
+    # gImage = scipy.ndimage.convolve(gray, gauss, mode="constant")
+    print(gImage)
+    print(gImage.shape)
+
 
     # nałozenie maski Laplace'a
     # Lmask = Laplace_Mask()
@@ -175,7 +186,7 @@ def Canny(gray):
 
 
 
-# test Canny 1
+## test Canny 1
 # img = cv2.imread('spodnie.jpeg')
 # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # plot_photo("From Canny", Canny(gray))
@@ -186,9 +197,9 @@ def Canny(gray):
 # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # plot_photo("From Canny", Canny(gray))
 
-print(Convolution2D(MALAexample, exampleKernel, mode="full"))
-print(sig.convolve2d(MALAexample, exampleKernel))
-print(scipy.ndimage.convolve(MALAexample, exampleKernel))
+print(Convolution2D(exampleArray, exampleKernel, mode="nd"))
+print(sig.convolve2d(exampleArray, exampleKernel, mode='same'))
+print(scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
 # print(scipy.ndimage.filters.convolve(MALAexample, exampleKernel))   # to samo co wyzej
 
 
