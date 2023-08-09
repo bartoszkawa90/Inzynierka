@@ -115,7 +115,7 @@ def Convolution2D(x, h, mode="full"):
     y_shift = h.shape[0] // 2
     x_shift = h.shape[1] // 2
 
-    if mode == "zero padding":
+    if mode == "same":
         zeros = np.zeros((x.shape[0] + h.shape[0] - 1, x.shape[1] + h.shape[1] - 1))
         zeros[y_shift:y_shift + x.shape[0], x_shift:x_shift + x.shape[1]] = x
         result = zeros.copy()
@@ -125,24 +125,20 @@ def Convolution2D(x, h, mode="full"):
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-        return result.astype('i')
+        return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype(np.uint8)
 
-    else:
+    elif mode == "full":
         zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
         result = zeros.copy()
+        print(result.shape)
         zeros[y_shift + 1:y_shift + x.shape[0] + 1, x_shift + 1:x_shift + x.shape[1] + 1] = x
-        for i in range(y_shift, y_shift + result.shape[0]-(x.shape[0]-1)):
-            for j in range(x_shift, x_shift + result.shape[1]-(x.shape[1]-1)):
+        for i in range(y_shift, result.shape[0]-1):
+            for j in range(x_shift, result.shape[1]-1):
                 # print(h)
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-    if mode == "nd":
-        # return result[(result.shape[0]//2)-(x.shape[0]//2):(result.shape[0]//2)+(1+x.shape[0]//2),
-        #               (result.shape[1]//2)-(x.shape[1]//2):(result.shape[1]//2)+(1+x.shape[1]//2)].astype('i')
-        return result
-    elif mode == "full":
-        return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype('i')
+        return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype(np.uint8)
 
 
 def gaussianFilterGenerator(size=3, sigma=1):
@@ -166,14 +162,7 @@ def Canny(gray):
     print(gray.shape)
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
     gauss = gaussianFilterGenerator()
-    # gImage = cv2.filter2D(gray, -1, gauss)
-    # gImage = Convolution2D(gray, gauss, mode="nd")
-    gImage = sig.convolve2d(gray, gauss, mode='same')
-    gImage = gImage.astype('i')
-    # gImage = scipy.ndimage.convolve(gray, gauss, mode="constant")
-    print(gImage)
-    print(gImage.shape)
-
+    gImage = Convolution2D(gray, gauss, mode="same")
 
     # nałozenie maski Laplace'a
     # Lmask = Laplace_Mask()
@@ -187,9 +176,9 @@ def Canny(gray):
 
 
 ## test Canny 1
-# img = cv2.imread('spodnie.jpeg')
-# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-# plot_photo("From Canny", Canny(gray))
+img = cv2.imread('spodnie.jpeg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+plot_photo("From Canny", Canny(gray))
 
 
 # test Canny 2
@@ -197,9 +186,11 @@ def Canny(gray):
 # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # plot_photo("From Canny", Canny(gray))
 
-print(Convolution2D(exampleArray, exampleKernel, mode="nd"))
-print(sig.convolve2d(exampleArray, exampleKernel, mode='same'))
-print(scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
+
+## test COnvolution
+# print("mine   \n", Convolution2D(exampleArray, exampleKernel, mode="full"))
+# print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleKernel, mode='full'))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
 # print(scipy.ndimage.filters.convolve(MALAexample, exampleKernel))   # to samo co wyzej
 
 
