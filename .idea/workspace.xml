@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Splot 2d wreszcie GIT">
-      <change afterPath="$PROJECT_DIR$/zdj_z_arykułu.png" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="10.08">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +166,7 @@
       <workItem from="1691407037918" duration="14261000" />
       <workItem from="1691500325535" duration="243000" />
       <workItem from="1691508430024" duration="2758000" />
-      <workItem from="1691569870135" duration="15132000" />
+      <workItem from="1691569870135" duration="16329000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -345,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691614772588</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="10.08">
+      <created>1691621761615</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1691621761615</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +388,8 @@
     <MESSAGE value="Zaczete Canny" />
     <MESSAGE value="Zaczete Canny i jednak splot do poprawy" />
     <MESSAGE value="Splot 2d wreszcie GIT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Splot 2d wreszcie GIT" />
+    <MESSAGE value="10.08" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.08" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
