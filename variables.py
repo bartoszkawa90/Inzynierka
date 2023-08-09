@@ -34,4 +34,7 @@ MALAexample = np.array([[1, 2, 3],
 exampleKernel = np.array([[1, 0, 1],
                           [0, 1, 0],
                           [0, 0, 1]])
-sobelKernel = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
+
+XSobelKernel = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
+YSobelKernel = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])
+

@@ -1,5 +1,6 @@
 import sys
 
+import cv2
 import numpy as np
 import scipy.signal
 
@@ -153,31 +154,63 @@ def gaussianFilterGenerator(size=3, sigma=1):
     return result
 
 
-def Laplace_Mask(alfa=0.5):
-    pass
+def Laplace_Mask(alfa=0):
+    arr = np.zeros((3, 3))
+    arr[0][0:2:2] = arr[0][2] = arr[2][0] = arr[2][2] = alfa/4
+    arr[0][1] = arr[1][0] = arr[1][2] = arr[2][1] = (1-alfa)/4
+    arr[1][1] = -1
+    return (4/(alfa+1))*arr
 
 
 # @njit
 def Canny(gray):
-    print(gray.shape)
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
-    gauss = gaussianFilterGenerator()
+    gauss = gaussianFilterGenerator(size=5, sigma=0.5)
+    print(gauss)
     gImage = Convolution2D(gray, gauss, mode="same")
 
-    # nałozenie maski Laplace'a
-    # Lmask = Laplace_Mask()
+    ## nałozenie maski Laplace'a , znajdowanie miejsc zerowych mozna załatwić przez przefiltrowanie obrazu przez maske
+    ##     Laplace'a z alfa = 0  ( standardowo takiej maski uzywamy )
+    ##     Raczej uzywamy laplasjanu zamiast gradientu bo zapewnia dodatkowe informacje
+    Lmask = Laplace_Mask(0)
+    lImage = Convolution2D(gray, Lmask, mode="same")
 
 
-    return gImage
+
+    return lImage
 
 
-
+##  II wersja
+# def Canny(gray):
+#     # zastosowanie filtru Gaussa w celu ograniczenia szumów
+#     gauss = gaussianFilterGenerator(size=3, sigma=4)
+#     gImage = Convolution2D(gray, gauss, mode="same")
+#
+#     # # uzycie Sobel filter
+#     x = Convolution2D(gImage, XSobelKernel, 'same')
+#     y = Convolution2D(gImage, YSobelKernel, "same")
+#
+#     G = np.hypot(x, y)
+#     G = G/G.max() * 255
+#     theta = np.arctan2(x, y)
+#     G = G.astype(np.uint8)
+#     theta = theta.astype(np.uint8)
+#
+#     # print(G.shape, "\n", G)
+#     # print(theta.shape, "\n", theta)
+#
+#     return G
 
 
 
 ## test Canny 1
-img = cv2.imread('spodnie.jpeg')
+
+# img = cv2.imread('spodnie.jpeg')
+# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+img = cv2.imread('zdj_z_arykułu.png')
+
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# Canny(gray)
 plot_photo("From Canny", Canny(gray))
 
 
