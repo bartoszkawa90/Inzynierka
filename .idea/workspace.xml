@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="10.08">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="10.08 v2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +167,11 @@
       <workItem from="1691407037918" duration="14261000" />
       <workItem from="1691500325535" duration="243000" />
       <workItem from="1691508430024" duration="2758000" />
-      <workItem from="1691569870135" duration="16329000" />
+      <workItem from="1691569870135" duration="16436000" />
+      <workItem from="1691668294911" duration="1172000" />
+      <workItem from="1691670834610" duration="2000" />
+      <workItem from="1691670901737" duration="13000" />
+      <workItem from="1691765069189" duration="6424000" />
     </task>
     <task id="LOCAL-00001" summary="14.04">
       <created>1681481418578</created>
@@ -350,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691621761615</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="10.08 v2">
+      <created>1691622736218</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1691622736218</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +401,8 @@
     <MESSAGE value="Zaczete Canny i jednak splot do poprawy" />
     <MESSAGE value="Splot 2d wreszcie GIT" />
     <MESSAGE value="10.08" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.08" />
+    <MESSAGE value="10.08 v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.08 v2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

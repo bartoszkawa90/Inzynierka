@@ -153,6 +153,14 @@ def gaussianFilterGenerator(size=3, sigma=1):
     result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma)  )
     return result
 
+def gaussian_kernel(size, sigma=1):
+    size = int(size) // 2
+    x, y = np.mgrid[-size:size+1, -size:size+1]
+    normal = 1 / (2.0 * np.pi * sigma**2)
+    g =  np.exp(-((x**2 + y**2) / (2.0*sigma**2))) #* normal
+    return g
+
+
 
 def Laplace_Mask(alfa=0):
     arr = np.zeros((3, 3))
@@ -184,7 +192,9 @@ def Laplace_Mask(alfa=0):
 #  II wersja
 def Canny(gray):
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
-    gauss = gaussianFilterGenerator(size=3, sigma=4)
+    # gauss = gaussianFilterGenerator(size=5, sigma=1)
+    gauss = cv2.getGaussianKernel(5, 1.4)
+
     gImage = Convolution2D(gray, gauss, mode="same")
 
     # # uzycie Sobel filter
@@ -200,20 +210,20 @@ def Canny(gray):
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
 
-    return G
+    return gImage
 
 
 
-## test Canny 1
+## test LoG / Canny
 
-# img = cv2.imread('spodnie.jpeg')
-img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+img = cv2.imread('spodnie.jpeg')
+# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 # img = cv2.imread('zdj_z_arykułu.png')
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-plot_photo("From Canny", Canny(gray))
+# plot_photo("From Canny", Canny(gray))
 
 
 
