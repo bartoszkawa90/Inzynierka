@@ -195,7 +195,8 @@ def Canny(gray):
     # gauss = gaussianFilterGenerator(size=5, sigma=1)
     gauss = cv2.getGaussianKernel(5, 1.4)
 
-    gImage = Convolution2D(gray, gauss, mode="same")
+    # gImage = Convolution2D(gray, gauss, mode="same")
+    gImage = sig.convolve2d(gray, gauss, mode='same').astype(np.uint8)
 
     # # uzycie Sobel filter
     x = Convolution2D(gImage, XSobelKernel, 'same')
@@ -234,10 +235,27 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 
 ## test COnvolution
-# print("mine   \n", Convolution2D(exampleArray, exampleKernel, mode="full"))
-# print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleKernel, mode='full'))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
-# print(scipy.ndimage.filters.convolve(MALAexample, exampleKernel))   # to samo co wyzej
+
+gauss = cv2.getGaussianKernel(5, 1.4)
+print(gauss)
+
+# non square kernel
+# print("mine   \n", Convolution2D(exampleArray, gauss, mode="full"))
+print("scipy.signal  \n", sig.convolve2d(exampleArray, gauss, mode='same').astype(np.uint8))
+print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, gauss, mode="constant"))
+
+# # square input image
+# print("mine   \n", Convolution2D(exampleArray, MALAexample, mode="full"))
+# print("scipy.signal  \n", sig.convolve2d(exampleArray, MALAexample, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, MALAexample, mode="constant"))
+
+# # non square input image
+# print("mine   \n", Convolution2D(exampleArray, exampleArray, mode="full"))
+# print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleArray, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleArray, mode="constant"))
+
+
+# print(scipy.ndimage.filters.convolve(MALAexample, gauss))   # to samo co wyzej
 
 
 

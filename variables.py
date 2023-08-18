@@ -12,7 +12,7 @@ import time
 from matplotlib import pyplot as plt
 from matplotlib import image as mpimg
 from PIL import Image
-from skimage.filters import threshold_otsu
+# from skimage.filters import threshold_otsu
 
 
 
