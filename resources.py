@@ -104,8 +104,13 @@ def Convolution2D(x, h, mode="full"):
     :return result: returns product of 2D convolution ==>  x * h
     """
 
+    # if h.shape[0] == 0:
+    #     if mode == "full":
+    #         result = np.zeros(())
+
     if h.shape[0] != h.shape[1]:
-        raise ValueError('Kernel must be square matrix.')
+        # raise ValueError('Kernel must be square matrix.')
+        pass
 
     elif h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
         raise ValueError('Kernel must have odd number of elements so it can have a center.')
@@ -117,22 +122,32 @@ def Convolution2D(x, h, mode="full"):
     x_shift = h.shape[1] // 2
 
     if mode == "same":
+        # zeros is x copy in bigger array and we work on it
         zeros = np.zeros((x.shape[0] + h.shape[0] - 1, x.shape[1] + h.shape[1] - 1))
         zeros[y_shift:y_shift + x.shape[0], x_shift:x_shift + x.shape[1]] = x
+        # result is the array final values
         result = zeros.copy()
+        # size corection which is essential to extract only final values
+        endSizeCorrection = [int((i-j)/2) for i, j in zip(result.shape, x.shape)]
+        print(endSizeCorrection)
+
         for i in range(y_shift, y_shift + x.shape[0]):
             for j in range(x_shift, x_shift + x.shape[1]):
                 # print(h)
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-        return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype(np.uint8)
+        print(result)
+        return result[endSizeCorrection[0]:result.shape[0]-endSizeCorrection[0],
+               endSizeCorrection[1]:result.shape[1]-endSizeCorrection[1]].astype(np.uint8)
 
     elif mode == "full":
+        # zeros is x copy in bigger array and we work on it
         zeros = np.zeros((x.shape[0] + h.shape[0] + 1, x.shape[1] + h.shape[1] + 1))
+        # result is the array final values
         result = zeros.copy()
-        print(result.shape)
         zeros[y_shift + 1:y_shift + x.shape[0] + 1, x_shift + 1:x_shift + x.shape[1] + 1] = x
+
         for i in range(y_shift, result.shape[0]-1):
             for j in range(x_shift, result.shape[1]-1):
                 # print(h)
@@ -196,17 +211,17 @@ def Canny(gray):
     gauss = cv2.getGaussianKernel(5, 1.4)
 
     # gImage = Convolution2D(gray, gauss, mode="same")
-    gImage = sig.convolve2d(gray, gauss, mode='same').astype(np.uint8)
+    gImage = Convolution2D(gray, gauss, mode='same').astype(np.uint8)
 
     # # uzycie Sobel filter
-    x = Convolution2D(gImage, XSobelKernel, 'same')
-    y = Convolution2D(gImage, YSobelKernel, "same")
-
-    G = np.hypot(x, y)
-    G = G/G.max() * 255
-    theta = np.arctan2(x, y)
-    G = G.astype(np.uint8)
-    theta = theta.astype(np.uint8)
+    # x = Convolution2D(gImage, XSobelKernel, 'same')
+    # y = Convolution2D(gImage, YSobelKernel, "same")
+    #
+    # G = np.hypot(x, y)
+    # G = G/G.max() * 255
+    # theta = np.arctan2(x, y)
+    # G = G.astype(np.uint8)
+    # theta = theta.astype(np.uint8)
 
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
@@ -236,23 +251,25 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 ## test COnvolution
 
-gauss = cv2.getGaussianKernel(5, 1.4)
-print(gauss)
-
 # non square kernel
-# print("mine   \n", Convolution2D(exampleArray, gauss, mode="full"))
-print("scipy.signal  \n", sig.convolve2d(exampleArray, gauss, mode='same').astype(np.uint8))
-print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, gauss, mode="constant"))
+# print("mine   \n", Convolution2D(exampleArray, gauss, mode="same"))
+# print(convolution_2d_1d_kernel(exampleArray, gauss[:, 0]))
+# print("scipy.signal  \n", sig.convolve2d(exampleArray, gauss, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, gauss, mode="constant"))
+# print("\n")
 
 # # square input image
-# print("mine   \n", Convolution2D(exampleArray, MALAexample, mode="full"))
-# print("scipy.signal  \n", sig.convolve2d(exampleArray, MALAexample, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, MALAexample, mode="constant"))
+# print("mine   \n", Convolution2D(MALAexample, exampleKernel, mode="same"))
+# print("scipy.signal  \n", sig.convolve2d(MALAexample, exampleKernel, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(MALAexample, exampleKernel, mode="constant"))
+# print("\n")
 
 # # non square input image
-# print("mine   \n", Convolution2D(exampleArray, exampleArray, mode="full"))
-# print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleArray, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleArray, mode="constant"))
+# print("mine   \n", Convolution2D(exampleArray, exampleKernel, mode="same"))
+# print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleKernel, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
+# print("\n")
+
 
 
 # print(scipy.ndimage.filters.convolve(MALAexample, gauss))   # to samo co wyzej

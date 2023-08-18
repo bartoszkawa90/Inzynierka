@@ -63,6 +63,9 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
+
+
+#
 def gaussianFilterGenerator(size=3, sigma=1):
     X = np.zeros((size, size))
     Y = np.zeros((size, size))
@@ -91,8 +94,8 @@ def gaussian_kernel(size, sigma=1):
 # gaussianFilterGenerator(5, 1.4)
 
 print(cv2.getGaussianKernel(5, 1.4))
-print(gaussian_kernel(5, 1.4))
 print(gaussianFilterGenerator(5, 1.4))
+print(gaussian_kernel(5, 1.4))
 
 
 
