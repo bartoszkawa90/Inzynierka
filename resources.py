@@ -104,15 +104,11 @@ def Convolution2D(x, h, mode="full"):
     :return result: returns product of 2D convolution ==>  x * h
     """
 
-    # if h.shape[0] == 0:
-    #     if mode == "full":
-    #         result = np.zeros(())
 
-    if h.shape[0] != h.shape[1]:
-        # raise ValueError('Kernel must be square matrix.')
-        pass
+    # if h.shape[0] != h.shape[1]:
+    #     # raise ValueError('Kernel must be square matrix.')
 
-    elif h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
+    if h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
         raise ValueError('Kernel must have odd number of elements so it can have a center.')
 
     h = h[::-1, ::-1]
@@ -129,7 +125,6 @@ def Convolution2D(x, h, mode="full"):
         result = zeros.copy()
         # size corection which is essential to extract only final values
         endSizeCorrection = [int((i-j)/2) for i, j in zip(result.shape, x.shape)]
-        print(endSizeCorrection)
 
         for i in range(y_shift, y_shift + x.shape[0]):
             for j in range(x_shift, x_shift + x.shape[1]):
@@ -137,7 +132,6 @@ def Convolution2D(x, h, mode="full"):
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-        print(result)
         return result[endSizeCorrection[0]:result.shape[0]-endSizeCorrection[0],
                endSizeCorrection[1]:result.shape[1]-endSizeCorrection[1]].astype(np.uint8)
 
@@ -157,24 +151,12 @@ def Convolution2D(x, h, mode="full"):
         return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype(np.uint8)
 
 
-def gaussianFilterGenerator(size=3, sigma=1):
-    X = np.zeros((size, size))
-    Y = np.zeros((size, size))
-    for i in range(2*size):
-        if i < size:
-            X[0, i] = Y[i, 0] = -1
-        else:
-            X[size-1, i-size-1] = Y[i-size-1, size-1] = 1
-    result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma)  )
-    return result
-
-def gaussian_kernel(size, sigma=1):
-    size = int(size) // 2
-    x, y = np.mgrid[-size:size+1, -size:size+1]
-    normal = 1 / (2.0 * np.pi * sigma**2)
-    g =  np.exp(-((x**2 + y**2) / (2.0*sigma**2))) #* normal
-    return g
-
+def gaussKernelGenerator(size=3, sigma=1):
+    x = np.arange(size)
+    x = x - x[x.shape[0]//2]
+    e = (1/np.sqrt(2*math.pi*sigma))
+    temp = [ e*np.exp((-i**2)/(2*sigma**2)) for i in x]
+    return np.array(temp).reshape(size, 1)
 
 
 def Laplace_Mask(alfa=0):
@@ -207,11 +189,10 @@ def Laplace_Mask(alfa=0):
 #  II wersja
 def Canny(gray):
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
-    # gauss = gaussianFilterGenerator(size=5, sigma=1)
-    gauss = cv2.getGaussianKernel(5, 1.4)
+    gauss = gaussKernelGenerator(5, 1)
 
-    # gImage = Convolution2D(gray, gauss, mode="same")
-    gImage = Convolution2D(gray, gauss, mode='same').astype(np.uint8)
+    # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
+    gImage = Convolution2D(Convolution2D(gray, gauss, mode='same'), gauss.T, mode="same")
 
     # # uzycie Sobel filter
     # x = Convolution2D(gImage, XSobelKernel, 'same')
@@ -239,7 +220,7 @@ img = cv2.imread('spodnie.jpeg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-# plot_photo("From Canny", Canny(gray))
+plot_photo("From Canny", Canny(gray))
 
 
 

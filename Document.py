@@ -28,4 +28,26 @@ for name in names:
 
 #-----------------------------------------------------------------------------------------------------------------------
 
+### Stare funkcje na gaussian kernel jakby sie miały przydać
+def gaussianFilterGenerator(size=3, sigma=1):
+    X = np.zeros((size, size))
+    Y = np.zeros((size, size))
+    for i in range(2*size):
+        if i < size:
+            X[0, i] = Y[i, 0] = -1
+        else:
+            X[size-1, i-size-1] = Y[i-size-1, size-1] = 1
+    print(X, "\n")
+    print(Y, "\n")
+    result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma)  )
+    return result
 
+
+def gaussian_kernel(size, sigma=1):
+    size = int(size) // 2
+    x, y = np.mgrid[-size:size+1, -size:size+1]
+    print(x, "\n")
+    print(y, "\n")
+    normal = 1 / (2.0 * np.pi * sigma**2)
+    g = np.exp(-((x**2 + y**2) / (2.0*sigma**2))) * normal
+    return g
