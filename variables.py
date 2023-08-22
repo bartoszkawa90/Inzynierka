@@ -28,13 +28,13 @@ exampleArray = np.array([[25, 100, 75, 49, 130],
                          [5, 10, 20, 30, 0],
                          [60, 50, 12, 24, 32],
                          [37, 53, 55, 21, 90],
-                         [140, 17, 0, 23, 222]])
+                         [140, 17, 0, 23, 222]], np.uint8)
 MALAexample = np.array([[1, 2, 3],
                         [4, 5, 6],
-                        [7, 8, 9]])
+                        [7, 8, 9]], np.uint8)
 exampleKernel = np.array([[1, 0, 1],
                           [0, 1, 0],
-                          [0, 0, 1]])
+                          [0, 0, 1]], np.uint8)
 
 XSobelKernel = np.array([[-1, 0, 1], 
                          [-2, 0, 2], 
@@ -44,5 +44,5 @@ YSobelKernel = np.array([[1, 2, 1],
                          [-1, -2, -1]], np.float32)
 edgeDetection = np.array([[-1, -1, -1],
                           [-1, 8, -1],
-                          [-1, -1, -1]])
+                          [-1, -1, -1]], np.uint8)
 

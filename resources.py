@@ -30,7 +30,7 @@ def printArr(*args):
     2 arg - prints additionaly max value from array
     '''
     for arr in  args:
-        print(" Array shape : {} \n {} \n Max : {} \n".format(arr.shape, arr, arr.max()))
+        print(" Array shape : {} \n {} \n Max : {} \n Min : {} \n ".format(arr.shape, arr, arr.max(), arr.min()))
 
 
 # @jit(nopython=False)
@@ -105,11 +105,12 @@ def MAC(M1, M2):    # Multiply-accumulate function
     return np.sum(M1 * M2)
 
 
-def Convolution2D(x, h, mode="full"):
+def Convolution2D(x, h, mode="full", returnUINT8=False):
     """
     :param x: Input array
     :param h: kernel
     :param mode: mode of convolution ( determine how the output will look like
+    :param returnUINT8: if True => returned result will be type np.uint8
     :return result: returns product of 2D convolution ==>  x * h
     """
 
@@ -141,8 +142,12 @@ def Convolution2D(x, h, mode="full"):
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-        return result[endSizeCorrection[0]:result.shape[0]-endSizeCorrection[0],
+        if returnUINT8:
+            return result[endSizeCorrection[0]:result.shape[0]-endSizeCorrection[0],
                endSizeCorrection[1]:result.shape[1]-endSizeCorrection[1]].astype(np.uint8)
+        else:
+            return result[endSizeCorrection[0]:result.shape[0]-endSizeCorrection[0],
+               endSizeCorrection[1]:result.shape[1]-endSizeCorrection[1]]
 
     elif mode == "full":
         # zeros is x copy in bigger array and we work on it
@@ -157,7 +162,10 @@ def Convolution2D(x, h, mode="full"):
                 # print(zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 # print(h * zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
                 result[i, j] = MAC(h, zeros[i - y_shift: i + y_shift + 1, j - x_shift:j + x_shift + 1])
-        return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype(np.uint8)
+        if returnUINT8:
+            return result[1:result.shape[0]-1, 1:result.shape[1]-1].astype(np.uint8)
+        else:
+            return result[1:result.shape[0]-1, 1:result.shape[1]-1]
 
 
 def gaussKernelGenerator(size=3, sigma=1):
@@ -175,6 +183,9 @@ def Laplace_Mask(alfa=0):
     arr[1][1] = -1
     return (4/(alfa+1))*arr
 
+
+def scale(arr, newMax):
+    return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 # @njit
 # def LoG(gray):
@@ -223,8 +234,19 @@ def Canny(gray):
     I_y = cv2.filter2D(gImage, -1, mask_y)
     
 
-    Grad = Convolution2D(gImage, mask_y, mode='same')
-    printArr(I_y - (Grad/Grad.max()) * 50)
+    Grad = Convolution2D(gImage, np.flip(mask_y), mode='same')
+    Grad2 = sig.convolve2d(gImage, np.flip(mask_y), mode='same')
+    printArr(Grad, Grad2)
+    print('type ', Grad.dtype)
+    # Grad = scipy.ndimage.correlate(gImage, mask_y)
+    printArr(I_y, Grad)
+    NGrad = (Grad-Grad.min()) / (Grad.max() - Grad.min())
+    printArr(NGrad * 255)
+    print(np.min(I_y), np.min(Grad))
+
+    Gx = Convolution2D(gImage, np.flip(mask_x), mode='same')
+    Gy = Convolution2D(gImage, np.flip(mask_x), mode='same')
+    
 
     # # Non-maximum Suppression
     # https://medium.com/@ceng.mavuzer/canny-edge-detection-algorithm-with-python-17ac62c61d2e
@@ -236,7 +258,7 @@ def Canny(gray):
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
 
-    return (Grad/Grad.max()) * 50
+    return (255 * NGrad).astype(np.uint8)
 
 
 
@@ -249,29 +271,36 @@ img = cv2.imread('spodnie.jpeg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-plot_photo("From Canny", Canny(gray))
+# plot_photo("From Canny", Canny(gray))
 
 
 
 # test Canny 2
 # img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg)
 # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-# plot_photo("From Canny", Canny(gray))
+plot_photo("From Canny", Canny(gray))
 
 
 ## test COnvolution
+mask_x = np.zeros((3, 1))
+mask_x[0] = -1
+mask_x[2] = 1
+mask_y = mask_x.T
+printArr(mask_x, mask_y)
 
 # non square kernel
-# print("mine   \n", Convolution2D(exampleArray, gauss, mode="same"))
-# print(convolution_2d_1d_kernel(exampleArray, gauss[:, 0]))
-# print("scipy.signal  \n", sig.convolve2d(exampleArray, gauss, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, gauss, mode="constant"))
-# print("\n")
+# print("mine   \n", Convolution2D(exampleArray, mask_y, mode="same"))
+# print("scipy.signal  \n", sig.convolve2d(exampleArray, mask_y, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, mask_y, mode="constant"))
+# print("cv2 filter \n", cv2.filter2D(exampleArray, -1, mask_x))
+# print("corelation \n ", scipy.ndimage.correlate(exampleArray, mask_x))
+print("\n")
 
 # # square input image
-# print("mine   \n", Convolution2D(MALAexample, exampleKernel, mode="same"))
-# print("scipy.signal  \n", sig.convolve2d(MALAexample, exampleKernel, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(MALAexample, exampleKernel, mode="constant"))
+# print("mine   \n", Convolution2D(MALAexample, mask_y, mode="same"))
+# print("scipy.signal  \n", sig.convolve2d(MALAexample, mask_y, mode='same').astype(np.uint8))
+# print("scipy.ndimage   \n", scipy.ndimage.convolve(MALAexample, mask_y, mode="constant"))
+# print("cv2 filter \n", cv2.filter2D(MALAexample, -1, mask_x))
 # print("\n")
 
 # # non square input image

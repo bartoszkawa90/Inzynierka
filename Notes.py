@@ -82,14 +82,20 @@ def gaussKernelGenerator(size=3, sigma=1):
 # print((1/(2*np.pi*1.4*1.4)) * np.exp(  (-1*(np.power(X, 2)) / (2*1.4*1.4)  )))
 
 
-print(cv2.getGaussianKernel(5, 1.4))
-print(gaussianFilterGenerator(5, 1))
-print(gaussian_kernel(5, 1))
-print(gaussKernelGenerator(5, 1.4))
+# print(cv2.getGaussianKernel(5, 1.4))
+# print(gaussianFilterGenerator(5, 1))
+# print(gaussian_kernel(5, 1))
+# print(gaussKernelGenerator(5, 1.4))
 
+def fun(*args):
+    vars = locals()
+    print(vars)
+    for i in zip(args, vars.keys()):
+        print(i)
+    print(locals())
+arr = np.array([1,2,3])
 
-
-
+fun(arr)
 
 
 
