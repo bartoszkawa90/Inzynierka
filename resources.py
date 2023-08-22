@@ -217,36 +217,19 @@ def Canny(gray):
 
     ### WYZEJ JEST GIT  ===========================================================================================
 
-    # # magnitude and angle calculation
-    # Gx = Convolution2D(gImage, XSobelKernel, 'same')
-    # Gy = Convolution2D(gImage, YSobelKernel, 'same')
-    # G =  np.sqrt(Gx**2 + Gy**2)
-    # printArr(G)
-    # G = G/G.max() * 255   ## Scale
-    # theta = np.arctan2(Gy, Gx)
-
+    ## maski do krawedzi horyzontalnie i wertykalnie
     mask_x = np.zeros((3, 1))
     mask_x[0] = -1
     mask_x[2] = 1
-
-    I_x = cv2.filter2D(gImage, -1, mask_x)
     mask_y = mask_x.T
-    I_y = cv2.filter2D(gImage, -1, mask_y)
-    
 
-    Grad = Convolution2D(gImage, np.flip(mask_y), mode='same')
-    Grad2 = sig.convolve2d(gImage, np.flip(mask_y), mode='same')
-    printArr(Grad, Grad2)
-    print('type ', Grad.dtype)
-    # Grad = scipy.ndimage.correlate(gImage, mask_y)
-    printArr(I_y, Grad)
-    NGrad = (Grad-Grad.min()) / (Grad.max() - Grad.min())
-    printArr(NGrad * 255)
-    print(np.min(I_y), np.min(Grad))
-
-    Gx = Convolution2D(gImage, np.flip(mask_x), mode='same')
-    Gy = Convolution2D(gImage, np.flip(mask_x), mode='same')
+    Gx = Convolution2D(gImage, mask_x, mode='same')
+    Gy = Convolution2D(gImage, mask_y, mode='same')
     
+    ## gradient magnitude and angle(direction)
+    GMag = np.sqrt(Gx**2 + Gy**2)
+    Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
+
 
     # # Non-maximum Suppression
     # https://medium.com/@ceng.mavuzer/canny-edge-detection-algorithm-with-python-17ac62c61d2e
@@ -258,7 +241,7 @@ def Canny(gray):
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
 
-    return (255 * NGrad).astype(np.uint8)
+    return scale(Gy, 255).astype(np.uint8)
 
 
 
