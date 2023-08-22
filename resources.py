@@ -8,7 +8,7 @@ from variables import *
 
 
 # FUNCTIONS / KEYWORDS
-def plot_photo(title="None", image=None, height=900, widht=900):
+def plot_photo(title="None", image=None, height=1500, widht=1500):
     ''' Plots photo is given  resolution
         title - title of ploted photo
         image - image to plot
@@ -24,14 +24,13 @@ def plot_photo(title="None", image=None, height=900, widht=900):
     sys.exit()
 
 
-def printArr(array=None):
+def printArr(*args):
     '''
     1 arg - prints array and its shape
     2 arg - prints additionaly max value from array
     '''
-    print(" Array shape : {} \n {} \n Max : {}".format(array.shape, array, array.max()))
-
-
+    for arr in  args:
+        print(" Array shape : {} \n {} \n Max : {} \n".format(arr.shape, arr, arr.max()))
 
 
 # @jit(nopython=False)
@@ -118,8 +117,8 @@ def Convolution2D(x, h, mode="full"):
     # if h.shape[0] != h.shape[1]:
     #     # raise ValueError('Kernel must be square matrix.')
 
-    if h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
-        raise ValueError('Kernel must have odd number of elements so it can have a center.')
+    # if h.shape[0] % 2 == 0 or h.shape[1] % 2 == 0:
+    #     raise ValueError('Kernel must have odd number of elements so it can have a center.')
 
     h = h[::-1, ::-1]
     # shape[0]  -  | num of rows
@@ -204,25 +203,40 @@ def Canny(gray):
     # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     gImage = Convolution2D(Convolution2D(gray, gauss, mode='same'), gauss.T, mode="same")
 
+
+    ### WYZEJ JEST GIT  ===========================================================================================
+
     # # magnitude and angle calculation
-    Gx = Convolution2D(gImage, XSobelKernel, 'same')
-    Gy = Convolution2D(gImage, YSobelKernel, 'same')
-    G =  np.sqrt(Gx**2 + Gy**2)
-    printArr(G)
-    G = G/G.max() * 255   ## Scale
-    theta = np.arctan2(Gy, Gx)
+    # Gx = Convolution2D(gImage, XSobelKernel, 'same')
+    # Gy = Convolution2D(gImage, YSobelKernel, 'same')
+    # G =  np.sqrt(Gx**2 + Gy**2)
+    # printArr(G)
+    # G = G/G.max() * 255   ## Scale
+    # theta = np.arctan2(Gy, Gx)
+
+    mask_x = np.zeros((3, 1))
+    mask_x[0] = -1
+    mask_x[2] = 1
+
+    I_x = cv2.filter2D(gImage, -1, mask_x)
+    mask_y = mask_x.T
+    I_y = cv2.filter2D(gImage, -1, mask_y)
+    
+
+    Grad = Convolution2D(gImage, mask_y, mode='same')
+    printArr(I_y - (Grad/Grad.max()) * 50)
 
     # # Non-maximum Suppression
     # https://medium.com/@ceng.mavuzer/canny-edge-detection-algorithm-with-python-17ac62c61d2e
 
 
-
-    G = G.astype(np.uint8)
-    theta = theta.astype(np.uint8)
+    ####  EWENTUALNE PRZERABIANIE I PRINTOWANIE  ------------------------------------------------------------------------
+    # G = G.astype(np.uint8)
+    # theta = theta.astype(np.uint8)
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
 
-    return G
+    return (Grad/Grad.max()) * 50
 
 
 

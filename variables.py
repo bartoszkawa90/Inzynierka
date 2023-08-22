@@ -42,4 +42,7 @@ XSobelKernel = np.array([[-1, 0, 1],
 YSobelKernel = np.array([[1, 2, 1], 
                          [0, 0, 0], 
                          [-1, -2, -1]], np.float32)
+edgeDetection = np.array([[-1, -1, -1],
+                          [-1, 8, -1],
+                          [-1, -1, -1]])
 
