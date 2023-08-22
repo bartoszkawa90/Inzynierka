@@ -1,12 +1,12 @@
 # IMPORTS
 import cv2
-from numba import jit,vectorize,njit
+# from numba import jit,vectorize,njit
 import sys
 import os
 import math
 import numpy as np
 import scipy.signal as sig
-import  pandas
+# import  pandas
 import itertools
 import time
 
@@ -36,6 +36,10 @@ exampleKernel = np.array([[1, 0, 1],
                           [0, 1, 0],
                           [0, 0, 1]])
 
-XSobelKernel = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
-YSobelKernel = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])
+XSobelKernel = np.array([[-1, 0, 1], 
+                         [-2, 0, 2], 
+                         [-1, 0, 1]], np.float32)
+YSobelKernel = np.array([[1, 2, 1], 
+                         [0, 0, 0], 
+                         [-1, -2, -1]], np.float32)
 

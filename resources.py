@@ -1,6 +1,6 @@
 import sys
 
-import cv2
+# import cv2
 import numpy as np
 import scipy.signal
 
@@ -22,6 +22,16 @@ def plot_photo(title="None", image=None, height=900, widht=900):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     sys.exit()
+
+
+def printArr(array=None):
+    '''
+    1 arg - prints array and its shape
+    2 arg - prints additionaly max value from array
+    '''
+    print(" Array shape : {} \n {} \n Max : {}".format(array.shape, array, array.max()))
+
+
 
 
 # @jit(nopython=False)
@@ -194,20 +204,25 @@ def Canny(gray):
     # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     gImage = Convolution2D(Convolution2D(gray, gauss, mode='same'), gauss.T, mode="same")
 
-    # # uzycie Sobel filter
-    # x = Convolution2D(gImage, XSobelKernel, 'same')
-    # y = Convolution2D(gImage, YSobelKernel, "same")
-    #
-    # G = np.hypot(x, y)
-    # G = G/G.max() * 255
-    # theta = np.arctan2(x, y)
-    # G = G.astype(np.uint8)
-    # theta = theta.astype(np.uint8)
+    # # magnitude and angle calculation
+    Gx = Convolution2D(gImage, XSobelKernel, 'same')
+    Gy = Convolution2D(gImage, YSobelKernel, 'same')
+    G =  np.sqrt(Gx**2 + Gy**2)
+    printArr(G)
+    G = G/G.max() * 255   ## Scale
+    theta = np.arctan2(Gy, Gx)
 
+    # # Non-maximum Suppression
+    # https://medium.com/@ceng.mavuzer/canny-edge-detection-algorithm-with-python-17ac62c61d2e
+
+
+
+    G = G.astype(np.uint8)
+    theta = theta.astype(np.uint8)
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
 
-    return gImage
+    return G
 
 
 
