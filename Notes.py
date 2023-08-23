@@ -93,9 +93,11 @@ def fun(*args):
     for i in zip(args, vars.keys()):
         print(i)
     print(locals())
-arr = np.array([1,2,3])
+arr = np.array([0, 90, 180])
 
 fun(arr)
+
+print(45 * np.round(arr/45))
 
 
 

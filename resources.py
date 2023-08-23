@@ -113,8 +113,6 @@ def Convolution2D(x, h, mode="full", returnUINT8=False):
     :param returnUINT8: if True => returned result will be type np.uint8
     :return result: returns product of 2D convolution ==>  x * h
     """
-
-
     # if h.shape[0] != h.shape[1]:
     #     # raise ValueError('Kernel must be square matrix.')
 
@@ -169,6 +167,11 @@ def Convolution2D(x, h, mode="full", returnUINT8=False):
 
 
 def gaussKernelGenerator(size=3, sigma=1):
+    '''
+    :param size: size of gauss kernel ( shape will be (size,1) )
+    :param sigma: parameter used to calculate gauss kernel
+    :return: returns gauss kernel
+    '''
     x = np.arange(size)
     x = x - x[x.shape[0]//2]
     e = (1/np.sqrt(2*math.pi*sigma))
@@ -177,6 +180,10 @@ def gaussKernelGenerator(size=3, sigma=1):
 
 
 def Laplace_Mask(alfa=0):
+    '''
+    :param alfa: parameter given to create Laplace mask
+    :return: returns Laplace mask
+    '''
     arr = np.zeros((3, 3))
     arr[0][0:2:2] = arr[0][2] = arr[2][0] = arr[2][2] = alfa/4
     arr[0][1] = arr[1][0] = arr[1][2] = arr[2][1] = (1-alfa)/4
@@ -214,9 +221,6 @@ def Canny(gray):
     # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     gImage = Convolution2D(Convolution2D(gray, gauss, mode='same'), gauss.T, mode="same")
 
-
-    ### WYZEJ JEST GIT  ===========================================================================================
-
     ## maski do krawedzi horyzontalnie i wertykalnie
     mask_x = np.zeros((3, 1))
     mask_x[0] = -1
@@ -230,9 +234,15 @@ def Canny(gray):
     GMag = np.sqrt(Gx**2 + Gy**2)
     Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
 
-
     # # Non-maximum Suppression
-    # https://medium.com/@ceng.mavuzer/canny-edge-detection-algorithm-with-python-17ac62c61d2e
+    colNum, rowNum = GMag.shape
+    Gd = 45 * (np.round(Gangle / 45))  ## a way to round angle values to be multiplecation of 45
+    result = np.zeros((colNum, rowNum))
+
+    ## we want to consider 3x3 matrixes so we do not teke first and last
+    for row in range(1, rowNum-1):
+        for col in range(1, colNum-1):
+
 
 
     ####  EWENTUALNE PRZERABIANIE I PRINTOWANIE  ------------------------------------------------------------------------
@@ -241,7 +251,7 @@ def Canny(gray):
     # print(G.shape, "\n", G)
     # print(theta.shape, "\n", theta)
 
-    return scale(Gy, 255).astype(np.uint8)
+    return scale(GMag, 255).astype(np.uint8)
 
 
 
@@ -254,14 +264,14 @@ img = cv2.imread('spodnie.jpeg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-# plot_photo("From Canny", Canny(gray))
+plot_photo("From Canny", Canny(gray))
 
 
 
 # test Canny 2
 # img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg)
 # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-plot_photo("From Canny", Canny(gray))
+# plot_photo("From Canny", Canny(gray))
 
 
 ## test COnvolution
