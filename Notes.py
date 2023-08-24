@@ -50,54 +50,34 @@ from resources import *
 
 
 # test wydajności
-# print("Start")
-# start_time = time.time()
+print("Start")
+start_time = time.time()
+
+img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# result = cv2.Canny(gray,  100, 200, 10, L2gradient=True)
+result = Canny(gray)
+
+print("Finish")
+print("--- %s seconds ---" % (time.time() - start_time))
+
+
+
+
+# def fun(*args):
+#     vars = locals()
+#     print(vars)
+#     for i in zip(args, vars.keys()):
+#         print(i)
+#     print(locals())
+# arr = np.array([0, 90, 180])
 #
-# i = 0
-# for a in range(100000000):
-#     i = i - 2/(a+1)  + a*4
+# fun(arr)
 #
-# print(i)
-#
-# print("Finish")
-# print("--- %s seconds ---" % (time.time() - start_time))
+# print(45 * np.round(arr/45))
 
-
-
-
-
-
-def gaussKernelGenerator(size=3, sigma=1):
-    x = np.arange(size)
-    x = x - x[x.shape[0]//2]
-    alfa = (1/np.sqrt(2*math.pi*sigma))
-    temp = [alfa*np.exp((-i**2)/(2*sigma**2)) for i in x]
-    return np.array(temp).reshape(size, 1)
-
-
-
-# gaussian_kernel(5, 1.4)
-# gaussianFilterGenerator(5, 1.4)
-# X = np.array([[-2], [-1], [0], [1], [2]])
-# print((1/(2*np.pi*1.4*1.4)) * np.exp(  (-1*(np.power(X, 2)) / (2*1.4*1.4)  )))
-
-
-# print(cv2.getGaussianKernel(5, 1.4))
-# print(gaussianFilterGenerator(5, 1))
-# print(gaussian_kernel(5, 1))
-# print(gaussKernelGenerator(5, 1.4))
-
-def fun(*args):
-    vars = locals()
-    print(vars)
-    for i in zip(args, vars.keys()):
-        print(i)
-    print(locals())
-arr = np.array([0, 90, 180])
-
-fun(arr)
-
-print(45 * np.round(arr/45))
-
+# print(np.any(MALAexample))
+# if np.any(MALAexample == 4):
+#     print('dawd')
 
 

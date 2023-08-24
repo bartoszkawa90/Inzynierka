@@ -28,7 +28,7 @@ for name in names:
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-### Stare funkcje na gaussian kernel jakby sie miały przydać
+### Stare funkcje jakby sie miały przydać
 def gaussianFilterGenerator(size=3, sigma=1):
     X = np.zeros((size, size))
     Y = np.zeros((size, size))
@@ -51,3 +51,15 @@ def gaussian_kernel(size, sigma=1):
     normal = 1 / (2.0 * np.pi * sigma**2)
     g = np.exp(-((x**2 + y**2) / (2.0*sigma**2))) * normal
     return g
+
+
+def Laplace_Mask(alfa=0):
+    '''
+    :param alfa: parameter given to create Laplace mask
+    :return: returns Laplace mask
+    '''
+    arr = np.zeros((3, 3))
+    arr[0][0:2:2] = arr[0][2] = arr[2][0] = arr[2][2] = alfa/4
+    arr[0][1] = arr[1][0] = arr[1][2] = arr[2][1] = (1-alfa)/4
+    arr[1][1] = -1
+    return (4/(alfa+1))*arr

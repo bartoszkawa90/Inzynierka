@@ -179,72 +179,49 @@ def gaussKernelGenerator(size=3, sigma=1):
     return np.array(temp).reshape(size, 1)
 
 
-def Laplace_Mask(alfa=0):
-    '''
-    :param alfa: parameter given to create Laplace mask
-    :return: returns Laplace mask
-    '''
-    arr = np.zeros((3, 3))
-    arr[0][0:2:2] = arr[0][2] = arr[2][0] = arr[2][2] = alfa/4
-    arr[0][1] = arr[1][0] = arr[1][2] = arr[2][1] = (1-alfa)/4
-    arr[1][1] = -1
-    return (4/(alfa+1))*arr
-
-
 def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
-# @njit
-# def LoG(gray):
-#     # zastosowanie filtru Gaussa w celu ograniczenia szumów
-#     gauss = gaussianFilterGenerator(size=5, sigma=0.5)
-#     print(gauss)
-#     gImage = Convolution2D(gray, gauss, mode="same")
-#
-#     ## nałozenie maski Laplace'a , znajdowanie miejsc zerowych mozna załatwić przez przefiltrowanie obrazu przez maske
-#     ##     Laplace'a z alfa = 0  ( standardowo takiej maski uzywamy )
-#     ##     Raczej uzywamy laplasjanu zamiast gradientu bo zapewnia dodatkowe informacje
-#     Lmask = Laplace_Mask(-0.5)
-#     print(Lmask)
-#     lImage = Convolution2D(gray, Lmask, mode="same")
-#
-#
-#
-#     return lImage
-
 
 #  II wersja
-def Canny(gray):
+def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10, highBoundry=30):
+    '''
+    :param grayImage: input image in gray scale
+    :param lowBoundry: low limit for thresholding
+    :param highBoundry: high limit for thresholding
+    :return: image with marked edges
+    '''
+    if grayImage is None:
+        print("You have to give at least one argument")
+        return
+
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
     gauss = gaussKernelGenerator(5, 1)
-
     # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
-    gImage = Convolution2D(Convolution2D(gray, gauss, mode='same'), gauss.T, mode="same")
-
+    gImage = Convolution2D(Convolution2D(grayImage, gauss, mode='same'), gauss.T, mode="same")
     ## horizontal and vertical masks
-    mask_x = np.zeros((3, 1))
-    mask_x[0] = -1
-    mask_x[2] = 1
-    mask_y = mask_x.T
+    # mask_x = np.zeros((3, 1))
+    # mask_x[0] = -1
+    # mask_x[2] = 1
+    # mask_y = mask_x.T
+    # printArr(mask_x, mask_y)
 
     Gx = Convolution2D(gImage, mask_x, mode='same')
     Gy = Convolution2D(gImage, mask_y, mode='same')
-    
+
     ## gradient magnitude and angle(direction)
     GMag = np.sqrt(Gx**2 + Gy**2)
     Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
 
     # # Non-maximum Suppression
     rowNum, colNum = GMag.shape
-    GDirection = 45 * (np.round(Gangle / 45))  ## a way to round angle values to be multiplecation of 45
-    result = np.zeros((colNum, rowNum))
+    GangleRounded = 45 * (np.round(Gangle / 45))  ## a way to round angle values to be multiplecation of 45
+    result = np.zeros((rowNum, colNum))
 
     ## we want to consider 3x3 matrixes so we do not teke first and last
-    print('sizes row and col ', rowNum, colNum)
     for row in range(1, rowNum-1):
         for col in range(1, colNum-1):
-            angle = GDirection[row, col]
-            print(' row and col ', row, col, ' angle ', angle)
+            angle = GangleRounded[row, col]
             if angle == 180 or angle == -180 or angle == 0:
                 edge1 = GMag[row-1, col]
                 edge2 = GMag[row+1, col]
@@ -260,32 +237,56 @@ def Canny(gray):
             else:
                 print("Something went wrong with Non-maximum Suppression")
                 return
-            print(' edges ', edge1, edge2)
             # sprawdzamy po kątach w którą stone idzie nasza krawędz ale do ostatecznego wyniku
             # idą tylko najwyzsze wartosci zeby zostawic cienką krawędz
             if GMag[row, col] > edge1 and GMag[row, col] > edge2:
                 result[row, col] = GMag[row, col]
 
     ## Thresholding
-    # L = result.mean()
-    # H = L + result.std()
-    # E = cv2.filters.apply_hysteresis_threshold(result, L, H)
+    # chodzi o to ze jest granica górna i dolna i :\
+    #     jesli wartosc pixeli jest wieksza niz górna granica to na pewno mamy krawędź
+    #     jesli wartość pixeli jest nizsza niz dolna granica to na pewno nie jest to krawędź
+    #     jesli wartosc jest pomiedzy granicami to aby byc uznana za czesc krawedzi musi sie
+    #     łączyć z pixelami o wartości powyzej górnej granicy czyli z pewną krawędzią
 
-    return result
+    np.where(result < lowBoundry, result, 0)
+    np.where(result > highBoundry, result, 255)
+    neighborPixels = np.zeros((3, 3))
+    for i in range(1, result.shape[0] - 1):
+        for j in range(1, result.shape[1] - 1):
+            # if result[i, j] > highBoundry: result[i, j] = 255
+            # elif result[i, j] < lowBoundry: result[i, j] = 0
+            # else:
+            if result[i, j] <= highBoundry and result[i, j] >= lowBoundry:
+                neighborPixels = result[i-1:i+1, j-1:j+1]
+                if np.any(neighborPixels > highBoundry):
+                    result[i, j] = 255
+                else:
+                    result[i, j] = 0
+            # if result[i, j] != 0:
+            #     result[i, j] = 255
+
+    return result.astype(np.uint8)
 
 
 
 ## test LoG / Canny
 
-img = cv2.imread('spodnie.jpeg')
-# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+# img = cv2.imread('spodnie.jpeg')
+img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 # img = cv2.imread('zdj_z_arykułu.png')
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-plot_photo("From Canny", Canny(gray))
+# plot_photo("From Canny", Canny(gray))
 
+# edge = cv2.Canny(gray, 1, 10)
+# contours, hierarchy = cv2.findContours(edge, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+# conts = delete_incorrect_contours(contours)
+# plot_photo("From Canny", edge)
+# cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
+# plot_photo("From Canny", img)
 
 
 # test Canny 2
@@ -295,11 +296,11 @@ plot_photo("From Canny", Canny(gray))
 
 
 ## test COnvolution
-mask_x = np.zeros((3, 1))
-mask_x[0] = -1
-mask_x[2] = 1
-mask_y = mask_x.T
-printArr(mask_x, mask_y)
+# mask_x = np.zeros((3, 1))
+# mask_x[0] = -1
+# mask_x[2] = 1
+# mask_y = mask_x.T
+# printArr(mask_x, mask_y)
 
 # non square kernel
 # print("mine   \n", Convolution2D(exampleArray, mask_y, mode="same"))
@@ -307,7 +308,7 @@ printArr(mask_x, mask_y)
 # print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, mask_y, mode="constant"))
 # print("cv2 filter \n", cv2.filter2D(exampleArray, -1, mask_x))
 # print("corelation \n ", scipy.ndimage.correlate(exampleArray, mask_x))
-print("\n")
+# print("\n")
 
 # # square input image
 # print("mine   \n", Convolution2D(MALAexample, mask_y, mode="same"))
