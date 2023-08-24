@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Działa juz raczej generowanie filtru gaussa">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="23.08 konczyc juz bedzie trzeba">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -397,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692387394328</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="23.08 konczyc juz bedzie trzeba">
+      <created>1692830254580</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1692830254580</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +446,8 @@
     <MESSAGE value="Jeszcze jedna batalia z Convolution" />
     <MESSAGE value="Cenvolution2D juz musi byc dobre" />
     <MESSAGE value="Działa juz raczej generowanie filtru gaussa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Działa juz raczej generowanie filtru gaussa" />
+    <MESSAGE value="23.08 konczyc juz bedzie trzeba" />
+    <option name="LAST_COMMIT_MESSAGE" value="23.08 konczyc juz bedzie trzeba" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

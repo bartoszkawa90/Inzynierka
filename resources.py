@@ -221,7 +221,7 @@ def Canny(gray):
     # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     gImage = Convolution2D(Convolution2D(gray, gauss, mode='same'), gauss.T, mode="same")
 
-    ## maski do krawedzi horyzontalnie i wertykalnie
+    ## horizontal and vertical masks
     mask_x = np.zeros((3, 1))
     mask_x[0] = -1
     mask_x[2] = 1
@@ -235,23 +235,43 @@ def Canny(gray):
     Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
 
     # # Non-maximum Suppression
-    colNum, rowNum = GMag.shape
-    Gd = 45 * (np.round(Gangle / 45))  ## a way to round angle values to be multiplecation of 45
+    rowNum, colNum = GMag.shape
+    GDirection = 45 * (np.round(Gangle / 45))  ## a way to round angle values to be multiplecation of 45
     result = np.zeros((colNum, rowNum))
 
     ## we want to consider 3x3 matrixes so we do not teke first and last
+    print('sizes row and col ', rowNum, colNum)
     for row in range(1, rowNum-1):
         for col in range(1, colNum-1):
+            angle = GDirection[row, col]
+            print(' row and col ', row, col, ' angle ', angle)
+            if angle == 180 or angle == -180 or angle == 0:
+                edge1 = GMag[row-1, col]
+                edge2 = GMag[row+1, col]
+            elif angle == 90 or angle == -90:
+                edge1 = GMag[row, col - 1]
+                edge2 = GMag[row, col + 1]
+            elif angle == -45 or angle == 135:
+                edge1 = GMag[row + 1, col - 1]
+                edge2 = GMag[row - 1, col + 1]
+            elif angle == 45 or angle == -135:
+                edge1 = GMag[row - 1, col - 1]
+                edge2 = GMag[row + 1, col + 1]
+            else:
+                print("Something went wrong with Non-maximum Suppression")
+                return
+            print(' edges ', edge1, edge2)
+            # sprawdzamy po kątach w którą stone idzie nasza krawędz ale do ostatecznego wyniku
+            # idą tylko najwyzsze wartosci zeby zostawic cienką krawędz
+            if GMag[row, col] > edge1 and GMag[row, col] > edge2:
+                result[row, col] = GMag[row, col]
 
+    ## Thresholding
+    # L = result.mean()
+    # H = L + result.std()
+    # E = cv2.filters.apply_hysteresis_threshold(result, L, H)
 
-
-    ####  EWENTUALNE PRZERABIANIE I PRINTOWANIE  ------------------------------------------------------------------------
-    # G = G.astype(np.uint8)
-    # theta = theta.astype(np.uint8)
-    # print(G.shape, "\n", G)
-    # print(theta.shape, "\n", theta)
-
-    return scale(GMag, 255).astype(np.uint8)
+    return result
 
 
 
