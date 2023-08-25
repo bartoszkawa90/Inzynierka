@@ -257,9 +257,9 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10, highBound
             # if result[i, j] > highBoundry: result[i, j] = 255
             # elif result[i, j] < lowBoundry: result[i, j] = 0
             # else:
-            if result[i, j] <= highBoundry and result[i, j] >= lowBoundry:
+            if result[i, j] != 0 and result[i, j] != 255:
                 neighborPixels = result[i-1:i+1, j-1:j+1]
-                if np.any(neighborPixels > highBoundry):
+                if np.any(neighborPixels >= highBoundry):
                     result[i, j] = 255
                 else:
                     result[i, j] = 0
@@ -279,7 +279,7 @@ img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-# plot_photo("From Canny", Canny(gray))
+plot_photo("From Canny", Canny(gray))
 
 # edge = cv2.Canny(gray, 1, 10)
 # contours, hierarchy = cv2.findContours(edge, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)

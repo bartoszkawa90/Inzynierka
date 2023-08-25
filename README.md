@@ -3,9 +3,11 @@
 
 
 ## Aktualnie
-- dorobić pierwszą Version_1
-- Implementacja własnej wersji Canny
-- Rozważenie półautomatycznej wersji programu
+- ZAJĄĆ SIĘ KLASYFIKACJĄ WYBRANYCH KOMÓREK
+- DOROBIC MOZE ADAPTIVE THRESHOLD
+- dorobić pierwszą Version_1 / Version_2 ( różnica w postaci funkcji własnych lub z OpenCV )
+- Dorobic Canny żeby lepiej działało
+- Rozwinąć wersję pół-automatyczną
 
 ## UWAGI
 - ZMIANA ROZDZIELCZOSCI JEDNAK KLUCZOWA !!! 
