@@ -24,7 +24,7 @@ if __name__ == '__main__':
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
     blob = cv2.morphologyEx(blob, cv2.MORPH_CLOSE, kernel)
 
-    edged = Canny(blob, 14.0, 30.0)
+    edged = Canny(blob, lowBoundry=14.0, highBoundry=30.0)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # Extracting and Cleaning?? cells
@@ -33,18 +33,18 @@ if __name__ == '__main__':
 
     # CALCULATE
     # do dupy taka klasyfikacja
-    dark = 0
-    light = 0
-    iter = 1
-    for cell in cells:
-        print(iter, '  ', np.mean(cell))
-        iter += 1
-        if np.mean(cell).__gt__(160):
-            light += 1
-        else:
-            dark += 1
-
-    print('ciemne : {dark} , jasne : {light}'.format(dark=dark, light=light))
+    # dark = 0
+    # light = 0
+    # iter = 1
+    # for cell in cells:
+    #     print(iter, '  ', np.mean(cell))
+    #     iter += 1
+    #     if np.mean(cell).__gt__(160):
+    #         light += 1
+    #     else:
+    #         dark += 1
+    #
+    # print('ciemne : {dark} , jasne : {light}'.format(dark=dark, light=light))
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
@@ -70,4 +70,4 @@ if __name__ == '__main__':
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))
-    sys.exit()
+    exit()

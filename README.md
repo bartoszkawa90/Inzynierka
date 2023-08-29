@@ -6,7 +6,7 @@
 - ZAJĄĆ SIĘ KLASYFIKACJĄ WYBRANYCH KOMÓREK
 - DOROBIC MOZE ADAPTIVE THRESHOLD
 - dorobić pierwszą Version_1 / Version_2 ( różnica w postaci funkcji własnych lub z OpenCV )
-- Dorobic Canny żeby lepiej działało
+- Dorobic aproksymacje do mojego Canny
 - Rozwinąć wersję pół-automatyczną
 
 ## UWAGI

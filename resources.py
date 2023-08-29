@@ -1,13 +1,11 @@
-import sys
-
-# import cv2
-import numpy as np
-import scipy.signal
-
+## IMPORTS
 from variables import *
+import time
+import cv2
+from sys import exit
 
 
-# FUNCTIONS / KEYWORDS
+## FUNCTIONS / KEYWORDS
 def plot_photo(title="None", image=None, height=1500, widht=1500):
     ''' Plots photo is given  resolution
         title - title of ploted photo
@@ -21,7 +19,7 @@ def plot_photo(title="None", image=None, height=1500, widht=1500):
     cv2.imshow(title, image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    sys.exit()
+    exit()
 
 
 def printArr(*args):
@@ -174,7 +172,7 @@ def gaussKernelGenerator(size=3, sigma=1):
     '''
     x = np.arange(size)
     x = x - x[x.shape[0]//2]
-    e = (1/np.sqrt(2*math.pi*sigma))
+    e = (1/np.sqrt(2*np.pi*sigma))
     temp = [ e*np.exp((-i**2)/(2*sigma**2)) for i in x]
     return np.array(temp).reshape(size, 1)
 
@@ -183,10 +181,11 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
-#  II wersja
 def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10, highBoundry=30):
     '''
     :param grayImage: input image in gray scale
+    :param mask_x: vertical kernel
+    :param mask_y: horizontal kernel
     :param lowBoundry: low limit for thresholding
     :param highBoundry: high limit for thresholding
     :return: image with marked edges
@@ -196,16 +195,9 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10, highBound
         return
 
     # zastosowanie filtru Gaussa w celu ograniczenia szumów
-    gauss = gaussKernelGenerator(5, 1)
+    gaussKernel = gaussKernelGenerator(5, 1)
     # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
-    gImage = Convolution2D(Convolution2D(grayImage, gauss, mode='same'), gauss.T, mode="same")
-    ## horizontal and vertical masks
-    # mask_x = np.zeros((3, 1))
-    # mask_x[0] = -1
-    # mask_x[2] = 1
-    # mask_y = mask_x.T
-    # printArr(mask_x, mask_y)
-
+    gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
     Gx = Convolution2D(gImage, mask_x, mode='same')
     Gy = Convolution2D(gImage, mask_y, mode='same')
 
@@ -213,25 +205,24 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10, highBound
     GMag = np.sqrt(Gx**2 + Gy**2)
     Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
 
-    # # Non-maximum Suppression
+    ## Non-maximum Suppression
     rowNum, colNum = GMag.shape
-    GangleRounded = 45 * (np.round(Gangle / 45))  ## a way to round angle values to be multiplecation of 45
     result = np.zeros((rowNum, colNum))
-
     ## we want to consider 3x3 matrixes so we do not teke first and last
     for row in range(1, rowNum-1):
         for col in range(1, colNum-1):
-            angle = GangleRounded[row, col]
-            if angle == 180 or angle == -180 or angle == 0:
+            angle = Gangle[row, col]
+            if (angle>=0 and angle<=22.5) or (angle<0 and angle>=-22.5) or (angle>=157.5 and angle<=180) \
+                or (angle>=-180 and angle<=-157.5):
                 edge1 = GMag[row-1, col]
                 edge2 = GMag[row+1, col]
-            elif angle == 90 or angle == -90:
+            elif (abs(angle)<112.5 and abs(angle)>67.5):
                 edge1 = GMag[row, col - 1]
                 edge2 = GMag[row, col + 1]
-            elif angle == -45 or angle == 135:
+            elif (angle>22.5 and angle<=67.5) or (angle>-157.5 and angle<=-112.5):
                 edge1 = GMag[row + 1, col - 1]
                 edge2 = GMag[row - 1, col + 1]
-            elif angle == 45 or angle == -135:
+            elif (angle<-22.5 and angle>=-67.5) or (angle>=112.5 and angle<157.5):
                 edge1 = GMag[row - 1, col - 1]
                 edge2 = GMag[row + 1, col + 1]
             else:
@@ -269,8 +260,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10, highBound
     return result.astype(np.uint8)
 
 
-
-## test LoG / Canny
+## test LoG / Canny  -----------------------------------------------------------
 
 # img = cv2.imread('spodnie.jpeg')
 img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
@@ -279,7 +269,7 @@ img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
-plot_photo("From Canny", Canny(gray))
+# plot_photo("From Canny", Canny(gray))
 
 # edge = cv2.Canny(gray, 1, 10)
 # contours, hierarchy = cv2.findContours(edge, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)

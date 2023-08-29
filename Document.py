@@ -63,3 +63,4 @@ def Laplace_Mask(alfa=0):
     arr[0][1] = arr[1][0] = arr[1][2] = arr[2][1] = (1-alfa)/4
     arr[1][1] = -1
     return (4/(alfa+1))*arr
+

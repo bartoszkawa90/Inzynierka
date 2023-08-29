@@ -1,6 +1,3 @@
-import numpy as np
-import scipy.linalg
-
 from resources import *
 
 # notes
@@ -50,16 +47,16 @@ from resources import *
 
 
 # test wydajności
-# print("Start")
-# start_time = time.time()
-#
-# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
-# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-# # result = cv2.Canny(gray,  100, 200, 10, L2gradient=True)
-# result = Canny(gray)
-#
-# print("Finish")
-# print("--- %s seconds ---" % (time.time() - start_time))
+print("Start")
+start_time = time.time()
+
+img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# result = cv2.Canny(gray,  100, 200, 10, L2gradient=True)
+result = Canny(gray)
+
+print("Finish")
+print("--- %s seconds ---" % (time.time() - start_time))
 
 
 
