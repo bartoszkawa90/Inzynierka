@@ -27,28 +27,13 @@ if __name__ == '__main__':
     edged = cv2.Canny(blob, 100, 200, 10, L2gradient=True)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+    # print(len(contours))
+    # for c in contours:
+    #     print(c.shape)
 
 # Extracting and Cleaning?? cells
-#     conts = tuple(con for con in contours if con.shape[0].__gt__(40) and con.shape[0].__lt__(1000))
-    cells = [extract_cell(c, img, LEAVE_BACKGROUND) for c in contours]
-
-
-# CALCULATE
-    # do dupy taka klasyfikacja
-    dark = 0
-    light = 0
-    iter = 1
-    for cell in cells:
-        print(iter,'  ', np.mean(cell))
-        iter += 1
-        if np.mean(cell).__gt__(160):
-            light += 1
-        else:
-            dark += 1
-
-    print('ciemne : {dark} , jasne : {light}'.format(dark=dark, light=light))
-
-
+    conts = tuple(con for con in contours if con.shape[0].__gt__(40) and con.shape[0].__lt__(1000))
+    # cells = [extract_cell(c, img, LEAVE_BACKGROUND) for c in contours]
 
 
 ####------------------------------------------------------------------------------------------------------------
@@ -69,13 +54,6 @@ if __name__ == '__main__':
 
 # DISPLAY
     plot_photo("Contours", img, 900, 900)
-#     plt.title("Photo")
-#     plt.xlabel("X pixel scaling")
-#     plt.ylabel("Y pixels scaling")
-#     plt.imshow(extracted_cell,cmap='gray')
-#     plt.show()
-
-
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

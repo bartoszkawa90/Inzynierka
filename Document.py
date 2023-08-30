@@ -37,8 +37,6 @@ def gaussianFilterGenerator(size=3, sigma=1):
             X[0, i] = Y[i, 0] = -1
         else:
             X[size-1, i-size-1] = Y[i-size-1, size-1] = 1
-    print(X, "\n")
-    print(Y, "\n")
     result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma)  )
     return result
 
