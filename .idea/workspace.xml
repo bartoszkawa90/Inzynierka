@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="29.08 Canny troche lepsze">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Document.py" beforeDir="false" afterPath="$PROJECT_DIR$/Document.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
@@ -63,6 +61,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -212,8 +213,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Version_2" />
-        <item itemvalue="Python.resources" />
         <item itemvalue="Python.Version_1" />
+        <item itemvalue="Python.resources" />
         <item itemvalue="Python.Notes" />
         <item itemvalue="Python.variables" />
       </list>
@@ -543,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693320442615</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie">
+      <created>1693405693767</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1693405693767</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -562,7 +570,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="25.04 - początek próby wyciągania poprawnej komórki" />
     <MESSAGE value="26.04 - wybielenie tła wycinka z jedną komórką" />
     <MESSAGE value="28.04 - narazie ostateczne wyciąganie komórki" />
     <MESSAGE value="28.04 v3" />
@@ -587,7 +594,8 @@
     <MESSAGE value="24.08 jeszcze threshold" />
     <MESSAGE value="24.08 Canny w sumie działa tylko jest strasznie wolne" />
     <MESSAGE value="29.08 Canny troche lepsze" />
-    <option name="LAST_COMMIT_MESSAGE" value="29.08 Canny troche lepsze" />
+    <MESSAGE value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
+    <option name="LAST_COMMIT_MESSAGE" value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

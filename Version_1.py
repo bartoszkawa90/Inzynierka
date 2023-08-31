@@ -10,11 +10,12 @@ if __name__ == '__main__':
 # Reading an image in default mode
     img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    print(img.shape)
 
 # Finding edges
     # Extracting edges and cells contours from image
     # do adaptive threshold on gray image
-    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 131, 6)
+    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 151, 2)
 
     # apply morphology -- get getStructuringElement składa nam maciez o zadanych wymiarach która bedzie nam potrzebna
     #   -- morphologyEx pozwala wyłapać kontur : MORPH_OPEN czysci tło ze smieci a MORPH_CLOSE czysci kontury komórek

@@ -2,6 +2,7 @@
 from variables import *
 import time
 import cv2
+import skimage
 from copy import deepcopy
 from pprint import pprint
 from sys import exit
@@ -195,6 +196,16 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
+def thinnerLines(image=None):
+    if image is not None:
+        if len(image.shape)>=3:
+            image = cv2.cvtColor(image, cv2.COLOR_BGRA2GRAY)
+        kernel = np.ones((5, 5), np.uint8)
+        return cv2.erode(image, kernel, iterations=1)
+    else:
+        print('Somethong went wrong')
+
+
 def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0):
     '''
     :param grayImage: input image in gray scale
@@ -213,7 +224,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     # # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
-    gaussKernel = gaussianFilterGenerator(3, 0.6)
+    gaussKernel = gaussianFilterGenerator(3, 5)
     gImage = Convolution2D(grayImage, gaussKernel, mode='same')
 
     Gx = Convolution2D(gImage, mask_x, mode='same')
@@ -271,17 +282,8 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
                 else:
                     result[i, j] = 0
 
-    return result.astype(np.uint8)#scale(GMag, 255).astype(np.uint8)#result.astype(np.uint8)
+    return skimage.morphology.skeletonize(result).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)#result.astype(np.uint8)
 
-
-def thinnerLines(image=None):
-    if image is not None:
-        if len(image.shape<3):
-            image = cv2.cvtColor(image, cv2.COLOR_BGRA2GRAY)
-        kernel = np.one((5, 5), np.uint8)
-        return cv2.erode(image, kernel, iterations=1)
-    else:
-        print('Somethong went wrong')
 
 ## test LoG / Canny  -----------------------------------------------------------
 
