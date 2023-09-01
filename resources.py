@@ -285,6 +285,46 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     return skimage.morphology.skeletonize(result).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)#result.astype(np.uint8)
 
 
+def threshold(grayImage, localNeighborhood=61):
+    '''
+    :param image: input image which will be thresholded
+    :param lcoalNeighborhood: size of local neighborhood for threshold
+    :return: image after thresholding
+    '''
+    if len(grayImage.shape)>=3:
+        image = cv2.cvtColor(grayImage, cv2.COLOR_BGRA2GRAY)
+
+    result = np.zeros_like(grayImage)   # zeros_like creates copy of given array and filled with zeros
+
+    for row in range(grayImage.shape[0]):
+        for col in range(grayImage.shape[1]):
+            # Define the neighborhood boundaries
+            min_row = max(0, row - localNeighborhood // 2)
+            max_row = min(grayImage.shape[0], row + localNeighborhood // 2 + 1)
+            min_col = max(0, col - localNeighborhood // 2)
+            max_col = min(grayImage.shape[1], col + localNeighborhood // 2 + 1)
+
+            # Extract the neighborhood
+            neighborhood = grayImage[min_row:max_row, min_col:max_col]
+
+            # Calculate the local threshold using Gaussian weighted average
+            local_threshold = np.mean(neighborhood) - 0.2 * np.std(neighborhood)
+
+            # Compare the pixel value with the local threshold
+            if grayImage[row, col] > local_threshold:
+                result[row, col] = 255
+            else:
+                result[row, col] = 0
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+    thresh = cv2.morphologyEx(result, cv2.MORPH_OPEN, kernel)
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
+    thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+
+    return thresh
+
+
+
 ## test LoG / Canny  -----------------------------------------------------------
 
 # img = cv2.imread('spodnie.jpeg')

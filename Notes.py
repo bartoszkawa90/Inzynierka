@@ -58,30 +58,61 @@ from resources import *
 # print("Finish")
 # print("--- %s seconds ---" % (time.time() - start_time))
 
-
+#
 # import cv2
 # import numpy as np
 #
-# # read image
-# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+# # Load your image
+# image = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 #
-# # convert to gray
-# gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# # Convert the image to grayscale
+# gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 #
-# # threshold
-# thresh = cv2.threshold(gray, 180, 255, cv2.THRESH_BINARY)[1]
+# # Define the size of the neighborhood (must be an odd number)
+# neighborhood_size = 61
 #
-# # morphology edgeout = dilated_mask - mask
-# # morphology dilate
-# kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5,5))
-# dilate = cv2.morphologyEx(thresh, cv2.MORPH_DILATE, kernel)
+# # Create an empty output image
+# output_image = np.zeros_like(gray_image)
 #
-# # get absolute difference between dilate and thresh
-# edged = cv2.absdiff(dilate, thresh)
+# # Iterate through each pixel in the image
+# for row in range(gray_image.shape[0]):
+#     for col in range(gray_image.shape[1]):
+#         # Define the neighborhood boundaries
+#         min_row = max(0, row - neighborhood_size // 2)
+#         max_row = min(gray_image.shape[0], row + neighborhood_size // 2 + 1)
+#         min_col = max(0, col - neighborhood_size // 2)
+#         max_col = min(gray_image.shape[1], col + neighborhood_size // 2 + 1)
 #
-# # edged = Canny(blob, lowBoundry=1.0, highBoundry=10.0)
-# contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+#         # Extract the neighborhood
+#         neighborhood = gray_image[min_row:max_row, min_col:max_col]
 #
-# cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
+#         # Calculate the local threshold using Gaussian weighted average
+#         local_threshold = np.mean(neighborhood) - 0.2 * np.std(neighborhood)
 #
-# plot_photo('test', edged)
+#         # Compare the pixel value with the local threshold
+#         if gray_image[row, col] > local_threshold:
+#             output_image[row, col] = 255
+#         else:
+#             output_image[row, col] = 0
+#
+# kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+# blob = cv2.morphologyEx(output_image, cv2.MORPH_OPEN, kernel)
+# kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
+# blob = cv2.morphologyEx(blob, cv2.MORPH_CLOSE, kernel)
+#
+# edged = cv2.Canny(blob, 100, 200, 10, L2gradient=True)
+#
+# # Display the resulting binary image
+# cv2.imshow('Adaptive Gaussian Threshold', edged)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+# Load your image
+image = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+
+# Convert the image to grayscale
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+blob = threshold(gray_image, localNeighborhood=51)
+
+plot_photo('dawdad', blob)

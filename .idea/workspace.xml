@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="31.08 Canny juz raczej działa tylko jeszcze kanty">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
@@ -56,14 +56,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Version_2">
+  <component name="RunManager" selected="Python.Notes">
     <configuration name="Notes" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -212,10 +209,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Notes" />
+        <item itemvalue="Python.resources" />
         <item itemvalue="Python.Version_2" />
         <item itemvalue="Python.Version_1" />
-        <item itemvalue="Python.resources" />
-        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.variables" />
       </list>
     </recent_temporary>
@@ -551,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693405693767</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="31.08 Canny juz raczej działa tylko jeszcze kanty">
+      <created>1693485404517</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1693485404517</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="26.04 - wybielenie tła wycinka z jedną komórką" />
     <MESSAGE value="28.04 - narazie ostateczne wyciąganie komórki" />
     <MESSAGE value="28.04 v3" />
     <MESSAGE value="7.05" />
@@ -595,7 +598,8 @@
     <MESSAGE value="24.08 Canny w sumie działa tylko jest strasznie wolne" />
     <MESSAGE value="29.08 Canny troche lepsze" />
     <MESSAGE value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
-    <option name="LAST_COMMIT_MESSAGE" value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
+    <MESSAGE value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
+    <option name="LAST_COMMIT_MESSAGE" value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

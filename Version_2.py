@@ -9,7 +9,6 @@ if __name__ == '__main__':
 
     # Reading an image in default mode
     img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
-    img = np.where(img == 0, img, 255)
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
     # Finding edges
