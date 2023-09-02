@@ -113,6 +113,6 @@ image = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 # Convert the image to grayscale
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-blob = threshold(gray_image, localNeighborhood=51)
+blob = imageThreshold(gray_image, localNeighborhood=51)
 
 plot_photo('dawdad', blob)

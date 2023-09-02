@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="31.08 Canny juz raczej działa tylko jeszcze kanty">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="1.09 adaptive threshold i dokonczyc Canny">
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -555,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693485404517</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="1.09 adaptive threshold i dokonczyc Canny">
+      <created>1693565776222</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1693565776222</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +579,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="28.04 - narazie ostateczne wyciąganie komórki" />
     <MESSAGE value="28.04 v3" />
     <MESSAGE value="7.05" />
     <MESSAGE value="15.05 v2" />
@@ -599,7 +603,8 @@
     <MESSAGE value="29.08 Canny troche lepsze" />
     <MESSAGE value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
     <MESSAGE value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
-    <option name="LAST_COMMIT_MESSAGE" value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
+    <MESSAGE value="1.09 adaptive threshold i dokonczyc Canny" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.09 adaptive threshold i dokonczyc Canny" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -285,7 +285,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     return skimage.morphology.skeletonize(result).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)#result.astype(np.uint8)
 
 
-def threshold(grayImage, localNeighborhood=61):
+def imageThreshold(grayImage, localNeighborhood=61):
     '''
     :param image: input image which will be thresholded
     :param lcoalNeighborhood: size of local neighborhood for threshold
@@ -296,6 +296,7 @@ def threshold(grayImage, localNeighborhood=61):
 
     result = np.zeros_like(grayImage)   # zeros_like creates copy of given array and filled with zeros
 
+    # iteration through every pixel on image
     for row in range(grayImage.shape[0]):
         for col in range(grayImage.shape[1]):
             # Define the neighborhood boundaries
@@ -316,6 +317,7 @@ def threshold(grayImage, localNeighborhood=61):
             else:
                 result[row, col] = 0
 
+    ## morphology to get rid of dots on on contours and near them
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
     thresh = cv2.morphologyEx(result, cv2.MORPH_OPEN, kernel)
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
