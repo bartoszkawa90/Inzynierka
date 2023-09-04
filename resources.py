@@ -34,8 +34,16 @@ def printArr(*args):
 
 
 # @jit(nopython=False)
-def delete_incorrect_contours(contours):
-    c = tuple([con for con in contours if cv2.contourArea(con) > 2000 or cv2.contourArea(con) < 50])
+def contours_processing(contours, lowBoundry=55, highBoundry=2000):
+    '''
+    Function for finding smallest and largest contours and removing too small and too large contours
+    :param contours: contours given to a function for processing
+    :param lowBoundry: low limit of contour size
+    :param highBoundry: high limit of contour size
+    :return: tuple of selected contours with correct size
+    '''
+    c = tuple([con for con in contours if con.shape[0] > lowBoundry and con.shape[0] < highBoundry])
+
     contours = c
     SIZE_MAX = contours[0].shape[0]
     size_min = contours[0].shape[0]
@@ -53,17 +61,10 @@ def delete_incorrect_contours(contours):
         count += 1
 
     largest, smallest = contours[ID_MAX], contours[id_min]
-    if (largest.shape[0] > 1000 or smallest.shape[0] < 30):
-        conts = tuple([con for con in contours if (con.shape[0] < 1000 and con.shape[0] > 30)])
-    elif (smallest.shape[0] < 30):
-        conts = tuple([con for con in contours if (con.shape[0] > 30)])
-    elif (largest.shape[0] > 1000):
-        conts = tuple([con for con in contours if (con.shape[0] < 1000)])
-    else:
-        conts = contours
+
 
     conts = c
-    return conts
+    return conts, smallest, largest, id_min, ID_MAX
 
 
 # Version for colors
@@ -85,15 +86,15 @@ def extract_cell(contour=None, img=None, clear=0):
     return cell
 
 
-def background_procentage(cell):
-    white_count = 0
-    cell_count = 0
-    for i in cell:
-        for j in i:
-            if len(j[j.__gt__(158)]) != 0:
-                white_count += 1
-            cell_count += 1
-    return white_count/cell_count
+# def background_procentage(cell):
+#     white_count = 0
+#     cell_count = 0
+#     for i in cell:
+#         for j in i:
+#             if len(j[j.__gt__(158)]) != 0:
+#                 white_count += 1
+#             cell_count += 1
+#     return white_count/cell_count
 
 
 def MAC(M1, M2):    # Multiply-accumulate function
@@ -196,17 +197,7 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
-def thinnerLines(image=None):
-    if image is not None:
-        if len(image.shape)>=3:
-            image = cv2.cvtColor(image, cv2.COLOR_BGRA2GRAY)
-        kernel = np.ones((5, 5), np.uint8)
-        return cv2.erode(image, kernel, iterations=1)
-    else:
-        print('Somethong went wrong')
-
-
-def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0):
+def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0, performNMS=False):
     '''
     :param grayImage: input image in gray scale
     :param mask_x: vertical kernel
@@ -235,32 +226,35 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
 
     ## Non-maximum Suppression   ######  IN THESE SITUATION  'NMS' MAY GIVE WORSE RESULTS
-    # rowNum, colNum = GMag.shape
-    # result = np.zeros((rowNum, colNum))
-    # # we want to consider 3x3 matrixes so we do not teke first and last
-    # for row in range(1, rowNum-1):
-    #     for col in range(1, colNum-1):
-    #         angle = Gangle[row, col]
-    #         if (angle>=0 and angle<=22.5) or (angle<0 and angle>=-22.5) or (angle>=157.5 and angle<=180) \
-    #             or (angle>=-180 and angle<=-157.5):
-    #             edge1 = GMag[row-1, col]
-    #             edge2 = GMag[row+1, col]
-    #         elif (abs(angle)<112.5 and abs(angle)>67.5):
-    #             edge1 = GMag[row, col - 1]
-    #             edge2 = GMag[row, col + 1]
-    #         elif (angle>22.5 and angle<=67.5) or (angle>-157.5 and angle<=-112.5):
-    #             edge1 = GMag[row + 1, col - 1]
-    #             edge2 = GMag[row - 1, col + 1]
-    #         elif (angle<-22.5 and angle>=-67.5) or (angle>=112.5 and angle<157.5):
-    #             edge1 = GMag[row - 1, col - 1]
-    #             edge2 = GMag[row + 1, col + 1]
-    #         else:
-    #             print("Something went wrong with Non-maximum Suppression")
-    #             return
-    #         # sprawdzamy po kątach w którą stone idzie nasza krawędz ale do ostatecznego wyniku
-    #         # idą tylko najwyzsze wartosci zeby zostawic cienką krawędz
-    #         if GMag[row, col] > edge1 and GMag[row, col] > edge2:
-    #             result[row, col] = GMag[row, col]
+    if performNMS == True:
+        rowNum, colNum = GMag.shape
+        result = np.zeros((rowNum, colNum))
+        # we want to consider 3x3 matrixes so we do not teke first and last
+        for row in range(1, rowNum-1):
+            for col in range(1, colNum-1):
+                angle = Gangle[row, col]
+                if (angle>=0 and angle<=22.5) or (angle<0 and angle>=-22.5) or (angle>=157.5 and angle<=180) \
+                    or (angle>=-180 and angle<=-157.5):
+                    edge1 = GMag[row-1, col]
+                    edge2 = GMag[row+1, col]
+                elif (abs(angle)<112.5 and abs(angle)>67.5):
+                    edge1 = GMag[row, col - 1]
+                    edge2 = GMag[row, col + 1]
+                elif (angle>22.5 and angle<=67.5) or (angle>-157.5 and angle<=-112.5):
+                    edge1 = GMag[row + 1, col - 1]
+                    edge2 = GMag[row - 1, col + 1]
+                elif (angle<-22.5 and angle>=-67.5) or (angle>=112.5 and angle<157.5):
+                    edge1 = GMag[row - 1, col - 1]
+                    edge2 = GMag[row + 1, col + 1]
+                else:
+                    print("Something went wrong with Non-maximum Suppression")
+                    return
+                # sprawdzamy po kątach w którą stone idzie nasza krawędz ale do ostatecznego wyniku
+                # idą tylko najwyzsze wartosci zeby zostawic cienką krawędz
+                if GMag[row, col] > edge1 and GMag[row, col] > edge2:
+                    result[row, col] = GMag[row, col]
+    else:
+        result = GMag
 
     ## Thresholding
     # chodzi o to ze jest granica górna i dolna i :\
@@ -269,7 +263,6 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     #     jesli wartosc jest pomiedzy granicami to aby byc uznana za czesc krawedzi musi sie
     #     łączyć z pixelami o wartości powyzej górnej granicy czyli z pewną krawędzią
 
-    result = GMag
     np.where(result < lowBoundry, result, 0.0)
     np.where(result > highBoundry, result, 255.0)
     neighborPixels = np.zeros((3, 3))
@@ -288,10 +281,12 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
 def imageThreshold(grayImage, localNeighborhood=61):
     '''
     :param image: input image which will be thresholded
-    :param lcoalNeighborhood: size of local neighborhood for threshold
+    :param lcoalNeighborhood: size of part of image which will be considered for threshold
     :return: image after thresholding
     '''
-    if len(grayImage.shape)>=3:
+
+    # what if given image is not in gray scale
+    if len(grayImage.shape) >= 3:
         image = cv2.cvtColor(grayImage, cv2.COLOR_BGRA2GRAY)
 
     result = np.zeros_like(grayImage)   # zeros_like creates copy of given array and filled with zeros
@@ -299,25 +294,30 @@ def imageThreshold(grayImage, localNeighborhood=61):
     # iteration through every pixel on image
     for row in range(grayImage.shape[0]):
         for col in range(grayImage.shape[1]):
-            # Define the neighborhood boundaries
+            # Calculate the size of neighborhood
             min_row = max(0, row - localNeighborhood // 2)
             max_row = min(grayImage.shape[0], row + localNeighborhood // 2 + 1)
             min_col = max(0, col - localNeighborhood // 2)
             max_col = min(grayImage.shape[1], col + localNeighborhood // 2 + 1)
 
-            # Extract the neighborhood
+            # Extract the neighborhood part of image
             neighborhood = grayImage[min_row:max_row, min_col:max_col]
 
             # Calculate the local threshold using Gaussian weighted average
-            local_threshold = np.mean(neighborhood) - 0.2 * np.std(neighborhood)
+            # np.std function to calculate standard deviation(odchylenie standardowe) , equation of
+            # np.std() is  np.sqrt(np.mean(abs(a - a.mean())**2))
+            # std maybe useful but it is not necessary
+            local_threshold = np.mean(neighborhood) #- 0.1 * np.std(neighborhood)
 
-            # Compare the pixel value with the local threshold
+            ## Use previously calculated local threshold
             if grayImage[row, col] > local_threshold:
                 result[row, col] = 255
             else:
                 result[row, col] = 0
 
-    ## morphology to get rid of dots on on contours and near them
+    # apply morphology -- get getStructuringElement składa nam maciez o zadanych wymiarach która bedzie nam potrzebna
+    #   -- morphologyEx pozwala wyłapać kontur : MORPH_OPEN czysci tło ze smieci a MORPH_CLOSE czysci kontury komórek
+    #      ze smieci
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
     thresh = cv2.morphologyEx(result, cv2.MORPH_OPEN, kernel)
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
