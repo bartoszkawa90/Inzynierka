@@ -4,9 +4,9 @@
 
 ## Aktualnie
 - ZAJĄĆ SIĘ KLASYFIKACJĄ WYBRANYCH KOMÓREK
-- DOROBIC MOZE ADAPTIVE THRESHOLD
+- OGARNĄĆ COS Z MACHINE LEARNING
+- POMYSŁ!!! - A co gdyby połautomatycznie zaznaczac które komótrki są na pewno zle i je usówac
 - dorobić pierwszą Version_1 / Version_2 ( różnica w postaci funkcji własnych lub z OpenCV )
-- Dorobic aproksymacje do mojego Canny
 - Rozwinąć wersję pół-automatyczną
 
 ## UWAGI

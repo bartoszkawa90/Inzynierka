@@ -10,7 +10,6 @@ if __name__ == '__main__':
 # Reading an image in default mode
     img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-    print(img.shape)
 
 # Finding edges
     # Extracting edges and cells contours from image

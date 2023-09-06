@@ -3,8 +3,8 @@ import numpy as np
 
 ###-----------------------------------------------------------------------------
 # VARIABLES
-CLEAR_BACKGROUND = 1
-LEAVE_BACKGROUND = 0
+# CLEAR_BACKGROUND = 1
+# LEAVE_BACKGROUND = 0
 MAX_AREA_OF_SINGLE_CELL = 0
 MIN_AREA_OF_SINGLE_CELL = 0
 mask_x = np.array([[-1],

@@ -108,11 +108,17 @@ from resources import *
 # cv2.destroyAllWindows()
 
 # Load your image
-image = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+# image = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+#
+# # Convert the image to grayscale
+# gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#
+# blob = imageThreshold(gray_image, localNeighborhood=51)
+#
+# plot_photo('dawdad', blob)
 
-# Convert the image to grayscale
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-blob = imageThreshold(gray_image, localNeighborhood=51)
+lista = [1,2,3,4,5]
 
-plot_photo('dawdad', blob)
+if any(lista > 6):
+    print('ok')

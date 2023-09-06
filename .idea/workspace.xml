@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="2.09 finish threshold and Canny">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="4.09">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,9 +83,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -101,9 +102,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -212,9 +210,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Version_2" />
-        <item itemvalue="Python.resources" />
         <item itemvalue="Python.HalfAutomatic_Version" />
         <item itemvalue="Python.Version_1" />
+        <item itemvalue="Python.resources" />
         <item itemvalue="Python.Notes" />
       </list>
     </recent_temporary>
@@ -571,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693669337446</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="4.09">
+      <created>1693871354989</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1693871354989</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="7.05" />
     <MESSAGE value="15.05 v2" />
     <MESSAGE value="15.05 v3" />
     <MESSAGE value="Zmniejszone zdjecia, wycinki itp." />
@@ -615,7 +619,8 @@
     <MESSAGE value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
     <MESSAGE value="1.09 adaptive threshold i dokonczyc Canny" />
     <MESSAGE value="2.09 finish threshold and Canny" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.09 finish threshold and Canny" />
+    <MESSAGE value="4.09" />
+    <option name="LAST_COMMIT_MESSAGE" value="4.09" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

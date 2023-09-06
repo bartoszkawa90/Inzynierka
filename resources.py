@@ -4,6 +4,7 @@ import time
 import cv2
 import skimage
 from copy import deepcopy
+from copy import deepcopy
 from pprint import pprint
 from sys import exit
 
@@ -34,7 +35,7 @@ def printArr(*args):
 
 
 # @jit(nopython=False)
-def contours_processing(contours, lowBoundry=55, highBoundry=2000):
+def contours_processing(contours, lowBoundry=55, highBoundry=2000, RETURN_ADDITIONAL_INFORMATION=0):
     '''
     Function for finding smallest and largest contours and removing too small and too large contours
     :param contours: contours given to a function for processing
@@ -42,46 +43,104 @@ def contours_processing(contours, lowBoundry=55, highBoundry=2000):
     :param highBoundry: high limit of contour size
     :return: tuple of selected contours with correct size
     '''
-    c = tuple([con for con in contours if con.shape[0] > lowBoundry and con.shape[0] < highBoundry])
 
-    contours = c
-    SIZE_MAX = contours[0].shape[0]
-    size_min = contours[0].shape[0]
-    id_min = 0
-    ID_MAX = 0
-    count = 0
+    # Filter contours according to size of contours
+    conts = tuple([con for con in contours if con.shape[0] > lowBoundry and con.shape[0] < highBoundry])
+
+    # Additional Data
+    if RETURN_ADDITIONAL_INFORMATION == 1:
+        contours = conts
+        SIZE_MAX = contours[0].shape[0]
+        size_min = contours[0].shape[0]
+        id_min = 0
+        ID_MAX = 0
+        count = 0
+
+        for con in contours:
+            if con.shape[0] < size_min:
+                size_min = con.shape[0]
+                id_min = count
+            if con.shape[0] > SIZE_MAX:
+                SIZE_MAX = con.shape[0]
+                ID_MAX = count
+            count += 1
+
+        largest, smallest = contours[ID_MAX], contours[id_min]
+        return conts, smallest, largest, id_min, ID_MAX
+
+    return conts
+
+
+def filterContoursValue(contours=None, img=None):
+    '''
+    :param contours: tuple of contours which will be filtered
+    :param img: photo from which the contours were taken
+    :return: tuple of chosen contours
+    '''
+    # conts = []
+    # for con in contours:
+    #     x_min, y_min, x_max, y_max = cv2.boundingRect(con)
+    #     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+        # if 193 > np.mean(cell) > 3:
+        #     conts.append(con)
+
+    # return tuple(conts)
+
+    black = 0
+    blue = 0
+    white = 0
+    conts = []
+    blackCon = []
+    blueCon = []
 
     for con in contours:
-        if con.shape[0] < size_min:
-            size_min = con.shape[0]
-            id_min = count
-        if con.shape[0] > SIZE_MAX:
-            SIZE_MAX = con.shape[0]
-            ID_MAX = count
-        count += 1
+        x_min, y_min, x_max, y_max = cv2.boundingRect(con)
+        cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+        size = cell.shape[0]*cell.shape[1]
 
-    largest, smallest = contours[ID_MAX], contours[id_min]
+        for line_id in range(cell.shape[0]):
+            for pixel_id in range(cell.shape[1]):
+                if cell[line_id][pixel_id][0] > 193:
+                    blue += 1
+                elif cell[line_id][pixel_id][0] < 155:
+                    black += 1
+                elif 193 >= cell[line_id][pixel_id][0] >= 155:
+                    white += 1
+
+        if white <= 0.5*size:
+            conts.append(con)
+        if blue >= 0.5*size:
+            blueCon.append(con)
+        if black >= 0.5*size:
+            blackCon.append(con)
+
+        white = black = blue = 0
+
+    return conts, blueCon, blackCon
 
 
-    conts = c
-    return conts, smallest, largest, id_min, ID_MAX
+    # x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
+    # cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+    #
+    # # clear background => set to white //255
+    # for line_id in range(cell.shape[0]):
+    #     for pixel_id in range(cell.shape[1]):
+    #         if cell[line_id][pixel_id][0] > 150 or cell[line_id][pixel_id][1] > 150 or cell[line_id][pixel_id][2] > 150:
+    #             cell[line_id][pixel_id] = 255
+    #
+    # return cell
 
 
 # Version for colors
-# @jit(nopython=False)
-def extract_cell(contour=None, img=None, clear=0):
+def extract_cell(contour=None, img=None):
     x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
     # clear background => set to white //255
-    if clear == 1:
-        for line_id in range(cell.shape[0]):
-            for pixel_id in range(cell.shape[1]):
-                if cell[line_id][pixel_id][0] > 150 or cell[line_id][pixel_id][1] > 150 or cell[line_id][pixel_id][2] > 150:
-                    cell[line_id][pixel_id] = 255
-        # remove single pixels outsize of cell
-        # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-        # cell = cv2.morphologyEx(cell, cv2.MORPH_OPEN, kernel)
+    # for line_id in range(cell.shape[0]):
+    #     for pixel_id in range(cell.shape[1]):
+    #         if cell[line_id][pixel_id][0] > 150 or cell[line_id][pixel_id][1] > 150 or cell[line_id][pixel_id][2] > 150:
+    #             cell[line_id][pixel_id] = 255
 
     return cell
 

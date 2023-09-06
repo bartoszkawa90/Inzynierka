@@ -17,15 +17,16 @@ if __name__ == '__main__':
 
     edged = Canny(blob, lowBoundry=1.0, highBoundry=5.0)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+    print(type(contours))
 
-    # Extracting and Cleaning?? cells
-    conts, smallest, largest, id_min, ID_MAX = contours_processing(contours)
-    cells = [extract_cell(c, img, LEAVE_BACKGROUND) for c in contours]
-    print(smallest.shape, largest.shape)
+    # Extracting and Cleaning  Cells
+    conts = contours_processing(contours)
+    FinalContours, blue, black = filterContoursValue(conts, img)
+    # cells = [extract_cell(c, img) for c in contours]
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
-    cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, blue, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
