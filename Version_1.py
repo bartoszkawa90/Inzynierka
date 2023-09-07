@@ -24,21 +24,17 @@ if __name__ == '__main__':
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
     blob = cv2.morphologyEx(blob, cv2.MORPH_CLOSE, kernel)
 
-    edged = cv2.Canny(blob, 100, 200, 10, L2gradient=True)
+    edged = cv2.Canny(blob, 10, 200, 5, L2gradient=True)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # print(len(contours))
-    # for c in contours:
-    #     print(c.shape)
-
-# Extracting and Cleaning?? cells
-    conts = tuple(con for con in contours if con.shape[0].__gt__(40) and con.shape[0].__lt__(1000))
-    # cells = [extract_cell(c, img, LEAVE_BACKGROUND) for c in contours]
-
+    # Extracting and Cleaning  Cells
+    conts = contours_processing(contours)
+    FinalContours, blue, black = filterContoursValue(conts, img)
+    # cells = [extract_cell(c, img) for c in contours]
 
 ####------------------------------------------------------------------------------------------------------------
 # Draw Contours
-    cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, FinalContours, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)

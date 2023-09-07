@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
-    cv2.drawContours(img, blue, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, FinalContours, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)

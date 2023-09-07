@@ -71,10 +71,14 @@ def contours_processing(contours, lowBoundry=55, highBoundry=2000, RETURN_ADDITI
     return conts
 
 
-def filterContoursValue(contours=None, img=None):
+def filterContoursValue(contours=None, img=None, lowPixelBoundry=155, highPixelBoundry=193, cellProcentage=0.5):
     '''
     :param contours: tuple of contours which will be filtered
     :param img: photo from which the contours were taken
+    :param lowPixelBoundry:  low limit to decide if cell is white, blue or black
+    :param highPixelBoundry: high limit to decide if cell is white, blue or black
+    :param cellProcentage: procentage of pixels which determines the color
+            // example:  if white pixels > cellProcentage * Number Of Pixels  ==>  cell is white etc.
     :return: tuple of chosen contours
     '''
     # conts = []
@@ -85,6 +89,9 @@ def filterContoursValue(contours=None, img=None):
         #     conts.append(con)
 
     # return tuple(conts)
+    if contours == None or img == None:
+        print("Something went wrong")
+        return
 
     black = 0
     blue = 0
@@ -100,18 +107,18 @@ def filterContoursValue(contours=None, img=None):
 
         for line_id in range(cell.shape[0]):
             for pixel_id in range(cell.shape[1]):
-                if cell[line_id][pixel_id][0] > 193:
+                if cell[line_id][pixel_id][0] > highPixelBoundry:
                     blue += 1
-                elif cell[line_id][pixel_id][0] < 155:
+                elif cell[line_id][pixel_id][0] < lowPixelBoundry:
                     black += 1
-                elif 193 >= cell[line_id][pixel_id][0] >= 155:
+                elif highPixelBoundry >= cell[line_id][pixel_id][0] >= lowPixelBoundry:
                     white += 1
 
-        if white <= 0.5*size:
+        if white <= cellProcentage * size:
             conts.append(con)
-        if blue >= 0.5*size:
+        if blue >= cellProcentage * size:
             blueCon.append(con)
-        if black >= 0.5*size:
+        if black >= cellProcentage * size:
             blackCon.append(con)
 
         white = black = blue = 0
