@@ -1,4 +1,4 @@
-# Version_1 : wyciąganie komórek przy użyciu biblioteki OpenCV
+#Version_1 : wyciąganie komórek przy użyciu biblioteki OpenCV
  
 
 from resources import *
@@ -10,11 +10,11 @@ if __name__ == '__main__':
 # Reading an image in default mode
     img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-
+ 
 # Finding edges
     # Extracting edges and cells contours from image
     # do adaptive threshold on gray image
-    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 151, 2)
+    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 187, -1)
 
     # apply morphology -- get getStructuringElement składa nam maciez o zadanych wymiarach która bedzie nam potrzebna
     #   -- morphologyEx pozwala wyłapać kontur : MORPH_OPEN czysci tło ze smieci a MORPH_CLOSE czysci kontury komórek
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # Extracting and Cleaning  Cells
-    conts = contours_processing(contours)
+    conts = contours_processing(contours, lowBoundry=35, highBoundry=1000)  ##### DOTĄD JEST NA PEWNO OKKK
     FinalContours, blue, black = filterContoursValue(conts, img)
     # cells = [extract_cell(c, img) for c in contours]
 

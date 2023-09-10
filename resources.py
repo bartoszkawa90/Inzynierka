@@ -30,17 +30,19 @@ def printArr(*args):
     '''
     arg :  array which max min and shape will be printed
     '''
-    for arr in  args:
+    for arr in args:
         print(" Array name ::   {}\n Array shape : {} \n {} \n Max : {} \n Min : {} \n ".format('ada', arr.shape, arr, arr.max(), arr.min()))
 
 
 # @jit(nopython=False)
-def contours_processing(contours, lowBoundry=55, highBoundry=2000, RETURN_ADDITIONAL_INFORMATION=0):
+def contours_processing(contours, lowBoundry=25, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=0):
     '''
     Function for finding smallest and largest contours and removing too small and too large contours
     :param contours: contours given to a function for processing
     :param lowBoundry: low limit of contour size
     :param highBoundry: high limit of contour size
+    :param RETURN_ADDITIONAL_INFORMATION: if set to 1, the function returns additional information ::
+            // returns smallest and largest contour and their IDs
     :return: tuple of selected contours with correct size
     '''
 
@@ -71,7 +73,7 @@ def contours_processing(contours, lowBoundry=55, highBoundry=2000, RETURN_ADDITI
     return conts
 
 
-def filterContoursValue(contours=None, img=None, lowPixelBoundry=155, highPixelBoundry=193, cellProcentage=0.5):
+def filterContoursValue(contours, img, lowPixelBoundry=150, highPixelBoundry=185, lowCellProcentage=0.5, highCellProcentage=0.96):
     '''
     :param contours: tuple of contours which will be filtered
     :param img: photo from which the contours were taken
@@ -81,49 +83,64 @@ def filterContoursValue(contours=None, img=None, lowPixelBoundry=155, highPixelB
             // example:  if white pixels > cellProcentage * Number Of Pixels  ==>  cell is white etc.
     :return: tuple of chosen contours
     '''
-    # conts = []
-    # for con in contours:
-    #     x_min, y_min, x_max, y_max = cv2.boundingRect(con)
-    #     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-        # if 193 > np.mean(cell) > 3:
-        #     conts.append(con)
 
-    # return tuple(conts)
-    if contours == None or img == None:
-        print("Something went wrong")
-        return
+    # to gray scale
+    img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
-    black = 0
-    blue = 0
-    white = 0
+    # black = 0
+    # blue = 0
+    # white = 0
     conts = []
-    blackCon = []
     blueCon = []
+    blackCon = []
+    whiteCon = []
+    # elsee = []
 
     for con in contours:
         x_min, y_min, x_max, y_max = cv2.boundingRect(con)
         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-        size = cell.shape[0]*cell.shape[1]
+        # size = cell.shape[0]*cell.shape[1]
+        # for line_id in range(cell.shape[0]):
+        #     for pixel_id in range(cell.shape[1]):
+        #         pixel = cell[line_id][pixel_id]
+                # if pixel[0] < lowPixelBoundry:
+                #     black += 1
+                # else:
+                #     if pixel[1] > 170:
+                #         white += 1
+                #     elif pixel[1] <= 170:
+                #         blue += 1
+                # if pixel > highPixelBoundry:
+                #     white += 1
+                # elif highPixelBoundry >= pixel >= lowPixelBoundry:
+                #     blue += 1
+                # else:
+                #     black += 1
 
-        for line_id in range(cell.shape[0]):
-            for pixel_id in range(cell.shape[1]):
-                if cell[line_id][pixel_id][0] > highPixelBoundry:
-                    blue += 1
-                elif cell[line_id][pixel_id][0] < lowPixelBoundry:
-                    black += 1
-                elif highPixelBoundry >= cell[line_id][pixel_id][0] >= lowPixelBoundry:
-                    white += 1
-
-        if white <= cellProcentage * size:
-            conts.append(con)
-        if blue >= cellProcentage * size:
+        # klasyfikacja na podstawie sredniej wartosci w grayscale
+        mean = np.mean(cell)
+        if mean > highPixelBoundry:
+            whiteCon.append(con)
+        elif highPixelBoundry >= mean >= lowPixelBoundry:
             blueCon.append(con)
-        if black >= cellProcentage * size:
+            conts.append(con)
+        else:
             blackCon.append(con)
+            conts.append(con)
 
-        white = black = blue = 0
-
-    return conts, blueCon, blackCon
+        # if blue >= lowCellProcentage * size:
+        #     blueCon.append(con)
+        #     conts.append(con)
+        # elif highCellProcentage * size > black >= lowCellProcentage * size:
+        #     blackCon.append(con)
+        #     conts.append(con)
+        # elif white >= lowCellProcentage * size:
+        #     whiteCon.append(con)
+        # else:
+        #     elsee.append(con)
+        #
+        # white = black = blue = 0
+    return tuple(conts), tuple(blueCon), tuple(blackCon), tuple(whiteCon)#, tuple(elsee)
 
 
     # x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
@@ -136,6 +153,11 @@ def filterContoursValue(contours=None, img=None, lowPixelBoundry=155, highPixelB
     #             cell[line_id][pixel_id] = 255
     #
     # return cell
+
+
+def KmeansClustering(conts, kiterations=5):
+    pass
+
 
 
 # Version for colors
@@ -281,7 +303,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     # # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
-    gaussKernel = gaussianFilterGenerator(3, 5)
+    gaussKernel = gaussianFilterGenerator(3, 1.4)
     gImage = Convolution2D(grayImage, gaussKernel, mode='same')
 
     Gx = Convolution2D(gImage, mask_x, mode='same')
@@ -293,6 +315,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
 
     ## Non-maximum Suppression   ######  IN THESE SITUATION  'NMS' MAY GIVE WORSE RESULTS
     if performNMS == True:
+        print("Performing NMS")
         rowNum, colNum = GMag.shape
         result = np.zeros((rowNum, colNum))
         # we want to consider 3x3 matrixes so we do not teke first and last
