@@ -1,5 +1,5 @@
 # Version_2 : wyciąganie komórek przy użyciu własnych fukcji oraz OpenCV
-
+import cv2
 
 from resources import *
 
@@ -20,12 +20,12 @@ if __name__ == '__main__':
 
     # Extracting and Cleaning  Cells
     conts = contours_processing(contours)
-    FinalContours, blue, black, white = filterContoursValue(conts, img)
+    FinalContours = filterWhiteCells(conts, img)  # final contours are all black and blue cells
     # cells = [extract_cell(c, img) for c in contours]
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
-    cv2.drawContours(img, black, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, FinalContours, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)

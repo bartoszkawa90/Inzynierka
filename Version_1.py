@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     # Extracting and Cleaning  Cells
     conts = contours_processing(contours, lowBoundry=35, highBoundry=1000)  ##### DOTĄD JEST NA PEWNO OKKK
-    FinalContours, blue, black = filterContoursValue(conts, img)
+    FinalContours, blue, black = filterWhiteCells(conts, img)
     # cells = [extract_cell(c, img) for c in contours]
 
 ####------------------------------------------------------------------------------------------------------------

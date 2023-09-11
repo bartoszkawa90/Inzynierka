@@ -73,86 +73,30 @@ def contours_processing(contours, lowBoundry=25, highBoundry=500, RETURN_ADDITIO
     return conts
 
 
-def filterContoursValue(contours, img, lowPixelBoundry=150, highPixelBoundry=185, lowCellProcentage=0.5, highCellProcentage=0.96):
+def filterWhiteCells(contours, img):
     '''
-    :param contours: tuple of contours which will be filtered
-    :param img: photo from which the contours were taken
-    :param lowPixelBoundry:  low limit to decide if cell is white, blue or black
-    :param highPixelBoundry: high limit to decide if cell is white, blue or black
-    :param cellProcentage: procentage of pixels which determines the color
-            // example:  if white pixels > cellProcentage * Number Of Pixels  ==>  cell is white etc.
-    :return: tuple of chosen contours
+    :param contours: contours to filter
+    :param img: image on which the contours will be applied
+    :return: tuple of contours with wrong contours removed
+            // wrong contour = contour inside which cell is white
     '''
 
-    # to gray scale
-    img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-
-    # black = 0
-    # blue = 0
-    # white = 0
     conts = []
-    blueCon = []
-    blackCon = []
-    whiteCon = []
-    # elsee = []
+
+    lower_blue = np.array([0, 0, 0], dtype = "uint8")
+    upper_blue = np.array([220, 175, 175], dtype = "uint8")
 
     for con in contours:
         x_min, y_min, x_max, y_max = cv2.boundingRect(con)
         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-        # size = cell.shape[0]*cell.shape[1]
-        # for line_id in range(cell.shape[0]):
-        #     for pixel_id in range(cell.shape[1]):
-        #         pixel = cell[line_id][pixel_id]
-                # if pixel[0] < lowPixelBoundry:
-                #     black += 1
-                # else:
-                #     if pixel[1] > 170:
-                #         white += 1
-                #     elif pixel[1] <= 170:
-                #         blue += 1
-                # if pixel > highPixelBoundry:
-                #     white += 1
-                # elif highPixelBoundry >= pixel >= lowPixelBoundry:
-                #     blue += 1
-                # else:
-                #     black += 1
 
-        # klasyfikacja na podstawie sredniej wartosci w grayscale
-        mean = np.mean(cell)
-        if mean > highPixelBoundry:
-            whiteCon.append(con)
-        elif highPixelBoundry >= mean >= lowPixelBoundry:
-            blueCon.append(con)
-            conts.append(con)
-        else:
-            blackCon.append(con)
+        mask = cv2.inRange(cell, lower_blue, upper_blue)
+        detected_output = cv2.bitwise_and(cell, cell, mask = mask)
+
+        if np.mean(detected_output) > 10:
             conts.append(con)
 
-        # if blue >= lowCellProcentage * size:
-        #     blueCon.append(con)
-        #     conts.append(con)
-        # elif highCellProcentage * size > black >= lowCellProcentage * size:
-        #     blackCon.append(con)
-        #     conts.append(con)
-        # elif white >= lowCellProcentage * size:
-        #     whiteCon.append(con)
-        # else:
-        #     elsee.append(con)
-        #
-        # white = black = blue = 0
-    return tuple(conts), tuple(blueCon), tuple(blackCon), tuple(whiteCon)#, tuple(elsee)
-
-
-    # x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
-    # cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-    #
-    # # clear background => set to white //255
-    # for line_id in range(cell.shape[0]):
-    #     for pixel_id in range(cell.shape[1]):
-    #         if cell[line_id][pixel_id][0] > 150 or cell[line_id][pixel_id][1] > 150 or cell[line_id][pixel_id][2] > 150:
-    #             cell[line_id][pixel_id] = 255
-    #
-    # return cell
+    return tuple(conts)
 
 
 def KmeansClustering(conts, kiterations=5):

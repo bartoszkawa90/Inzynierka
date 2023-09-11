@@ -4,9 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="7.09">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="10.09">
+      <change afterPath="$PROJECT_DIR$/output0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output56.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output58.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output66.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output70.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output9.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HalfAutomatic_Version.py" beforeDir="false" afterPath="$PROJECT_DIR$/HalfAutomatic_Version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
@@ -62,9 +143,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -84,9 +162,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -219,8 +294,8 @@
         <item itemvalue="Python.Version_2" />
         <item itemvalue="Python.resources" />
         <item itemvalue="Python.HalfAutomatic_Version" />
-        <item itemvalue="Python.Version_1" />
         <item itemvalue="Python.Notes" />
+        <item itemvalue="Python.Version_1" />
       </list>
     </recent_temporary>
   </component>
@@ -597,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694118230269</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="10.09">
+      <created>1694369557133</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1694369557133</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +698,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Zmniejszone zdjecia, wycinki itp." />
     <MESSAGE value="Zmniejszone zdjecia, wycinki itp. v2" />
     <MESSAGE value="Początek wersji półautomatycznej i cos ju działa w Version_1 ale dalejklasyfikacja słabiutko" />
     <MESSAGE value="Multiple threads in python" />
@@ -641,7 +722,8 @@
     <MESSAGE value="4.09" />
     <MESSAGE value="6.09 zająć się juz trzeba klasyfikacją" />
     <MESSAGE value="7.09" />
-    <option name="LAST_COMMIT_MESSAGE" value="7.09" />
+    <MESSAGE value="10.09" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.09" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -48,8 +48,7 @@ def click_event(event, x, y, flags, param):
 #Choose photo
 photo = 'Wycinki/wycinek_4_67nieb_82czar.jpg'
 img = cv2.imread(photo)
-img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-print(len(img.shape))
+# img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 cv2.namedWindow("image", cv2.WINDOW_NORMAL)
 cv2.resizeWindow("image", 900, 900)
