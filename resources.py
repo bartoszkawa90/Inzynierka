@@ -83,14 +83,14 @@ def filterWhiteCells(contours, img):
 
     conts = []
 
-    lower_blue = np.array([0, 0, 0], dtype = "uint8")
-    upper_blue = np.array([220, 175, 175], dtype = "uint8")
+    lower_boundry = np.array([0, 0, 0], dtype = "uint8")
+    upper_boundry = np.array([220, 175, 175], dtype = "uint8")
 
     for con in contours:
         x_min, y_min, x_max, y_max = cv2.boundingRect(con)
         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
-        mask = cv2.inRange(cell, lower_blue, upper_blue)
+        mask = cv2.inRange(cell, lower_boundry, upper_boundry)
         detected_output = cv2.bitwise_and(cell, cell, mask = mask)
 
         if np.mean(detected_output) > 10:
@@ -102,6 +102,21 @@ def filterWhiteCells(contours, img):
 def KmeansClustering(conts, kiterations=5):
     pass
 
+
+def extract_cells(contours, img):
+
+    blue = []
+    black = []
+    for contour in contours:
+        x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
+        cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+
+        if np.mean(cell) > 162:
+            blue.append(contour)
+        else:
+            black.append(contour)
+
+    return tuple(blue), tuple(black)
 
 
 # Version for colors
@@ -363,10 +378,10 @@ def imageThreshold(grayImage, localNeighborhood=61):
 ## test LoG / Canny  -----------------------------------------------------------
 
 # img = cv2.imread('spodnie.jpeg')
-img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
 # img = cv2.imread('zdj_z_arykułu.png')
 
-gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
 # plot_photo("From Canny", Canny(gray, lowBoundry=1.0, highBoundry=10.0))

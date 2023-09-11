@@ -27,9 +27,11 @@ from resources import *
 # # reshape images
 
 #     ONE
-# img = cv2.imread('Wycinki/wycinek_3.jpg')
-# new_image = cv2.resize(img, (1200,900), cv2.INTER_AREA)
-# cv2.imwrite("/home/bartosz/Desktop/astudia/inzynierka/Wycinki/resized_wycinek_3.jpg", new_image)
+# img = cv2.imread('Zdjecia/Ki-67 60%.jpg')
+# print(img.shape)
+# new_image = cv2.resize(img, (4000, 5333), cv2.INTER_AREA)
+# plot_photo('dawd', new_image)
+# cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Wycinki/resized_Wycinek_4_59nieb_77czar.jpg", new_image)
 
 
 #     ALL
@@ -59,14 +61,14 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
-gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-
-lower_red = np.array([0, 0, 0], dtype = "uint8")
-upper_red= np.array([220, 175, 175], dtype = "uint8")
-
-mask = cv2.inRange(img, lower_red, upper_red)
-
-detected_output = cv2.bitwise_and(img, img, mask = mask)
-
-plot_photo('dawd', detected_output)
+# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+#
+# lower_red = np.array([0, 0, 0], dtype = "uint8")
+# upper_red= np.array([220, 175, 175], dtype = "uint8")
+#
+# mask = cv2.inRange(img, lower_red, upper_red)
+#
+# detected_output = cv2.bitwise_and(img, img, mask = mask)
+#
+# plot_photo('dawd', detected_output)
