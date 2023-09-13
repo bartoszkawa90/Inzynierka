@@ -27,11 +27,13 @@ if __name__ == '__main__':
     # Extracting and Cleaning  Cells
     conts = contoursProcessing(contours)
     goodCells = filterWhiteCells(conts, img)  # final contours are all black and blue cells
+
     finalCells = filterRepetitions(goodCells, img)
     print(len(goodCells), len(finalCells))
     # blue, black = extract_cells(goodCells, img)
     # print('black ', len(black),'blue ', len(blue))
-    cells = [extractCell(c, img) for c in goodCells]
+    cells = [extractCell(c, img) for c in finalCells]
+    printArr(cells[10])
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
@@ -49,7 +51,7 @@ if __name__ == '__main__':
     #     iter += 1
 
     # DISPLAY
-    plot_photo("Contours", img, 900, 900)
+    # plot_photo("Contours", img, 900, 900)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

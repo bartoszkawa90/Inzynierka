@@ -1,3 +1,5 @@
+import numpy.lib.stride_tricks
+
 from resources import *
 
 # notes
@@ -61,8 +63,12 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-t1 = (1,2,3)
-t2 = (1,2,3)
+# img1 = cv2.imread('Cells/cell9.jpg')
+# IMG2 = cv2.imread('Cells/cell8.jpg')
+# IMG_Drugie = cv2.imread('Cells/cell10.jpg')
+#
+# printArr(img1)
+# print(isOnTheImage(IMG_Drugie, IMG2))
 
-if t1 == t2:
-    print("jest")
+
+

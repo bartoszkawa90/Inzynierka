@@ -102,54 +102,60 @@ def filterWhiteCells(contours, img):
     return tuple(conts)
 
 
-def IN(item, set):
-    for i in set:
-        if i.shape == item.shape:
-            if np.array_equal(i, item):
+def removeContour(contours, contourToRemove):
+    '''
+    :param contours:  tuple of contours // contour == numpy.ndarray
+    :param contourToRemove: contour to remove
+    :return: tuple of contours after deleting wrong contour
+    '''
+    newConts = []
+    for con in contours:
+        if con.shape != contourToRemove.shape:
+            newConts.append(con)
+        else:
+            if not (con == contourToRemove).all():
+                newConts.append(con)
+    return newConts
+
+
+def isOnTheImage(img1, IMG2):
+    # czy pierwsze zdjecie znajduje sie na zdjeciu drugim
+    width, hight = img1.shape[0], img1.shape[1]
+    WIDTH, HIGHT = IMG2.shape[0], IMG2.shape[1]
+    shift_x, shift_y = WIDTH-width+1, HIGHT-hight+1
+    print("shapes ", img1.shape, IMG2.shape)
+    print(width, hight)
+    print(WIDTH, HIGHT)
+    print(shift_x, shift_x)
+
+    for y in range(shift_y):
+        for x in range(shift_x):
+            temp = IMG2[0+x:width+x, 0+y:hight+y]
+            # printArr(temp)
+            if (temp == img1).all():
                 return True
     return False
+            # img[y_min:y_min + y_max, x_min:x_min + x_max]
+
+
 def filterRepetitions(contours, img):
-
-    # cells = [extractCell(c, img) for c in contours]
-    conts = []
-
-    # filter by previous shapes
-    previosShape = ()
-    for con in contours:
-        if con.shape != previosShape:
-            conts.append(con)
-            previosShape = con.shape
-
-    # filtering by extracted cells or boundries
-    finalConts = []
     count = 0
-    for con in conts:
-        for con2 in conts:
+
+    for con in contours:
+        for con2 in contours:
             cell1 = extractCell(con, img)
             cell2 = extractCell(con2, img)
-            if cell1 == cell2:
-                count += 1
+            if cell1.shape == cell2.shape:
+                if (cell1 == cell2).all():
+                    count += 1
+
         if count >= 2:
+            contours = removeContour(contours, con)
+        count = 0
 
 
 
-    # count = 0
-    # for con in contours:
-    #     for con2 in contours:
-    #         cell1 = extractCell(con, img)
-    #         cell2 = extractCell(con2, img)
-    #         if con.shape == con2.shape:
-    #             if (cell1 == cell2).all():
-    #                 count += 1
-    #     if count == 0:
-
-
-    # iter = 1
-    # for con in conts:
-    #     print(iter, " : ", con.shape)
-    #     iter += 1
-    return finalConts
-
+    return tuple(contours)
 
 
 def extract_cells(contours, img):

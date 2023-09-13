@@ -4,11 +4,157 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="13.09 dalej trzeba ogarnąć powtorzenia kontórów">
+      <change afterPath="$PROJECT_DIR$/Cells/cell1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell100.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell101.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell102.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell103.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell104.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell105.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell106.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell107.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell108.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell109.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell110.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell111.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell112.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell113.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell114.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell115.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell116.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell117.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell118.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell119.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell120.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell121.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell122.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell123.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell124.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell125.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell126.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell127.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell129.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell130.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell131.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell132.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell133.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell134.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell135.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell136.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell137.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell138.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell139.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell140.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell141.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell142.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell143.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell144.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell145.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell147.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell148.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell30.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell31.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell32.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell33.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell34.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell35.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell36.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell37.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell38.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell39.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell42.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell43.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell46.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell47.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell48.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell49.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell50.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell51.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell52.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell53.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell54.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell55.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell56.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell57.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell58.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell59.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell60.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell61.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell62.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell63.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell64.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell65.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell66.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell67.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell68.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell69.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell70.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell72.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell73.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell74.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell75.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell76.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell77.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell78.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell79.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell81.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell82.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell83.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell84.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell85.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell86.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell87.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell88.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell89.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell90.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell91.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell92.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell93.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell94.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell95.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell96.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell97.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell98.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cells/cell99.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/main-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/main-checkpoint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
@@ -58,7 +204,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Version_2">
+  <component name="RunManager" selected="Python.Notes">
     <configuration name="HalfAutomatic_Version" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,9 +231,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -192,9 +335,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -220,9 +360,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Version_2" />
-        <item itemvalue="Python.resources" />
         <item itemvalue="Python.Notes" />
+        <item itemvalue="Python.resources" />
+        <item itemvalue="Python.Version_2" />
         <item itemvalue="Python.HalfAutomatic_Version" />
         <item itemvalue="Python.Version_1" />
       </list>
@@ -622,7 +762,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694470054794</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="13.09 dalej trzeba ogarnąć powtorzenia kontórów">
+      <created>1694601733358</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1694601733358</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +788,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Multiple threads in python" />
     <MESSAGE value="3.08" />
     <MESSAGE value="7.08 &#10;Convolution 2D gotowe" />
     <MESSAGE value="Zaczete Canny" />
@@ -666,7 +812,8 @@
     <MESSAGE value="10.09" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
+    <MESSAGE value="13.09 dalej trzeba ogarnąć powtorzenia kontórów" />
+    <option name="LAST_COMMIT_MESSAGE" value="13.09 dalej trzeba ogarnąć powtorzenia kontórów" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
