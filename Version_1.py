@@ -28,7 +28,7 @@ if __name__ == '__main__':
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # Extracting and Cleaning  Cells
-    conts = contours_processing(contours, lowBoundry=35, highBoundry=1000)  ##### DOTĄD JEST NA PEWNO OKKK
+    conts = contoursProcessing(contours, lowBoundry=35, highBoundry=1000)  ##### DOTĄD JEST NA PEWNO OKKK
     FinalContours, blue, black = filterWhiteCells(conts, img)
     # cells = [extract_cell(c, img) for c in contours]
 

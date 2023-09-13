@@ -47,7 +47,7 @@ if __name__ == '__main__':
     else:
         conts = contours
 
-    cells = [extract_cell(c, gray, CLEAR_BACKGROUND) for c in conts]
+    cells = [extractCell(c, gray, CLEAR_BACKGROUND) for c in conts]
     Cells = [cell for cell in cells if ((np.sum(cell==255)/cell.size)<0.8 and (np.sum(cell<30)/cell.size)<0.8)]
 
 

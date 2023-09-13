@@ -35,7 +35,7 @@ def printArr(*args):
 
 
 # @jit(nopython=False)
-def contours_processing(contours, lowBoundry=25, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=0):
+def contoursProcessing(contours, lowBoundry=25, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=0):
     '''
     Function for finding smallest and largest contours and removing too small and too large contours
     :param contours: contours given to a function for processing
@@ -83,24 +83,73 @@ def filterWhiteCells(contours, img):
 
     conts = []
 
-    lower_boundry = np.array([0, 0, 0], dtype = "uint8")
-    upper_boundry = np.array([220, 175, 175], dtype = "uint8")
+    lower_boundry = np.array([0, 0, 0], dtype="uint8")
+    upper_boundry = np.array([220, 175, 175], dtype="uint8")
 
     for con in contours:
+        ## extract cell from image
         x_min, y_min, x_max, y_max = cv2.boundingRect(con)
         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
+        ## create mask for white cells filtering
         mask = cv2.inRange(cell, lower_boundry, upper_boundry)
         detected_output = cv2.bitwise_and(cell, cell, mask = mask)
 
         if np.mean(detected_output) > 10:
             conts.append(con)
 
+
     return tuple(conts)
 
 
-def KmeansClustering(conts, kiterations=5):
-    pass
+def IN(item, set):
+    for i in set:
+        if i.shape == item.shape:
+            if np.array_equal(i, item):
+                return True
+    return False
+def filterRepetitions(contours, img):
+
+    # cells = [extractCell(c, img) for c in contours]
+    conts = []
+
+    # filter by previous shapes
+    previosShape = ()
+    for con in contours:
+        if con.shape != previosShape:
+            conts.append(con)
+            previosShape = con.shape
+
+    # filtering by extracted cells or boundries
+    finalConts = []
+    count = 0
+    for con in conts:
+        for con2 in conts:
+            cell1 = extractCell(con, img)
+            cell2 = extractCell(con2, img)
+            if cell1 == cell2:
+                count += 1
+        if count >= 2:
+
+
+
+    # count = 0
+    # for con in contours:
+    #     for con2 in contours:
+    #         cell1 = extractCell(con, img)
+    #         cell2 = extractCell(con2, img)
+    #         if con.shape == con2.shape:
+    #             if (cell1 == cell2).all():
+    #                 count += 1
+    #     if count == 0:
+
+
+    # iter = 1
+    # for con in conts:
+    #     print(iter, " : ", con.shape)
+    #     iter += 1
+    return finalConts
+
 
 
 def extract_cells(contours, img):
@@ -120,15 +169,9 @@ def extract_cells(contours, img):
 
 
 # Version for colors
-def extract_cell(contour=None, img=None):
+def extractCell(contour=None, img=None):
     x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-
-    # clear background => set to white //255
-    # for line_id in range(cell.shape[0]):
-    #     for pixel_id in range(cell.shape[1]):
-    #         if cell[line_id][pixel_id][0] > 150 or cell[line_id][pixel_id][1] > 150 or cell[line_id][pixel_id][2] > 150:
-    #             cell[line_id][pixel_id] = 255
 
     return cell
 

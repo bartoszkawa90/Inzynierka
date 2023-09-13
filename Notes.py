@@ -61,14 +61,8 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
-# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-#
-# lower_red = np.array([0, 0, 0], dtype = "uint8")
-# upper_red= np.array([220, 175, 175], dtype = "uint8")
-#
-# mask = cv2.inRange(img, lower_red, upper_red)
-#
-# detected_output = cv2.bitwise_and(img, img, mask = mask)
-#
-# plot_photo('dawd', detected_output)
+t1 = (1,2,3)
+t2 = (1,2,3)
+
+if t1 == t2:
+    print("jest")

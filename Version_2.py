@@ -25,15 +25,17 @@ if __name__ == '__main__':
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     # Extracting and Cleaning  Cells
-    conts = contours_processing(contours)
+    conts = contoursProcessing(contours)
     goodCells = filterWhiteCells(conts, img)  # final contours are all black and blue cells
-    blue, black = extract_cells(goodCells, img)
-    print('black ', len(black),'blue ', len(blue))
-    # cells = [extract_cell(c, img) for c in contours]
+    finalCells = filterRepetitions(goodCells, img)
+    print(len(goodCells), len(finalCells))
+    # blue, black = extract_cells(goodCells, img)
+    # print('black ', len(black),'blue ', len(blue))
+    cells = [extractCell(c, img) for c in goodCells]
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
-    cv2.drawContours(img, goodCells, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, finalCells, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
@@ -41,8 +43,9 @@ if __name__ == '__main__':
 
     # SAVE Cells in ./Cells
     # iter = 1
-    # for c in cells:
-    #     cv2.imwrite("Cells/cell"+str(iter)+".jpg", c)
+    # for cell in cells:
+    #     print(iter, " ", cell.shape)
+    #     cv2.imwrite("Cells/cell"+str(iter)+".jpg", cell)
     #     iter += 1
 
     # DISPLAY
@@ -51,3 +54,6 @@ if __name__ == '__main__':
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))
     exit()
+
+
+#  contours to krotka kontórów a każdy to numpyowa tablica punktów ( współrzedne x i y)

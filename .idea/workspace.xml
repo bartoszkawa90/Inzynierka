@@ -4,303 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="11.09  -  czarne i niebieskie komórki do podzielenia">
-      <change afterPath="$PROJECT_DIR$/Wycinki/resized_Wycinek_4_59nieb_77czar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wycinki/wycinek_4_59nieb_77czar.jpg" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell101.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell102.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell103.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell104.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell105.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell106.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell107.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell108.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell109.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell110.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell111.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell112.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell113.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell114.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell115.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell116.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell117.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell118.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell119.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell120.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell121.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell122.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell123.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell124.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell125.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell126.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell127.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell129.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell130.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell131.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell132.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell133.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell134.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell135.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell136.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell137.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell138.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell139.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell140.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell141.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell142.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell143.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell144.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell145.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell146.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell147.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell148.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell149.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell151.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell152.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell153.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell154.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell155.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell156.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell157.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell158.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell159.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell160.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell161.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell162.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell163.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell164.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell165.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell166.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell167.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell168.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell169.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell170.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell171.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell172.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell173.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell174.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell175.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell176.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell177.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell178.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell179.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell180.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell181.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell182.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell183.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell184.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell185.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell186.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell187.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell188.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell189.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell190.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell191.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell192.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell193.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell194.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell195.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell196.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell197.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell198.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell199.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell200.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell201.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell202.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell203.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell51.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell52.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell54.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell55.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell56.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell58.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell59.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell60.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell61.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell62.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell63.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell64.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell66.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell67.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell68.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell69.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell70.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell71.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell72.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell73.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell74.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell75.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell76.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell77.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell78.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell79.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell80.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell81.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell82.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell83.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell84.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell85.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell86.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell87.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell88.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell89.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell90.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell91.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell92.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell93.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell94.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell95.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell96.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell97.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell98.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/cell99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/main-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/main-checkpoint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/resized_wycinek_4_67nieb_82czar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/wycinek_4_67nieb_82czar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/babaCANNY.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output26.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output27.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output28.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output29.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output31.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output33.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output34.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output35.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output41.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output42.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output44.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output45.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output46.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output51.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output52.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output53.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output58.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output59.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output61.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output62.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output63.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output65.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output66.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output67.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output68.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output69.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output70.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output71.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output72.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output73.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output74.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output75.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output76.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output77.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output78.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output79.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output9.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spodnie.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version_1_note.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdj_z_arykułu.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,6 +85,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -508,8 +221,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Version_2" />
-        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.resources" />
+        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.HalfAutomatic_Version" />
         <item itemvalue="Python.Version_1" />
       </list>
@@ -902,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694424357979</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna">
+      <created>1694470054794</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1694470054794</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -921,7 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Początek wersji półautomatycznej i cos ju działa w Version_1 ale dalejklasyfikacja słabiutko" />
     <MESSAGE value="Multiple threads in python" />
     <MESSAGE value="3.08" />
     <MESSAGE value="7.08 &#10;Convolution 2D gotowe" />
@@ -946,7 +665,8 @@
     <MESSAGE value="7.09" />
     <MESSAGE value="10.09" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.09  -  czarne i niebieskie komórki do podzielenia" />
+    <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
