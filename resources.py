@@ -10,7 +10,7 @@ from sys import exit
 
 
 ## FUNCTIONS / KEYWORDS
-def plot_photo(title="None", image=None, height=1500, widht=1500):
+def plot_photo(title='None', image=None, height=1500, widht=1500):
     ''' Plots photo is given  resolution
         title - title of ploted photo
         image - image to plot
@@ -118,29 +118,39 @@ def removeContour(contours, contourToRemove):
     return newConts
 
 
-def isOnTheImage(img1, IMG2):
-    # czy pierwsze zdjecie znajduje sie na zdjeciu drugim
-    width, hight = img1.shape[0], img1.shape[1]
-    WIDTH, HIGHT = IMG2.shape[0], IMG2.shape[1]
-    shift_x, shift_y = WIDTH-width+1, HIGHT-hight+1
-    print("shapes ", img1.shape, IMG2.shape)
-    print(width, hight)
-    print(WIDTH, HIGHT)
-    print(shift_x, shift_x)
 
-    for y in range(shift_y):
-        for x in range(shift_x):
-            temp = IMG2[0+x:width+x, 0+y:hight+y]
-            # printArr(temp)
-            if (temp == img1).all():
-                return True
-    return False
-            # img[y_min:y_min + y_max, x_min:x_min + x_max]
+def isOnTheImage(mainImg, img):
+    '''
+    :param mainImg: main image on which we want wo find second image
+    :param img: image which we want to find on first image
+    :return: True if the img is the part of mainImg , False if its not
+    '''
+    # Sprawdź, czy obraz do znalezienia znajduje się w obrazie głównym
+    # match template przesuwa obraz do znalezienia po głównym obrazie i sprawdza na ile sie zgadzaja
+    #   nastepnie na podstawie dobranego progu mozna sprawdzic gdzie te
+    #   wartosci okreslaja ze jest tam ten obraz
+    wynik = cv2.matchTemplate(mainImg, img, cv2.TM_CCOEFF_NORMED)
+    prog_dopasowania = 0.9  # Prog dopasowania, można dostosować w zależności od potrzeb
+
+    # znajdujemy gdzie funkcja matchTemplate znalazła cos powej progu i jesli lista tych
+    #   wartosci jest wieksza niz 0 to mamy to na szukane zdjecie na głównym zdjeciu
+    finalList = []
+    whereSomethingFound = np.where(wynik >= prog_dopasowania)
+    for arr in whereSomethingFound:
+        finalList += list(arr)
+    # length = len(finalList)
+
+    return len(finalList) > 0
 
 
 def filterRepetitions(contours, img):
+    '''
+    :param contours: (tuple of ndarrays) contours to filter repetitions and wrong cells
+    :param img: img on which the contours where found
+    :return: tuple of contours after removing wrong cells
+    '''
     count = 0
-
+    # filter cells repetitions
     for con in contours:
         for con2 in contours:
             cell1 = extractCell(con, img)
@@ -152,9 +162,25 @@ def filterRepetitions(contours, img):
         if count >= 2:
             contours = removeContour(contours, con)
         count = 0
+    print(len(contours), "liczba konturów po odfiltrowaniu duplikatów")
 
+    # filter images containing more than one cell
+    for con in contours:
+        for con2 in contours:
+            cell1 = extractCell(con, img)
+            cell2 = extractCell(con2, img)
 
+            if cell1.shape[0] > cell2.shape[0] \
+                    and cell1.shape[1] >= cell2.shape[1] \
+                    and isOnTheImage(cell1, cell2):
+                contours = removeContour(contours, con)
 
+            elif cell1.shape[0] >= cell2.shape[0] \
+                    and cell1.shape[1] > cell2.shape[1] \
+                    and isOnTheImage(cell1, cell2):
+                contours = removeContour(contours, con)
+
+    print(len(contours), "liczba konturów po odfiltrowaniu zlepek komórek")
     return tuple(contours)
 
 
@@ -293,13 +319,15 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
-def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0, performNMS=False):
+def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0, performNMS=False, extractMore=0):
     '''
     :param grayImage: input image in gray scale
     :param mask_x: vertical kernel
     :param mask_y: horizontal kernel
     :param lowBoundry: low limit for thresholding
     :param highBoundry: high limit for thresholding
+    :param extractMore: determines values for gauss kernel 1 -> 5, 2.1 0 -> 3, 1.4
+        // higher values makes cells less accurate but selects more of them
     :return: image with marked edges
     '''
     if grayImage is None:
@@ -311,7 +339,10 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     # # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
-    gaussKernel = gaussianFilterGenerator(3, 1.4)
+    if extractMore == 1:
+        gaussKernel = gaussianFilterGenerator(5, 2.1)
+    elif extractMore == 0:
+        gaussKernel = gaussianFilterGenerator(3, 1.4)
     gImage = Convolution2D(grayImage, gaussKernel, mode='same')
 
     Gx = Convolution2D(gImage, mask_x, mode='same')

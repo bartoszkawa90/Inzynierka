@@ -63,12 +63,9 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-# img1 = cv2.imread('Cells/cell9.jpg')
-# IMG2 = cv2.imread('Cells/cell8.jpg')
-# IMG_Drugie = cv2.imread('Cells/cell10.jpg')
-#
-# printArr(img1)
-# print(isOnTheImage(IMG_Drugie, IMG2))
+img1 = cv2.imread('Cells/cell112.jpg')
+IMG2 = cv2.imread('Cells/cell113.jpg')
 
+print(img1.shape, IMG2.shape)
 
 

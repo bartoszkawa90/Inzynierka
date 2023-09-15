@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="13.09 dalej trzeba ogarnąć powtorzenia kontórów">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="14.09 jakies trzeba ogarnac ze są kontury zawierajace kilka innych konktórów">
       <change afterPath="$PROJECT_DIR$/Cells/cell1.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell10.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell100.jpg" afterDir="false" />
@@ -47,19 +47,7 @@
       <change afterPath="$PROJECT_DIR$/Cells/cell134.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell135.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell136.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell137.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell138.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell139.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell140.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell141.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell142.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell143.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell144.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell145.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell146.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell147.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/cell148.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell15.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell16.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cells/cell17.jpg" afterDir="false" />
@@ -155,6 +143,8 @@
       <change afterPath="$PROJECT_DIR$/Cells/cell99.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
@@ -204,7 +194,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Notes">
+  <component name="RunManager" selected="Python.Version_2">
     <configuration name="HalfAutomatic_Version" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -250,9 +240,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -335,6 +322,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -360,11 +350,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Version_2" />
+        <item itemvalue="Python.Version_1" />
         <item itemvalue="Python.Notes" />
         <item itemvalue="Python.resources" />
-        <item itemvalue="Python.Version_2" />
         <item itemvalue="Python.HalfAutomatic_Version" />
-        <item itemvalue="Python.Version_1" />
       </list>
     </recent_temporary>
   </component>
@@ -769,7 +759,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694601733358</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="14.09 jakies trzeba ogarnac ze są kontury zawierajace kilka innych konktórów">
+      <created>1694645306503</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1694645306503</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -788,7 +785,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="3.08" />
     <MESSAGE value="7.08 &#10;Convolution 2D gotowe" />
     <MESSAGE value="Zaczete Canny" />
     <MESSAGE value="Zaczete Canny i jednak splot do poprawy" />
@@ -813,7 +809,8 @@
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
     <MESSAGE value="13.09 dalej trzeba ogarnąć powtorzenia kontórów" />
-    <option name="LAST_COMMIT_MESSAGE" value="13.09 dalej trzeba ogarnąć powtorzenia kontórów" />
+    <MESSAGE value="14.09 jakies trzeba ogarnac ze są kontury zawierajace kilka innych konktórów" />
+    <option name="LAST_COMMIT_MESSAGE" value="14.09 jakies trzeba ogarnac ze są kontury zawierajace kilka innych konktórów" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
