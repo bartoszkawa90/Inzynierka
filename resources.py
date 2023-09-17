@@ -2,7 +2,7 @@
 from variables import *
 import time
 import cv2
-import skimage
+# import skimage
 from copy import deepcopy
 from copy import deepcopy
 from pprint import pprint
@@ -32,6 +32,15 @@ def printArr(*args):
     '''
     for arr in args:
         print(" Array name ::   {}\n Array shape : {} \n {} \n Max : {} \n Min : {} \n ".format('ada', arr.shape, arr, arr.max(), arr.min()))
+
+
+# def setBlackToWhite(img):
+#     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+#     for line in range(img.shape[0]):
+#         for pixel in range(img.shape[1]):
+#             if gray[line][pixel] <= 120:
+#                 img[line][pixel] = (210, 186, 180)
+#     return img
 
 
 # @jit(nopython=False)
@@ -138,7 +147,6 @@ def isOnTheImage(mainImg, img):
     whereSomethingFound = np.where(wynik >= prog_dopasowania)
     for arr in whereSomethingFound:
         finalList += list(arr)
-    # length = len(finalList)
 
     return len(finalList) > 0
 
@@ -185,7 +193,6 @@ def filterRepetitions(contours, img):
 
 
 def extract_cells(contours, img):
-
     blue = []
     black = []
     for contour in contours:
@@ -319,7 +326,7 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
-def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0, performNMS=False, extractMore=0):
+def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0, performNMS=False, useGaussFilter=0):
     '''
     :param grayImage: input image in gray scale
     :param mask_x: vertical kernel
@@ -333,17 +340,22 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     if grayImage is None:
         print("You have to give at least one argument")
         return
+    if len(grayImage.shape) == 3:
+        grayImage = cv2.cvtColor(grayImage, cv2.COLOR_BGRA2GRAY)
 
     # # zastosowanie filtru Gaussa w celu ograniczenia szumów
     # gaussKernel = gaussKernelGenerator(5, 1)
     # # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
-    if extractMore == 1:
-        gaussKernel = gaussianFilterGenerator(5, 2.1)
-    elif extractMore == 0:
-        gaussKernel = gaussianFilterGenerator(3, 1.4)
-    gImage = Convolution2D(grayImage, gaussKernel, mode='same')
+    if useGaussFilter == 1:
+        gaussKernel = gaussianFilterGenerator(3, 1)
+        gImage = Convolution2D(grayImage, gaussKernel, mode='same')
+    elif useGaussFilter == 0:
+        gImage = grayImage
+
+    # sharpen image ???
+    # gImage = Convolution2D(gImage, edgeDetection, mode='same')
 
     Gx = Convolution2D(gImage, mask_x, mode='same')
     Gy = Convolution2D(gImage, mask_y, mode='same')
@@ -379,7 +391,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
                     return
                 # sprawdzamy po kątach w którą stone idzie nasza krawędz ale do ostatecznego wyniku
                 # idą tylko najwyzsze wartosci zeby zostawic cienką krawędz
-                if GMag[row, col] > edge1 and GMag[row, col] > edge2:
+                if GMag[row, col] >= edge1 and GMag[row, col] >= edge2:
                     result[row, col] = GMag[row, col]
     else:
         result = GMag
@@ -403,7 +415,7 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
                 else:
                     result[i, j] = 0
 
-    return skimage.morphology.skeletonize(result).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)#result.astype(np.uint8)
+    return scale(GMag, 255).astype(np.uint8)#skimage.morphology.skeletonize(result).astype(np.uint8)#result.astype(np.uint8)
 
 
 def imageThreshold(grayImage, localNeighborhood=61):
@@ -454,6 +466,8 @@ def imageThreshold(grayImage, localNeighborhood=61):
     return thresh
 
 
+def main(img):
+    pass
 
 ## test LoG / Canny  -----------------------------------------------------------
 

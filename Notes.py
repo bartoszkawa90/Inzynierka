@@ -64,8 +64,19 @@ from resources import *
 
 
 img1 = cv2.imread('Cells/cell112.jpg')
-IMG2 = cv2.imread('Cells/cell113.jpg')
+IMG = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
+IMG2 = cv2.cvtColor(IMG, cv2.COLOR_BGRA2GRAY)
+IMG2 = Convolution2D(IMG2, edgeDetection, mode="same")
+print(type(IMG2), IMG2.shape)
 
-print(img1.shape, IMG2.shape)
+# def setBlackToWhite(img):
+#     for line in range(img.shape[0]):
+#         for pixel in range(img.shape[1]):
+#             if img[line][pixel] <= 8:
+#                 print(pixel)
+#                 img[line][pixel] = 255
+#     return img
+
+plot_photo('dawd', IMG2)
 
 

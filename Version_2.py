@@ -21,13 +21,13 @@ if __name__ == '__main__':
     # # Extracting edges and cells contours from image
     blob = imageThreshold(gray)
 
-    edged = Canny(blob, lowBoundry=1.0, highBoundry=7.0, extractMore=0)
+    edged = Canny(blob, lowBoundry=2.0, highBoundry=10.0, useGaussFilter=1, performNMS=True)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    print(len(contours))
 
     # Extracting and Cleaning  Cells
     conts = contoursProcessing(contours)
     goodCells = filterWhiteCells(conts, img)  # final contours are all black and blue cells
-
     finalCells = filterRepetitions(goodCells, img)
     print(len(goodCells), len(finalCells))
     cells = [extractCell(c, img) for c in finalCells]
@@ -41,14 +41,14 @@ if __name__ == '__main__':
     # cv2.imwrite("Full.jpg", img)
 
     # SAVE Cells in ./Cells
-    iter = 1
-    for cell in cells:
-        print(iter, " ", cell.shape)
-        cv2.imwrite("Cells/cell"+str(iter)+".jpg", cell)
-        iter += 1
+    # iter = 0
+    # for cell in cells:
+    #     print(iter, " ", cell.shape)
+    #     cv2.imwrite("Cells/cell"+str(iter)+".jpg", cell)
+    #     iter += 1
 
     # DISPLAY
-    plot_photo("Contours", img, 900, 900)
+    plot_photo("Contours", img)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

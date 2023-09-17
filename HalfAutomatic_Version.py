@@ -46,7 +46,7 @@ def click_event(event, x, y, flags, param):
 
 
 #Choose photo
-photo = 'Wycinki/wycinek_4_67nieb_82czar.jpg'
+photo = 'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
 img = cv2.imread(photo)
 # img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
