@@ -82,7 +82,7 @@ def contoursProcessing(contours, lowBoundry=25, highBoundry=500, RETURN_ADDITION
     return conts
 
 
-def filterWhiteCells(contours, img):
+def filterWhiteCells(contours, img, backgroundBoundry=10):
     '''
     :param contours: contours to filter
     :param img: image on which the contours will be applied
@@ -104,7 +104,7 @@ def filterWhiteCells(contours, img):
         mask = cv2.inRange(cell, lower_boundry, upper_boundry)
         detected_output = cv2.bitwise_and(cell, cell, mask = mask)
 
-        if np.mean(detected_output) > 10:
+        if np.mean(detected_output) > backgroundBoundry:
             conts.append(con)
 
 
@@ -326,7 +326,8 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
-def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0, performNMS=False, useGaussFilter=0):
+def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0,
+          performNMS=False, useGaussFilter=0, sharpenImage=False):
     '''
     :param grayImage: input image in gray scale
     :param mask_x: vertical kernel
@@ -349,13 +350,17 @@ def Canny(grayImage=None, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBou
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
     if useGaussFilter == 1:
-        gaussKernel = gaussianFilterGenerator(3, 1)
-        gImage = Convolution2D(grayImage, gaussKernel, mode='same')
+        # gaussKernel = gaussianFilterGenerator(gaussSize, gaussSigma)
+        # gImage = Convolution2D(grayImage, gaussKernel, mode='same')
+
+        gaussKernel = gaussKernelGenerator(gaussSize, gaussSigma)
+        gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
     elif useGaussFilter == 0:
         gImage = grayImage
 
     # sharpen image ???
-    # gImage = Convolution2D(gImage, edgeDetection, mode='same')
+    if sharpenImage:
+        gImage = Convolution2D(gImage, sharpen, mode='same')
 
     Gx = Convolution2D(gImage, mask_x, mode='same')
     Gy = Convolution2D(gImage, mask_y, mode='same')
