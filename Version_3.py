@@ -30,7 +30,7 @@ kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
 bin_img = cv2.morphologyEx(thresh,
                            cv2.MORPH_OPEN,
                            kernel,
-                           iterations=8)
+                           iterations=7)
 
 
 # Create subplots with 1 row and 2 columns
@@ -77,7 +77,7 @@ edged = Canny(dist, gaussSize=3, gaussSigma=1, lowBoundry=2.0, highBoundry=10.0,
 contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 print(len(contours))
 
-conts = contoursProcessing(contours)
+conts = contoursProcessing(contours, 10, 100)
 goodCells = filterWhiteCells(conts, img, 10)  # final contours are all black and blue cells
 finalCells = filterRepetitions(goodCells, img)
 print(len(goodCells), len(finalCells))

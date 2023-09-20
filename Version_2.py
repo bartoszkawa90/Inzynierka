@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     # Reading an image in default mode
     # img = cv2.imread('Zdjecia/Ki-67 60%.jpg')
-    img = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
+    img = cv2.imread('Wycinki/resized_wycinek_2.jpg')
     print("Image ", img.shape)
     # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
         # and works better for 3500/4666 but loooonggg
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
-    cv2.drawContours(img, finalCells, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
