@@ -30,7 +30,7 @@ kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
 bin_img = cv2.morphologyEx(thresh,
                            cv2.MORPH_OPEN,
                            kernel,
-                           iterations=3)
+                           iterations=8)
 
 
 # Create subplots with 1 row and 2 columns

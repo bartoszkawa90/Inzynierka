@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="18.09 - &#10;! - najwazniesze&#10;Co moze sie zmieniac :&#10;! - rozmiar sąsiedniego obszaru w imageThreshold raczej powinien byc domyslny 61 bo działa raczej najlepiej&#10;!!! - do kernela gaussa najlepiej 3,1 lub 5,2  -&gt; 3,1 daje ładniejsze i kompletniejsze komórki ale 5,2 moze dac takie&#10;      krórych 3,1 nie wykryło a powinno&#10; - filtrowanie kernelem gaussa lub wyostrzanie moze nieco poprawic albo pogorszyc&#10; - NMS raczej lepiej uzyc moze nie pomóc ale lepiej zeby było&#10; - w contourProcessing() trzeba dac granice do wywalenia za małych i za duzych konrórów domyslne raczej ok&#10;! - w filterWhiteCells mozna dac inną granice do wywalania białych komórek(niekomórek) ale to ewentualnie mozna&#10;      dac mniejszą granice">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Próby z algorytmem watershed">
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,13 +298,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00002" summary="16.04">
-      <created>1681726312816</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1681726312816</updated>
     </task>
     <task id="LOCAL-00003" summary="18.04 - juz dobre kontury">
       <created>1681865843641</created>
@@ -643,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695064235534</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Próby z algorytmem watershed">
+      <created>1695236073177</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1695236073177</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +661,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Splot 2d wreszcie GIT" />
     <MESSAGE value="10.08" />
     <MESSAGE value="10.08 v2" />
     <MESSAGE value="Jeszcze jedna batalia z Convolution" />
@@ -687,7 +685,8 @@
     <MESSAGE value="15.09" />
     <MESSAGE value="17.09 resized_wycinek_4 juz lepiej nie zadziała ale reszta nie za bardzo działa" />
     <MESSAGE value="18.09 - &#10;! - najwazniesze&#10;Co moze sie zmieniac :&#10;! - rozmiar sąsiedniego obszaru w imageThreshold raczej powinien byc domyslny 61 bo działa raczej najlepiej&#10;!!! - do kernela gaussa najlepiej 3,1 lub 5,2  -&gt; 3,1 daje ładniejsze i kompletniejsze komórki ale 5,2 moze dac takie&#10;      krórych 3,1 nie wykryło a powinno&#10; - filtrowanie kernelem gaussa lub wyostrzanie moze nieco poprawic albo pogorszyc&#10; - NMS raczej lepiej uzyc moze nie pomóc ale lepiej zeby było&#10; - w contourProcessing() trzeba dac granice do wywalenia za małych i za duzych konrórów domyslne raczej ok&#10;! - w filterWhiteCells mozna dac inną granice do wywalania białych komórek(niekomórek) ale to ewentualnie mozna&#10;      dac mniejszą granice" />
-    <option name="LAST_COMMIT_MESSAGE" value="18.09 - &#10;! - najwazniesze&#10;Co moze sie zmieniac :&#10;! - rozmiar sąsiedniego obszaru w imageThreshold raczej powinien byc domyslny 61 bo działa raczej najlepiej&#10;!!! - do kernela gaussa najlepiej 3,1 lub 5,2  -&gt; 3,1 daje ładniejsze i kompletniejsze komórki ale 5,2 moze dac takie&#10;      krórych 3,1 nie wykryło a powinno&#10; - filtrowanie kernelem gaussa lub wyostrzanie moze nieco poprawic albo pogorszyc&#10; - NMS raczej lepiej uzyc moze nie pomóc ale lepiej zeby było&#10; - w contourProcessing() trzeba dac granice do wywalenia za małych i za duzych konrórów domyslne raczej ok&#10;! - w filterWhiteCells mozna dac inną granice do wywalania białych komórek(niekomórek) ale to ewentualnie mozna&#10;      dac mniejszą granice" />
+    <MESSAGE value="Próby z algorytmem watershed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Próby z algorytmem watershed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
