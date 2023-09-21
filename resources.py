@@ -44,7 +44,7 @@ def printArr(*args):
 
 
 # @jit(nopython=False)
-def contoursProcessing(contours, lowBoundry=25, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=0):
+def contoursProcessing(contours, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=0):
     '''
     Function for finding smallest and largest contours and removing too small and too large contours
     :param contours: contours given to a function for processing
@@ -327,7 +327,7 @@ def scale(arr, newMax):
 
 
 def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0,
-          performNMS=False, useGaussFilter=0, sharpenImage=False):
+          performNMS=False, useGaussFilter=True, sharpenImage=False):
     '''
     :param grayImage: input image in gray scale
     :param mask_x: vertical kernel
@@ -349,13 +349,12 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
     # # convolution with gaussian kernel 2 times(rows and columns) to blure whole image
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
-    if useGaussFilter == 1:
+    if useGaussFilter:
         # gaussKernel = gaussianFilterGenerator(gaussSize, gaussSigma)
         # gImage = Convolution2D(grayImage, gaussKernel, mode='same')
-
         gaussKernel = gaussKernelGenerator(gaussSize, gaussSigma)
         gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
-    elif useGaussFilter == 0:
+    else:
         gImage = grayImage
 
     # sharpen image ???
@@ -471,8 +470,51 @@ def imageThreshold(grayImage, localNeighborhood=61):
     return thresh
 
 
-def main(img):
-    pass
+def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, conSizeLow=None,
+         conSizeHigh=None, whiteCellBoundry=None):
+    '''
+    '''
+    # Reading an image in default mode
+    img = cv2.imread(img_path)
+    print("Image ", img.shape)
+    # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
+        # and works better for 3500/4666 but loooonggg
+    if img.shape[0] > 3000 or img.shape[1] > 4000:
+        img = cv2.resize(img, (3000, 4000), cv2.INTER_AREA)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+
+    ## apply adaptive threshold
+    if thresholdRange == None:
+        blob = imageThreshold(gray)
+    else:
+        blob = imageThreshold(gray, thresholdRange)
+
+    # # Finding edges
+    edged = Canny(blob, gaussSize=CannyGaussSize, gaussSigma=CannyGaussSigma, lowBoundry=CannyLowBoundry,
+                  highBoundry=CannyHighBoundry, useGaussFilter=CannyUseGauss, performNMS=CannyPerformNMS,
+                  sharpenImage=CannySharpen)
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    print(len(contours))
+
+    # Filtering cells by size
+    if conSizeLow != None and conSizeHigh != None: conts = contoursProcessing(contours, lowBoundry=conSizeLow, highBoundry=conSizeHigh)
+    elif conSizeLow == None and conSizeHigh != None: conts = contoursProcessing(contours, highBoundry=conSizeHigh)
+    elif conSizeLow != None and conSizeHigh == None: conts = contoursProcessing(contours, lowBoundry=conSizeLow)
+    elif conSizeLow == None and conSizeHigh == None: conts = contoursProcessing(contours)
+
+    # conts = contoursProcessing(contours, lowBoundry=15, highBoundry=500)
+    # goodConts = filterWhiteCells(conts, img, 6)  # final contours are all black and blue cells
+
+    # filtering cells by color and removing duplicats
+    if whiteCellBoundry == None:
+        goodConts = filterWhiteCells(conts, img)
+    else:
+        goodConts = filterWhiteCells(conts, img, whiteCellBoundry)
+    finalConts = filterRepetitions(goodConts, img)
+    cells = [extractCell(c, img) for c in finalConts]
+
+    return cells, finalConts
 
 ## test LoG / Canny  -----------------------------------------------------------
 

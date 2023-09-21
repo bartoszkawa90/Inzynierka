@@ -8,7 +8,7 @@ if __name__ == '__main__':
     start_time = time.time()
 
 # Reading an image in default mode
-    img = cv2.imread('Wycinki/resized_wycinek_2.jpg')
+    img = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 # Finding edges
