@@ -7,6 +7,8 @@ import numpy as np
 # LEAVE_BACKGROUND = 0
 MAX_AREA_OF_SINGLE_CELL = 0
 MIN_AREA_OF_SINGLE_CELL = 0
+FILTER_BLACK = 1
+FILTER_WHITE = 0
 mask_x = np.array([[-1],
                    [0],
                    [1]])

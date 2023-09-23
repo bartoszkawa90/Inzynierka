@@ -1,3 +1,5 @@
+import os
+
 import numpy.lib.stride_tricks
 
 from resources import *
@@ -18,7 +20,7 @@ from resources import *
 
 
 # zapisywanie wycinków
-# img = cv2.imread('Resized/Zdj_2.jpg')
+# img = cv2.imread('Resized/Zdj_1.jpg')
 # res = img[1000:1500, 1800:2300]
 # cv2.imwrite("Wycinki/wycinek_5.jpg", res)
 # plot_photo("Contours",res,900,900)
@@ -29,11 +31,11 @@ from resources import *
 # # reshape images
 
 #     ONE
-# img = cv2.imread('Zdjecia/Ki-67 60%.jpg')
-# print(img.shape)
-# new_image = cv2.resize(img, (4000, 5333), cv2.INTER_AREA)
-# plot_photo('dawd', new_image)
-# cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Wycinki/resized_Wycinek_4_59nieb_77czar.jpg", new_image)
+img = cv2.imread('Zdjecia/Ziarniszczak jajnika, Ki-67 ok. 2%.jpg')
+print(img.shape)
+new_image = cv2.resize(img, (3500, 4666), cv2.INTER_AREA)
+plot_photo('dawd', new_image)
+cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Wycinki/resized_Wycinek_6.jpg", new_image)
 
 
 #     ALL
@@ -63,20 +65,23 @@ from resources import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-img1 = cv2.imread('Cells/cell112.jpg')
-IMG = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
-IMG2 = cv2.cvtColor(IMG, cv2.COLOR_BGRA2GRAY)
-IMG2 = Convolution2D(IMG2, edgeDetection, mode="same")
-print(type(IMG2), IMG2.shape)
+# img1 = cv2.imread('Cells/cell112.jpg')
+# IMG = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
+# IMG2 = cv2.cvtColor(IMG, cv2.COLOR_BGRA2GRAY)
+# IMG2 = Convolution2D(IMG2, edgeDetection, mode="same")
+# print(type(IMG2), IMG2.shape)
+#
+# # def setBlackToWhite(img):
+# #     for line in range(img.shape[0]):
+# #         for pixel in range(img.shape[1]):
+# #             if img[line][pixel] <= 8:
+# #                 print(pixel)
+# #                 img[line][pixel] = 255
+# #     return img
+#
+# plot_photo('dawd', IMG2)
+dir = "Wycinki/"
 
-# def setBlackToWhite(img):
-#     for line in range(img.shape[0]):
-#         for pixel in range(img.shape[1]):
-#             if img[line][pixel] <= 8:
-#                 print(pixel)
-#                 img[line][pixel] = 255
-#     return img
+list_of_images = [dir + img for img in os.listdir('./{}'.format(dir)) if img.__contains__('res')]
 
-plot_photo('dawd', IMG2)
-
-
+print(list_of_images)

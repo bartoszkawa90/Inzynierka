@@ -8,7 +8,7 @@ if __name__ == '__main__':
     start_time = time.time()
 
 # Reading an image in default mode
-    img = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
+    img = cv2.imread('Wycinki/resized_wycinek_3.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 # Finding edges
@@ -29,12 +29,12 @@ if __name__ == '__main__':
 
     # Extracting and Cleaning  Cells
     conts = contoursProcessing(contours, lowBoundry=35, highBoundry=1000)  ##### DOTĄD JEST NA PEWNO OKKK
-    FinalContours = filterWhiteCells(conts, img)
+    FinalContours = filterWhiteAndBlackCells(conts, img)
     # cells = [extract_cell(c, img) for c in contours]
 
 ####------------------------------------------------------------------------------------------------------------
 # Draw Contours
-    cv2.drawContours(img, FinalContours, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
 
 # DISPLAY
-    plot_photo("Contours", edged, 900, 900)
+    plot_photo("Contours", img, 900, 900)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

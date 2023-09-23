@@ -82,7 +82,7 @@ def contoursProcessing(contours, lowBoundry=15, highBoundry=500, RETURN_ADDITION
     return conts
 
 
-def filterWhiteCells(contours, img, backgroundBoundry=10):
+def filterWhiteAndBlackCells(contours, img, mode=FILTER_WHITE, whiteCellsBoundry=10, blackCellsBoundry=10):
     '''
     :param contours: contours to filter
     :param img: image on which the contours will be applied
@@ -96,16 +96,25 @@ def filterWhiteCells(contours, img, backgroundBoundry=10):
     upper_boundry = np.array([220, 175, 175], dtype="uint8")
 
     for con in contours:
-        ## extract cell from image
-        x_min, y_min, x_max, y_max = cv2.boundingRect(con)
-        cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+        if mode == FILTER_WHITE:
+            ## extract cell from image
+            x_min, y_min, x_max, y_max = cv2.boundingRect(con)
+            cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
-        ## create mask for white cells filtering
-        mask = cv2.inRange(cell, lower_boundry, upper_boundry)
-        detected_output = cv2.bitwise_and(cell, cell, mask = mask)
+            ## create mask for white cells filtering
+            mask = cv2.inRange(cell, lower_boundry, upper_boundry)
+            detected_output = cv2.bitwise_and(cell, cell, mask = mask)
 
-        if np.mean(detected_output) > backgroundBoundry:
+            if np.mean(detected_output) > whiteCellsBoundry:
+                conts.append(con)
+        if mode == FILTER_BLACK:
+            ## extract cell from image
             conts.append(con)
+            x_min, y_min, x_max, y_max = cv2.boundingRect(con)
+            cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+
+            if np.mean(cell) < blackCellsBoundry:
+                conts = removeContour(conts, con)
 
 
     return tuple(conts)
@@ -472,7 +481,7 @@ def imageThreshold(grayImage, localNeighborhood=61):
 
 def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, conSizeLow=None,
-         conSizeHigh=None, whiteCellBoundry=None):
+         conSizeHigh=None, whiteCellBoundry=None, blackCellBoundry=10, whiteBlackMode=FILTER_WHITE):
     '''
     '''
     # Reading an image in default mode
@@ -495,7 +504,7 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
                   highBoundry=CannyHighBoundry, useGaussFilter=CannyUseGauss, performNMS=CannyPerformNMS,
                   sharpenImage=CannySharpen)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    print(len(contours))
+    print("Number of contours at first {}".format(len(contours)))
 
     # Filtering cells by size
     if conSizeLow != None and conSizeHigh != None: conts = contoursProcessing(contours, lowBoundry=conSizeLow, highBoundry=conSizeHigh)
@@ -508,9 +517,10 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
 
     # filtering cells by color and removing duplicats
     if whiteCellBoundry == None:
-        goodConts = filterWhiteCells(conts, img)
+        goodConts = filterWhiteAndBlackCells(contours=conts, img=img, mode=whiteBlackMode, blackCellsBoundry=blackCellBoundry)
     else:
-        goodConts = filterWhiteCells(conts, img, whiteCellBoundry)
+        goodConts = filterWhiteAndBlackCells(contours=conts, img=img, mode=whiteBlackMode,
+                                             whiteCellsBoundry=whiteCellBoundry, blackCellsBoundry=blackCellBoundry)
     finalConts = filterRepetitions(goodConts, img)
     cells = [extractCell(c, img) for c in finalConts]
 

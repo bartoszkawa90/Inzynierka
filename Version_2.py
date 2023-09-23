@@ -21,6 +21,7 @@ if __name__ == '__main__':
 
     # Reading an image in default mode
     # img = cv2.imread('Zdjecia/Ziarniszczak jajnika, Ki-67 ok. 2%.jpg')
+    # img = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
     img = cv2.imread('Wycinki/resized_wycinek_3.jpg')
     print("Image ", img.shape)
     # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
@@ -34,20 +35,20 @@ if __name__ == '__main__':
     blob = imageThreshold(gray)
 
     edged = Canny(blob, gaussSize=3, gaussSigma=1, lowBoundry=0.1, highBoundry=10.0,
-                  useGaussFilter=1, performNMS=True, sharpenImage=False)
+                  useGaussFilter=True, performNMS=True, sharpenImage=True)
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     print(len(contours))
 
     # Extracting and Cleaning  Cells
-    conts = contoursProcessing(contours, lowBoundry=15, highBoundry=500)
-    goodCells = filterWhiteCells(conts, img, 6)  # final contours are all black and blue cells
+    conts = contoursProcessing(contours)
+    goodCells = filterWhiteAndBlackCells(conts, img, mode=FILTER_BLACK, whiteCellsBoundry=23)#, mode=FILTER_WHITE, blackCellsBoundry=10)  # final contours are all black and blue cells
     finalCells = filterRepetitions(goodCells, img)
     print(len(goodCells), len(finalCells))
     cells = [extractCell(c, img) for c in finalCells]
 
     ####------------------------------------------------------------------------------------------------------------
     # Draw Contours
-    cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
+    cv2.drawContours(img, finalCells, -1, (0, 255, 0), 3)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
     # cv2.imwrite("Part.jpg", img)
     # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
