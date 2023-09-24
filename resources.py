@@ -7,6 +7,7 @@ from copy import deepcopy
 from copy import deepcopy
 from pprint import pprint
 from sys import exit
+import random
 
 
 ## FUNCTIONS / KEYWORDS

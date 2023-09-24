@@ -1,4 +1,5 @@
 import os
+import random
 
 import numpy.lib.stride_tricks
 
@@ -31,23 +32,23 @@ from resources import *
 # # reshape images
 
 #     ONE
-img = cv2.imread('Zdjecia/Ziarniszczak jajnika, Ki-67 ok. 2%.jpg')
-print(img.shape)
-new_image = cv2.resize(img, (3500, 4666), cv2.INTER_AREA)
-plot_photo('dawd', new_image)
-cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Wycinki/resized_Wycinek_6.jpg", new_image)
+# img = cv2.imread('Zdjecia/Ziarniszczak jajnika, Ki-67 ok. 2%.jpg')
+# print(img.shape)
+# new_image = cv2.resize(img, (3500, 4666), cv2.INTER_AREA)
+# plot_photo('dawd', new_image)
+# cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Wycinki/resized_Wycinek_6.jpg", new_image)
 
 
 #     ALL
-# folder = "/home/bartosz/Desktop/astudia/inzynierka/Zdjecia/"
+# folder = "/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Zdjecia/"
 # iter = 1
 # for img in os.listdir(folder):
 #     image = cv2.imread(folder + img)
 #     # print(image.__len__())
 #     #
 #     # print(img)
-#     new_image = cv2.resize(image, (2500,2500), cv2.INTER_AREA)
-#     cv2.imwrite("/home/bartosz/Desktop/astudia/inzynierka/Resized/Zdj_" + str(iter) + ".jpg", new_image)
+#     new_image = cv2.resize(image, (3000,4000), cv2.INTER_AREA)
+#     cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Resized/Zdj_" + str(iter) + ".jpg", new_image)
 #     iter += 1
 
 
@@ -80,8 +81,13 @@ cv2.imwrite("/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/Wycinki/resized_
 # #     return img
 #
 # plot_photo('dawd', IMG2)
-dir = "Wycinki/"
+# dir = "Wycinki/"
+#
+# list_of_images = [dir + img for img in os.listdir('./{}'.format(dir)) if img.__contains__('res')]
+#
+# print(list_of_images)
 
-list_of_images = [dir + img for img in os.listdir('./{}'.format(dir)) if img.__contains__('res')]
+for _ in range(2000):
+    print(random.randint(0, 255))
 
-print(list_of_images)
+
