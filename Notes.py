@@ -87,7 +87,8 @@ from resources import *
 #
 # print(list_of_images)
 
-for _ in range(2000):
-    print(random.randint(0, 255))
+nearest = [[]] * 2
+
+print(nearest)
 
 

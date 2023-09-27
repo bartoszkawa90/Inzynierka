@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="23.09 trzeba sie zabrac za klasyfikacje">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="24.09 trzeba sie zabrac za klasyfikacje">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resized/Zdj_9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resized/Zdj_9.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,26 +45,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.Notes">
+}</component>
+  <component name="RunManager" selected="Python.Version_3">
     <configuration name="Notes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,6 +88,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -99,6 +110,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -209,8 +223,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.Version_3" />
+        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.Version_2" />
         <item itemvalue="Python.Version_1" />
         <item itemvalue="Python.resources" />
@@ -295,13 +309,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00007" summary="28.04 v3">
-      <created>1682701061667</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1682701061667</updated>
     </task>
     <task id="LOCAL-00008" summary="28.04 v3">
       <created>1682701154170</created>
@@ -639,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695497695222</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="24.09 trzeba sie zabrac za klasyfikacje">
+      <created>1695566858261</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1695566858261</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +672,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Działa juz raczej generowanie filtru gaussa" />
     <MESSAGE value="23.08 konczyc juz bedzie trzeba" />
     <MESSAGE value="24.08 jeszcze threshold" />
     <MESSAGE value="24.08 Canny w sumie działa tylko jest strasznie wolne" />
@@ -683,10 +696,33 @@
     <MESSAGE value="moze nie watershed bo to raczej nic nie dało ale to co tam uzyli mozna uzyc i działa tylko DOBRAC WARTOSCI DO MOICH FUNKCJI" />
     <MESSAGE value="Zająć sie trzeba już tą klasyfikacją i zastanowic sie nad klasą // ZROBIC TABELE" />
     <MESSAGE value="23.09 trzeba sie zabrac za klasyfikacje" />
-    <option name="LAST_COMMIT_MESSAGE" value="23.09 trzeba sie zabrac za klasyfikacje" />
+    <MESSAGE value="24.09 trzeba sie zabrac za klasyfikacje" />
+    <option name="LAST_COMMIT_MESSAGE" value="24.09 trzeba sie zabrac za klasyfikacje" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Version_3.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Version_3.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Version_3.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Version_3.py</url>
+          <line>61</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
