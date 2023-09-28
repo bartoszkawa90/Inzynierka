@@ -525,6 +525,7 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
     finalConts = filterRepetitions(goodConts, img)
     cells = [extractCell(c, img) for c in finalConts]
 
+    print("")
     return cells, finalConts
 
 ## test LoG / Canny  -----------------------------------------------------------

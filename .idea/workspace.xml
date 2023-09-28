@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="kmeans do dokonczenia bo cos słabo działa" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="kmeans do dokonczenia bo cos słabo działa">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -296,13 +300,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00009" summary="28.04 v3">
-      <created>1682701228638</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1682701228638</updated>
     </task>
     <task id="LOCAL-00010" summary="7.05">
       <created>1683419868392</created>
@@ -640,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695824690413</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="kmeans do dokonczenia bo cos słabo działa">
+      <created>1695840753154</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1695840753154</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,22 +695,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>58</line>
+          <line>75</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>59</line>
+          <line>76</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>60</line>
+          <line>77</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>61</line>
+          <line>78</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

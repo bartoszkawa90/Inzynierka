@@ -25,8 +25,7 @@ def kmeansClassify(cells, iterations=3, numOfCenters=2):
     '''
     # first central points
     centers = [np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]) for _ in range(numOfCenters)]
-    # C1 = np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)])
-    # C2 = np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)])
+    print('first centers ', centers)
     nearest = [[]] * numOfCenters
 
     # for cell in cells:
@@ -38,15 +37,33 @@ def kmeansClassify(cells, iterations=3, numOfCenters=2):
                 distances = [distance(center, pixel) for center in centers]
                 # print(distances)
                 closest_index = distances.index(np.min(distances))
+                print(closest_index)
                 nearest[closest_index].append(pixel)
                 # print(nearest)
 
+        print('  nearest ', nearest.__len__(), nearest[0].__len__(), nearest[1].__len__())
         # update centers
-        for center, near in zip(centers, nearest):
-            print(f'center {center} , near {near.__len__()}')
-            center = np.mean(near)
+        new_centers = []
+        for near in nearest:
+            r, g, b = split(near)
+            new_centers.append(np.array([np.mean(r), np.mean(g), np.mean(b)]))
+            print('new center ', new_centers)
+        centers = deepcopy(new_centers)
+        new_centers.clear()
         for near in nearest:
             near.clear()
+        print(f'centers {centers} new_centers {new_centers}  ', centers is new_centers)
+
+
+        # for center, near in zip(centers, nearest):
+        #     print(f'center {center} , near {near.__len__()}')
+        #     new_centers.append(np.mean(near))
+        # centers = new_centers
+        # # clear
+        # new_centers.clear()
+        # print(centers)
+        # for near in nearest:
+        #     near.clear()
 
     print(f'mean {np.mean(cell)} , c1 {centers[0]}  , c2 {centers[1]}')
     print(f' c2 mean {np.mean(centers[0])}  c2 mean {np.mean(centers[1])}')
