@@ -21,8 +21,8 @@ if __name__ == '__main__':
 
     # Reading an image in default mode
     # img = cv2.imread('Zdjecia/Ziarniszczak jajnika, Ki-67 ok. 2%.jpg')
-    # img = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
-    img = cv2.imread('Wycinki/resized_wycinek_3.jpg')
+    img = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
+    # img = cv2.imread('Wycinki/resized_wycinek_3.jpg')
     print("Image ", img.shape)
     # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
         # and works better for 3500/4666 but loooonggg
