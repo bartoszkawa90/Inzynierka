@@ -87,8 +87,8 @@ from resources import *
 #
 # print(list_of_images)
 
-nearest = [[]] * 2
+dect = {1:2}
 
-print(nearest)
+print(list(dect.values())[0])
 
 

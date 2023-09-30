@@ -4,7 +4,6 @@ import time
 import cv2
 # import skimage
 from copy import deepcopy
-from copy import deepcopy
 from pprint import pprint
 from sys import exit
 import random
@@ -32,7 +31,8 @@ def printArr(*args):
     arg :  array which max min and shape will be printed
     '''
     for arr in args:
-        print(" Array name ::   {}\n Array shape : {} \n {} \n Max : {} \n Min : {} \n ".format('ada', arr.shape, arr, arr.max(), arr.min()))
+        print(" Array name ::   {}\n Array shape : {} \n {} \n Max : {} \n Min : {} \n ".format('ada', arr.shape, arr,
+                                                                                                arr.max(), arr.min()))
 
 
 # def setBlackToWhite(img):
@@ -55,7 +55,6 @@ def contoursProcessing(contours, lowBoundry=15, highBoundry=500, RETURN_ADDITION
             // returns smallest and largest contour and their IDs
     :return: tuple of selected contours with correct size
     '''
-
     # Filter contours according to size of contours
     conts = tuple([con for con in contours if con.shape[0] > lowBoundry and con.shape[0] < highBoundry])
 
@@ -202,27 +201,28 @@ def filterRepetitions(contours, img):
     return tuple(contours)
 
 
-def extract_cells(contours, img):
-    blue = []
-    black = []
-    for contour in contours:
-        x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
-        cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-
-        if np.mean(cell) > 162:
-            blue.append(contour)
-        else:
-            black.append(contour)
-
-    return tuple(blue), tuple(black)
+# def extract_cells(contours, img):
+#     blue = []
+#     black = []
+#     for contour in contours:
+#         x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
+#         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+#
+#         if np.mean(cell) > 162:
+#             blue.append(contour)
+#         else:
+#             black.append(contour)
+#
+#     return tuple(blue), tuple(black)
 
 
 # Version for colors
 def extractCell(contour=None, img=None):
     x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
+    cell_dict = {[x_min, x_max, y_min, y_max]: cell}
 
-    return cell
+    return cell_dict
 
 
 # def background_procentage(cell):
@@ -523,10 +523,26 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img, mode=whiteBlackMode,
                                              whiteCellsBoundry=whiteCellBoundry, blackCellsBoundry=blackCellBoundry)
     finalConts = filterRepetitions(goodConts, img)
-    cells = [extractCell(c, img) for c in finalConts]
+    cells_dicts = [extractCell(c, img) for c in finalConts]
+    coordinates = list(cells_dicts.keys())
+    cells = list(cells_dicts.values())
+
 
     print("")
-    return cells, finalConts
+    return cells, coordinates, finalConts
+
+def save_cells(cells, coordinates):
+    # SAVE Cells in ./Cells
+    iter = 0
+    for cell, coordiante in zip(cells, coordinates):
+        print(iter, " ", cell.shape)
+        cv2.imwrite(f'Cells/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]}',
+                    cell)
+        iter += 1
+
+
+
+
 
 ## test LoG / Canny  -----------------------------------------------------------
 
@@ -585,18 +601,6 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
 
 
 # print(scipy.ndimage.filters.convolve(MALAexample, gauss))   # to samo co wyzej
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

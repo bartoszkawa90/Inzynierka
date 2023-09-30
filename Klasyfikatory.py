@@ -1,7 +1,23 @@
+# imports
+
+# NEW
+import os
+import random
+import numpy as np
+from matplotlib import pyplot as plt
+from mpl_toolkits import mplot3d
+import sklearn
+
+# STANDARD
+from resources import *
+from Klasyfikatory import *
+
+
 # additions
+
+
 def distance(x1, x2):
     return np.sqrt(np.sum((x1 - x2)**2))
-
 
 def split(cell=None):
     red = [rgb[0] for rgb in cell]
@@ -10,8 +26,10 @@ def split(cell=None):
 
     return red, green, blue
 
-## --------------------------------------------------------------------------
 
+## ----------------------------------------------------------------------------------------------------------
+
+# moja werscja Kmeans // do dorobienia ewentualnie
 def kmeansClassify(cells, iterations=3, numOfCenters=2):
     '''
     '''

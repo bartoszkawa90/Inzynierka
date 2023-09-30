@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="28.09 kmeans juz prawie">
-      <change afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="testowanie klasyfikacji">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Version_2">
+  <component name="RunManager" selected="Python.Notes">
     <configuration name="Notes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,9 +213,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Version_2" />
-        <item itemvalue="Python.Version_3" />
         <item itemvalue="Python.Notes" />
+        <item itemvalue="Python.Version_3" />
+        <item itemvalue="Python.Version_2" />
         <item itemvalue="Python.Version_1" />
         <item itemvalue="Python.resources" />
       </list>
@@ -298,13 +299,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00011" summary="7.05">
-      <created>1683420003053</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1683420003053</updated>
     </task>
     <task id="LOCAL-00012" summary="15.05 v2">
       <created>1684168834312</created>
@@ -642,7 +636,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695905425114</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="testowanie klasyfikacji">
+      <created>1695916150652</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1695916150652</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,7 +662,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="24.08 Canny w sumie działa tylko jest strasznie wolne" />
     <MESSAGE value="29.08 Canny troche lepsze" />
     <MESSAGE value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
     <MESSAGE value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
@@ -686,32 +686,11 @@
     <MESSAGE value="24.09 trzeba sie zabrac za klasyfikacje" />
     <MESSAGE value="kmeans do dokonczenia bo cos słabo działa" />
     <MESSAGE value="28.09 kmeans juz prawie" />
-    <option name="LAST_COMMIT_MESSAGE" value="28.09 kmeans juz prawie" />
+    <MESSAGE value="testowanie klasyfikacji" />
+    <option name="LAST_COMMIT_MESSAGE" value="testowanie klasyfikacji" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>68</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>69</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Version_3.py</url>
-          <line>71</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
