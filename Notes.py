@@ -87,8 +87,10 @@ from resources import *
 #
 # print(list_of_images)
 
-dect = {1:2}
-
-print(list(dect.values())[0])
-
+image = 'Cells/black/xmin_16 xmax_36 ymin_326 ymax_32 cell156#2.jpg'
+cell = cv2.imread(image)
+coordiantes = [int(cor[0]) for cor in [ele.split(' ') for ele in image.split('_')][1:5]]
+print(coordiantes)
+# a = [b.split(' ') for b in image.split('_')]
+# print(a)
 

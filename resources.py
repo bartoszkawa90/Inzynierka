@@ -8,6 +8,23 @@ from pprint import pprint
 from sys import exit
 import random
 
+## CLASSES
+
+class Set():
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+
+    def get_firsts(self):
+        return self.first
+
+    def get_seconds(self):
+        return self.second
+
+    def print(self):
+        print(f'first {self.first} second {self.second} \n')
+
+
 
 ## FUNCTIONS / KEYWORDS
 def plot_photo(title='None', image=None, height=1500, widht=1500):
@@ -82,7 +99,7 @@ def contoursProcessing(contours, lowBoundry=15, highBoundry=500, RETURN_ADDITION
     return conts
 
 
-def filterWhiteAndBlackCells(contours, img, mode=FILTER_WHITE, whiteCellsBoundry=10, blackCellsBoundry=10):
+def filterWhiteAndBlackCells(contours, img, mode=FILTER_WHITE, whiteCellsBoundry=11, blackCellsBoundry=11):
     '''
     :param contours: contours to filter
     :param img: image on which the contours will be applied
@@ -170,8 +187,8 @@ def filterRepetitions(contours, img):
     # filter cells repetitions
     for con in contours:
         for con2 in contours:
-            cell1 = extractCell(con, img)
-            cell2 = extractCell(con2, img)
+            cell1 = extractCell(con, img).get_seconds()
+            cell2 = extractCell(con2, img).get_seconds()
             if cell1.shape == cell2.shape:
                 if (cell1 == cell2).all():
                     count += 1
@@ -184,8 +201,8 @@ def filterRepetitions(contours, img):
     # filter images containing more than one cell
     for con in contours:
         for con2 in contours:
-            cell1 = extractCell(con, img)
-            cell2 = extractCell(con2, img)
+            cell1 = extractCell(con, img).get_seconds()
+            cell2 = extractCell(con2, img).get_seconds()
 
             if cell1.shape[0] > cell2.shape[0] \
                     and cell1.shape[1] >= cell2.shape[1] \
@@ -220,9 +237,10 @@ def filterRepetitions(contours, img):
 def extractCell(contour=None, img=None):
     x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-    cell_dict = {[x_min, x_max, y_min, y_max]: cell}
+    # cell_dict = {[x_min, x_max, y_min, y_max]: cell}
+    cell_set = Set([x_min, x_max, y_min, y_max], cell)
 
-    return cell_dict
+    return cell_set
 
 
 # def background_procentage(cell):
@@ -482,11 +500,15 @@ def imageThreshold(grayImage, localNeighborhood=61):
 
 def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, conSizeLow=None,
-         conSizeHigh=None, whiteCellBoundry=None, blackCellBoundry=10, whiteBlackMode=FILTER_WHITE):
+         conSizeHigh=None, whiteCellBoundry=None, blackCellBoundry=10, whiteBlackMode=FILTER_WHITE,
+         returnOriginalContours=False):
     '''
     '''
     # Reading an image in default mode
-    img = cv2.imread(img_path)
+    if isinstance(img_path, str):
+        img = cv2.imread(img_path)
+    else:
+        img = img_path
     print("Image ", img.shape)
     # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
         # and works better for 3500/4666 but loooonggg
@@ -507,6 +529,7 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     print("Number of contours at first {}".format(len(contours)))
 
+
     # Filtering cells by size
     if conSizeLow != None and conSizeHigh != None: conts = contoursProcessing(contours, lowBoundry=conSizeLow, highBoundry=conSizeHigh)
     elif conSizeLow == None and conSizeHigh != None: conts = contoursProcessing(contours, highBoundry=conSizeHigh)
@@ -523,23 +546,30 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img, mode=whiteBlackMode,
                                              whiteCellsBoundry=whiteCellBoundry, blackCellsBoundry=blackCellBoundry)
     finalConts = filterRepetitions(goodConts, img)
-    cells_dicts = [extractCell(c, img) for c in finalConts]
-    coordinates = list(cells_dicts.keys())
-    cells = list(cells_dicts.values())
 
+    if returnOriginalContours:
+        cells = [extractCell(c, img) for c in contours]
+        coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
+        cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
+        return cells, coordinates, contours
+    else:
+        cells = [extractCell(c, img) for c in finalConts]
+        coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
+        cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
+        return cells, coordinates, finalConts
 
-    print("")
-    return cells, coordinates, finalConts
-
-def save_cells(cells, coordinates):
+def save_cells(cells, coordinates, dir='Cells', name_addition=''):
     # SAVE Cells in ./Cells
     iter = 0
     for cell, coordiante in zip(cells, coordinates):
         print(iter, " ", cell.shape)
-        cv2.imwrite(f'Cells/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]}',
+        cv2.imwrite(f'{dir}/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]} cell{iter}{name_addition}.jpg',
                     cell)
         iter += 1
 
+
+def get_coordinates_from_filename(path):
+    return [int(cor[0]) for cor in [ele.split(' ') for ele in image.split('_')][1:5]]
 
 
 
