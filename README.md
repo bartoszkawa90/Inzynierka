@@ -3,12 +3,10 @@
 
 
 ## Aktualnie
-- ZAJĄĆ SIĘ KLASYFIKACJĄ WYBRANYCH KOMÓREK
-- OGARNĄĆ COS Z MACHINE LEARNING
+- ZAJĄĆ SIĘ KLASYFIKACJĄ WYBRANYCH KOMÓREK  // kNN kmeans i potem moze CNN
+- Segmentacje albo z artykułu albo dorobić moje Canny
 - CO ZROBIC Z KOMÓRKAMI PRZY KRAWĘDZIACH
 - POMYSŁ!!! - A co gdyby połautomatycznie zaznaczac które komótrki są na pewno zle i je usówac
-- dorobić pierwszą Version_1 / Version_2 ( różnica w postaci funkcji własnych lub z OpenCV )
-- Rozwinąć wersję pół-automatyczną ?
 
 ## UWAGI
 - ZMIANA ROZDZIELCZOSCI JEDNAK KLUCZOWA !!! 
