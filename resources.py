@@ -7,6 +7,8 @@ from copy import deepcopy
 from pprint import pprint
 from sys import exit
 import random
+import sklearn
+
 
 ## CLASSES
 
@@ -512,8 +514,8 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
     print("Image ", img.shape)
     # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
         # and works better for 3500/4666 but loooonggg
-    if img.shape[0] > 3000 or img.shape[1] > 4000:
-        img = cv2.resize(img, (3000, 4000), cv2.INTER_AREA)
+    # if img.shape[0] > 3000 or img.shape[1] > 4000:
+    #     img = cv2.resize(img, (3000, 4000), cv2.INTER_AREA)
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
     ## apply adaptive threshold

@@ -93,4 +93,14 @@ coordiantes = [int(cor[0]) for cor in [ele.split(' ') for ele in image.split('_'
 print(coordiantes)
 # a = [b.split(' ') for b in image.split('_')]
 # print(a)
+img = cv2.imread('Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg')
 
+def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None):
+    if ymax == None: ymax = img.shape[0]
+    if xmax == None: xmax = img.shape[1]
+    new = img[ymin:ymax][xmin:ymax]
+    return new
+
+im = preprocess(img, xmin=1000)
+print(im.shape)
+plot_photo('dawd', im)

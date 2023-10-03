@@ -1,7 +1,11 @@
 ### Final Version
 '''
  Najwazniejsze raczej jest zmienianie filterWhiteCells ( FILTER_WHITE I  FILTER_BLACK ) bo to duzo zmienia
- Sharpen tez jest istotne bo pozwala rzeczywiscie czasem sporo dac ale tez zepsuć
+ Sharpen tez jest istotne bo pozwala rzeczywiscie czasem sporo dac ale tez zepsuć, plus thresholdRange
+ Generalnie najważniejsze do zmian bo może dużo poprawić:
+   -  thresholdRange  // dobrze dla wiekszych komorek dac 61/63 a dla mniejszych 29/30
+   -  CannySharpen    // trzeba po prostu sobie zobaczyć kiedy jest dobrze to dać
+   -  whiteBlackMode( FILTER_BLACK/FILTER_WHITE )   // FILTER_BLACK jak są rozmazane jasne komorki i je odrzuca
 '''
 
 # NEW
@@ -29,14 +33,16 @@ if __name__ == '__main__':
     print(f'Images in {dir} directory : \n {list_of_images}')
 
     # img = cv2.imread('Zdjecia/wycinek_5.jpg')
-    img_path = list_of_images[2]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
+    img_path = 'Wycinki/wycinek_5.jpg'#list_of_images[4]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
     img = cv2.imread(img_path)
 
+    # img = preprocess(img)
 
-## ALGORITHM
-    cells, coordinates, conts = Main(img_path, thresholdRange=61, CannyGaussSize=5, CannyGaussSigma=1, CannyLowBoundry=0.1,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, conSizeLow=None,
-         conSizeHigh=None, whiteCellBoundry=11, whiteBlackMode=FILTER_BLACK, returnOriginalContours=False)
+
+## ALGORITHM£
+    cells, coordinates, conts = Main(img_path, thresholdRange=34, CannyGaussSize=5, CannyGaussSigma=1, CannyLowBoundry=0.1,
+         CannyHighBoundry=10.0, CannyUseGauss=False, CannyPerformNMS=True, CannySharpen=False, conSizeLow=15,
+         conSizeHigh=None, whiteCellBoundry=15, whiteBlackMode=FILTER_WHITE, returnOriginalContours=False)
 
 
     ### MOZNA ROZWAZYC REKURENCJE // CZY MOZE RACZEJ SZUKANIE KONTURÓW NA WYCIETYCH KOMORKACH ALE TO RACZEJ NIE DA RADY
@@ -77,16 +83,10 @@ if __name__ == '__main__':
     # plt.show()
 
 
-
+    # DISPLAY
     # Draw Contours
     cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
-    # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
-    # cv2.imwrite("Part.jpg", img)
-    # cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
-    # cv2.imwrite("Full.jpg", img)
-
-
-    # DISPLAY
+    # śDisplay
     plot_photo(img_path, img)
 
     print("Finish")

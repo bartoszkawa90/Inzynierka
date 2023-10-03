@@ -6,7 +6,6 @@ import random
 import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d
-import sklearn
 
 # STANDARD
 from resources import *
@@ -28,6 +27,15 @@ def split(cell=None):
 
 
 ## ----------------------------------------------------------------------------------------------------------
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+
+def kNN():
+    pass
+
+
 
 # moja werscja Kmeans // do dorobienia ewentualnie
 def kmeansClassify(cells, iterations=3, numOfCenters=2):

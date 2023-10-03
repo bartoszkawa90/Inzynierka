@@ -4,150 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="testowanie klasyfikacji itp 30.09">
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_102 xmax_25 ymin_556 ymax_9 cell64.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1023 xmax_30 ymin_244 ymax_22 cell126.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1040 xmax_27 ymin_296 ymax_42 cell93.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1041 xmax_55 ymin_95 ymax_114 cell132.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1051 xmax_27 ymin_470 ymax_24 cell5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1057 xmax_50 ymin_24 ymax_57 cell138.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1064 xmax_49 ymin_352 ymax_66 cell91.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1080 xmax_46 ymin_265 ymax_68 cell99.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1107 xmax_30 ymin_130 ymax_46 cell119.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1124 xmax_37 ymin_183 ymax_62 cell113.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1131 xmax_19 ymin_255 ymax_19 cell112.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_114 xmax_26 ymin_876 ymax_20 cell1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_115 xmax_44 ymin_602 ymax_57 cell44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_115 xmax_68 ymin_311 ymax_58 cell102.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_1174 xmax_25 ymin_4 ymax_44 cell0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_121 xmax_81 ymin_175 ymax_81 cell120.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_123 xmax_47 ymin_129 ymax_35 cell121.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_130 xmax_48 ymin_672 ymax_100 cell43.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_133 xmax_25 ymin_58 ymax_39 cell135.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_138 xmax_17 ymin_249 ymax_46 cell104.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_145 xmax_100 ymin_416 ymax_82 cell79.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_168 xmax_43 ymin_789 ymax_36 cell17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_19 xmax_40 ymin_594 ymax_57 cell45.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_190 xmax_42 ymin_606 ymax_23 cell40.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_190 xmax_69 ymin_638 ymax_60 cell39.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_192 xmax_40 ymin_729 ymax_29 cell26.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_201 xmax_15 ymin_533 ymax_16 cell66.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_229 xmax_38 ymin_760 ymax_104 cell24.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_243 xmax_39 ymin_576 ymax_31 cell51.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_244 xmax_79 ymin_126 ymax_80 cell124.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_274 xmax_26 ymin_642 ymax_35 cell35.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_275 xmax_23 ymin_432 ymax_21 cell77.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_278 xmax_26 ymin_712 ymax_35 cell29.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_279 xmax_51 ymin_71 ymax_47 cell134.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_280 xmax_35 ymin_777 ymax_53 cell4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_286 xmax_19 ymin_10 ymax_23 cell12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_305 xmax_68 ymin_360 ymax_141 cell89.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_31 xmax_26 ymin_87 ymax_34 cell133.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_314 xmax_38 ymin_518 ymax_30 cell88.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_320 xmax_43 ymin_141 ymax_37 cell123.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_326 xmax_33 ymin_778 ymax_79 cell20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_331 xmax_33 ymin_201 ymax_42 cell108.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_331 xmax_55 ymin_12 ymax_77 cell11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_356 xmax_47 ymin_609 ymax_56 cell38.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_367 xmax_68 ymin_775 ymax_58 cell23.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_380 xmax_44 ymin_488 ymax_78 cell71.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_383 xmax_36 ymin_204 ymax_46 cell106.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_39 xmax_63 ymin_735 ymax_146 cell25.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_397 xmax_43 ymin_585 ymax_42 cell50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_398 xmax_34 ymin_725 ymax_45 cell27.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_401 xmax_46 ymin_389 ymax_91 cell82.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_406 xmax_68 ymin_102 ymax_120 cell131.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_41 xmax_22 ymin_360 ymax_14 cell7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_41 xmax_28 ymin_549 ymax_28 cell57.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_418 xmax_89 ymin_24 ymax_63 cell139.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_43 xmax_85 ymin_189 ymax_85 cell111.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_436 xmax_20 ymin_705 ymax_27 cell33.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_440 xmax_46 ymin_531 ymax_43 cell69.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_443 xmax_60 ymin_650 ymax_113 cell34.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_455 xmax_36 ymin_270 ymax_47 cell98.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_468 xmax_36 ymin_412 ymax_56 cell80.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_468 xmax_79 ymin_607 ymax_63 cell53.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_475 xmax_16 ymin_496 ymax_14 cell68.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_475 xmax_47 ymin_784 ymax_45 cell22.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_48 xmax_30 ymin_472 ymax_49 cell75.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_484 xmax_18 ymin_120 ymax_25 cell125.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_486 xmax_31 ymin_564 ymax_35 cell55.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_492 xmax_71 ymin_195 ymax_74 cell110.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_504 xmax_41 ymin_468 ymax_41 cell76.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_508 xmax_30 ymin_530 ymax_27 cell60.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_509 xmax_60 ymin_291 ymax_57 cell97.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_51 xmax_27 ymin_53 ymax_32 cell8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_510 xmax_56 ymin_698 ymax_47 cell30.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_513 xmax_29 ymin_833 ymax_28 cell21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_516 xmax_84 ymin_104 ymax_114 cell130.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_53 xmax_88 ymin_389 ymax_71 cell83.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_538 xmax_35 ymin_587 ymax_33 cell54.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_543 xmax_51 ymin_779 ymax_48 cell19.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_545 xmax_45 ymin_511 ymax_49 cell67.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_55 xmax_64 ymin_285 ymax_53 cell103.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_586 xmax_68 ymin_836 ymax_55 cell3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_587 xmax_80 ymin_591 ymax_184 cell49.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_589 xmax_26 ymin_561 ymax_41 cell56.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_592 xmax_66 ymin_274 ymax_28 cell129.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_596 xmax_32 ymin_132 ymax_56 cell117.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_606 xmax_19 ymin_394 ymax_25 cell81.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_620 xmax_28 ymin_534 ymax_39 cell59.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_637 xmax_26 ymin_196 ymax_40 cell109.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_643 xmax_47 ymin_416 ymax_59 cell78.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_647 xmax_63 ymin_679 ymax_77 cell48.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_659 xmax_38 ymin_354 ymax_43 cell90.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_660 xmax_23 ymin_543 ymax_29 cell61.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_665 xmax_52 ymin_207 ymax_57 cell115.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_670 xmax_56 ymin_292 ymax_36 cell96.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_672 xmax_30 ymin_631 ymax_26 cell36.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_673 xmax_77 ymin_22 ymax_76 cell141.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_680 xmax_44 ymin_841 ymax_48 cell2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_685 xmax_45 ymin_781 ymax_38 cell18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_686 xmax_20 ymin_111 ymax_13 cell140.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_694 xmax_73 ymin_147 ymax_132 cell116.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_7 xmax_64 ymin_5 ymax_57 cell13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_703 xmax_9 ymin_718 ymax_14 cell46.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_712 xmax_57 ymin_366 ymax_68 cell87.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_714 xmax_18 ymin_700 ymax_13 cell47.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_714 xmax_27 ymin_473 ymax_27 cell74.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_720 xmax_44 ymin_624 ymax_42 cell37.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_733 xmax_49 ymin_538 ymax_66 cell58.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_74 xmax_32 ymin_612 ymax_42 cell62.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_740 xmax_15 ymin_288 ymax_13 cell114.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_744 xmax_35 ymin_817 ymax_54 cell15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_773 xmax_30 ymin_797 ymax_27 cell16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_78 xmax_81 ymin_520 ymax_44 cell65.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_783 xmax_30 ymin_262 ymax_21 cell101.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_785 xmax_64 ymin_605 ymax_47 cell42.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_791 xmax_51 ymin_297 ymax_44 cell100.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_791 xmax_56 ymin_678 ymax_109 cell31.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_799 xmax_76 ymin_202 ymax_80 cell107.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_8 xmax_31 ymin_365 ymax_42 cell6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_801 xmax_37 ymin_387 ymax_67 cell84.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_810 xmax_32 ymin_537 ymax_46 cell72.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_811 xmax_37 ymin_41 ymax_71 cell9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_816 xmax_40 ymin_799 ymax_34 cell14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_82 xmax_54 ymin_568 ymax_29 cell63.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_824 xmax_48 ymin_485 ymax_53 cell73.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_836 xmax_34 ymin_131 ymax_50 cell118.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_846 xmax_40 ymin_724 ymax_50 cell28.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_856 xmax_51 ymin_666 ymax_61 cell32.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_858 xmax_40 ymin_384 ymax_68 cell85.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_867 xmax_29 ymin_308 ymax_43 cell92.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_871 xmax_36 ymin_47 ymax_39 cell136.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_874 xmax_41 ymin_126 ymax_86 cell122.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_884 xmax_40 ymin_605 ymax_62 cell41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_893 xmax_55 ymin_380 ymax_54 cell86.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_896 xmax_45 ymin_235 ymax_41 cell105.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_903 xmax_33 ymin_489 ymax_47 cell70.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_910 xmax_49 ymin_571 ymax_57 cell52.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_92 xmax_24 ymin_47 ymax_58 cell137.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_936 xmax_28 ymin_295 ymax_38 cell95.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_962 xmax_37 ymin_313 ymax_44 cell94.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_966 xmax_53 ymin_33 ymax_83 cell10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_970 xmax_55 ymin_125 ymax_55 cell128.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cells/xmin_974 xmax_52 ymin_197 ymax_117 cell127.jpg" afterDir="false" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="1.10 zbieraznie komorek">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
@@ -203,9 +62,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -269,9 +125,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -449,13 +302,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00013" summary="15.05 v3">
-      <created>1684182715768</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1684182715768</updated>
     </task>
     <task id="LOCAL-00014" summary="Zmniejszone zdjecia, wycinki itp.">
       <created>1684236829926</created>
@@ -793,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696068930271</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="1.10 zbieraznie komorek">
+      <created>1696172594835</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1696172594835</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -812,7 +665,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="30.08 Canny raczej bez NMS bo to tylko psuje w tak słorzonym obrazie" />
     <MESSAGE value="31.08 Canny juz raczej działa tylko jeszcze kanty" />
     <MESSAGE value="1.09 adaptive threshold i dokonczyc Canny" />
     <MESSAGE value="2.09 finish threshold and Canny" />
@@ -837,7 +689,8 @@
     <MESSAGE value="28.09 kmeans juz prawie" />
     <MESSAGE value="testowanie klasyfikacji" />
     <MESSAGE value="testowanie klasyfikacji itp 30.09" />
-    <option name="LAST_COMMIT_MESSAGE" value="testowanie klasyfikacji itp 30.09" />
+    <MESSAGE value="1.10 zbieraznie komorek" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.10 zbieraznie komorek" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
