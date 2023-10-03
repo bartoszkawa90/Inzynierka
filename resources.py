@@ -54,16 +54,22 @@ def printArr(*args):
                                                                                                 arr.max(), arr.min()))
 
 
-# def setBlackToWhite(img):
-#     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-#     for line in range(img.shape[0]):
-#         for pixel in range(img.shape[1]):
-#             if gray[line][pixel] <= 120:
-#                 img[line][pixel] = (210, 186, 180)
-#     return img
+def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None, resize=True):
+    '''
+    :param xmin: ->| cuts from left side
+    :param xmax:  |<- cuts from right side
+    :param ymin:  cuts from the top   // should be 800 for central photos and ~2000 for the one situated on the bottom
+    :param ymax:  cuts from the bottom
+    '''
+    if ymax == None: ymax = img.shape[0]
+    if xmax == None: xmax = img.shape[1]
+    new = img[ymin:ymin + ymax, xmin:xmin + xmax]
+    if resize:
+        final = cv2.resize(new, (1100, 1100), cv2.INTER_AREA)
+        return final
+    return new
 
 
-# @jit(nopython=False)
 def contoursProcessing(contours, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=0):
     '''
     Function for finding smallest and largest contours and removing too small and too large contours
@@ -512,10 +518,13 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
     else:
         img = img_path
     print("Image ", img.shape)
-    # set shape for big/whole images // this works not bad and pretty quick for 3000/4000
-        # and works better for 3500/4666 but loooonggg
-    # if img.shape[0] > 3000 or img.shape[1] > 4000:
-    #     img = cv2.resize(img, (3000, 4000), cv2.INTER_AREA)
+
+    # preprocessing // cut and reshape original image
+    if img_path.split('/')[0] == 'Zdjecia':
+        img = preprocess(img, ymin=800, resize=True)
+        print("Image after preprocessing ", img.shape)
+
+    # change image to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
     ## apply adaptive threshold
@@ -553,12 +562,12 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
         cells = [extractCell(c, img) for c in contours]
         coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
         cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
-        return cells, coordinates, contours
+        return cells, coordinates, contours, img
     else:
         cells = [extractCell(c, img) for c in finalConts]
         coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
         cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
-        return cells, coordinates, finalConts
+        return cells, coordinates, finalConts, img
 
 def save_cells(cells, coordinates, dir='Cells', name_addition=''):
     # SAVE Cells in ./Cells

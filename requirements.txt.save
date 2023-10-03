@@ -2,4 +2,4 @@ numpy
 matplotlib
 opencv-python
 scipy
-Scimitar-learn
+scikit-learn

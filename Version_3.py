@@ -11,6 +11,8 @@
 # NEW
 import os
 import random
+import sys
+
 import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d
@@ -33,17 +35,17 @@ if __name__ == '__main__':
     print(f'Images in {dir} directory : \n {list_of_images}')
 
     # img = cv2.imread('Zdjecia/wycinek_5.jpg')
-    img_path = 'Wycinki/wycinek_5.jpg'#list_of_images[4]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
+    img_path = 'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[4]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
     img = cv2.imread(img_path)
-
-    # img = preprocess(img)
 
 
 ## ALGORITHM£
-    cells, coordinates, conts = Main(img_path, thresholdRange=34, CannyGaussSize=5, CannyGaussSigma=1, CannyLowBoundry=0.1,
-         CannyHighBoundry=10.0, CannyUseGauss=False, CannyPerformNMS=True, CannySharpen=False, conSizeLow=15,
-         conSizeHigh=None, whiteCellBoundry=15, whiteBlackMode=FILTER_WHITE, returnOriginalContours=False)
+    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=61, CannyGaussSize=5, CannyGaussSigma=1, CannyLowBoundry=0.1,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=True, conSizeLow=None,
+         conSizeHigh=None, whiteCellBoundry=7, whiteBlackMode=FILTER_BLACK, returnOriginalContours=True)
 
+    # conts, smallest, largest, id_min, ID_MAX = contoursProcessing(conts, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=1)
+    # print(smallest.shape, largest.shape)
 
     ### MOZNA ROZWAZYC REKURENCJE // CZY MOZE RACZEJ SZUKANIE KONTURÓW NA WYCIETYCH KOMORKACH ALE TO RACZEJ NIE DA RADY
     ###    BO TO ZNOWU TO SAMO I TO JUZ BYŁO
@@ -85,9 +87,9 @@ if __name__ == '__main__':
 
     # DISPLAY
     # Draw Contours
-    cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
+    cv2.drawContours(finalImage, conts, -1, (0, 255, 0), 3)
     # śDisplay
-    plot_photo(img_path, img)
+    plot_photo(img_path, finalImage)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

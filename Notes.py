@@ -93,14 +93,24 @@ coordiantes = [int(cor[0]) for cor in [ele.split(' ') for ele in image.split('_'
 print(coordiantes)
 # a = [b.split(' ') for b in image.split('_')]
 # print(a)
-img = cv2.imread('Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg')
+img = cv2.imread('Zdjecia/NET G2, Ki-67 około 5%.jpg')
 
-def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None):
+
+def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None, resize=True):
+    '''
+    :param xmin: ->| cuts from left side
+    :param xmax:  |<- cuts from right side
+    :param ymin:  cuts from the top   // should be 800 for central photos and ~2000 for the one situated on the bottom
+    :param ymax:  cuts from the bottom
+    '''
     if ymax == None: ymax = img.shape[0]
     if xmax == None: xmax = img.shape[1]
-    new = img[ymin:ymax][xmin:ymax]
+    new = img[ymin:ymin + ymax, xmin:xmin + xmax]
+    if resize:
+        new = cv2.resize(new, (3000, 3000), cv2.INTER_AREA)
     return new
 
-im = preprocess(img, xmin=1000)
+
+im = preprocess(img, ymin=800)
 print(im.shape)
 plot_photo('dawd', im)
