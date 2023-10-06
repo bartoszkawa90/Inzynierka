@@ -54,19 +54,18 @@ def printArr(*args):
                                                                                                 arr.max(), arr.min()))
 
 
-def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None, resize=True):
+def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None):
     '''
     :param xmin: ->| cuts from left side
     :param xmax:  |<- cuts from right side
     :param ymin:  cuts from the top   // should be 800 for central photos and ~2000 for the one situated on the bottom
     :param ymax:  cuts from the bottom
     '''
+    image = cv2.resize(img, (3000, 3000), cv2.INTER_AREA)
     if ymax == None: ymax = img.shape[0]
     if xmax == None: xmax = img.shape[1]
-    new = img[ymin:ymin + ymax, xmin:xmin + xmax]
-    if resize:
-        final = cv2.resize(new, (1100, 1100), cv2.INTER_AREA)
-        return final
+    new = image[ymin:ymin + ymax, xmin:xmin + xmax]
+
     return new
 
 
@@ -443,22 +442,23 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
     #     jesli wartosc jest pomiedzy granicami to aby byc uznana za czesc krawedzi musi sie
     #     łączyć z pixelami o wartości powyzej górnej granicy czyli z pewną krawędzią
 
-    np.where(result < lowBoundry, result, 0.0)
-    np.where(result > highBoundry, result, 255.0)
-    neighborPixels = np.zeros((3, 3))
-    for i in range(1, result.shape[0] - 1):
-        for j in range(1, result.shape[1] - 1):
-            if result[i, j] != 0 and result[i, j] != 255:
-                neighborPixels = result[i-1:i+1, j-1:j+1]
-                if np.any(neighborPixels >= highBoundry):
-                    result[i, j] = 255
-                else:
-                    result[i, j] = 0
-
-    return scale(GMag, 255).astype(np.uint8)#skimage.morphology.skeletonize(result).astype(np.uint8)#result.astype(np.uint8)
+    # np.where(result < lowBoundry, result, 0.0)
+    # np.where(result > highBoundry, result, 255.0)
+    # neighborPixels = np.zeros((3, 3))
+    # for i in range(1, result.shape[0] - 1):
+    #     for j in range(1, result.shape[1] - 1):
+    #         if result[i, j] != 0 and result[i, j] != 255:
+    #             neighborPixels = result[i-1:i+1, j-1:j+1]
+    #             if np.any(neighborPixels >= highBoundry):
+    #                 result[i, j] = 255
+    #             else:
+    #                 result[i, j] = 0
 
 
-def imageThreshold(grayImage, localNeighborhood=61):
+    return scale(GMag, 255).astype(np.uint8)#scale(result, 255).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)
+
+
+def imageThreshold(grayImage, localNeighborhood=81, lowLimitForMask=20):
     '''
     :param image: input image which will be thresholded
     :param lcoalNeighborhood: size of part of image which will be considered for threshold
@@ -470,6 +470,12 @@ def imageThreshold(grayImage, localNeighborhood=61):
         image = cv2.cvtColor(grayImage, cv2.COLOR_BGRA2GRAY)
 
     result = np.zeros_like(grayImage)   # zeros_like creates copy of given array and filled with zeros
+
+    # filter background and making a mask
+    ret, mask = cv2.threshold(grayImage, 20, 255, cv2.THRESH_BINARY)
+    grayImage = cv2.bitwise_and(grayImage, grayImage, mask=mask)
+    # plot_photo('test', grayImage)
+
 
     # iteration through every pixel on image
     for row in range(grayImage.shape[0]):
@@ -487,7 +493,8 @@ def imageThreshold(grayImage, localNeighborhood=61):
             # np.std function to calculate standard deviation(odchylenie standardowe) , equation of
             # np.std() is  np.sqrt(np.mean(abs(a - a.mean())**2))
             # std maybe useful but it is not necessary
-            local_threshold = np.mean(neighborhood) #- 0.1 * np.std(neighborhood)
+
+            local_threshold = np.mean(neighborhood)
 
             ## Use previously calculated local threshold
             if grayImage[row, col] > local_threshold:
@@ -501,12 +508,20 @@ def imageThreshold(grayImage, localNeighborhood=61):
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
     thresh = cv2.morphologyEx(result, cv2.MORPH_OPEN, kernel)
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
-    thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+    result = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
 
-    return thresh
+    return result
 
 
-def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
+def split(cell=None):
+    red = [rgb[0] for rgb in cell]
+    green = [rgb[1] for rgb in cell]
+    blue = [rgb[2] for rgb in cell]
+
+    return red, green, blue
+
+
+def Main(img_path, thresholdRange=None, thresholdMask=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, conSizeLow=None,
          conSizeHigh=None, whiteCellBoundry=None, blackCellBoundry=10, whiteBlackMode=FILTER_WHITE,
          returnOriginalContours=False):
@@ -517,38 +532,41 @@ def Main(img_path, thresholdRange=None, CannyGaussSize=3, CannyGaussSigma=1, Can
         img = cv2.imread(img_path)
     else:
         img = img_path
-    print("Image ", img.shape)
 
-    # preprocessing // cut and reshape original image
-    if img_path.split('/')[0] == 'Zdjecia':
-        img = preprocess(img, ymin=800, resize=True)
-        print("Image after preprocessing ", img.shape)
+    # preprocessing
+    img = preprocess(img, xmin=500, xmax=1300, ymin=500, ymax=1300)
+    print(img.shape)
 
     # change image to grayscale
-    gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    red, green, blue = cv2.split(img)
+    # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    # plot_photo('test', b)
 
     ## apply adaptive threshold
-    if thresholdRange == None:
-        blob = imageThreshold(gray)
+    if thresholdRange == None and thresholdMask == None:
+        blob = imageThreshold(blue)
+    elif thresholdMask == None and thresholdRange != None:
+        blob = imageThreshold(blue, localNeighborhood=thresholdRange)
+    elif thresholdMask != None and thresholdRange == None:
+        blob = imageThreshold(blue, lowLimitForMask=thresholdMask)
     else:
-        blob = imageThreshold(gray, thresholdRange)
+        blob = imageThreshold(blue, localNeighborhood=thresholdRange, lowLimitForMask=thresholdMask)
+    plot_photo('test', blob)
 
     # # Finding edges
     edged = Canny(blob, gaussSize=CannyGaussSize, gaussSigma=CannyGaussSigma, lowBoundry=CannyLowBoundry,
                   highBoundry=CannyHighBoundry, useGaussFilter=CannyUseGauss, performNMS=CannyPerformNMS,
                   sharpenImage=CannySharpen)
+    # edged = cv2.Canny(blob, 10, 200, 5, L2gradient=True)
+
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     print("Number of contours at first {}".format(len(contours)))
-
 
     # Filtering cells by size
     if conSizeLow != None and conSizeHigh != None: conts = contoursProcessing(contours, lowBoundry=conSizeLow, highBoundry=conSizeHigh)
     elif conSizeLow == None and conSizeHigh != None: conts = contoursProcessing(contours, highBoundry=conSizeHigh)
     elif conSizeLow != None and conSizeHigh == None: conts = contoursProcessing(contours, lowBoundry=conSizeLow)
     elif conSizeLow == None and conSizeHigh == None: conts = contoursProcessing(contours)
-
-    # conts = contoursProcessing(contours, lowBoundry=15, highBoundry=500)
-    # goodConts = filterWhiteCells(conts, img, 6)  # final contours are all black and blue cells
 
     # filtering cells by color and removing duplicats
     if whiteCellBoundry == None:

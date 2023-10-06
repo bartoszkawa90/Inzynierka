@@ -26,13 +26,14 @@ def split(cell=None):
     return red, green, blue
 
 
-## ----------------------------------------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------------------------------------
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 
 def kNN():
+
     pass
 
 
@@ -107,3 +108,9 @@ def kmeansClassify(cells, iterations=3, numOfCenters=2):
     plt.xlabel('wartosci R')
     plt.ylabel('wartosci G')
     plt.show()
+
+
+
+### TEST
+
+kNN()
