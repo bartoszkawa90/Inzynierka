@@ -39,26 +39,13 @@ if __name__ == '__main__':
 
     # img = cv2.imread('Zdjecia/wycinek_5.jpg')
     img_path = list_of_images[0]#'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[0]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
+    print(f"Chosen image {list_of_images[0]}")
     img = cv2.imread(img_path)
 
-    # # preprocessing // cut and reshape original image
-    # if img_path.split('/')[0] == 'Zdjecia':
-    #     # img = preprocess(img, xmin=800, xmax=1300, ymin=800, ymax=1300, resize=True)
-    #     print("Image after reshape ", img.shape)
-    #     img = cv2.resize(new, (3000, 3000), cv2.INTER_AREA)
-    #     img =
-    #
-    #     if ymax == None: ymax = img.shape[0]
-    #     if xmax == None: xmax = img.shape[1]
-    #     new = img[ymin:ymin + ymax, xmin:xmin + xmax]
-    #     if resize:
-    #         final = cv2.resize(new, (3000, 3000), cv2.INTER_AREA)
-    #         return final
-    #     return new
 
-
-## ALGORITHM£
-    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=81, thresholdMask=20, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=0.1,
+## ALGORITHM
+    th = 51
+    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=th, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=0.1,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, conSizeLow=None,
          conSizeHigh=None, whiteCellBoundry=11, whiteBlackMode=FILTER_WHITE, returnOriginalContours=True)
 
@@ -107,7 +94,7 @@ if __name__ == '__main__':
     # Draw Contours
     cv2.drawContours(finalImage, conts, -1, (0, 255, 0), 3)
     # śDisplay
-    plot_photo('final', finalImage)
+    plot_photo('final th ' + str(th), finalImage)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

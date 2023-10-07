@@ -26,6 +26,13 @@ class Set():
     def print(self):
         print(f'first {self.first} second {self.second} \n')
 
+# class Parameters():
+#     def __init__(self, img_path, thresholdRange, thresholdMask, CannyGaussSize, CannyGaussSigma, CannyLowBoundry,
+#          CannyHighBoundry, CannyUseGauss, CannyPerformNMS, CannySharpen, conSizeLow,
+#          conSizeHigh, whiteCellBoundry, blackCellBoundry, whiteBlackMode,
+#          returnOriginalContours):
+#         self.
+
 
 
 ## FUNCTIONS / KEYWORDS
@@ -442,23 +449,23 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
     #     jesli wartosc jest pomiedzy granicami to aby byc uznana za czesc krawedzi musi sie
     #     łączyć z pixelami o wartości powyzej górnej granicy czyli z pewną krawędzią
 
-    # np.where(result < lowBoundry, result, 0.0)
-    # np.where(result > highBoundry, result, 255.0)
-    # neighborPixels = np.zeros((3, 3))
-    # for i in range(1, result.shape[0] - 1):
-    #     for j in range(1, result.shape[1] - 1):
-    #         if result[i, j] != 0 and result[i, j] != 255:
-    #             neighborPixels = result[i-1:i+1, j-1:j+1]
-    #             if np.any(neighborPixels >= highBoundry):
-    #                 result[i, j] = 255
-    #             else:
-    #                 result[i, j] = 0
+    np.where(result < lowBoundry, result, 0.0)
+    np.where(result > highBoundry, result, 255.0)
+    neighborPixels = np.zeros((3, 3))
+    for i in range(1, result.shape[0] - 1):
+        for j in range(1, result.shape[1] - 1):
+            if result[i, j] != 0 and result[i, j] != 255:
+                neighborPixels = result[i-1:i+1, j-1:j+1]
+                if np.any(neighborPixels >= highBoundry):
+                    result[i, j] = 255
+                else:
+                    result[i, j] = 0
 
 
-    return scale(GMag, 255).astype(np.uint8)#scale(result, 255).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)
+    return scale(result, 255).astype(np.uint8)#scale(result, 255).astype(np.uint8)#scale(GMag, 255).astype(np.uint8)
 
 
-def imageThreshold(grayImage, localNeighborhood=81, lowLimitForMask=20):
+def imageThreshold(grayImage, localNeighborhood=51, lowLimitForMask=20):
     '''
     :param image: input image which will be thresholded
     :param lcoalNeighborhood: size of part of image which will be considered for threshold
@@ -474,8 +481,6 @@ def imageThreshold(grayImage, localNeighborhood=81, lowLimitForMask=20):
     # filter background and making a mask
     ret, mask = cv2.threshold(grayImage, 20, 255, cv2.THRESH_BINARY)
     grayImage = cv2.bitwise_and(grayImage, grayImage, mask=mask)
-    # plot_photo('test', grayImage)
-
 
     # iteration through every pixel on image
     for row in range(grayImage.shape[0]):
@@ -521,9 +526,9 @@ def split(cell=None):
     return red, green, blue
 
 
-def Main(img_path, thresholdRange=None, thresholdMask=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, conSizeLow=None,
-         conSizeHigh=None, whiteCellBoundry=None, blackCellBoundry=10, whiteBlackMode=FILTER_WHITE,
+def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, contourSizeLow=None,
+         contourSizeHigh=None, whiteCellBoundry=None, blackCellBoundry=10, whiteBlackMode=FILTER_WHITE,
          returnOriginalContours=False):
     '''
     '''
@@ -543,6 +548,7 @@ def Main(img_path, thresholdRange=None, thresholdMask=None, CannyGaussSize=3, Ca
     # plot_photo('test', b)
 
     ## apply adaptive threshold
+    # Oficjalnie najlepsza wartość threshold dla obrazu przyciętego i resized na (3000, 3000) to 51
     if thresholdRange == None and thresholdMask == None:
         blob = imageThreshold(blue)
     elif thresholdMask == None and thresholdRange != None:
@@ -551,7 +557,7 @@ def Main(img_path, thresholdRange=None, thresholdMask=None, CannyGaussSize=3, Ca
         blob = imageThreshold(blue, lowLimitForMask=thresholdMask)
     else:
         blob = imageThreshold(blue, localNeighborhood=thresholdRange, lowLimitForMask=thresholdMask)
-    plot_photo('test', blob)
+    # plot_photo('test', blob)
 
     # # Finding edges
     edged = Canny(blob, gaussSize=CannyGaussSize, gaussSigma=CannyGaussSigma, lowBoundry=CannyLowBoundry,

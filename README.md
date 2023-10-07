@@ -14,11 +14,23 @@
 - EWENTUALNIE JESZCZE POPRÓBOWAĆ  HED   ale   Raczej nalerzy sobie odpuścic detekcje krawędzi z użyciem HED i 
   przetrenowanej sieci bo to dobrze znajduje mało szczegółwych konturów a nie tak jak tu trzeba
 
-## PYTANIA
-- czy połączone komórki traktować jako jedną czy jako więcej na oko
-- czy komórka po częsci brązowa i po czesci niebieska to dobra czy zła
-- kiedy dana komórka jest rzeczywiście do jednej grupy albo do drugiej
-- do jakiego stopnia nalerzy brac komórke a do jakiego stopnia tło
+## ZBIOR NAJLEPSZYCH PARAMETRÓW DO SEGMENTACJI
+- thresholdRange : 51
+- thresholdMaskValue : 20
+- CannyGaussSize : 3
+- CannyGaussSigma : 1
+- CannyLowBoundry : 1.0
+- CannyHighBoundry : 10.0
+- CannyUseGauss : True
+- CannyPerformNMS : True
+- CannySharpen : False
+- contourSizeLow : 15
+- contourSizeHigh :  500
+- whiteCellBoundry : 10
+- blackCellBoundry : 10
+- whiteBlackMode : FILTER_WHITE = 0
+- returnOriginalContour : False
+- 
 
 ## Konkretne Cele
 1. Zacząć trzeba od udanej detekcji komórek na zdjęciu , najpierw z OpenCv I potem się zobaczy czy jest to dość  “MOJE” zeby mogło zostać ale pewnie trzeba będzie po tym zrobić moje własne główne funkcje

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="3.10 (wczesniejsze chyba zle) ogarnąc kNN DO CZWARTKU i zastanowic sie na wyciąganiem konturów v2">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="6.10 zastosowanie maski działa , dobrac parametry trzeba">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HalfAutomatic_Version.py" beforeDir="false" afterPath="$PROJECT_DIR$/HalfAutomatic_Version.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zdjecia/NET G2, Ki-67 około 5% --copy.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,13 +299,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00017" summary="Początek wersji półautomatycznej i cos ju działa w Version_1 ale dalejklasyfikacja słabiutko">
-      <created>1684284109015</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1684284109015</updated>
     </task>
     <task id="LOCAL-00018" summary="Multiple threads in python">
       <created>1690841275283</created>
@@ -643,7 +636,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696369841294</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="6.10 zastosowanie maski działa , dobrac parametry trzeba">
+      <created>1696608439858</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1696608439858</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +662,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="4.09" />
     <MESSAGE value="6.09 zająć się juz trzeba klasyfikacją" />
     <MESSAGE value="7.09" />
     <MESSAGE value="10.09" />
@@ -687,7 +686,8 @@
     <MESSAGE value="4.10 zebrane juz po około 300 komórek &#10;teraz preprocessing jakis normalny i kNN" />
     <MESSAGE value="3.10 (wczesniejsze chyba zle) ogarnąc kNN DO CZWARTKU i zastanowic sie na wyciąganiem konturów" />
     <MESSAGE value="3.10 (wczesniejsze chyba zle) ogarnąc kNN DO CZWARTKU i zastanowic sie na wyciąganiem konturów v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.10 (wczesniejsze chyba zle) ogarnąc kNN DO CZWARTKU i zastanowic sie na wyciąganiem konturów v2" />
+    <MESSAGE value="6.10 zastosowanie maski działa , dobrac parametry trzeba" />
+    <option name="LAST_COMMIT_MESSAGE" value="6.10 zastosowanie maski działa , dobrac parametry trzeba" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
