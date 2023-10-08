@@ -1,4 +1,5 @@
 # Version_2 : wyciąganie komórek przy użyciu własnych fukcji oraz OpenCV
+
 '''
 ! - najwazniesze
 Co moze sie zmieniac :

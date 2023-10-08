@@ -3,9 +3,11 @@
  Najwazniejsze raczej jest zmienianie filterWhiteCells ( FILTER_WHITE I  FILTER_BLACK ) bo to duzo zmienia
  Sharpen tez jest istotne bo pozwala rzeczywiscie czasem sporo dac ale tez zepsuć, plus thresholdRange
  Generalnie najważniejsze do zmian bo może dużo poprawić:
-   -  thresholdRange  // dobrze dla wiekszych komorek dac 61/63 a dla mniejszych 29/30
+   -  thresholdRange  // dobrze dla wiekszych komorek dac 51/53 mozna dac mniej (30/40) dla malych komórek
    -  CannySharpen    // trzeba po prostu sobie zobaczyć kiedy jest dobrze to dać
-   -  whiteBlackMode( FILTER_BLACK/FILTER_WHITE )   // FILTER_BLACK jak są rozmazane jasne komorki i je odrzuca
+   -  whiteCellBoundry  // ważne i tak ok. 194 jest OK ale może być potrzebne troche więcej albo trochę mniej zalezy od zdjecia
+                        // niby najlepsze 193/4/5 ale czasem jak jest duzo niebieskich to moze byc nawet 170/80
+   -  contour size Low and High też zależy od zdjęcia tak na prawde ale 15 i 500 to raczej wystarczające granice
 '''
 
 # NEW
@@ -39,18 +41,19 @@ if __name__ == '__main__':
 
     # img = cv2.imread('Zdjecia/wycinek_5.jpg')
     img_path = list_of_images[0]#'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[0]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
-    print(f"Chosen image {list_of_images[0]}")
+    print(f"Chosen image {img_path}")
     img = cv2.imread(img_path)
 
 
 ## ALGORITHM
-    th = 51
-    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=th, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=0.1,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, conSizeLow=None,
-         conSizeHigh=None, whiteCellBoundry=11, whiteBlackMode=FILTER_WHITE, returnOriginalContours=True)
 
-    conts, smallest, largest, id_min, ID_MAX = contoursProcessing(conts, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=1)
-    print(smallest.shape, largest.shape)
+    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=51, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7, CannyLowBoundry=0.1,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
+         contourSizeHigh=500, whiteCellBoundry=193, returnOriginalContours=False)
+
+    print(len(conts))
+    # conts, smallest, largest, id_min, ID_MAX = contoursProcessing(conts, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=1)
+    # print(smallest.shape, largest.shape)
 
     ### MOZNA ROZWAZYC REKURENCJE // CZY MOZE RACZEJ SZUKANIE KONTURÓW NA WYCIETYCH KOMORKACH ALE TO RACZEJ NIE DA RADY
     ###    BO TO ZNOWU TO SAMO I TO JUZ BYŁO
@@ -94,7 +97,7 @@ if __name__ == '__main__':
     # Draw Contours
     cv2.drawContours(finalImage, conts, -1, (0, 255, 0), 3)
     # śDisplay
-    plot_photo('final th ' + str(th), finalImage)
+    plot_photo('final th ', finalImage)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

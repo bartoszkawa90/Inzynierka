@@ -46,11 +46,11 @@ def click_event(event, x, y, flags, param):
 
 
 #Choose photo
-photo = 'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'
+photo = 'Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg'
 img = cv2.imread(photo)
 print('dwwdaw')
-r, g, b = cv2.split(img)
-img = b
+# r, g, b = cv2.split(img)
+# img = b
 # img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
 cv2.namedWindow("image", cv2.WINDOW_NORMAL)

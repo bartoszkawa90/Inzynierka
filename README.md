@@ -26,8 +26,8 @@
 - CannySharpen : False
 - contourSizeLow : 15
 - contourSizeHigh :  500
-- whiteCellBoundry : 10
-- blackCellBoundry : 10
+- whiteCellBoundry : 11
+- blackCellBoundry : 11
 - whiteBlackMode : FILTER_WHITE = 0
 - returnOriginalContour : False
 - 

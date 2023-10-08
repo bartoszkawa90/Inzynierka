@@ -1,17 +1,17 @@
 ####  Example of multiple threads in Python
-def count(name):
-    for i in range(1000):
-        print(str(i) + name + "\n")
-
-import threading
-
-
-##  multiple threads in a loop
-names = ["thread_1", "thread_2", "thread_3"]
-
-for name in names:
-    thread = threading.Thread(target=count, args=(name, ))
-    thread.start()
+# def count(name):
+#     for i in range(1000):
+#         print(str(i) + name + "\n")
+#
+# import threading
+#
+#
+# ##  multiple threads in a loop
+# names = ["thread_1", "thread_2", "thread_3"]
+#
+# for name in names:
+#     thread = threading.Thread(target=count, args=(name, ))
+#     thread.start()
 
 ##  Single threads one after another
 # name1 = "thread_1"
@@ -25,6 +25,43 @@ for name in names:
 # name3 = "thread_3"
 # thread_3 = threading.Thread(target=count, args=(name3, ))
 # thread_3.start()
+
+
+### Decorators and subprocesses in Python // a way to use pypy3
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
+# using multiple python versions
+import subprocess
+import sys
+import os
+
+if __name__ == "__main__":
+    # Specify the path to the desired Python 3 interpreter
+    python3 = "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3"
+    pypy3 = "/opt/homebrew/bin/pypy3"  # Replace with the actual path
+
+    # Call the Python 3 function using the specified interpreter
+    result = subprocess.run([python3, "-c", "from resources import test; print(test())"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    # test = subprocess.check_output()
+    print(result.stdout.strip())
+
+
+# def run_as_python3_fun(func):
+#     result = subprocess.run(["/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+#                              "-c", f"from resources import {str(func.__name__)}; print({str(func.__name__)}())"],
+#                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+#     return result.stdout.strip()
+#
+#
+# @run_as_python3_fun
+# def test():
+#     print('Hello \n')
+#     print(sys.version)
+#     return 2
+#
+# run_as_python3_fun(test)
+
+
 
 #-----------------------------------------------------------------------------------------------------------------------
 
