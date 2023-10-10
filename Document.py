@@ -34,6 +34,8 @@
 import subprocess
 import sys
 import os
+import cv2
+import numpy as np
 
 if __name__ == "__main__":
     # Specify the path to the desired Python 3 interpreter
@@ -45,7 +47,28 @@ if __name__ == "__main__":
     # test = subprocess.check_output()
     print(result.stdout.strip())
 
-
+# def run_as_python3_fun(func):
+#     def wrapper(*args, **kwargs):
+#         python3 = "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3"
+#         fun_name = func.__name__
+#         if len(args) > 0:
+#             name = args[0].__name__
+#         else:
+#             pass
+#
+#         sub = subprocess.run([python3, "-c", f"from resources import {fun_name}; print({fun_name}())"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+#         result = sub.stdout.strip()
+#         return result
+#         # print(result.stdout.strip())
+#     return wrapper
+#
+# @run_as_python3_fun
+# def test2():
+#     print('Hello \n')
+#     print(sys.version)
+#     return 2
+#
+# test2()
 # def run_as_python3_fun(func):
 #     result = subprocess.run(["/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
 #                              "-c", f"from resources import {str(func.__name__)}; print({str(func.__name__)}())"],
@@ -98,4 +121,31 @@ def Laplace_Mask(alfa=0):
     arr[0][1] = arr[1][0] = arr[1][2] = arr[2][1] = (1-alfa)/4
     arr[1][1] = -1
     return (4/(alfa+1))*arr
+
+
+def isOnTheImage(mainImg, img):
+    '''
+    :param mainImg: main image on which we want wo find second image
+    :param img: image which we want to find on first image
+    :return: True if the img is the part of mainImg , False if its not
+    '''
+    # Sprawdź, czy obraz do znalezienia znajduje się w obrazie głównym
+    # match template przesuwa obraz do znalezienia po głównym obrazie i sprawdza na ile sie zgadzaja
+    #   nastepnie na podstawie dobranego progu mozna sprawdzic gdzie te
+    #   wartosci okreslaja ze jest tam ten obraz
+    result = cv2.matchTemplate(mainImg, img, cv2.TM_CCORR_NORMED) #TM_CCOEFF_NORMED
+    # print(result)
+    matchingRate = 0.8#0.99  # Prog dopasowania, można dostosować w zależności od potrzeb
+
+    # znajdujemy gdzie funkcja matchTemplate znalazła cos powej progu i jesli lista tych
+    #   wartosci jest wieksza niz 0 to mamy to na szukane zdjecie na głównym zdjeciu
+    finalList = []
+    whereSomethingFound = np.where(result >= matchingRate)
+    for arr in whereSomethingFound:
+        finalList += list(arr)
+    # if len(finalList) > 0:
+        # print('dlugosc listy z isontheimage ', len(finalList))
+        # print(img.shape, )
+
+    return len(finalList) > 0
 

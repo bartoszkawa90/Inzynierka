@@ -1,9 +1,9 @@
 ### Final Version
 '''
- Najwazniejsze raczej jest zmienianie filterWhiteCells ( FILTER_WHITE I  FILTER_BLACK ) bo to duzo zmienia
- Sharpen tez jest istotne bo pozwala rzeczywiscie czasem sporo dac ale tez zepsuć, plus thresholdRange
+ KONIEC :: WSZYSTKIE PARAMETRY SĄ NAJWAZNIEJSZE , TAK NA PRAWDE KAZDY Z PARAMETRÓW MOZE POPRAWIC DZIAŁANIE
+        WSZYSTKO SIE DA OGARNĄĆ JAK SIĘ DOBRZE DOBIERZE WSZYSTKIE PARAMETRY
  Generalnie najważniejsze do zmian bo może dużo poprawić:
-   -  thresholdRange  // dobrze dla wiekszych komorek dac 51/53 mozna dac mniej (30/40) dla malych komórek
+   -  thresholdRange  // dobrze dla wiekszych komorek dac 41/51 mozna dac mniej (25/31) dla malych komórek
    -  CannySharpen    // trzeba po prostu sobie zobaczyć kiedy jest dobrze to dać
    -  whiteCellBoundry  // ważne i tak ok. 194 jest OK ale może być potrzebne troche więcej albo trochę mniej zalezy od zdjecia
                         // niby najlepsze 193/4/5 ale czasem jak jest duzo niebieskich to moze byc nawet 170/80
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
 ## ALGORITHM
 
-    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=51, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7, CannyLowBoundry=0.1,
+    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7, CannyLowBoundry=0.1,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
          contourSizeHigh=500, whiteCellBoundry=193, returnOriginalContours=False)
 
@@ -73,7 +73,7 @@ if __name__ == '__main__':
 
 ## verify classification save images
     # SAVE Cells in ./Cells
-    # save_cells(cells, coordinates, name_addition='#3', dir="Cells")
+    # save_cells(cells, coordinates, name_addition='#new', dir="Cells")
 
 
 ## SHOWING RESULTS CLASSIFICATION

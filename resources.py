@@ -47,6 +47,10 @@ def plot_photo(title='None', image=None, height=1500, widht=1500):
         width - width of ploted photo
     '''
     # while True:
+    if isinstance(title, str) == False:
+        image = title
+        title = "None"
+    cv2.namedWindow(title, cv2.WINDOW_NORMAL)
     cv2.namedWindow(title, cv2.WINDOW_NORMAL)
     cv2.resizeWindow(title, height, widht)
     cv2.imshow(title, image)
@@ -181,28 +185,39 @@ def removeContour(contours, contourToRemove):
     return newConts
 
 
+def find_image(im, tpl):
+    im = np.atleast_3d(im)
+    tpl = np.atleast_3d(tpl)
+    Z = im.shape[2]
+    h, w = tpl.shape[:2]
 
-def isOnTheImage(mainImg, img):
-    '''
-    :param mainImg: main image on which we want wo find second image
-    :param img: image which we want to find on first image
-    :return: True if the img is the part of mainImg , False if its not
-    '''
-    # Sprawdź, czy obraz do znalezienia znajduje się w obrazie głównym
-    # match template przesuwa obraz do znalezienia po głównym obrazie i sprawdza na ile sie zgadzaja
-    #   nastepnie na podstawie dobranego progu mozna sprawdzic gdzie te
-    #   wartosci okreslaja ze jest tam ten obraz
-    wynik = cv2.matchTemplate(mainImg, img, cv2.TM_CCOEFF_NORMED)
-    prog_dopasowania = 0.9  # Prog dopasowania, można dostosować w zależności od potrzeb
+    # Integral image and template sum per channel
+    sat = im.cumsum(1).cumsum(0)
+    tplsum = np.array([tpl[:, :, i].sum() for i in range(Z)])
 
-    # znajdujemy gdzie funkcja matchTemplate znalazła cos powej progu i jesli lista tych
-    #   wartosci jest wieksza niz 0 to mamy to na szukane zdjecie na głównym zdjeciu
-    finalList = []
-    whereSomethingFound = np.where(wynik >= prog_dopasowania)
-    for arr in whereSomethingFound:
-        finalList += list(arr)
+    # Calculate lookup table for all the possible windows
+    a, b, c, d = sat[:-h, :-w], sat[:-h, w:], sat[h:, :-w], sat[h:, w:]
+    lookup = d - b - c + a
+    # Possible matches
+    possible_match = np.where(np.logical_and.reduce([lookup[..., i] == tplsum[i] for i in range(Z)]))
 
-    return len(finalList) > 0
+    # Find match
+    for y, x in zip(*possible_match):
+        if np.all(im[y+1:y+h+1, x+1:x+w+1] == tpl):
+            return True#(y+1, x+1)
+
+    return False
+
+
+# def isOnImage(main, img, threshold=0.999):
+#     result = cv2.matchTemplate(main, img, cv2.TM_CCOEFF_NORMED)
+#     thresh = threshold  # You can adjust this threshold based on your needs
+#
+#     loc = np.where(result >= thresh)
+#     if loc[0].size > 0:
+#         return True
+#     else:
+#         return False
 
 
 def filterRepetitions(contours, img):
@@ -220,13 +235,11 @@ def filterRepetitions(contours, img):
             if cell1.shape == cell2.shape:
                 if (cell1 == cell2).all():
                     count += 1
-
         if count >= 2:
             contours = removeContour(contours, con)
         count = 0
     print(len(contours), "liczba konturów po odfiltrowaniu duplikatów")
 
-    # filter images containing more than one cell
     for con in contours:
         for con2 in contours:
             cell1 = extractCell(con, img).get_seconds()
@@ -234,31 +247,16 @@ def filterRepetitions(contours, img):
 
             if cell1.shape[0] > cell2.shape[0] \
                     and cell1.shape[1] >= cell2.shape[1] \
-                    and isOnTheImage(cell1, cell2):
+                    and find_image(cell1, cell2):
                 contours = removeContour(contours, con)
 
             elif cell1.shape[0] >= cell2.shape[0] \
                     and cell1.shape[1] > cell2.shape[1] \
-                    and isOnTheImage(cell1, cell2):
+                    and find_image(cell1, cell2):
                 contours = removeContour(contours, con)
 
     print(len(contours), "liczba konturów po odfiltrowaniu zlepek komórek")
     return tuple(contours)
-
-
-# def extract_cells(contours, img):
-#     blue = []
-#     black = []
-#     for contour in contours:
-#         x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
-#         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-#
-#         if np.mean(cell) > 162:
-#             blue.append(contour)
-#         else:
-#             black.append(contour)
-#
-#     return tuple(blue), tuple(black)
 
 
 # Version for colors
@@ -269,17 +267,6 @@ def extractCell(contour=None, img=None):
     cell_set = Set([x_min, x_max, y_min, y_max], cell)
 
     return cell_set
-
-
-# def background_procentage(cell):
-#     white_count = 0
-#     cell_count = 0
-#     for i in cell:
-#         for j in i:
-#             if len(j[j.__gt__(158)]) != 0:
-#                 white_count += 1
-#             cell_count += 1
-#     return white_count/cell_count
 
 
 def MAC(M1, M2):    # Multiply-accumulate function
@@ -542,7 +529,7 @@ def split(cell=None):
 
 def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, contourSizeLow=None,
-         contourSizeHigh=None, whiteCellBoundry=None, returnOriginalContours=False):
+         contourSizeHigh=None, whiteCellBoundry=None,  returnOriginalContours=False):
     '''
     '''
     # Reading an image in default mode
@@ -552,7 +539,8 @@ def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=
         img = img_path
 
     # preprocessing
-    img = preprocess(img, xmin=500, xmax=1300, ymin=500, ymax=1300)
+    if img_path.split('/')[0] == 'Zdjecia':
+        img = preprocess(img, xmin=500, xmax=1000, ymin=800, ymax=1300)
     print(img.shape)
 
     # change image to grayscale
@@ -594,7 +582,7 @@ def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img)
     else:
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img, whiteCellsBoundry=whiteCellBoundry)
-    finalConts = goodConts#filterRepetitions(goodConts, img)
+    finalConts = filterRepetitions(goodConts, img)
 
     if returnOriginalContours:
         cells = [extractCell(c, img) for c in contours]
@@ -619,7 +607,7 @@ def save_cells(cells, coordinates, dir='Cells', name_addition=''):
 
 
 def get_coordinates_from_filename(path):
-    return [int(cor[0]) for cor in [ele.split(' ') for ele in image.split('_')][1:5]]
+    return tuple([int(cor[0]) for cor in [ele.split(' ') for ele in path.split('_')][1:5]])
 
 
 # def test2():

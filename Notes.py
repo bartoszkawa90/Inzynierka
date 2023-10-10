@@ -1,9 +1,11 @@
 import os
 import random
 
+import numpy as np
 import numpy.lib.stride_tricks
 
 from resources import *
+from Document import *
 
 # notes
 # if __name__ == '__main__':
@@ -87,30 +89,46 @@ from resources import *
 #
 # print(list_of_images)
 
-image = 'Cells/black/xmin_16 xmax_36 ymin_326 ymax_32 cell156#2.jpg'
-cell = cv2.imread(image)
-coordiantes = [int(cor[0]) for cor in [ele.split(' ') for ele in image.split('_')][1:5]]
-print(coordiantes)
-# a = [b.split(' ') for b in image.split('_')]
-# print(a)
-img = cv2.imread('Zdjecia/NET G2, Ki-67 około 5%.jpg')
+# def isOnImage(main, img):
+#     y, x = img.shape[:2]
+#     Y, X = main.shape[:2]
+#
+#     for i in range(Y-y+1):
+#         for j in range(X-x+1):
+#             # print(f"i {i}, i+y {i+y}, j {j}, j+x {j+x}")
+#             cut = main[i:i+y, j:j+x]
+#             # plot_photo(cut)
+#             if (cut == img).all():
+#                 return True
+#     return False
+
+def isOnImage(template, image):
+
+    # Perform template matching
+    result = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+
+    # Define a threshold to determine if the template is found
+    threshold = 0.8  # You can adjust this value based on your needs
+
+    # Check if the maximum correlation value is above the threshold
+    if max_val >= threshold:
+        return True, max_loc
+    else:
+        return False, None
 
 
-def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None, resize=True):
-    '''
-    :param xmin: ->| cuts from left side
-    :param xmax:  |<- cuts from right side
-    :param ymin:  cuts from the top   // should be 800 for central photos and ~2000 for the one situated on the bottom
-    :param ymax:  cuts from the bottom
-    '''
-    if ymax == None: ymax = img.shape[0]
-    if xmax == None: xmax = img.shape[1]
-    new = img[ymin:ymin + ymax, xmin:xmin + xmax]
-    if resize:
-        new = cv2.resize(new, (3000, 3000), cv2.INTER_AREA)
-    return new
+b = 'Cells/xmin_71 xmax_55 ymin_676 ymax_43 cell331#new.jpg'
+s = 'Cells/xmin_72 xmax_53 ymin_680 ymax_34 cell332#new.jpg'
+mainCor = get_coordinates_from_filename('xmin_49 xmax_55 ymin_403 ymax_48 cell332#new')
+imgCor = get_coordinates_from_filename('xmin_50 xmax_53 ymin_407 ymax_39 cell333#new')
+print(mainCor, imgCor)
+big = cv2.imread(b)
+small = cv2.imread(s)
+print(big.shape, small.shape)
 
 
-im = preprocess(img, ymin=800)
-print(im.shape)
-plot_photo('dawd', im)
+# print(isOnImage(big, small))
+
+a = np.array([[[1, 2, 3]]])
+print(np.atleast_3d(a))

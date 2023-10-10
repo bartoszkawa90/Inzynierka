@@ -28,9 +28,7 @@
 - contourSizeHigh :  500
 - whiteCellBoundry : 11
 - blackCellBoundry : 11
-- whiteBlackMode : FILTER_WHITE = 0
 - returnOriginalContour : False
-- 
 
 ## Konkretne Cele
 1. Zacząć trzeba od udanej detekcji komórek na zdjęciu , najpierw z OpenCv I potem się zobaczy czy jest to dość  “MOJE” zeby mogło zostać ale pewnie trzeba będzie po tym zrobić moje własne główne funkcje

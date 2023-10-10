@@ -32,7 +32,18 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 
-def kNN():
+def kNN(cell, blackCellsPath, blueCellsPath):
+
+    list_of_blue_cells = [blueCellsPath + img for img in os.listdir('./{}'.format(blueCellsPath))]
+    list_of_black_cells = [blackCellsPath + img for img in os.listdir('./{}'.format(blackCellsPath))]
+    print("black", *list_of_black_cells)
+    print("blue", *list_of_blue_cells)
+
+    # sets of data
+    blackSet = [ (np.mean(cell[0], np.mean(cell[0]), np.mean(cell[0]))) for cell in
+                 [cv2.split(cv2.imread(blackcell)) for blackcell in list_of_black_cells]]
+    blackSet = [ (np.mean(cell[0], np.mean(cell[0]), np.mean(cell[0]))) for cell in
+                 [cv2.split(cv2.imread(blackcell)) for blackcell in list_of_black_cells]]
 
     pass
 
@@ -113,4 +124,4 @@ def kmeansClassify(cells, iterations=3, numOfCenters=2):
 
 ### TEST
 
-kNN()
+# kNN()
