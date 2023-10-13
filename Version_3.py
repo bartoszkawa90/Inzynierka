@@ -40,64 +40,48 @@ if __name__ == '__main__':
     print(f'\nImages in {dir} directory : ', *list_of_images, sep='\n'), print('\n')
 
     # img = cv2.imread('Zdjecia/wycinek_5.jpg')
-    img_path = list_of_images[0]#'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[0]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
+    img_path = list_of_images[3]#'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[0]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
     print(f"Chosen image {img_path}")
     img = cv2.imread(img_path)
 
 
 ## ALGORITHM
 
-    cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7, CannyLowBoundry=0.1,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
-         contourSizeHigh=500, whiteCellBoundry=193, returnOriginalContours=False)
+    parameters = Parameters(img_path=img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7,
+                            CannyLowBoundry=0.1, CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False,
+                            CannySharpen=False, contourSizeLow=15, contourSizeHigh=500, whiteCellBoundry=193,
+                            returnOriginalContours=False)
+    segmentation_results = main(parameters)
 
-    print(len(conts))
+    # cells, coordinates, conts, finalImage = Main(img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7, CannyLowBoundry=0.1,
+    #      CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
+    #      contourSizeHigh=500, whiteCellBoundry=193, returnOriginalContours=False)
+
+    print(len(segmentation_results.contours))
     # conts, smallest, largest, id_min, ID_MAX = contoursProcessing(conts, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=1)
     # print(smallest.shape, largest.shape)
 
-    ### MOZNA ROZWAZYC REKURENCJE // CZY MOZE RACZEJ SZUKANIE KONTURÓW NA WYCIETYCH KOMORKACH ALE TO RACZEJ NIE DA RADY
-    ###    BO TO ZNOWU TO SAMO I TO JUZ BYŁO
-    # conts = list(conts)
-    # for cell in cells:
-    #     cel, coo, con = Main(cell)
-    #     for c in con:
-    #         if len(c) > 1:
-    #             conts.append(con)
-    # # conts = tuple(conts)
-    #
-    # print(conts, ' \n ', len(conts))
 
 ## CLASSIFICATION
-      # sklearn.cluster.KMeans()
+    # black_path = "../Reference/black"
+    # blue_path = "../Reference/blue"
+    # black = []
+    # blue = []
+    # kNN(segmentation_results.cells[0], black_path, blue_path)
     # black, blue = kmeansClassify(cells)
 
 ## verify classification save images
-    # SAVE Cells in ./Cells
-    # save_cells(cells, coordinates, name_addition='#new', dir="Cells")
-
-
-## SHOWING RESULTS CLASSIFICATION
-    # Plot pixels of image
-    # cell = cells[40]
-    #
-    # ax = plt.axes(projection='3d')
-    # for x in cell:
-    #     print(x)
-    # ax.scatter([x[0] for x in cell], [x[1] for x in cell], [x[2] for x in cell])
-    # C1 = np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)])
-    # C2 = np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)])
-    # ax.scatter(C1[0], C1[1], C1[2], color='green')
-    # ax.scatter(C2[0], C2[1], C2[2], color='red')
-    # plt.xlabel('wartosci R')
-    # plt.ylabel('wartosci G')
-    # plt.show()
+    # SAVE Cells in ./Cells  or   ../Reference
+    # save_dir = "./Cells"
+    # save_dir = "../Reference/"
+    # save_cells(segmentation_results.cells, segmentation_results.coordinates, name_addition=f'#{img_path.split("/")[-1]}', dir=save_dir)
 
 
     # DISPLAY
     # Draw Contours
-    cv2.drawContours(finalImage, conts, -1, (0, 255, 0), 3)
+    cv2.drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
     # śDisplay
-    plot_photo('final th ', finalImage)
+    plot_photo('final th ', segmentation_results.image)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))

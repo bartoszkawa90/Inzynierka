@@ -29,12 +29,32 @@ class Set():
     def print(self):
         print(f'first {self.first} second {self.second} \n')
 
-# class Parameters():
-#     def __init__(self, img_path, thresholdRange, thresholdMask, CannyGaussSize, CannyGaussSigma, CannyLowBoundry,
-#          CannyHighBoundry, CannyUseGauss, CannyPerformNMS, CannySharpen, conSizeLow,
-#          conSizeHigh, whiteCellBoundry, blackCellBoundry, whiteBlackMode,
-#          returnOriginalContours):
-#         self.
+class Parameters():
+    def __init__(self, img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
+         contourSizeHigh=500, whiteCellBoundry=190,  returnOriginalContours=False):
+        self.img_path = img_path
+        self.thresholdRange = thresholdRange
+        self.thresholdMaskValue = thresholdMaskValue
+        self.CannyGaussSize = CannyGaussSize
+        self.CannyGaussSigma = CannyGaussSigma
+        self.CannyLowBoundry = CannyLowBoundry
+        self.CannyHighBoundry = CannyHighBoundry
+        self.CannyUseGauss = CannyUseGauss
+        self.CannyPerformNMS = CannyPerformNMS
+        self.CannySharpen = CannySharpen
+        self.contourSizeLow = contourSizeLow
+        self.contourSizeHigh = contourSizeHigh
+        self.whiteCellBoundry = whiteCellBoundry
+        self.returnOriginalContours = returnOriginalContours
+
+
+class SegmentationResult():
+    def __init__(self, cells=[], coordinates=[], contours=[], image=[]):
+        self.cells = cells
+        self.coordinates = coordinates
+        self.contours = contours
+        self.image = image
 
 
 
@@ -527,19 +547,20 @@ def split(cell=None):
     return red, green, blue
 
 
-def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, contourSizeLow=None,
-         contourSizeHigh=None, whiteCellBoundry=None,  returnOriginalContours=False):
+def main(params):
+# def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
+#          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, contourSizeLow=None,
+#          contourSizeHigh=None, whiteCellBoundry=None,  returnOriginalContours=False):
     '''
     '''
     # Reading an image in default mode
-    if isinstance(img_path, str):
-        img = cv2.imread(img_path)
+    if isinstance(params.img_path, str):
+        img = cv2.imread(params.img_path)
     else:
-        img = img_path
+        img = params.img_path
 
     # preprocessing
-    if img_path.split('/')[0] == 'Zdjecia':
+    if params.img_path.split('/')[0] == 'Zdjecia':
         img = preprocess(img, xmin=500, xmax=1000, ymin=800, ymax=1300)
     print(img.shape)
 
@@ -550,50 +571,53 @@ def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=
 
     ## apply adaptive threshold
     # Oficjalnie najlepsza wartość threshold dla obrazu przyciętego i resized na (3000, 3000) to 51
-    if thresholdRange == None and thresholdMaskValue == None:
+    if params.thresholdRange == None and params.thresholdMaskValue == None:
         blob = imageThreshold(blue)
-    elif  thresholdMaskValue == None and thresholdRange != None:
-        blob = imageThreshold(blue, localNeighborhood=thresholdRange)
-    elif thresholdMaskValue != None and thresholdRange == None:
-        blob = imageThreshold(blue, lowLimitForMask=thresholdMask)
+    elif  params.thresholdMaskValue == None and params.thresholdRange != None:
+        blob = imageThreshold(blue, localNeighborhood=params.thresholdRange)
+    elif params.thresholdMaskValue != None and params.thresholdRange == None:
+        blob = imageThreshold(blue, lowLimitForMask=params.thresholdMask)
     else:
-        blob = imageThreshold(blue, localNeighborhood=thresholdRange, lowLimitForMask=thresholdMaskValue )
+        blob = imageThreshold(blue, localNeighborhood=params.thresholdRange, lowLimitForMask=params.thresholdMaskValue )
     # plot_photo('test', blob)
 
     # # Finding edges
-    edged = Canny(blob, gaussSize=CannyGaussSize, gaussSigma=CannyGaussSigma, lowBoundry=CannyLowBoundry,
-                  highBoundry=CannyHighBoundry, useGaussFilter=CannyUseGauss, performNMS=CannyPerformNMS,
-                  sharpenImage=CannySharpen)
+    edged = Canny(blob, gaussSize=params.CannyGaussSize, gaussSigma=params.CannyGaussSigma,
+                  lowBoundry=params.CannyLowBoundry, highBoundry=params.CannyHighBoundry,
+                  useGaussFilter=params.CannyUseGauss, performNMS=params.CannyPerformNMS,
+                  sharpenImage=params.CannySharpen)
     # edged = cv2.Canny(blob, 10, 200, 5, L2gradient=True)
 
     contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     print("Number of contours at first {}".format(len(contours)))
 
     # Filtering cells by size
-    if contourSizeLow != None and contourSizeHigh != None: conts = contoursProcessing(contours, lowBoundry=contourSizeLow, highBoundry=contourSizeHigh)
-    elif contourSizeLow == None and contourSizeHigh != None: conts = contoursProcessing(contours, highBoundry=contourSizeHigh)
-    elif contourSizeLow != None and contourSizeHigh == None: conts = contoursProcessing(contours, lowBoundry=contourSizeLow)
-    elif contourSizeLow == None and contourSizeHigh == None: conts = contoursProcessing(contours)
+    if params.contourSizeLow != None and params.contourSizeHigh != None: conts = contoursProcessing(contours,
+                                                                                                    lowBoundry=params.contourSizeLow,
+                                                                                                    highBoundry=params.contourSizeHigh)
+    elif params.contourSizeLow == None and params.contourSizeHigh != None: conts = contoursProcessing(contours, highBoundry=params.contourSizeHigh)
+    elif params.contourSizeLow != None and params.contourSizeHigh == None: conts = contoursProcessing(contours, lowBoundry=params.contourSizeLow)
+    elif params.contourSizeLow == None and params.contourSizeHigh == None: conts = contoursProcessing(contours)
 
     print("Number of contours after size filtering : ", len(conts))
 
     # filtering cells by color and removing duplicats
-    if whiteCellBoundry == None:
+    if params.whiteCellBoundry == None:
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img)
     else:
-        goodConts = filterWhiteAndBlackCells(contours=conts, img=img, whiteCellsBoundry=whiteCellBoundry)
+        goodConts = filterWhiteAndBlackCells(contours=conts, img=img, whiteCellsBoundry=params.whiteCellBoundry)
     finalConts = filterRepetitions(goodConts, img)
 
-    if returnOriginalContours:
+    if params.returnOriginalContours:
         cells = [extractCell(c, img) for c in contours]
         coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
         cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
-        return cells, coordinates, contours, img
+        return SegmentationResult(cells, coordinates, contours, img)
     else:
         cells = [extractCell(c, img) for c in finalConts]
         coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
         cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
-        return cells, coordinates, finalConts, img
+        return SegmentationResult(cells, coordinates, finalConts, img)
 
 
 def save_cells(cells, coordinates, dir='Cells', name_addition=''):

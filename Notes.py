@@ -1,6 +1,7 @@
 import os
 import random
 
+import cv2
 import numpy as np
 import numpy.lib.stride_tricks
 
@@ -68,67 +69,70 @@ from Document import *
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 
-# img1 = cv2.imread('Cells/cell112.jpg')
-# IMG = cv2.imread('Wycinki/resized_Wycinek_4_59nieb_77czar.jpg')
-# IMG2 = cv2.cvtColor(IMG, cv2.COLOR_BGRA2GRAY)
-# IMG2 = Convolution2D(IMG2, edgeDetection, mode="same")
-# print(type(IMG2), IMG2.shape)
-#
-# # def setBlackToWhite(img):
-# #     for line in range(img.shape[0]):
-# #         for pixel in range(img.shape[1]):
-# #             if img[line][pixel] <= 8:
-# #                 print(pixel)
-# #                 img[line][pixel] = 255
-# #     return img
-#
-# plot_photo('dawd', IMG2)
-# dir = "Wycinki/"
-#
-# list_of_images = [dir + img for img in os.listdir('./{}'.format(dir)) if img.__contains__('res')]
-#
-# print(list_of_images)
-
-# def isOnImage(main, img):
-#     y, x = img.shape[:2]
-#     Y, X = main.shape[:2]
-#
-#     for i in range(Y-y+1):
-#         for j in range(X-x+1):
-#             # print(f"i {i}, i+y {i+y}, j {j}, j+x {j+x}")
-#             cut = main[i:i+y, j:j+x]
-#             # plot_photo(cut)
-#             if (cut == img).all():
-#                 return True
-#     return False
-
-def isOnImage(template, image):
-
-    # Perform template matching
-    result = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
-    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-
-    # Define a threshold to determine if the template is found
-    threshold = 0.8  # You can adjust this value based on your needs
-
-    # Check if the maximum correlation value is above the threshold
-    if max_val >= threshold:
-        return True, max_loc
-    else:
-        return False, None
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 
 
-b = 'Cells/xmin_71 xmax_55 ymin_676 ymax_43 cell331#new.jpg'
-s = 'Cells/xmin_72 xmax_53 ymin_680 ymax_34 cell332#new.jpg'
-mainCor = get_coordinates_from_filename('xmin_49 xmax_55 ymin_403 ymax_48 cell332#new')
-imgCor = get_coordinates_from_filename('xmin_50 xmax_53 ymin_407 ymax_39 cell333#new')
-print(mainCor, imgCor)
-big = cv2.imread(b)
-small = cv2.imread(s)
-print(big.shape, small.shape)
+def generate_data():
+    np.random.seed(7)
+    x1 = np.random.standard_normal((100,2))*0.6+np.ones((100,2))
+    x2 = np.random.standard_normal((100,2))*0.5-np.ones((100,2))
+    x3 = np.random.standard_normal((100,2))*0.4-2*np.ones((100,2))+5
+    X = np.concatenate((x1,x2,x3),axis=0)
+
+    print(f"shape {len(X)} \n and X {X}")
+    return X
+
+def generate_centroids(X,k):
+    cx = np.random.rand(k)
+    cy = np.random.rand(k)
+
+    centroids = np.zeros((k,2))
+    centroids[:,0] = cx
+    centroids[:,1] = cy
+    return centroids
+
+def plot_data(X,labels,centroids,s):
+    plt.figure()
+    plt.plot(X[labels==9,0],X[labels==9,1],'k.')
+    plt.plot(X[labels==0,0],X[labels==0,1],'r.', label='cluster 1')
+    plt.plot(X[labels==1,0],X[labels==1,1],'b.', label='cluster 2')
+    plt.plot(X[labels==2,0],X[labels==2,1],'g.', label='cluster 3')
+    plt.plot(centroids[:,0],centroids[:,1],'mo',markersize=8, label='centroids')
+    plt.legend()
+    plt.title(s)
+    plt.show()
 
 
-# print(isOnImage(big, small))
 
-a = np.array([[[1, 2, 3]]])
-print(np.atleast_3d(a))
+n = 2
+X = generate_data()
+k_means = KMeans(n_clusters=n)
+model = k_means.fit(X)
+centroids = k_means.cluster_centers_
+print(centroids)
+labels = k_means.labels_
+
+plt.figure()
+plt.plot(X[labels==0,0],X[labels==0,1],'r.', label='cluster 1')
+plt.plot(X[labels==1,0],X[labels==1,1],'b.', label='cluster 2')
+plt.plot(X[labels==2,0],X[labels==2,1],'g.', label='cluster 3')
+
+plt.plot(centroids[:,0],centroids[:,1],'mo',markersize=8, label='centroids')
+
+plt.legend(loc='best')
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+

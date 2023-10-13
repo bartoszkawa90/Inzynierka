@@ -4,402 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="80.10 zostaje ostatnia kwestia czyli odsianie zlepków">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="10.10 ogarnac ten kod i zabrac sie za klasyfikacje">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1 xmax_20 ymin_133 ymax_29 cell6#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1 xmax_23 ymin_96 ymax_20 cell169#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_100 xmax_34 ymin_141 ymax_28 cell168#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_100 xmax_59 ymin_336 ymax_53 cell145#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1001 xmax_50 ymin_470 ymax_30 cell78#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1002 xmax_27 ymin_643 ymax_18 cell69#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1016 xmax_57 ymin_811 ymax_33 cell42#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1021 xmax_50 ymin_567 ymax_47 cell50#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1023 xmax_30 ymin_244 ymax_22 cell126.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1027 xmax_77 ymin_733 ymax_59 cell22#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1032 xmax_38 ymin_852 ymax_20 cell40#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1040 xmax_27 ymin_296 ymax_42 cell93.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1051 xmax_27 ymin_470 ymax_24 cell5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1073 xmax_30 ymin_541 ymax_28 cell60#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1078 xmax_20 ymin_773 ymax_14 cell67#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1080 xmax_46 ymin_265 ymax_68 cell99.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1083 xmax_27 ymin_850 ymax_17 cell8#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1095 xmax_53 ymin_588 ymax_61 cell47#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_11 xmax_25 ymin_861 ymax_12 cell0#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1103 xmax_18 ymin_768 ymax_26 cell15#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1111 xmax_29 ymin_789 ymax_14 cell32#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1112 xmax_43 ymin_828 ymax_26 cell16#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1124 xmax_37 ymin_183 ymax_62 cell113.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_113 xmax_25 ymin_196 ymax_18 cell164#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1130 xmax_55 ymin_779 ymax_52 cell14#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1131 xmax_19 ymin_255 ymax_19 cell112.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_1160 xmax_23 ymin_780 ymax_23 cell37#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_121 xmax_21 ymin_397 ymax_27 cell132#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_121 xmax_40 ymin_841 ymax_30 cell14#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_129 xmax_39 ymin_458 ymax_32 cell122#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_129 xmax_52 ymin_233 ymax_38 cell161#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_130 xmax_29 ymin_685 ymax_22 cell58#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_148 xmax_41 ymin_555 ymax_26 cell90#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_152 xmax_35 ymin_742 ymax_28 cell59#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_153 xmax_69 ymin_188 ymax_52 cell166#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_16 xmax_36 ymin_326 ymax_32 cell156#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_160 xmax_36 ymin_711 ymax_56 cell27#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_162 xmax_42 ymin_814 ymax_61 cell3#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_163 xmax_18 ymin_710 ymax_18 cell60#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_170 xmax_32 ymin_509 ymax_22 cell109#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_175 xmax_46 ymin_314 ymax_34 cell151#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_176 xmax_33 ymin_682 ymax_17 cell61#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_177 xmax_30 ymin_280 ymax_23 cell152#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_186 xmax_37 ymin_402 ymax_52 cell134#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_190 xmax_69 ymin_638 ymax_60 cell39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_194 xmax_28 ymin_807 ymax_19 cell22#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_197 xmax_72 ymin_701 ymax_55 cell55#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_201 xmax_15 ymin_533 ymax_16 cell66.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_204 xmax_28 ymin_622 ymax_39 cell83#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_206 xmax_36 ymin_844 ymax_23 cell12#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_207 xmax_50 ymin_674 ymax_62 cell32#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_210 xmax_30 ymin_494 ymax_23 cell112#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_211 xmax_35 ymin_747 ymax_68 cell31#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_212 xmax_55 ymin_768 ymax_29 cell54#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_225 xmax_36 ymin_213 ymax_45 cell165#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_232 xmax_68 ymin_594 ymax_69 cell44#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_237 xmax_29 ymin_340 ymax_28 cell141#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_240 xmax_28 ymin_386 ymax_13 cell136#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_244 xmax_79 ymin_126 ymax_80 cell124.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_254 xmax_71 ymin_857 ymax_27 cell7#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_256 xmax_29 ymin_273 ymax_20 cell153#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_262 xmax_45 ymin_525 ymax_39 cell114#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_27 xmax_84 ymin_423 ymax_68 cell129#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_270 xmax_20 ymin_488 ymax_20 cell115#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_274 xmax_39 ymin_718 ymax_33 cell25#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_275 xmax_23 ymin_432 ymax_21 cell77.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_275 xmax_25 ymin_811 ymax_25 cell20#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_278 xmax_41 ymin_403 ymax_46 cell133#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_279 xmax_51 ymin_71 ymax_47 cell134.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_280 xmax_35 ymin_777 ymax_53 cell4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_281 xmax_62 ymin_594 ymax_99 cell43#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_285 xmax_66 ymin_781 ymax_28 cell17#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_286 xmax_19 ymin_10 ymax_23 cell12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_287 xmax_33 ymin_637 ymax_23 cell104#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_29 xmax_68 ymin_677 ymax_35 cell92#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_301 xmax_47 ymin_677 ymax_64 cell100#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_305 xmax_68 ymin_360 ymax_141 cell89.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_31 xmax_126 ymin_610 ymax_52 cell93#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_310 xmax_35 ymin_456 ymax_22 cell123#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_318 xmax_80 ymin_807 ymax_47 cell16#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_320 xmax_43 ymin_141 ymax_37 cell123.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_321 xmax_44 ymin_259 ymax_40 cell154#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_326 xmax_33 ymin_778 ymax_79 cell20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_330 xmax_55 ymin_539 ymax_83 cell107#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_331 xmax_33 ymin_201 ymax_42 cell108.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_331 xmax_55 ymin_12 ymax_77 cell11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_348 xmax_37 ymin_632 ymax_35 cell105#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_350 xmax_74 ymin_655 ymax_60 cell102#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_350 xmax_83 ymin_281 ymax_61 cell150#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_354 xmax_34 ymin_734 ymax_36 cell48#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_355 xmax_67 ymin_380 ymax_45 cell137#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_356 xmax_47 ymin_609 ymax_56 cell38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_357 xmax_34 ymin_849 ymax_23 cell29#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_357 xmax_37 ymin_555 ymax_43 cell57#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_367 xmax_24 ymin_476 ymax_12 cell120#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_37 xmax_20 ymin_301 ymax_17 cell157#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_370 xmax_51 ymin_611 ymax_67 cell55#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_378 xmax_24 ymin_244 ymax_14 cell159#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_38 xmax_43 ymin_860 ymax_30 cell1#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_383 xmax_36 ymin_204 ymax_46 cell106.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_386 xmax_20 ymin_647 ymax_18 cell103#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_386 xmax_28 ymin_631 ymax_11 cell106#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_397 xmax_37 ymin_490 ymax_33 cell124#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_397 xmax_43 ymin_585 ymax_42 cell50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_400 xmax_28 ymin_846 ymax_28 cell10#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_403 xmax_33 ymin_453 ymax_24 cell125#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_405 xmax_48 ymin_548 ymax_22 cell95#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_41 xmax_29 ymin_811 ymax_27 cell21#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_41 xmax_53 ymin_801 ymax_73 cell12#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_414 xmax_40 ymin_592 ymax_28 cell74#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_417 xmax_53 ymin_668 ymax_45 cell101#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_418 xmax_89 ymin_24 ymax_63 cell139.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_424 xmax_70 ymin_733 ymax_114 cell64#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_43 xmax_85 ymin_189 ymax_85 cell111.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_441 xmax_17 ymin_511 ymax_9 cell108#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_442 xmax_29 ymin_518 ymax_26 cell70#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_449 xmax_29 ymin_271 ymax_32 cell4#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_452 xmax_43 ymin_332 ymax_23 cell143#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_453 xmax_45 ymin_390 ymax_53 cell142#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_455 xmax_36 ymin_270 ymax_47 cell98.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_46 xmax_40 ymin_330 ymax_67 cell155#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_462 xmax_67 ymin_524 ymax_71 cell118#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_468 xmax_36 ymin_412 ymax_56 cell80.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_479 xmax_28 ymin_269 ymax_11 cell5#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_479 xmax_55 ymin_656 ymax_33 cell63#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_484 xmax_18 ymin_120 ymax_25 cell125.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_492 xmax_71 ymin_195 ymax_74 cell110.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_504 xmax_41 ymin_468 ymax_41 cell76.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_505 xmax_43 ymin_478 ymax_37 cell119#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_506 xmax_175 ymin_723 ymax_66 cell51#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_508 xmax_30 ymin_530 ymax_27 cell60.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_509 xmax_60 ymin_291 ymax_57 cell97.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_516 xmax_84 ymin_104 ymax_114 cell130.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_526 xmax_72 ymin_616 ymax_39 cell72#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_529 xmax_30 ymin_547 ymax_37 cell75#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_53 xmax_95 ymin_552 ymax_57 cell94#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_542 xmax_61 ymin_490 ymax_45 cell77#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_544 xmax_36 ymin_391 ymax_35 cell135#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_545 xmax_45 ymin_511 ymax_49 cell67.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_547 xmax_44 ymin_813 ymax_69 cell6#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_555 xmax_40 ymin_849 ymax_24 cell18#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_558 xmax_50 ymin_578 ymax_126 cell66#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_566 xmax_34 ymin_364 ymax_24 cell139#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_571 xmax_41 ymin_507 ymax_32 cell110#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_584 xmax_60 ymin_780 ymax_78 cell19#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_586 xmax_63 ymin_421 ymax_47 cell130#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_586 xmax_68 ymin_836 ymax_55 cell3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_587 xmax_80 ymin_591 ymax_184 cell49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_589 xmax_59 ymin_822 ymax_29 cell19#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_593 xmax_55 ymin_682 ymax_68 cell30#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_598 xmax_12 ymin_505 ymax_18 cell76#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_598 xmax_22 ymin_601 ymax_20 cell73#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_600 xmax_46 ymin_592 ymax_45 cell46#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_63 xmax_33 ymin_147 ymax_28 cell167#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_630 xmax_81 ymin_760 ymax_47 cell20#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_633 xmax_67 ymin_673 ymax_49 cell65#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_635 xmax_33 ymin_539 ymax_40 cell98#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_637 xmax_26 ymin_196 ymax_40 cell109.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_638 xmax_32 ymin_377 ymax_31 cell138#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_638 xmax_51 ymin_472 ymax_33 cell127#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_643 xmax_47 ymin_416 ymax_59 cell78.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_647 xmax_63 ymin_679 ymax_77 cell48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_649 xmax_40 ymin_816 ymax_30 cell5#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_657 xmax_35 ymin_438 ymax_28 cell128#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_657 xmax_59 ymin_833 ymax_40 cell2#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_659 xmax_38 ymin_354 ymax_43 cell90.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_665 xmax_52 ymin_207 ymax_57 cell115.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_670 xmax_56 ymin_292 ymax_36 cell96.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_672 xmax_30 ymin_631 ymax_26 cell36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_672 xmax_65 ymin_506 ymax_42 cell79#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_680 xmax_44 ymin_841 ymax_48 cell2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_682 xmax_42 ymin_786 ymax_40 cell3#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_686 xmax_50 ymin_608 ymax_60 cell52#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_688 xmax_60 ymin_406 ymax_59 cell131#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_694 xmax_73 ymin_147 ymax_132 cell116.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_703 xmax_9 ymin_718 ymax_14 cell46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_706 xmax_111 ymin_439 ymax_53 cell84#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_712 xmax_57 ymin_366 ymax_68 cell87.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_714 xmax_18 ymin_700 ymax_13 cell47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_714 xmax_54 ymin_608 ymax_26 cell75#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_720 xmax_44 ymin_624 ymax_42 cell37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_722 xmax_61 ymin_731 ymax_32 cell50#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_725 xmax_46 ymin_805 ymax_58 cell11#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_728 xmax_73 ymin_505 ymax_53 cell111#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_733 xmax_49 ymin_538 ymax_66 cell58.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_734 xmax_38 ymin_559 ymax_43 cell51#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_745 xmax_40 ymin_794 ymax_36 cell28#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_75 xmax_32 ymin_761 ymax_36 cell45#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_754 xmax_67 ymin_614 ymax_45 cell40#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_759 xmax_31 ymin_575 ymax_19 cell76#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_76 xmax_39 ymin_494 ymax_24 cell113#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_767 xmax_54 ymin_692 ymax_92 cell39#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_77 xmax_28 ymin_826 ymax_23 cell17#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_773 xmax_30 ymin_797 ymax_27 cell16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_78 xmax_25 ymin_228 ymax_27 cell162#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_783 xmax_69 ymin_570 ymax_90 cell79#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_785 xmax_64 ymin_605 ymax_47 cell42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_791 xmax_51 ymin_297 ymax_44 cell100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_791 xmax_56 ymin_678 ymax_109 cell31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_799 xmax_76 ymin_202 ymax_80 cell107.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_801 xmax_29 ymin_733 ymax_24 cell49#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_801 xmax_37 ymin_387 ymax_67 cell84.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_806 xmax_78 ymin_487 ymax_42 cell117#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_807 xmax_42 ymin_805 ymax_76 cell10#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_811 xmax_37 ymin_41 ymax_71 cell9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_815 xmax_121 ymin_669 ymax_42 cell78#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_815 xmax_87 ymin_552 ymax_62 cell59#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_816 xmax_40 ymin_799 ymax_34 cell14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_82 xmax_54 ymin_721 ymax_66 cell24#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_824 xmax_48 ymin_485 ymax_53 cell73.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_827 xmax_51 ymin_464 ymax_65 cell81#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_835 xmax_54 ymin_752 ymax_51 cell36#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_836 xmax_34 ymin_131 ymax_50 cell118.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_839 xmax_42 ymin_541 ymax_45 cell116#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_84 xmax_47 ymin_264 ymax_26 cell160#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_846 xmax_40 ymin_724 ymax_50 cell28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_851 xmax_45 ymin_615 ymax_76 cell38#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_856 xmax_51 ymin_666 ymax_61 cell32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_858 xmax_40 ymin_384 ymax_68 cell85.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_859 xmax_83 ymin_766 ymax_57 cell44#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_867 xmax_29 ymin_308 ymax_43 cell92.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_874 xmax_41 ymin_126 ymax_86 cell122.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_875 xmax_53 ymin_611 ymax_36 cell80#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_884 xmax_40 ymin_605 ymax_62 cell41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_893 xmax_55 ymin_380 ymax_54 cell86.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_896 xmax_45 ymin_235 ymax_41 cell105.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_90 xmax_24 ymin_318 ymax_27 cell146#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_903 xmax_33 ymin_489 ymax_47 cell70.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_904 xmax_39 ymin_566 ymax_35 cell82#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_910 xmax_49 ymin_571 ymax_57 cell52.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_912 xmax_47 ymin_845 ymax_35 cell11#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_912 xmax_57 ymin_710 ymax_38 cell53#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_916 xmax_81 ymin_584 ymax_92 cell48#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_94 xmax_22 ymin_700 ymax_24 cell91#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_943 xmax_35 ymin_588 ymax_26 cell81#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_958 xmax_12 ymin_780 ymax_12 cell38#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_965 xmax_47 ymin_838 ymax_40 cell41#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_966 xmax_62 ymin_767 ymax_56 cell43#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_972 xmax_59 ymin_509 ymax_40 cell72#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_974 xmax_52 ymin_197 ymax_117 cell127.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_977 xmax_37 ymin_579 ymax_31 cell49#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/black/xmin_984 xmax_157 ymin_674 ymax_101 cell68#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1014 xmax_61 ymin_644 ymax_43 cell35#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_102 xmax_25 ymin_556 ymax_9 cell64.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1041 xmax_55 ymin_95 ymax_114 cell132.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1045 xmax_25 ymin_824 ymax_19 cell7#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1057 xmax_50 ymin_24 ymax_57 cell138.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1064 xmax_44 ymin_457 ymax_31 cell83#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1064 xmax_49 ymin_352 ymax_66 cell91.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1066 xmax_18 ymin_497 ymax_21 cell82#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1088 xmax_61 ymin_670 ymax_37 cell34#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1100 xmax_23 ymin_519 ymax_11 cell62#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1103 xmax_50 ymin_421 ymax_29 cell85#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1107 xmax_30 ymin_130 ymax_46 cell119.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1131 xmax_49 ymin_713 ymax_39 cell26#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_114 xmax_26 ymin_876 ymax_20 cell1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_115 xmax_44 ymin_602 ymax_57 cell44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_115 xmax_68 ymin_311 ymax_58 cell102.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1167 xmax_25 ymin_608 ymax_35 cell41#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1167 xmax_26 ymin_818 ymax_12 cell36#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_1174 xmax_25 ymin_4 ymax_44 cell0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_121 xmax_81 ymin_175 ymax_81 cell120.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_123 xmax_47 ymin_129 ymax_35 cell121.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_130 xmax_48 ymin_672 ymax_100 cell43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_133 xmax_25 ymin_58 ymax_39 cell135.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_138 xmax_17 ymin_249 ymax_46 cell104.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_145 xmax_100 ymin_416 ymax_82 cell79.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_147 xmax_20 ymin_798 ymax_12 cell23#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_168 xmax_43 ymin_789 ymax_36 cell17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_172 xmax_15 ymin_633 ymax_14 cell70#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_174 xmax_25 ymin_600 ymax_15 cell84#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_19 xmax_40 ymin_594 ymax_57 cell45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_190 xmax_42 ymin_606 ymax_23 cell40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_192 xmax_40 ymin_729 ymax_29 cell26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_204 xmax_43 ymin_587 ymax_28 cell85#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_227 xmax_39 ymin_825 ymax_28 cell2#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_229 xmax_38 ymin_760 ymax_104 cell24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_243 xmax_39 ymin_576 ymax_31 cell51.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_260 xmax_22 ymin_614 ymax_17 cell71#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_274 xmax_26 ymin_642 ymax_35 cell35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_277 xmax_22 ymin_739 ymax_16 cell47#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_278 xmax_26 ymin_712 ymax_35 cell29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_305 xmax_18 ymin_352 ymax_30 cell147#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_308 xmax_22 ymin_749 ymax_14 cell99#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_31 xmax_26 ymin_87 ymax_34 cell133.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_314 xmax_38 ymin_518 ymax_30 cell88.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_322 xmax_27 ymin_832 ymax_15 cell15#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_333 xmax_77 ymin_699 ymax_61 cell42#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_357 xmax_43 ymin_791 ymax_15 cell31#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_366 xmax_27 ymin_822 ymax_11 cell30#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_367 xmax_68 ymin_775 ymax_58 cell23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_376 xmax_42 ymin_768 ymax_36 cell18#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_380 xmax_44 ymin_488 ymax_78 cell71.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_39 xmax_63 ymin_735 ymax_146 cell25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_398 xmax_34 ymin_725 ymax_45 cell27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_401 xmax_18 ymin_578 ymax_24 cell56#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_401 xmax_46 ymin_389 ymax_91 cell82.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_406 xmax_68 ymin_102 ymax_120 cell131.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_407 xmax_58 ymin_783 ymax_55 cell35#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_41 xmax_22 ymin_360 ymax_14 cell7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_41 xmax_28 ymin_549 ymax_28 cell57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_421 xmax_29 ymin_534 ymax_30 cell69#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_422 xmax_45 ymin_746 ymax_26 cell46#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_425 xmax_11 ymin_886 ymax_10 cell0#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_435 xmax_81 ymin_562 ymax_167 cell68#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_436 xmax_20 ymin_705 ymax_27 cell33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_440 xmax_46 ymin_531 ymax_43 cell69.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_443 xmax_60 ymin_650 ymax_113 cell34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_450 xmax_24 ymin_463 ymax_27 cell121#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_453 xmax_18 ymin_845 ymax_13 cell34#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_463 xmax_17 ymin_871 ymax_15 cell1#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_468 xmax_79 ymin_607 ymax_63 cell53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_475 xmax_16 ymin_496 ymax_14 cell68.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_475 xmax_47 ymin_784 ymax_45 cell22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_476 xmax_29 ymin_767 ymax_35 cell63#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_48 xmax_30 ymin_472 ymax_49 cell75.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_486 xmax_17 ymin_722 ymax_15 cell52#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_486 xmax_31 ymin_564 ymax_35 cell55.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_487 xmax_18 ymin_786 ymax_27 cell26#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_491 xmax_27 ymin_565 ymax_42 cell67#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_491 xmax_41 ymin_505 ymax_20 cell73#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_503 xmax_34 ymin_815 ymax_24 cell24#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_506 xmax_15 ymin_355 ymax_10 cell140#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_507 xmax_63 ymin_646 ymax_131 cell65#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_51 xmax_27 ymin_53 ymax_32 cell8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_510 xmax_56 ymin_698 ymax_47 cell30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_513 xmax_29 ymin_833 ymax_28 cell21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_519 xmax_53 ymin_323 ymax_18 cell144#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_53 xmax_88 ymin_389 ymax_71 cell83.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_536 xmax_28 ymin_796 ymax_13 cell25#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_538 xmax_35 ymin_587 ymax_33 cell54.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_542 xmax_25 ymin_686 ymax_10 cell56#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_543 xmax_51 ymin_779 ymax_48 cell19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_55 xmax_64 ymin_285 ymax_53 cell103.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_559 xmax_23 ymin_577 ymax_13 cell88#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_589 xmax_26 ymin_561 ymax_41 cell56.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_592 xmax_66 ymin_274 ymax_28 cell129.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_594 xmax_13 ymin_685 ymax_6 cell57#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_596 xmax_32 ymin_132 ymax_56 cell117.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_606 xmax_19 ymin_394 ymax_25 cell81.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_620 xmax_28 ymin_534 ymax_39 cell59.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_629 xmax_15 ymin_566 ymax_11 cell74#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_635 xmax_31 ymin_651 ymax_22 cell66#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_640 xmax_43 ymin_595 ymax_18 cell97#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_646 xmax_21 ymin_634 ymax_35 cell45#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_658 xmax_41 ymin_616 ymax_28 cell96#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_660 xmax_23 ymin_543 ymax_29 cell61.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_663 xmax_33 ymin_469 ymax_36 cell80#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_672 xmax_20 ymin_586 ymax_16 cell53#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_673 xmax_77 ymin_22 ymax_76 cell141.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_68 xmax_21 ymin_198 ymax_15 cell163#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_682 xmax_29 ymin_724 ymax_33 cell23#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_684 xmax_32 ymin_508 ymax_18 cell126#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_685 xmax_45 ymin_781 ymax_38 cell18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_686 xmax_20 ymin_111 ymax_13 cell140.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_689 xmax_23 ymin_833 ymax_32 cell4#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_692 xmax_31 ymin_557 ymax_35 cell54#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_7 xmax_64 ymin_5 ymax_57 cell13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_707 xmax_25 ymin_575 ymax_17 cell77#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_710 xmax_54 ymin_673 ymax_40 cell33#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_714 xmax_27 ymin_473 ymax_27 cell74.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_718 xmax_66 ymin_670 ymax_35 cell62#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_719 xmax_29 ymin_752 ymax_24 cell21#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_74 xmax_32 ymin_612 ymax_42 cell62.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_740 xmax_15 ymin_288 ymax_13 cell114.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_744 xmax_35 ymin_817 ymax_54 cell15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_757 xmax_48 ymin_523 ymax_22 cell61#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_78 xmax_81 ymin_520 ymax_44 cell65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_783 xmax_30 ymin_262 ymax_21 cell101.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_791 xmax_31 ymin_812 ymax_18 cell27#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_796 xmax_13 ymin_587 ymax_10 cell58#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_8 xmax_31 ymin_365 ymax_42 cell6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_809 xmax_31 ymin_778 ymax_23 cell39#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_810 xmax_32 ymin_537 ymax_46 cell72.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_82 xmax_54 ymin_568 ymax_29 cell63.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_835 xmax_31 ymin_694 ymax_41 cell37#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_839 xmax_24 ymin_841 ymax_22 cell13#2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_871 xmax_36 ymin_47 ymax_39 cell136.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_873 xmax_116 ymin_421 ymax_50 cell86#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_892 xmax_31 ymin_809 ymax_29 cell9#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_893 xmax_19 ymin_517 ymax_18 cell71#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_896 xmax_55 ymin_708 ymax_45 cell28#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_92 xmax_24 ymin_47 ymax_58 cell137.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_936 xmax_28 ymin_295 ymax_38 cell95.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_950 xmax_34 ymin_781 ymax_76 cell13#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_962 xmax_37 ymin_313 ymax_44 cell94.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_966 xmax_53 ymin_33 ymax_83 cell10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_970 xmax_55 ymin_125 ymax_55 cell128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_992 xmax_38 ymin_688 ymax_37 cell29#3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cells/blue/xmin_996 xmax_42 ymin_810 ymax_38 cell8#3.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Document.py" beforeDir="false" afterPath="$PROJECT_DIR$/Document.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
@@ -445,18 +54,15 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Version_3">
+  <component name="RunManager" selected="Python.Notes">
     <configuration name="Document" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -577,6 +183,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -602,11 +211,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Version_3" />
         <item itemvalue="Python.Notes" />
-        <item itemvalue="Python.resources" />
         <item itemvalue="Python.Klasyfikatory" />
         <item itemvalue="Python.Document" />
+        <item itemvalue="Python.Version_3" />
+        <item itemvalue="Python.resources" />
       </list>
     </recent_temporary>
   </component>
@@ -688,13 +297,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00020" summary="7.08 &#10;Convolution 2D gotowe">
-      <created>1691416478398</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1691416478398</updated>
     </task>
     <task id="LOCAL-00021" summary="Zaczete Canny">
       <created>1691436435117</created>
@@ -1032,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696800759089</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="10.10 ogarnac ten kod i zabrac sie za klasyfikacje">
+      <created>1696961031112</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1696961031112</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1051,7 +660,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="10.09" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
     <MESSAGE value="13.09 dalej trzeba ogarnąć powtorzenia kontórów" />
@@ -1076,10 +684,23 @@
     <MESSAGE value="6.10 zastosowanie maski działa , dobrac parametry trzeba" />
     <MESSAGE value=" 7.10 dokumentacja" />
     <MESSAGE value="80.10 zostaje ostatnia kwestia czyli odsianie zlepków" />
-    <option name="LAST_COMMIT_MESSAGE" value="80.10 zostaje ostatnia kwestia czyli odsianie zlepków" />
+    <MESSAGE value="10.10 ogarnac ten kod i zabrac sie za klasyfikacje" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.10 ogarnac ten kod i zabrac sie za klasyfikacje" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

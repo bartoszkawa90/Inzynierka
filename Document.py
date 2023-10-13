@@ -37,36 +37,60 @@ import os
 import cv2
 import numpy as np
 
-if __name__ == "__main__":
-    # Specify the path to the desired Python 3 interpreter
-    python3 = "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3"
-    pypy3 = "/opt/homebrew/bin/pypy3"  # Replace with the actual path
+# if __name__ == "__main__":
+#     # Specify the path to the desired Python 3 interpreter
+#     python3 = "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3"
+#     pypy3 = "/opt/homebrew/bin/pypy3"  # Replace with the actual path
+#
+#     # Call the Python 3 function using the specified interpreter
+#     result = subprocess.run([python3, "-c", "from resources import test; print(test())"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+#     # test = subprocess.check_output()
+#     print(result.stdout.strip())
 
-    # Call the Python 3 function using the specified interpreter
-    result = subprocess.run([python3, "-c", "from resources import test; print(test())"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    # test = subprocess.check_output()
-    print(result.stdout.strip())
-
-# def run_as_python3_fun(func):
-#     def wrapper(*args, **kwargs):
+# def run_as_python3_fun():
+#     def wrapper(func):
 #         python3 = "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3"
 #         fun_name = func.__name__
-#         if len(args) > 0:
-#             name = args[0].__name__
-#         else:
-#             pass
+#         # if len(args) > 0:
+#         #     name = args[0].__name__
+#         # else:
+#         #     pass
 #
 #         sub = subprocess.run([python3, "-c", f"from resources import {fun_name}; print({fun_name}())"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 #         result = sub.stdout.strip()
 #         return result
-#         # print(result.stdout.strip())
-#     return wrapper
 #
-# @run_as_python3_fun
-# def test2():
-#     print('Hello \n')
+#     return wrapper
+
+
+# def run_with_python_version(python_version):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             # Construct the command to run the function with the specified Python version
+#             command = [f"{python_version}", "-c", f"from {func.__module__} import {func.__name__}; {func.__name__}(*{args}, **{kwargs})"]
+#
+#             try:
+#                 # Run the command
+#                 subprocess.run(command, check=True)
+#                 # result = sub.stdout.strip()
+#                 # print(result)
+#             except subprocess.CalledProcessError as e:
+#                 print(f"Error running function with Python {python_version}: {e}")
+#
+#         return wrapper
+#
+#     return decorator
+#
+
+# @run_with_python_version("/Library/Frameworks/Python.framework/Versions/3.11/bin/python3")
+# def test2(a):
+#     print(f'Hello {a}\n')
 #     print(sys.version)
 #     return 2
+#
+# if __name__ == "__main__":
+#     print('before')
+#     test2(1)
 #
 # test2()
 # def run_as_python3_fun(func):
