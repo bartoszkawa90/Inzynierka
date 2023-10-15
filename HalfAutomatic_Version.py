@@ -47,7 +47,11 @@ def click_event(event, x, y, flags, param):
 
 #Choose photo
 photo = 'Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg'
-img = cv2.imread(photo)
+# bluecell = 'Cells/blue/cell50.jpg'
+# blackcell = 'Cells/black/cell85.jpg'
+bluecell = 'Cells/blue/cell37.jpg'
+blackcell = 'Cells/black/cell92.jpg'
+img = cv2.imread(bluecell)
 print('dwwdaw')
 # r, g, b = cv2.split(img)
 # img = b

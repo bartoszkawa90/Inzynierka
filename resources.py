@@ -50,7 +50,7 @@ class Parameters():
 
 
 class SegmentationResult():
-    def __init__(self, cells=[], coordinates=[], contours=[], image=[]):
+    def __init__(self, cells=[], coordinates=[], contours=(), image=[]):
         self.cells = cells
         self.coordinates = coordinates
         self.contours = contours
@@ -561,7 +561,8 @@ def main(params):
 
     # preprocessing
     if params.img_path.split('/')[0] == 'Zdjecia':
-        img = preprocess(img, xmin=500, xmax=1000, ymin=800, ymax=1300)
+        img = preprocess(img, xmin=600, xmax=1000, ymin=600, ymax=1000)
+        # img = preprocess(img)
     print(img.shape)
 
     # change image to grayscale
@@ -623,11 +624,18 @@ def main(params):
 def save_cells(cells, coordinates, dir='Cells', name_addition=''):
     # SAVE Cells in ./Cells
     iter = 0
-    for cell, coordiante in zip(cells, coordinates):
-        print(iter, " ", cell.shape)
-        cv2.imwrite(f'{dir}/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]} cell{iter}{name_addition}.jpg',
-                    cell)
-        iter += 1
+    if coordinates != None:
+        for cell, coordiante in zip(cells, coordinates):
+            print(iter, " ", cell.shape)
+            cv2.imwrite(f'{dir}/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]} cell{iter}{name_addition}.jpg',
+                        cell)
+            iter += 1
+    else:
+        iter = 0
+        for cell in cells:
+            print(iter, " ", len(cell))
+            cv2.imwrite(f"{dir}/cell"+str(iter)+".jpg", cell)
+            iter += 1
 
 
 def get_coordinates_from_filename(path):

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="10.10 ogarnac ten kod i zabrac sie za klasyfikacje">
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="13.10 klasyfikacja">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Document.py" beforeDir="false" afterPath="$PROJECT_DIR$/Document.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HalfAutomatic_Version.py" beforeDir="false" afterPath="$PROJECT_DIR$/HalfAutomatic_Version.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
@@ -58,11 +58,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Notes">
+  <component name="RunManager" selected="Python.Version_3">
     <configuration name="Document" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -78,10 +81,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="HalfAutomatic_Version" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="inzynierka" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HalfAutomatic_Version.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Klasyfikatory" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -179,43 +204,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="resources" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="inzynierka" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/resources.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.HalfAutomatic_Version" />
       <item itemvalue="Python.Klasyfikatory" />
       <item itemvalue="Python.Notes" />
       <item itemvalue="Python.Document" />
-      <item itemvalue="Python.resources" />
       <item itemvalue="Python.Version_3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Version_3" />
         <item itemvalue="Python.Notes" />
+        <item itemvalue="Python.HalfAutomatic_Version" />
         <item itemvalue="Python.Klasyfikatory" />
         <item itemvalue="Python.Document" />
-        <item itemvalue="Python.Version_3" />
-        <item itemvalue="Python.resources" />
       </list>
     </recent_temporary>
   </component>
@@ -297,13 +300,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00021" summary="Zaczete Canny">
-      <created>1691436435117</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1691436435118</updated>
     </task>
     <task id="LOCAL-00022" summary="Zaczete Canny i jednak splot do poprawy">
       <created>1691517805883</created>
@@ -641,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696961031112</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="13.10 klasyfikacja">
+      <created>1697205133622</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1697205133622</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +663,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia" />
     <MESSAGE value="11.09  -  czarne i niebieskie komórki do podzielenia ale raczej siec bedzie potrzebna" />
     <MESSAGE value="13.09 dalej trzeba ogarnąć powtorzenia kontórów" />
     <MESSAGE value="14.09 jakies trzeba ogarnac ze są kontury zawierajace kilka innych konktórów" />
@@ -685,19 +687,20 @@
     <MESSAGE value=" 7.10 dokumentacja" />
     <MESSAGE value="80.10 zostaje ostatnia kwestia czyli odsianie zlepków" />
     <MESSAGE value="10.10 ogarnac ten kod i zabrac sie za klasyfikacje" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.10 ogarnac ten kod i zabrac sie za klasyfikacje" />
+    <MESSAGE value="13.10 klasyfikacja" />
+    <option name="LAST_COMMIT_MESSAGE" value="13.10 klasyfikacja" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
-          <line>78</line>
+          <line>107</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
-          <line>82</line>
+          <line>111</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>

@@ -106,24 +106,39 @@ def plot_data(X,labels,centroids,s):
 
 
 
-n = 2
-X = generate_data()
-k_means = KMeans(n_clusters=n)
-model = k_means.fit(X)
-centroids = k_means.cluster_centers_
-print(centroids)
-labels = k_means.labels_
+# n = 2
+# X = generate_data()
+# k_means = KMeans(n_clusters=n)
+# model = k_means.fit(X)
+# centroids = k_means.cluster_centers_
+# print(centroids)
+# labels = k_means.labels_
+#
+# plt.figure()
+# plt.plot(X[labels==0,0],X[labels==0,1],'r.', label='cluster 1')
+# plt.plot(X[labels==1,0],X[labels==1,1],'b.', label='cluster 2')
+# plt.plot(X[labels==2,0],X[labels==2,1],'g.', label='cluster 3')
+#
+# plt.plot(centroids[:,0],centroids[:,1],'mo',markersize=8, label='centroids')
+#
+# plt.legend(loc='best')
+# plt.show()
 
-plt.figure()
-plt.plot(X[labels==0,0],X[labels==0,1],'r.', label='cluster 1')
-plt.plot(X[labels==1,0],X[labels==1,1],'b.', label='cluster 2')
-plt.plot(X[labels==2,0],X[labels==2,1],'g.', label='cluster 3')
 
-plt.plot(centroids[:,0],centroids[:,1],'mo',markersize=8, label='centroids')
 
-plt.legend(loc='best')
+### histogram
+img = cv2.imread('Cells/blue/cell20.jpg')
+hist,bins = np.histogram(img.flatten(),256,[0,256])
+cdf = hist.cumsum()
+cdf_normalized = cdf * float(hist.max()) / cdf.max()
+
+
+
+plt.plot(cdf_normalized, color = 'b')
+plt.hist(img.flatten(),256,[0,256], color = 'r')
+plt.xlim([0,256])
+plt.legend(('cdf','histogram'), loc = 'upper left')
 plt.show()
-
 
 
 

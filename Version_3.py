@@ -26,9 +26,9 @@ from Klasyfikatory import *
 
 
 
-
-
 if __name__ == '__main__':
+    print("Start")
+    start_time = time.time()
 
 ## IMAGES
     # lista adresów do wycinków
@@ -40,13 +40,13 @@ if __name__ == '__main__':
     print(f'\nImages in {dir} directory : ', *list_of_images, sep='\n'), print('\n')
 
     # img = cv2.imread('Zdjecia/wycinek_5.jpg')
-    img_path = list_of_images[3]#'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[0]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
+    img_path = list_of_images[0]#'Zdjecia/Histiocytoza z komórek Langerhansa, Ki-67 ok. 15%.jpg'#list_of_images[0]#'Cells/xmin_231 xmax_70 ymin_593 ymax_71 cell47#3.jpg'#'Wycinki/resized_Wycinek_4_59nieb_77czar.jpg'
     print(f"Chosen image {img_path}")
     img = cv2.imread(img_path)
 
 
 ## ALGORITHM
-
+    # creating set of parameters which will be given to segmentation main for finding cells and
     parameters = Parameters(img_path=img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7,
                             CannyLowBoundry=0.1, CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False,
                             CannySharpen=False, contourSizeLow=15, contourSizeHigh=500, whiteCellBoundry=193,
@@ -57,32 +57,53 @@ if __name__ == '__main__':
     #      CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
     #      contourSizeHigh=500, whiteCellBoundry=193, returnOriginalContours=False)
 
-    print(len(segmentation_results.contours))
-    # conts, smallest, largest, id_min, ID_MAX = contoursProcessing(conts, lowBoundry=15, highBoundry=500, RETURN_ADDITIONAL_INFORMATION=1)
-    # print(smallest.shape, largest.shape)
-
 
 ## CLASSIFICATION
+    # Supervised methods
     # black_path = "../Reference/black"
     # blue_path = "../Reference/blue"
     # black = []
     # blue = []
     # kNN(segmentation_results.cells[0], black_path, blue_path)
-    # black, blue = kmeansClassify(cells)
 
-## verify classification save images
+    # Unsupervised methods
+    black, blue, centroids = kMeans(k_iterations=3, num_of_clusters=5, data=segmentation_results.cells)
+
+    print(f" Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is  ::  "
+          f"{len(black)/(len(blue) + len(black))*100} % \n")
+
+
+# PLOT CLASSIFICATION RESULTS
+#     ax = plt.axes(projection='3d')
+#     # for cell in cells_RGB:
+#     #     color = 'red'
+#     #     ax.scatter(cell[0], cell[1], cell[2], color=color)
+#     for cen in centroids:
+#         color = 'green'
+#         ax.scatter(cen[0], cen[1], cen[2])
+#     plt.xlabel('wartosci R')
+#     plt.ylabel('wartosci G')
+#     plt.show()
+
+
+## SAVE CELLS after SEGMENTATION
     # SAVE Cells in ./Cells  or   ../Reference
     # save_dir = "./Cells"
     # save_dir = "../Reference/"
     # save_cells(segmentation_results.cells, segmentation_results.coordinates, name_addition=f'#{img_path.split("/")[-1]}', dir=save_dir)
 
 
-    # DISPLAY
-    # Draw Contours
+## SAVE CELLS after CLASSYFICATION
+    save_cells(black, coordinates=None, name_addition=f'#', dir='Cells/black')
+    save_cells(blue, coordinates=None, name_addition=f'#', dir='Cells/blue')
+
+
+# DISPLAY IMGAE WITH CONTOURS
+#     # Draw Contours
     cv2.drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
-    # śDisplay
+#     # śDisplay
     plot_photo('final th ', segmentation_results.image)
 
     print("Finish")
     print("--- %s seconds ---" % (time.time() - start_time))
-    exit()
+    # exit()

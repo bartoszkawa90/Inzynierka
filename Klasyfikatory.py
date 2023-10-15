@@ -12,6 +12,8 @@ from resources import *
 from Klasyfikatory import *
 
 
+from sklearn.cluster import KMeans
+
 # additions
 
 
@@ -32,24 +34,51 @@ def get_mean_rgb_from_cell(cell=None):
 
     rmean, gmean, bmean = np.mean(red), np.mean(green), np.mean(blue)
 
-    return [rmean, gmean, bmean]
+    return [rmean, gmean] #[rmean, gmean, bmean]
 
 
 
 ## ---------------------------------------------------------------------------------------------------------------------
-
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import load_iris
-
-
 # bez nauczyciela
 # kMeans
-def kMeans(num_of_clusters=2, data=[]):
+def kMeans(k_iterations=3, num_of_clusters=2, data=[]):
+    '''
+    number od iteration does not really matter
+    num of clusters is what matters , cluster with highest mean value is blue and the rest is ponetialy black
+    '''
+    # start
+    black, blue, blackCenter, blueCenter, blueCenter2 = [], [], [], [], []
+    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in data]
 
     # kMeans
+    k_means = KMeans(n_clusters=num_of_clusters, random_state=0)
+    # k_means.n_iter_ = k_iterations
+    model = k_means.fit(cells_RGB)
+    centroids = k_means.cluster_centers_
+    # print(f'k_means.labels_  {k_means.labels_}')
 
     # classify
+    means = [np.mean(center) for center in centroids]
+    blueCenter = centroids[means.index(max(means))]
+    # if min_mean == np.mean(centroids[0])
+    # if np.mean(centroids[0]) > np.mean(centroids[1]):
+    #     blackCenter, blueCenter = centroids[1], centroids[0]
+    # elif np.mean(centroids[0]) < np.mean(centroids[1]):
+    #     blackCenter, blueCenter = centroids[0], centroids[1]
+
+    for cell_id in range(len(cells_RGB)):
+        distances = [distance(center, cells_RGB[cell_id]) for center in centroids] #distance(centroids[0], cells_RGB[cell_id]), distance(centroids[1], cells_RGB[cell_id]),
+        #              distance(centroids[3], cells_RGB[cell_id])]
+        nearest = centroids[distances.index(min(distances))]
+        if (nearest == blueCenter).all():
+            blue.append(data[cell_id])
+        else:
+            black.append(data[cell_id])
+
+    return black, blue, centroids
+
+
+
 
 
 
@@ -57,7 +86,7 @@ def kMeans(num_of_clusters=2, data=[]):
 
 # z nauczycielem
 def kNN(cell, blackCellsPath, blueCellsPath):
-
+    pass
     # list_of_blue_cells = [blueCellsPath + '/' + img for img in os.listdir('{}'.format(blueCellsPath))]
     # list_of_black_cells = [blackCellsPath + '/' + img for img in os.listdir('{}'.format(blackCellsPath))]
     # print("black", *list_of_black_cells)
@@ -163,7 +192,7 @@ def kNN(cell, blackCellsPath, blueCellsPath):
 #     print(f'mean {np.mean(cell)} , c1 {centers[0]}  , c2 {centers[1]}')
 #     print(f' c2 mean {np.mean(centers[0])}  c2 mean {np.mean(centers[1])}')
 #
-    # # plot
+    # plot
     # ax = plt.axes(projection='3d')
     # r1, g1, b1 = split(cell)
     # # r2, g2, b2 = split(nearC2)
@@ -183,11 +212,10 @@ def kNN(cell, blackCellsPath, blueCellsPath):
 
 
 ### TEST
-img = cv2.imread("../Reference/black/xmin_1 xmax_38 ymin_432 ymax_22 cell8#Szpiczak, Ki-67 ok. 95%.jpg.jpg")
-plot_photo(img)
-
-black_path = "../Reference/black/"
-blue_path = "../Reference/blue/"
-black = []
-blue = []
-kNN(blue, black_path, blue_path)
+# img = cv2.imread("../Reference/black/xmin_1 xmax_38 ymin_432 ymax_22 cell8#Szpiczak, Ki-67 ok. 95%.jpg.jpg")
+# plot_photo(img)
+#
+# black_path = "../Reference/black/"
+# blue_path = "../Reference/blue/"
+# black = []
+# blue = []
