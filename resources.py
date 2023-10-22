@@ -1,16 +1,14 @@
 ## IMPORTS
-import sys
-
 from variables import *
-import time
-import cv2
-# import skimage
-from copy import deepcopy
-from pprint import pprint
+from time import time
+from cv2 import imread, imwrite, imshow, namedWindow, resize, resizeWindow, waitKey, destroyWindow, threshold, morphologyEx, INTER_AREA
+from cv2 import split, THRESH_BINARY, bitwise_and, getStructuringElement, MORPH_ELLIPSE, MORPH_OPEN, MORPH_CLOSE
+from cv2 import findContours, RETR_TREE, CHAIN_APPROX_SIMPLE, boundingRect, WINDOW_NORMAL, drawContours, cvtColor
 from sys import exit
-import random
-import sklearn
-from Document import *
+from copy import deepcopy
+from os import listdir
+from sys import version
+
 
 
 ## CLASSES
@@ -28,6 +26,7 @@ class Set():
 
     def print(self):
         print(f'first {self.first} second {self.second} \n')
+
 
 class Parameters():
     def __init__(self, img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
@@ -70,12 +69,11 @@ def plot_photo(title='None', image=None, height=1500, widht=1500):
     if isinstance(title, str) == False:
         image = title
         title = "None"
-    cv2.namedWindow(title, cv2.WINDOW_NORMAL)
-    cv2.namedWindow(title, cv2.WINDOW_NORMAL)
-    cv2.resizeWindow(title, height, widht)
-    cv2.imshow(title, image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    namedWindow(title, WINDOW_NORMAL)
+    resizeWindow(title, height, widht)
+    imshow(title, image)
+    waitKey(0)
+    destroyAllWindows()
     exit()
 
 
@@ -87,7 +85,7 @@ def printArr(*args):
         print(" Array name ::   {}\n Array shape : {} \n {} \n Max : {} \n Min : {} \n ".format('ada', arr.shape, arr,
                                                                                                 arr.max(), arr.min()))
 
-
+# @njit
 def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None):
     '''
     :param xmin: ->| cuts from left side
@@ -95,7 +93,7 @@ def preprocess(img, xmin=0, xmax=None, ymin=0, ymax=None):
     :param ymin:  cuts from the top   // should be 800 for central photos and ~2000 for the one situated on the bottom
     :param ymax:  cuts from the bottom
     '''
-    image = cv2.resize(img, (3000, 3000), cv2.INTER_AREA)
+    image = resize(img, (3000, 3000), INTER_AREA)
     if ymax == None: ymax = img.shape[0]
     if xmax == None: xmax = img.shape[1]
     new = image[ymin:ymin + ymax, xmin:xmin + xmax]
@@ -150,39 +148,13 @@ def filterWhiteAndBlackCells(contours, img, whiteCellsBoundry=193):
 
     conts = []
 
-
-    #### OLD
-    # lower_boundry = np.array([0, 0, 0], dtype="uint8")
-    # upper_boundry = np.array([220, 175, 175], dtype="uint8")
-    #
-    # for con in contours:
-    #     if mode == FILTER_WHITE:
-    #         ## extract cell from image
-    #         x_min, y_min, x_max, y_max = cv2.boundingRect(con)
-    #         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-    #
-    #         ## create mask for white cells filtering
-    #         mask = cv2.inRange(cell, lower_boundry, upper_boundry)
-    #         detected_output = cv2.bitwise_and(cell, cell, mask = mask)
-    #
-    #         if np.mean(detected_output) > whiteCellsBoundry:
-    #             conts.append(con)
-    #     if mode == FILTER_BLACK:
-    #         ## extract cell from image
-    #         conts.append(con)
-    #         x_min, y_min, x_max, y_max = cv2.boundingRect(con)
-    #         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
-    #
-    #         if np.mean(cell) < blackCellsBoundry:
-    #             conts = removeContour(conts, con)
-
     for con in contours:
         # extract cells
-        x_min, y_min, x_max, y_max = cv2.boundingRect(con)
+        x_min, y_min, x_max, y_max = boundingRect(con)
         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
         # filter cells according to mean blue value
-        red, green, blue = cv2.split(cell)
+        red, green, blue = split(cell)
         if np.mean(blue) < whiteCellsBoundry:
             conts.append(con)
 
@@ -229,17 +201,6 @@ def find_image(im, tpl):
     return False
 
 
-# def isOnImage(main, img, threshold=0.999):
-#     result = cv2.matchTemplate(main, img, cv2.TM_CCOEFF_NORMED)
-#     thresh = threshold  # You can adjust this threshold based on your needs
-#
-#     loc = np.where(result >= thresh)
-#     if loc[0].size > 0:
-#         return True
-#     else:
-#         return False
-
-
 def filterRepetitions(contours, img):
     '''
     :param contours: (tuple of ndarrays) contours to filter repetitions and wrong cells
@@ -281,7 +242,7 @@ def filterRepetitions(contours, img):
 
 # Version for colors
 def extractCell(contour=None, img=None):
-    x_min, y_min, x_max, y_max = cv2.boundingRect(contour)
+    x_min, y_min, x_max, y_max = boundingRect(contour)
     cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
     # cell_dict = {[x_min, x_max, y_min, y_max]: cell}
     cell_set = Set([x_min, x_max, y_min, y_max], cell)
@@ -368,8 +329,8 @@ def gaussKernelGenerator(size=3, sigma=1):
     '''
     x = np.arange(size)
     x = x - x[x.shape[0]//2]
-    e = (1/np.sqrt(2*np.pi*sigma))
-    temp = [ e*np.exp((-i**2)/(2*sigma**2)) for i in x]
+    e = (1/((2*np.pi*sigma)**0.5)) #(1/np.sqrt(2*np.pi*sigma))
+    temp = [e*np.exp((-i**2)/(2*sigma**2)) for i in x]
     return np.array(temp).reshape(size, 1)
 
 
@@ -381,7 +342,7 @@ def gaussianFilterGenerator(size=3, sigma=1):
             X[0, i] = Y[i, 0] = -1
         else:
             X[size-1, i-size-1] = Y[i-size-1, size-1] = 1
-    result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma)  )
+    result = (1/(2*np.pi*sigma*sigma)) * np.exp(  (-1*(np.power(X, 2) + np.power(Y, 2))) / (2*sigma*sigma))
     return result
 
 
@@ -405,7 +366,7 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
         print("You have to give at least one argument")
         return
     if len(grayImage.shape) == 3:
-        grayImage = cv2.cvtColor(grayImage, cv2.COLOR_BGRA2GRAY)
+        grayImage = cvtColor(grayImage, COLOR_BGRA2GRAY)
 
     # # zastosowanie filtru Gaussa w celu ograniczenia szumów
     # gaussKernel = gaussKernelGenerator(5, 1)
@@ -428,7 +389,7 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
     Gy = Convolution2D(gImage, mask_y, mode='same')
 
     ## gradient magnitude and angle(direction)
-    GMag = np.sqrt(Gx**2 + Gy**2)
+    GMag = (Gx**2 + Gy**2)**0.5 #np.sqrt(Gx**2 + Gy**2)
     Gangle = np.arctan2(Gy, Gx) * (180/np.pi)  ## angle in deg not in radians
 
     ## Non-maximum Suppression   ######  IN THESE SITUATION  'NMS' MAY GIVE WORSE RESULTS
@@ -495,13 +456,13 @@ def imageThreshold(grayImage, localNeighborhood=51, lowLimitForMask=20):
 
     # what if given image is not in gray scale
     if len(grayImage.shape) >= 3:
-        image = cv2.cvtColor(grayImage, cv2.COLOR_BGRA2GRAY)
+        image = cvtColor(grayImage, COLOR_BGRA2GRAY)
 
     result = np.zeros_like(grayImage)   # zeros_like creates copy of given array and filled with zeros
 
     # filter background and making a mask
-    ret, mask = cv2.threshold(grayImage, 20, 255, cv2.THRESH_BINARY)
-    grayImage = cv2.bitwise_and(grayImage, grayImage, mask=mask)
+    ret, mask = threshold(grayImage, lowLimitForMask, 255, THRESH_BINARY)
+    grayImage = bitwise_and(grayImage, grayImage, mask=mask)
 
     # iteration through every pixel on image
     for row in range(grayImage.shape[0]):
@@ -531,15 +492,15 @@ def imageThreshold(grayImage, localNeighborhood=51, lowLimitForMask=20):
     # apply morphology -- get getStructuringElement składa nam maciez o zadanych wymiarach która bedzie nam potrzebna
     #   -- morphologyEx pozwala wyłapać kontur : MORPH_OPEN czysci tło ze smieci a MORPH_CLOSE czysci kontury komórek
     #      ze smieci
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-    thresh = cv2.morphologyEx(result, cv2.MORPH_OPEN, kernel)
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (12, 12))
-    result = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+    kernel = getStructuringElement(MORPH_ELLIPSE, (5, 5))
+    thresh = morphologyEx(result, MORPH_OPEN, kernel)
+    kernel = getStructuringElement(MORPH_ELLIPSE, (12, 12))
+    result = morphologyEx(thresh, MORPH_CLOSE, kernel)
 
     return result
 
 
-def split(cell=None):
+def split_on_lists(cell=None):
     red = [rgb[0] for rgb in cell]
     green = [rgb[1] for rgb in cell]
     blue = [rgb[2] for rgb in cell]
@@ -548,27 +509,23 @@ def split(cell=None):
 
 
 def main(params):
-# def Main(img_path, thresholdRange=None, thresholdMaskValue=None, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
-#          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=True, CannySharpen=False, contourSizeLow=None,
-#          contourSizeHigh=None, whiteCellBoundry=None,  returnOriginalContours=False):
     '''
     '''
     # Reading an image in default mode
     if isinstance(params.img_path, str):
-        img = cv2.imread(params.img_path)
+        img = imread(params.img_path)
     else:
         img = params.img_path
 
     # preprocessing
-    if params.img_path.split('/')[0] == 'Zdjecia':
-        img = preprocess(img, xmin=600, xmax=1000, ymin=600, ymax=1000)
-        # img = preprocess(img)
+    # if params.img_path.split('/')[0] == 'Zdjecia':
+    img = preprocess(img, xmin=600, xmax=1000, ymin=600, ymax=1000)
+    # img = preprocess(img)
     print(img.shape)
 
-    # change image to grayscale
-    red, green, blue = cv2.split(img)
-    # gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-    # plot_photo('test', b)
+    # get blue value
+    # red, green, blue = split(img)
+    blue = split(img)[2]
 
     ## apply adaptive threshold
     # Oficjalnie najlepsza wartość threshold dla obrazu przyciętego i resized na (3000, 3000) to 51
@@ -580,16 +537,14 @@ def main(params):
         blob = imageThreshold(blue, lowLimitForMask=params.thresholdMask)
     else:
         blob = imageThreshold(blue, localNeighborhood=params.thresholdRange, lowLimitForMask=params.thresholdMaskValue )
-    # plot_photo('test', blob)
 
     # # Finding edges
     edged = Canny(blob, gaussSize=params.CannyGaussSize, gaussSigma=params.CannyGaussSigma,
                   lowBoundry=params.CannyLowBoundry, highBoundry=params.CannyHighBoundry,
                   useGaussFilter=params.CannyUseGauss, performNMS=params.CannyPerformNMS,
                   sharpenImage=params.CannySharpen)
-    # edged = cv2.Canny(blob, 10, 200, 5, L2gradient=True)
 
-    contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = findContours(edged, RETR_TREE, CHAIN_APPROX_SIMPLE)
     print("Number of contours at first {}".format(len(contours)))
 
     # Filtering cells by size
@@ -627,14 +582,14 @@ def save_cells(cells, coordinates, dir='Cells', name_addition=''):
     if coordinates != None:
         for cell, coordiante in zip(cells, coordinates):
             print(iter, " ", cell.shape)
-            cv2.imwrite(f'{dir}/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]} cell{iter}{name_addition}.jpg',
+            imwrite(f'{dir}/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]} cell{iter}{name_addition}.jpg',
                         cell)
             iter += 1
     else:
         iter = 0
         for cell in cells:
             print(iter, " ", len(cell))
-            cv2.imwrite(f"{dir}/cell"+str(iter)+".jpg", cell)
+            imwrite(f"{dir}/cell"+str(iter)+".jpg", cell)
             iter += 1
 
 
@@ -654,57 +609,57 @@ def get_coordinates_from_filename(path):
 
 ## test LoG / Canny  -----------------------------------------------------------
 
-# img = cv2.imread('spodnie.jpeg')
-# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
-# img = cv2.imread('zdj_z_arykułu.png')
+# img = imread('spodnie.jpeg')
+# img = imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg')
+# img = imread('zdj_z_arykułu.png')
 
-# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# gray = cvtColor(img, COLOR_BGRA2GRAY)
 # Canny(gray)
 # plot_photo("From Canny", LoG(gray))
 # plot_photo("From Canny", Canny(gray, lowBoundry=1.0, highBoundry=10.0))
-# plot_photo("cv2 Canny", cv2.Canny(gray, 100, 200, 10, L2gradient=True))
+# plot_photo("cv2 Canny", Canny(gray, 100, 200, 10, L2gradient=True))
 
-# edge = cv2.Canny(gray, 1, 10)
-# contours, hierarchy = cv2.findContours(edge, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+# edge = Canny(gray, 1, 10)
+# contours, hierarchy = findContours(edge, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE)
 # conts = delete_incorrect_contours(contours)
 # plot_photo("From Canny", edge)
-# cv2.drawContours(img, conts, -1, (0, 255, 0), 3)
+# drawContours(img, conts, -1, (0, 255, 0), 3)
 # plot_photo("From Canny", img)
 
 
 # test Canny 2
-# img = cv2.imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg)
-# gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+# img = imread('Wycinki/resized_wycinek_4_67nieb_82czar.jpg)
+# gray = cvtColor(img, COLOR_BGRA2GRAY)
 # plot_photo("From Canny", Canny(gray))
 
 
-## test COnvolution
+# ## test COnvolution
 # mask_x = np.zeros((3, 1))
 # mask_x[0] = -1
 # mask_x[2] = 1
 # mask_y = mask_x.T
 # printArr(mask_x, mask_y)
 
-# non square kernel
+# # non square kernel
 # print("mine   \n", Convolution2D(exampleArray, mask_y, mode="same"))
-# print("scipy.signal  \n", sig.convolve2d(exampleArray, mask_y, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, mask_y, mode="constant"))
-# print("cv2 filter \n", cv2.filter2D(exampleArray, -1, mask_x))
-# print("corelation \n ", scipy.ndimage.correlate(exampleArray, mask_x))
-# print("\n")
+# # print("scipy.signal  \n", sig.convolve2d(exampleArray, mask_y, mode='same').astype(np.uint8))
+# # print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, mask_y, mode="constant"))
+# # print("cv2 filter \n", filter2D(exampleArray, -1, mask_x))
+# # print("corelation \n ", scipy.ndimage.correlate(exampleArray, mask_x))
+# # print("\n")
 
 # # square input image
 # print("mine   \n", Convolution2D(MALAexample, mask_y, mode="same"))
-# print("scipy.signal  \n", sig.convolve2d(MALAexample, mask_y, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(MALAexample, mask_y, mode="constant"))
-# print("cv2 filter \n", cv2.filter2D(MALAexample, -1, mask_x))
-# print("\n")
+# # print("scipy.signal  \n", sig.convolve2d(MALAexample, mask_y, mode='same').astype(np.uint8))
+# # print("scipy.ndimage   \n", scipy.ndimage.convolve(MALAexample, mask_y, mode="constant"))
+# # print("cv2 filter \n", filter2D(MALAexample, -1, mask_x))
+# # print("\n")
 
 # # non square input image
 # print("mine   \n", Convolution2D(exampleArray, exampleKernel, mode="same"))
-# print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleKernel, mode='same').astype(np.uint8))
-# print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
-# print("\n")
+# # print("scipy.signal  \n", sig.convolve2d(exampleArray, exampleKernel, mode='same').astype(np.uint8))
+# # print("scipy.ndimage   \n", scipy.ndimage.convolve(exampleArray, exampleKernel, mode="constant"))
+# # print("\n")
 
 
 

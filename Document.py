@@ -173,3 +173,43 @@ def isOnTheImage(mainImg, img):
 
     return len(finalList) > 0
 
+
+def kNN(cells, blackCellsPath, blueCellsPath):
+
+    list_of_blue_cells = [blueCellsPath + img for img in os.listdir(f'{blueCellsPath}') if ".DS" not in img]
+    list_of_black_cells = [blackCellsPath + img for img in os.listdir(f'{blackCellsPath}') if ".DS" not in img]
+
+    black_cells, blue_cells = [], []
+    for cell_id in range(len(list_of_black_cells)):
+        black_cells.append(cv2.imread(list_of_black_cells[cell_id]))
+    for cell_id in range(len(list_of_blue_cells)):
+        blue_cells.append(cv2.imread(list_of_blue_cells[cell_id]))
+    print("odczytane referencyjne black", len(list_of_black_cells))
+    print("odczytane referencyjne blue", len(list_of_blue_cells))
+
+    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
+    black_RGB = [get_mean_rgb_from_cell(cell) for cell in black_cells]
+    blue_RGB = [get_mean_rgb_from_cell(cell) for cell in blue_cells]
+
+    blue_cells_result, black_cells_result = [], []
+
+    for cell_id in range(len(cells)):
+        distance_from_nearest_black = distance(cells[cell_id], black_RGB[0])
+        distance_from_nearest_blue = distance(cells[cell_id], blue_RGB[0])
+
+        for black in black_RGB:
+            if distance(cells[cell_id], black) < distance_from_nearest_black:
+                distance_from_nearest_black = distance(cells[cell_id], black)
+
+        for blue in blue_RGB:
+            if distance(cells[cell_id], blue) < distance_from_nearest_blue:
+                distance_from_nearest_blue = distance(cells[cell_id], blue)
+
+        if distance_from_nearest_blue > distance_from_nearest_black:
+            black_cells_result.append(cells[cell_id])
+        else:
+            blue_cells_result.append(cells[cell_id])
+
+    return black_cells_result, blue_cells_result
+
+

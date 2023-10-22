@@ -7,6 +7,7 @@ import numpy.lib.stride_tricks
 
 from resources import *
 from Document import *
+from Klasyfikatory import *
 
 # notes
 # if __name__ == '__main__':
@@ -70,39 +71,6 @@ from Document import *
 
 
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-
-
-def generate_data():
-    np.random.seed(7)
-    x1 = np.random.standard_normal((100,2))*0.6+np.ones((100,2))
-    x2 = np.random.standard_normal((100,2))*0.5-np.ones((100,2))
-    x3 = np.random.standard_normal((100,2))*0.4-2*np.ones((100,2))+5
-    X = np.concatenate((x1,x2,x3),axis=0)
-
-    print(f"shape {len(X)} \n and X {X}")
-    return X
-
-def generate_centroids(X,k):
-    cx = np.random.rand(k)
-    cy = np.random.rand(k)
-
-    centroids = np.zeros((k,2))
-    centroids[:,0] = cx
-    centroids[:,1] = cy
-    return centroids
-
-def plot_data(X,labels,centroids,s):
-    plt.figure()
-    plt.plot(X[labels==9,0],X[labels==9,1],'k.')
-    plt.plot(X[labels==0,0],X[labels==0,1],'r.', label='cluster 1')
-    plt.plot(X[labels==1,0],X[labels==1,1],'b.', label='cluster 2')
-    plt.plot(X[labels==2,0],X[labels==2,1],'g.', label='cluster 3')
-    plt.plot(centroids[:,0],centroids[:,1],'mo',markersize=8, label='centroids')
-    plt.legend()
-    plt.title(s)
-    plt.show()
 
 
 
@@ -127,24 +95,18 @@ def plot_data(X,labels,centroids,s):
 
 
 ### histogram
-img = cv2.imread('Cells/blue/cell20.jpg')
-hist,bins = np.histogram(img.flatten(),256,[0,256])
-cdf = hist.cumsum()
-cdf_normalized = cdf * float(hist.max()) / cdf.max()
-
-
-
-plt.plot(cdf_normalized, color = 'b')
-plt.hist(img.flatten(),256,[0,256], color = 'r')
-plt.xlim([0,256])
-plt.legend(('cdf','histogram'), loc = 'upper left')
-plt.show()
-
-
-
-
-
-
+# img = cv2.imread('Cells/blue/cell20.jpg')
+# hist,bins = np.histogram(img.flatten(),256,[0,256])
+# cdf = hist.cumsum()
+# cdf_normalized = cdf * float(hist.max()) / cdf.max()
+#
+#
+#
+# plt.plot(cdf_normalized, color = 'b')
+# plt.hist(img.flatten(),256,[0,256], color = 'r')
+# plt.xlim([0,256])
+# plt.legend(('cdf','histogram'), loc = 'upper left')
+# plt.show()
 
 
 

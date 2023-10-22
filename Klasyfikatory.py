@@ -1,221 +1,261 @@
 # imports
 
 # NEW
-import os
-import random
-import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d
 
 # STANDARD
 from resources import *
-from Klasyfikatory import *
 
-
+# for Kmeans
 from sklearn.cluster import KMeans
 
-# additions
+# for KNN
+from sklearn.neighbors import KNeighborsClassifier
+from skimage.transform import resize as skresize
+
+# for SVC
+from skimage.io import imread as skimread
+from skimage.transform import resize as skresize
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import accuracy_score
 
 
 def distance(x1, x2):
     return np.sqrt(np.sum((x1 - x2)**2))
 
-def split(cell=None):
-    red = [rgb[0] for rgb in cell]
-    green = [rgb[1] for rgb in cell]
-    blue = [rgb[2] for rgb in cell]
-
-    return red, green, blue
-
-def get_mean_rgb_from_cell(cell=None):
+def get_mean_rgb_from_cell(cell):
+    # MY WAY
+    # print('extracting rgb from cell', type(cell))
+    # print(cell.shape)
     red = [rgb[0] for rgb in cell]
     green = [rgb[1] for rgb in cell]
     blue = [rgb[2] for rgb in cell]
 
     rmean, gmean, bmean = np.mean(red), np.mean(green), np.mean(blue)
 
-    return [rmean, gmean] #[rmean, gmean, bmean]
+    return [rmean, gmean, bmean]
 
 
 
 ## ---------------------------------------------------------------------------------------------------------------------
 # bez nauczyciela
 # kMeans
-def kMeans(k_iterations=3, num_of_clusters=2, data=[]):
+def kMeans(k_iterations=3, num_of_clusters=2, cells=[]):
     '''
     number od iteration does not really matter
     num of clusters is what matters , cluster with highest mean value is blue and the rest is ponetialy black
     '''
     # start
     black, blue, blackCenter, blueCenter, blueCenter2 = [], [], [], [], []
-    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in data]
+    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
 
     # kMeans
     k_means = KMeans(n_clusters=num_of_clusters, random_state=0)
-    # k_means.n_iter_ = k_iterations
     model = k_means.fit(cells_RGB)
     centroids = k_means.cluster_centers_
-    # print(f'k_means.labels_  {k_means.labels_}')
 
     # classify
     means = [np.mean(center) for center in centroids]
     blueCenter = centroids[means.index(max(means))]
-    # if min_mean == np.mean(centroids[0])
-    # if np.mean(centroids[0]) > np.mean(centroids[1]):
-    #     blackCenter, blueCenter = centroids[1], centroids[0]
-    # elif np.mean(centroids[0]) < np.mean(centroids[1]):
-    #     blackCenter, blueCenter = centroids[0], centroids[1]
 
     for cell_id in range(len(cells_RGB)):
         distances = [distance(center, cells_RGB[cell_id]) for center in centroids] #distance(centroids[0], cells_RGB[cell_id]), distance(centroids[1], cells_RGB[cell_id]),
         #              distance(centroids[3], cells_RGB[cell_id])]
         nearest = centroids[distances.index(min(distances))]
-        if (nearest == blueCenter).all():
-            blue.append(data[cell_id])
+        if (nearest == blueCenter).all():# and np.mean(cells[cell_id]) > 170:
+            blue.append(cells[cell_id])
         else:
-            black.append(data[cell_id])
+            black.append(cells[cell_id])
 
     return black, blue, centroids
 
 
+def simple_color_classyfication(cells):
+    black, blue = [], []
+    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
+    for cell_id in range(len(cells)):
+        if cells_RGB[cell_id][2] > 165:
+            blue.append(cells[cell_id])
+        else:
+            black.append(cells[cell_id])
 
-
-
-
-
+    return black, blue
 
 # z nauczycielem
-def kNN(cell, blackCellsPath, blueCellsPath):
-    pass
-    # list_of_blue_cells = [blueCellsPath + '/' + img for img in os.listdir('{}'.format(blueCellsPath))]
-    # list_of_black_cells = [blackCellsPath + '/' + img for img in os.listdir('{}'.format(blackCellsPath))]
-    # print("black", *list_of_black_cells)
-    # print("blue", *list_of_blue_cells)
-    #
-    # blackSet = []
-    # blueSet = []
-    # for cell in list_of_black_cells:
-    #     blackSet.append(cv2.imread(cell))
-    # for cell in list_of_blue_cells:
-    #     blueSet.append(cv2.imread(cell))
-    #
-    # print(f'black len {len(blackSet)} blue len {len(blue)}')
+def KNN(cells, blackCellsPath, blueCellsPath, k=3):
+    list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if ".DS" not in img]
+    list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if ".DS" not in img]
 
-    # a = [get_mean_rgb_from_cell(cv2.imread(blackcell)) for blackcell in list_of_black_cells]
-    # for c in a:
-    #     print(c)
-    # b = [(np.mean(c[0]), np.mean(c[1]), np.mean(c[2])) for c in a]
-    # print(b[0].__len__())
-    # print(b[:][0])
-    #
-    # # sets of data
-    # blackSet = [cv2.split(cv2.imread(blackcell)) for blackcell in list_of_black_cells]
-    # blueSet = [cv2.split(cv2.imread(blackcell)) for blackcell in list_of_blue_cells]
-    # blackSet = [blackSet[:]]
-    #
-    #
-    #
-    # # print(blackSet)
-    # all = blackSet + blueSet
-    # # plot
-    # ax = plt.axes(projection='3d')
-    # r1, g1, b1 = split(cell)
-    # # r2, g2, b2 = split(nearC2)
-    # ax.scatter(r1, g1, b1, color='blue')
-    # colors = ['red', 'green', 'black']
-    # for center in centers:
-    #     color = random.choice(colors)
-    #     ax.scatter(all, color=color)
-    # # ax.scatter(r2, g2, b2, color='black')
-    # # ax.scatter(centers[0][0], centers[0][1], centers[0][2], color='green')
-    # # ax.scatter(centers[1][0], centers[1][1], centers[1][2], color='red')
-    #
-    # plt.xlabel('wartosci R')
-    # plt.ylabel('wartosci G')
-    # plt.show()
+    black_cells, blue_cells, X, y = [], [], [], []
+    for cell_id in range(len(list_of_black_cells)):
+        black_cells.append(imread(list_of_black_cells[cell_id]))
+        y.append(0)
+    for cell_id in range(len(list_of_blue_cells)):
+        blue_cells.append(imread(list_of_blue_cells[cell_id]))
+        y.append(1)
 
+    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
+    black_RGB = [get_mean_rgb_from_cell(cell) for cell in black_cells]
+    blue_RGB = [get_mean_rgb_from_cell(cell) for cell in blue_cells]
+    X = black_RGB + blue_RGB
 
+    # test
+    # test_blue_path = './Reference/blue_test/'
+    # test_black_path = './Reference/black_test/'
+    # list_of_blue_cells_test = [test_blue_path + img for img in listdir(f'{test_blue_path}') if ".DS" not in img]
+    # list_of_black_cells_test = [test_black_path + img for img in listdir(f'{test_black_path}') if ".DS" not in img]
+    #
+    # black_test, blue_test, X_test, y_test = [], [], [], []
+    # for cell_id in range(len(list_of_black_cells_test)):
+    #     black_test.append(imread(list_of_black_cells_test[cell_id]))
+    #     y_test.append(0)
+    # for cell_id in range(len(list_of_blue_cells_test)):
+    #     blue_test.append(imread(list_of_blue_cells_test[cell_id]))
+    #     y_test.append(1)
+    #
+    # black_RGB_test = [get_mean_rgb_from_cell(cell) for cell in black_test]
+    # blue_RGB_test = [get_mean_rgb_from_cell(cell) for cell in blue_test]
+    # X_test = black_RGB_test + blue_RGB_test
 
+    # KNN
+    black, blue = [], []
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X, y)
+    # print('score', knn.score(X_test, y_test))
+
+    for cell_id in range(len(cells)):
+        # print(knn.predict([cells_RGB[cell_id]]))
+        if knn.predict([cells_RGB[cell_id]]) == 0:
+            black.append(cells[cell_id])
+        else:
+            blue.append(cells[cell_id])
+
+    return black, blue
 
 
-# # moja werscja Kmeans // do dorobienia ewentualnie
-# def kmeansClassify(cells, iterations=3, numOfCenters=2):
-#     '''
-#     '''
-#     # first central points
-#     centers = [np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]) for _ in range(numOfCenters)]
-#     print('first centers ', centers)
-#     nearest = [[]] * numOfCenters
-#
-#     # for cell in cells:
-#     cell = cells[50]
-#
-#     distances = []
-#     for _ in range(iterations):
-#         for line in cell:
-#              for pixel in line:
-#                 for center in centers:
-#                     distances.append(distance(center, pixel))
-#                 # distances = [distance(center, pixel) for center in centers]
-#                 print('distances ', distances)
-#                 # print(distances)
-#                 closest_index = distances.index(np.min(distances))
-#                 print(closest_index)
-#                 nearest[closest_index].append(pixel)
-#                 # print(nearest)
-#                 distances.clear()
-#
-#         print('  nearest ', nearest.__len__(), nearest[0].__len__(), nearest[1].__len__())
-#         # update centers
-#         new_centers = []
-#         for near in nearest:
-#             r, g, b = split(near)
-#             new_centers.append(np.array([np.mean(r), np.mean(g), np.mean(b)]))
-#             print('new center ', new_centers)
-#         centers = deepcopy(new_centers)
-#         new_centers.clear()
-#         for near in nearest:
-#             near.clear()
-#         print(f'centers {centers} new_centers {new_centers}  ', centers is new_centers)
-#
-#
-#         # for center, near in zip(centers, nearest):
-#         #     print(f'center {center} , near {near.__len__()}')
-#         #     new_centers.append(np.mean(near))
-#         # centers = new_centers
-#         # # clear
-#         # new_centers.clear()
-#         # print(centers)
-#         # for near in nearest:
-#         #     near.clear()
-#
-#     print(f'mean {np.mean(cell)} , c1 {centers[0]}  , c2 {centers[1]}')
-#     print(f' c2 mean {np.mean(centers[0])}  c2 mean {np.mean(centers[1])}')
-#
-    # plot
-    # ax = plt.axes(projection='3d')
-    # r1, g1, b1 = split(cell)
-    # # r2, g2, b2 = split(nearC2)
-    # ax.scatter(r1, g1, b1, color='blue')
-    # colors = ['red', 'green', 'black']
-    # for center in centers:
-    #     color = random.choice(colors)
-    #     ax.scatter(center[0], center[1], center[2], color=color)
-    # # ax.scatter(r2, g2, b2, color='black')
-    # # ax.scatter(centers[0][0], centers[0][1], centers[0][2], color='green')
-    # # ax.scatter(centers[1][0], centers[1][1], centers[1][2], color='red')
-    #
-    # plt.xlabel('wartosci R')
-    # plt.ylabel('wartosci G')
-    # plt.show()
+def classification_using_svc(cells, blackCellsPath, blueCellsPath, imageResize=15):
+    list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if ".DS" not in img]
+    list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if ".DS" not in img]
+
+    # black_cells, blue_cells, X, y, cells_after_preparations = [], [], [], [], []
+    X, y, cells_after_preparations = [], [], []
+    for cell_id in range(len(list_of_black_cells)):
+        cell = skresize(imread(list_of_black_cells[cell_id]), (imageResize, imageResize))
+        # black_cells.append(cell.flatten())
+        X.append(cell.flatten())
+        y.append(0)
+    for cell_id in range(len(list_of_blue_cells)):
+        cell = skresize(imread(list_of_blue_cells[cell_id]), (imageResize, imageResize))
+        # blue_cells.append(cell.flatten())
+        X.append(cell.flatten())
+        y.append(1)
+
+    # prepare input data
+    for cell_id in range(len(cells)):
+        cell = skresize(cells[cell_id], (imageResize, imageResize))
+        cells_after_preparations.append(cell.flatten())
+
+    # split data for test and train
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+
+    # classification
+    classifier = SVC()
+    parameters = [{'gamma': [0.01, 0.001, 0.0001], 'C': [1, 10, 100, 1000]}]
+    grid_search = GridSearchCV(classifier, parameters)
+
+    grid_search.fit(X_train, y_train)
+
+    # test performance
+    best_extimator = grid_search.best_estimator_
+    y_prediction = best_extimator.predict(X_test)
+    score = accuracy_score(y_prediction, y_test)
+    print(f"{score*100} % of samples were corretly classified")
+
+    # classify cells
+    result = best_extimator.predict(cells_after_preparations)
+    print(result)
+    black, blue = [], []
+    for idx in range(len(cells)):
+        if result[idx] == 0:
+            black.append(cells[idx])
+        if result[idx] == 1:
+            blue.append(cells[idx])
+
+    return black, blue
+
+
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+
+
+def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15):
+    list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if "cell" in img]
+    list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if "cell" in img]
+
+    # black_cells, blue_cells, X, y, cells_after_preparations = [], [], [], [], []
+    X, y, cells_after_preparations = [], [], []
+    for cell_id in range(len(list_of_black_cells)):
+        cell = skresize(imread(list_of_black_cells[cell_id]), (imageResize, imageResize))
+        # black_cells.append(cell.flatten())
+        X.append(cell)
+        y.append(0)
+    for cell_id in range(len(list_of_blue_cells)):
+        cell = skresize(imread(list_of_blue_cells[cell_id]), (imageResize, imageResize))
+        # blue_cells.append(cell.flatten())
+        X.append(cell)
+        y.append(1)
+
+    # prepare input data
+    for cell_id in range(len(cells)):
+        cell = skresize(cells[cell_id], (imageResize, imageResize))
+        cells_after_preparations.append(cell)
+
+    # split data for test and train
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+    X_train = np.array([X_train]).reshape([-1, len(X_train[0]), len(X_train[0]), 3])
+
+    # creating model
+    model = Sequential()
+    model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(imageResize, imageResize, 3)))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Conv2D(64, (3, 3), activation='relu'))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Conv2D(64, (3, 3), activation='relu'))
+    model.add(Flatten())
+    model.add(Dense(64, activation='relu'))
+    model.add(Dense(1, activation='softmax'))
+    
+    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+    model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
+    
+    
+    
+    
+    
+    print('')
+    
+    
+    return [], []
+
+
+
 
 
 
 ### TEST
-# img = cv2.imread("../Reference/black/xmin_1 xmax_38 ymin_432 ymax_22 cell8#Szpiczak, Ki-67 ok. 95%.jpg.jpg")
-# plot_photo(img)
-#
-# black_path = "../Reference/black/"
-# blue_path = "../Reference/blue/"
-# black = []
-# blue = []
+black_path = "./Reference/black/"
+blue_path = "./Reference/blue/"
+# black, blue = KNN([imread('./Reference/black_test/xmin_144 xmax_50 ymin_1112 ymax_34 cell53#Szpiczak, Ki-67 ok. 95%.jpg')]
+#        , black_path, blue_path, 4)
+
+
+black, blue = cnn_classifier([imread('./Reference/black/xmin_424 xmax_18 ymin_1130 ymax_16 cell59#Szpiczak, Ki-67 ok. 95%.jpg')]
+     , black_path, blue_path)
+
+
+
+
