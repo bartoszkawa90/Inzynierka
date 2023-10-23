@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="15.10 klasyfikacja kmeans daje 77 dla poprawnych 82 procent">
       <change afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cmodulepy.c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Reference/black/cell0#new4.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Reference/black/cell0#new9.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Reference/black/cell0.jpg" afterDir="false" />
@@ -1090,8 +1089,6 @@
       <change afterPath="$PROJECT_DIR$/STARE/CFPnet-M.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/STARE/Canny_edge_detection_on_NVIDIA_CUDA (1).pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/STARE/Canny_edge_detection_on_NVIDIA_CUDA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/STARE/Version_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/STARE/Version_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inzynierka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inzynierka.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -1099,19 +1096,12 @@
       <change beforePath="$PROJECT_DIR$/CFPnet-M.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Canny_edge_detection_on_NVIDIA_CUDA (1).pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Canny_edge_detection_on_NVIDIA_CUDA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Document.py" beforeDir="false" afterPath="$PROJECT_DIR$/Document.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HalfAutomatic_Version.py" beforeDir="false" afterPath="$PROJECT_DIR$/HalfAutomatic_Version.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deploy.prototxt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/get-pip.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hed_pretrained_bsds.caffemodel" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt.save" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1224,9 +1214,6 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -1319,8 +1306,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Klasyfikatory" />
-        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.Version_3" />
+        <item itemvalue="Python.Notes" />
         <item itemvalue="Python.resources" />
         <item itemvalue="Python.Klasyfikatory (1)" />
       </list>
@@ -1404,13 +1391,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00023" summary="Zaczete Canny i jednak splot do poprawy">
-      <created>1691574364718</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1691574364718</updated>
     </task>
     <task id="LOCAL-00024" summary="Zaczete Canny i jednak splot do poprawy">
       <created>1691577623189</created>
@@ -1748,7 +1728,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697405552481</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="15.10 klasyfikacja kmeans daje 77 dla poprawnych 82 procent">
+      <created>1698003874278</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1698003874279</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1799,8 +1786,38 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
-          <line>238</line>
-          <option name="timeStamp" value="1" />
+          <line>227</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>229</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>230</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>225</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>226</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Klasyfikatory.py</url>
+          <line>265</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

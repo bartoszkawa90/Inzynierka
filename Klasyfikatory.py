@@ -189,6 +189,8 @@ def classification_using_svc(cells, blackCellsPath, blueCellsPath, imageResize=1
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+import tensorflow as tf
+from tensorflow.keras import layers
 
 
 def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15):
@@ -211,35 +213,57 @@ def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15):
     # prepare input data
     for cell_id in range(len(cells)):
         cell = skresize(cells[cell_id], (imageResize, imageResize))
+        # cell = tf.constant(cell)
+        # cell = tf.reshape()
         cells_after_preparations.append(cell)
 
     # split data for test and train
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
-    X_train = np.array([X_train]).reshape([-1, len(X_train[0]), len(X_train[0]), 3])
+    X_train , X_test, y_train, y_test = tf.constant(X_train), tf.constant(X_test), tf.constant(y_train), tf.constant(y_test)
 
     # creating model
     model = Sequential()
-    model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(imageResize, imageResize, 3)))
+    model.add(Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=(imageResize, imageResize, 3)))
+    model.add(MaxPooling2D((3, 3)))
+    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
     model.add(MaxPooling2D((2, 2)))
-    model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2)))
-    model.add(Conv2D(64, (3, 3), activation='relu'))
+    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
     model.add(Flatten())
     model.add(Dense(64, activation='relu'))
-    model.add(Dense(1, activation='softmax'))
+    model.add(Dense(2, activation='softmax'))
+    # model = Sequential([
+    #     # layers.Rescaling(1./255, input_shape=(imageResize, imageResize, 3)),
+    #     layers.Conv2D(16, 3, padding='same', activation='relu'),
+    #     layers.MaxPooling2D(),
+    #     layers.Conv2D(32, 3, padding='same', activation='relu'),
+    #     layers.MaxPooling2D(),
+    #     layers.Conv2D(64, 3, padding='same', activation='relu'),
+    #     layers.MaxPooling2D(),
+    #     layers.Flatten(),
+    #     layers.Dense(128, activation='relu'),
+    #     layers.Dense(2)
+    # ])
     
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
+    loss, accuracy = model.evaluate(X_test, y_test)
+    print(f" CNN model loss : {loss}, and accuracy : {accuracy}")
+
+    pred = model.predict(tf.constant(cells_after_preparations))
+    print(pred)
+
+
+
+    # black, blue = [], []
+    # for cell_id in range(len(cells)):
+    #     pred = model.predict(tf.constant(cells_after_preparations))
+    #     if pred[0][0] > pred[0][1]:
+    #         black.append(cells[cell_id])
+    #     else:
+    #         blue.append(cells[cell_id])
     
-    
-    
-    
-    
-    print('')
-    
-    
-    return [], []
+    return [],[]#black, blue
 
 
 
@@ -253,7 +277,7 @@ blue_path = "./Reference/blue/"
 #        , black_path, blue_path, 4)
 
 
-black, blue = cnn_classifier([imread('./Reference/black/xmin_424 xmax_18 ymin_1130 ymax_16 cell59#Szpiczak, Ki-67 ok. 95%.jpg')]
+black, blue = cnn_classifier([imread('./Reference/blue/cell23#new10.jpg'),imread('./Reference/black/cell787.jpg')]
      , black_path, blue_path)
 
 

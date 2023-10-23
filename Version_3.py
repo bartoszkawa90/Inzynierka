@@ -31,7 +31,7 @@ if __name__ == '__main__':
     print(f'\nImages in {dir} directory : ', *list_of_images, sep='\n'), print('\n')
 
     # img = imread('Zdjecia/wycinek_5.jpg')
-    img_path = list_of_images[3]
+    img_path = list_of_images[0]
     print(f"Chosen image {img_path}")
     img = imread(img_path)
 
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     blue_path = "./Reference/blue/"
     blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path)
     blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, 15)
-    # blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path)
+    blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path)
 
     # Unsupervised methods
     blackKmeans, blueKmeans, centroids = kMeans(k_iterations=3, num_of_clusters=4, cells=segmentation_results.cells)
@@ -63,8 +63,8 @@ if __name__ == '__main__':
           f"{len(blackKNN)/(len(blueKNN) + len(blackKNN))*100} % \n")
     print(f" SVC :: Black {len(blackSVC)} and blue {len(blueSVC)}  /n Finale result of algorithm is  ::  "
           f"{len(blackSVC)/(len(blueSVC) + len(blackSVC))*100} % \n")
-    # print(f" CNN :: Black {len(blackCNN)} and blue {len(blueCNN)}  /n Finale result of algorithm is"
-    #       f"  ::  {len(blackCNN)/(len(blueCNN) + len(blackCNN))*100} % \n")
+    print(f" CNN :: Black {len(blackCNN)} and blue {len(blueCNN)}  /n Finale result of algorithm is"
+          f"  ::  {len(blackCNN)/(len(blueCNN) + len(blackCNN))*100} % \n")
     print(f" Kmeans :: Black {len(blackKmeans)} and blue {len(blueKmeans)}  /n Finale result of algorithm is  ::  "
           f"{len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100} % \n")
     print(f" simple color classification :: Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is"
