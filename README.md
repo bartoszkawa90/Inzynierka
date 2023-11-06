@@ -3,18 +3,11 @@
 
 
 ## Aktualnie
-- ZAJĄĆ SIĘ KLASYFIKACJĄ WYBRANYCH KOMÓREK  // kNN kmeans i potem moze CNN
-- Segmentacje albo z artykułu albo dorobić moje Canny
-- CO ZROBIC Z KOMÓRKAMI PRZY KRAWĘDZIACH
-- POMYSŁ!!! - A co gdyby połautomatycznie zaznaczac które komótrki są na pewno zle i je usówac
+- ogranąc Kmeans do konca // w sensie kiedy ma sie wykonać dwa razy a kiedy raz
+- Zrobic aplikacje
+- Ogarnąć na czym można ją odpalic // jakis Amazon AWS czy Google ?
 
-## UWAGI
-- ZMIANA ROZDZIELCZOSCI JEDNAK KLUCZOWA !!! 
-- do detekcji krawędzi raczej przechodzimy na Gray ale potem działamy na kolorowym zdjęciu
-- EWENTUALNIE JESZCZE POPRÓBOWAĆ  HED   ale   Raczej nalerzy sobie odpuścic detekcje krawędzi z użyciem HED i 
-  przetrenowanej sieci bo to dobrze znajduje mało szczegółwych konturów a nie tak jak tu trzeba
-
-## ZBIOR NAJLEPSZYCH PARAMETRÓW DO SEGMENTACJI
+## ZBIOR NAJLEPSZYCH PARAMETRÓW DO SEGMENTACJI  // do uaktualnienia
 - thresholdRange : 51
 - thresholdMaskValue : 20
 - CannyGaussSize : 3

@@ -9,6 +9,7 @@ from sklearn.cluster import KMeans
 # for KNN
 from sklearn.neighbors import KNeighborsClassifier
 from skimage.transform import resize as skresize
+import json
 
 # for SVC
 from skimage.io import imread as skimread
@@ -24,49 +25,57 @@ from tensorflow import constant
 from tensorflow.keras import layers
 
 
-def distance(x1, x2):
-    return np.sqrt(np.sum((x1 - x2)**2))
+class ClassifyOperations():
+    """
+    methods made for purpose of classification functions
+    """
+    @staticmethod
+    def distance(x1, x2):
+        return np.sqrt(np.sum((x1 - x2)**2))
 
-def get_mean_rgb_from_cell(cell):
-    # MY WAY
-    # print('extracting rgb from cell', type(cell))
-    # print(cell.shape)
-    red = [rgb[0] for rgb in cell]
-    green = [rgb[1] for rgb in cell]
-    blue = [rgb[2] for rgb in cell]
+    @staticmethod
+    def get_mean_rgb_from_cell(cell):
+        # MY WAY
+        # print('extracting rgb from cell', type(cell))
+        # print(cell.shape)
+        red = [rgb[0] for rgb in cell]
+        green = [rgb[1] for rgb in cell]
+        blue = [rgb[2] for rgb in cell]
 
-    rmean, gmean, bmean = np.mean(red), np.mean(green), np.mean(blue)
+        rmean, gmean, bmean = np.mean(red), np.mean(green), np.mean(blue)
 
-    return [rmean, gmean, bmean]
+        return [rmean, gmean, bmean]
 
-def kmeans_class(img, num_of_clusters=2):
-    ''' group all pixels on image into n number of groups'''
-    X = img.reshape(-1, 3)
-    kmeans = KMeans(n_clusters=num_of_clusters, n_init=10)
-    kmeans.fit(X)
+    @staticmethod
+    def kmeans_class(img, num_of_clusters=2):
+        ''' group all pixels on image into n number of groups'''
+        X = img.reshape(-1, 3)
+        kmeans = KMeans(n_clusters=num_of_clusters, n_init=10)
+        kmeans.fit(X)
 
-    segmented_img = kmeans.cluster_centers_[kmeans.labels_]
-    segmented_img = segmented_img.reshape(img.shape)/255
+        segmented_img = kmeans.cluster_centers_[kmeans.labels_]
+        segmented_img = segmented_img.reshape(img.shape)/255
 
-    if np.mean(kmeans.cluster_centers_[0]) > np.mean(kmeans.cluster_centers_[1]):
-        cell_centroid = kmeans.cluster_centers_[1]
-    else:
-        cell_centroid = kmeans.cluster_centers_[0]
+        if np.mean(kmeans.cluster_centers_[0]) > np.mean(kmeans.cluster_centers_[1]):
+            cell_centroid = kmeans.cluster_centers_[1]
+        else:
+            cell_centroid = kmeans.cluster_centers_[0]
 
-    # psróbowac ze zwracaniem centroid
-    return segmented_img, cell_centroid
+        # psróbowac ze zwracaniem centroid
+        return segmented_img, cell_centroid
 
-import json
-def save_set_of_KNN_coordinates(values, file_path):
-    file = open(file_path, 'w')
-    values = [list(v) for v in values]
-    json.dump(values, file, indent=6)
-    file.close()
+    @staticmethod
+    def save_set_of_KNN_coordinates(values, file_path):
+        file = open(file_path, 'w')
+        values = [list(v) for v in values]
+        json.dump(values, file, indent=6)
+        file.close()
 
-def load_set_of_KNN_coordinates(file_path):
-    file = open(file_path)
-    values = json.load(file)
-    return values
+    @staticmethod
+    def load_set_of_KNN_coordinates(file_path):
+        file = open(file_path)
+        values = json.load(file)
+        return values
 
 
 ## ---------------------------------------------------------------------------------------------------------------------
@@ -79,8 +88,8 @@ def kMeans(num_of_clusters=2, cells=[]):
     '''
     # start
     black, blue, blackCenter, blueCenter, blueCenter2 = [], [], [], [], []
-    # cells_RGB = [get_mean_rgb_from_cell(kmeans_class(cell)[0]) for cell in cells]
-    cells_RGB = [kmeans_class(cell)[1] for cell in cells]
+    # cells_RGB = [ClassifyOperations.get_mean_rgb_from_cell(ClassifyOperations.kmeans_class(cell)[0]) for cell in cells]
+    cells_RGB = [ClassifyOperations.kmeans_class(cell)[1] for cell in cells]
     # kMeans
     k_means = KMeans(n_clusters=num_of_clusters, random_state=0)
     model = k_means.fit(cells_RGB)
@@ -91,7 +100,7 @@ def kMeans(num_of_clusters=2, cells=[]):
     blueCenter = centroids[means.index(max(means))]
 
     for cell_id in range(len(cells_RGB)):
-        distances = [distance(center, cells_RGB[cell_id]) for center in centroids]
+        distances = [ClassifyOperations.distance(center, cells_RGB[cell_id]) for center in centroids]
         nearest = centroids[distances.index(min(distances))]
         if (nearest == blueCenter).all():
             blue.append(cells[cell_id])
@@ -103,8 +112,7 @@ def kMeans(num_of_clusters=2, cells=[]):
 
 def simple_color_classyfication(cells):
     black, blue = [], []
-    # cells_RGB = [get_mean_rgb_from_cell(kmeans_class(cell)[0]) for cell in cells]
-    cells_RGB = [get_mean_rgb_from_cell(kmeans_class(cell)[0]) for cell in cells]
+    cells_RGB = [ClassifyOperations.get_mean_rgb_from_cell(ClassifyOperations.kmeans_class(cell)[0]) for cell in cells]
     for cell_id in range(len(cells)):
         if cells_RGB[cell_id][2] > 165/255:
             blue.append(cells[cell_id])
@@ -123,7 +131,7 @@ def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordina
 
     # preparing cells for classification
     y, X = [], []
-    cells_RGB = [kmeans_class(cell)[1] for cell in cells]
+    cells_RGB = [ClassifyOperations.kmeans_class(cell)[1] for cell in cells]
 
     # opening images and creating data based on saved reference cells
     if working_state == 'create data':
@@ -139,13 +147,13 @@ def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordina
             blue_cells.append(imread(list_of_blue_cells[cell_id]))
             y.append(1)
 
-        black_RGB = [kmeans_class(cell)[1] for cell in black_cells]
-        blue_RGB = [kmeans_class(cell)[1] for cell in blue_cells]
+        black_RGB = [ClassifyOperations.kmeans_class(cell)[1] for cell in black_cells]
+        blue_RGB = [ClassifyOperations.kmeans_class(cell)[1] for cell in blue_cells]
 
     # if data was not created , load data from saved json files
     if working_state == 'load data':
-        black_RGB = load_set_of_KNN_coordinates(load_reference_coordinates_path_black)
-        blue_RGB = load_set_of_KNN_coordinates(load_reference_coordinates_path_blue)
+        black_RGB = ClassifyOperations.load_set_of_KNN_coordinates(load_reference_coordinates_path_black)
+        blue_RGB = ClassifyOperations.load_set_of_KNN_coordinates(load_reference_coordinates_path_blue)
         for _ in black_RGB:
             y.append(0)
         for _ in blue_RGB:
@@ -156,8 +164,8 @@ def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordina
     # save reference coordinates based on reference cells if save path was specified
     if save_reference_coordinates_path_black != '' and save_reference_coordinates_path_blue != '' \
         and working_state != 'load data':
-        save_set_of_KNN_coordinates(black_RGB, save_reference_coordinates_path_black)
-        save_set_of_KNN_coordinates(blue_RGB, save_reference_coordinates_path_blue)
+        ClassifyOperations.save_set_of_KNN_coordinates(black_RGB, save_reference_coordinates_path_black)
+        ClassifyOperations.save_set_of_KNN_coordinates(blue_RGB, save_reference_coordinates_path_blue)
         print(f'{len(black_RGB)} black data cells were saved into {save_reference_coordinates_path_black} '
           f' {len(blue_RGB)} blue data cells were saved into {save_reference_coordinates_path_blue}')
     X = black_RGB + blue_RGB
@@ -176,8 +184,8 @@ def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordina
     #     blue_test.append(imread(list_of_blue_cells_test[cell_id]))
     #     y_test.append(1)
     #
-    # black_RGB_test = [get_mean_rgb_from_cell(cell) for cell in black_test]
-    # blue_RGB_test = [get_mean_rgb_from_cell(cell) for cell in blue_test]
+    # black_RGB_test = [ClassifyOperations.get_mean_rgb_from_cell(cell) for cell in black_test]
+    # blue_RGB_test = [ClassifyOperations.get_mean_rgb_from_cell(cell) for cell in blue_test]
     # X_test = black_RGB_test + blue_RGB_test
 
     # KNN
