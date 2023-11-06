@@ -1,5 +1,6 @@
 from resources import *
 import sys
+import cv2
 
 #This will display all the available mouse click events
 events = [i for i in dir(cv2) if 'EVENT' in i]
@@ -46,12 +47,27 @@ def click_event(event, x, y, flags, param):
 
 
 #Choose photo
-photo = 'Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg'
-# bluecell = 'Cells/blue/cell50.jpg'
-blackcell = 'Cells/black/cell55.jpg'
-# bluecell = 'Cells/blue/cell37.jpg'
-# blackcell = 'Cells/black/cell44.jpg'
-img = cv2.imread(blackcell)
+# photo = 'Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg'
+# # bluecell = 'Cells/blue/cell50.jpg'
+# blackcell = 'Cells/black/cell55.jpg'
+# # bluecell = 'Cells/blue/cell37.jpg'
+# # blackcell = 'Cells/black/cell44.jpg'
+# img = cv2.imread(blackcell)
+from sklearn.cluster import KMeans
+
+# img = imread('zdjecia_testowe/Rak metaplastyczny piersi, Ki-67 ok 87%.jpg')
+# img = imread('Reference/black/cell59#new.jpg')
+img = imread('Reference/blue/cell56.jpg')
+print(img.shape)
+X = img.reshape(-1, 3)
+print(X.shape)
+kmeans = KMeans(n_clusters=2, n_init=10)
+kmeans.fit(X)
+
+segmented_img = kmeans.cluster_centers_[kmeans.labels_]
+segmented_img = segmented_img.reshape(img.shape)/255
+
+img = segmented_img
 print('dwwdaw')
 # r, g, b = cv2.split(img)
 # img = b

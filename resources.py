@@ -1,13 +1,20 @@
 ## IMPORTS
+import skimage.morphology
 from variables import *
 from time import time
 from cv2 import imread, imwrite, imshow, namedWindow, resize, resizeWindow, waitKey, destroyWindow, threshold, morphologyEx, INTER_AREA
-from cv2 import split, THRESH_BINARY, bitwise_and, getStructuringElement, MORPH_ELLIPSE, MORPH_OPEN, MORPH_CLOSE
-from cv2 import findContours, RETR_TREE, CHAIN_APPROX_SIMPLE, boundingRect, WINDOW_NORMAL, drawContours, cvtColor
+from cv2 import split, THRESH_BINARY, bitwise_and, getStructuringElement, MORPH_ELLIPSE, MORPH_OPEN, MORPH_CLOSE, COLOR_BGRA2GRAY
+from cv2 import findContours, RETR_TREE, CHAIN_APPROX_SIMPLE, boundingRect, WINDOW_NORMAL, drawContours, cvtColor, resize
+from cv2 import setMouseCallback, EVENT_RBUTTONDOWN, FONT_HERSHEY_SIMPLEX, destroyAllWindows
+from cv2 import Canny as CVCanny
 from sys import exit
 from copy import deepcopy
 from os import listdir
 from sys import version
+from functools import lru_cache
+
+from scipy.signal import convolve2d
+from scipy.ndimage import convolve
 
 
 
@@ -29,9 +36,9 @@ class Set():
 
 
 class Parameters():
-    def __init__(self, img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=1, CannyLowBoundry=1.0,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=15,
-         contourSizeHigh=500, whiteCellBoundry=190,  returnOriginalContours=False):
+    def __init__(self, img_path, thresholdRange=36, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=7,
+         contourSizeHigh=500, whiteCellBoundry=186,  returnOriginalContours=False):
         self.img_path = img_path
         self.thresholdRange = thresholdRange
         self.thresholdMaskValue = thresholdMaskValue
@@ -115,25 +122,25 @@ def contoursProcessing(contours, lowBoundry=15, highBoundry=500, RETURN_ADDITION
     conts = tuple([con for con in contours if con.shape[0] > lowBoundry and con.shape[0] < highBoundry])
 
     # Additional Data
-    if RETURN_ADDITIONAL_INFORMATION == 1:
-        contours = conts
-        SIZE_MAX = contours[0].shape[0]
-        size_min = contours[0].shape[0]
-        id_min = 0
-        ID_MAX = 0
-        count = 0
-
-        for con in contours:
-            if con.shape[0] < size_min:
-                size_min = con.shape[0]
-                id_min = count
-            if con.shape[0] > SIZE_MAX:
-                SIZE_MAX = con.shape[0]
-                ID_MAX = count
-            count += 1
-
-        largest, smallest = contours[ID_MAX], contours[id_min]
-        return conts, smallest, largest, id_min, ID_MAX
+    # if RETURN_ADDITIONAL_INFORMATION == 1:
+    #     contours = conts
+    #     SIZE_MAX = contours[0].shape[0]
+    #     size_min = contours[0].shape[0]
+    #     id_min = 0
+    #     ID_MAX = 0
+    #     count = 0
+    #
+    #     for con in contours:
+    #         if con.shape[0] < size_min:
+    #             size_min = con.shape[0]
+    #             id_min = count
+    #         if con.shape[0] > SIZE_MAX:
+    #             SIZE_MAX = con.shape[0]
+    #             ID_MAX = count
+    #         count += 1
+    #
+    #     largest, smallest = contours[ID_MAX], contours[id_min]
+    #     return conts, smallest, largest, id_min, ID_MAX
 
     return conts
 
@@ -154,7 +161,7 @@ def filterWhiteAndBlackCells(contours, img, whiteCellsBoundry=193):
         cell = img[y_min:y_min + y_max, x_min:x_min + x_max]
 
         # filter cells according to mean blue value
-        red, green, blue = split(cell)
+        blue = split(cell)[2]
         if np.mean(blue) < whiteCellsBoundry:
             conts.append(con)
 
@@ -177,11 +184,11 @@ def removeContour(contours, contourToRemove):
     return newConts
 
 
-def find_image(im, tpl):
-    im = np.atleast_3d(im)
-    tpl = np.atleast_3d(tpl)
-    Z = im.shape[2]
-    h, w = tpl.shape[:2]
+def find_image(mainImg, img):
+    im = np.atleast_3d(mainImg)
+    tpl = np.atleast_3d(img)
+    Z = mainImg.shape[2]
+    h, w = img.shape[:2]
 
     # Integral image and template sum per channel
     sat = im.cumsum(1).cumsum(0)
@@ -320,6 +327,7 @@ def Convolution2D(x, h, mode="full", returnUINT8=False):
             return result[1:result.shape[0]-1, 1:result.shape[1]-1]
 
 
+@lru_cache(maxsize=None)
 def gaussKernelGenerator(size=3, sigma=1):
     '''
     NOTE: to filter whole image 2x 2DConvolution is required
@@ -334,6 +342,7 @@ def gaussKernelGenerator(size=3, sigma=1):
     return np.array(temp).reshape(size, 1)
 
 
+@lru_cache(maxsize=None)
 def gaussianFilterGenerator(size=3, sigma=1):
     X = np.zeros((size, size))
     Y = np.zeros((size, size))
@@ -350,7 +359,7 @@ def scale(arr, newMax):
     return ((arr-arr.min()) / (arr.max() - arr.min()))*newMax
 
 
-def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_y, lowBoundry=10.0, highBoundry=30.0,
+def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_y, lowBoundry=1.0, highBoundry=10.0,
           performNMS=False, useGaussFilter=True, sharpenImage=False):
     '''
     :param grayImage: input image in gray scale
@@ -374,19 +383,21 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
     # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel.T, mode="same")
 
     if useGaussFilter:
-        # gaussKernel = gaussianFilterGenerator(gaussSize, gaussSigma)
-        # gImage = Convolution2D(grayImage, gaussKernel, mode='same')
         gaussKernel = gaussKernelGenerator(gaussSize, gaussSigma)
-        gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
+        gImage = convolve(convolve(grayImage, gaussKernel, mode='constant'), gaussKernel, mode='constant')
+        #gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
     else:
         gImage = grayImage
 
     # sharpen image ???
     if sharpenImage:
-        gImage = Convolution2D(gImage, sharpen, mode='same')
+        # gImage = Convolution2D(gImage, sharpen, mode='same')
+        gImage = convolve(gImage, sharpen, mode='constant')
 
-    Gx = Convolution2D(gImage, mask_x, mode='same')
-    Gy = Convolution2D(gImage, mask_y, mode='same')
+    # Gx = Convolution2D(gImage, mask_x, mode='same')
+    # Gy = Convolution2D(gImage, mask_y, mode='same')
+    Gx = convolve(gImage, mask_x, mode='constant')
+    Gy = convolve(gImage, mask_y, mode='constant')
 
     ## gradient magnitude and angle(direction)
     GMag = (Gx**2 + Gy**2)**0.5 #np.sqrt(Gx**2 + Gy**2)
@@ -508,6 +519,7 @@ def split_on_lists(cell=None):
     return red, green, blue
 
 
+@lru_cache(maxsize=None)
 def main(params):
     '''
     '''
@@ -518,13 +530,11 @@ def main(params):
         img = params.img_path
 
     # preprocessing
-    # if params.img_path.split('/')[0] == 'Zdjecia':
-    img = preprocess(img, xmin=600, xmax=1000, ymin=600, ymax=1000)
-    # img = preprocess(img)
-    print(img.shape)
+    # img = preprocess(img, xmin=500, xmax=1000, ymin=500, ymax=1000)
+    img = preprocess(img)
+    print(f" Image after preprocessing {img.shape}")
 
     # get blue value
-    # red, green, blue = split(img)
     blue = split(img)[2]
 
     ## apply adaptive threshold
@@ -536,18 +546,20 @@ def main(params):
     elif params.thresholdMaskValue != None and params.thresholdRange == None:
         blob = imageThreshold(blue, lowLimitForMask=params.thresholdMask)
     else:
-        blob = imageThreshold(blue, localNeighborhood=params.thresholdRange, lowLimitForMask=params.thresholdMaskValue )
+        blob = imageThreshold(blue, localNeighborhood=params.thresholdRange, lowLimitForMask=params.thresholdMaskValue)
 
-    # # Finding edges
-    edged = Canny(blob, gaussSize=params.CannyGaussSize, gaussSigma=params.CannyGaussSigma,
-                  lowBoundry=params.CannyLowBoundry, highBoundry=params.CannyHighBoundry,
-                  useGaussFilter=params.CannyUseGauss, performNMS=params.CannyPerformNMS,
-                  sharpenImage=params.CannySharpen)
+    # Finding edges
+    # edged = Canny(blob, gaussSize=params.CannyGaussSize, gaussSigma=params.CannyGaussSigma,
+    #               lowBoundry=params.CannyLowBoundry, highBoundry=params.CannyHighBoundry,
+    #               useGaussFilter=params.CannyUseGauss, performNMS=params.CannyPerformNMS,
+    #               sharpenImage=params.CannySharpen)
+    edged = CVCanny(blob, 70, 200, 5, L2gradient=False)
 
     contours, hierarchy = findContours(edged, RETR_TREE, CHAIN_APPROX_SIMPLE)
     print("Number of contours at first {}".format(len(contours)))
 
     # Filtering cells by size
+    conts = []
     if params.contourSizeLow != None and params.contourSizeHigh != None: conts = contoursProcessing(contours,
                                                                                                     lowBoundry=params.contourSizeLow,
                                                                                                     highBoundry=params.contourSizeHigh)
@@ -562,6 +574,8 @@ def main(params):
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img)
     else:
         goodConts = filterWhiteAndBlackCells(contours=conts, img=img, whiteCellsBoundry=params.whiteCellBoundry)
+
+    # filter contours repetitions
     finalConts = filterRepetitions(goodConts, img)
 
     if params.returnOriginalContours:
@@ -576,19 +590,19 @@ def main(params):
         return SegmentationResult(cells, coordinates, finalConts, img)
 
 
+
 def save_cells(cells, coordinates, dir='Cells', name_addition=''):
     # SAVE Cells in ./Cells
+    print('SAVING CELLS')
     iter = 0
     if coordinates != None:
         for cell, coordiante in zip(cells, coordinates):
-            print(iter, " ", cell.shape)
             imwrite(f'{dir}/xmin_{coordiante[0]} xmax_{coordiante[1]} ymin_{coordiante[2]} ymax_{coordiante[3]} cell{iter}{name_addition}.jpg',
                         cell)
             iter += 1
     else:
         iter = 0
         for cell in cells:
-            print(iter, " ", len(cell))
             imwrite(f"{dir}/cell"+str(iter)+".jpg", cell)
             iter += 1
 

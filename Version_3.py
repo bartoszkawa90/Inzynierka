@@ -23,44 +23,51 @@ if __name__ == '__main__':
 
 ## IMAGES
     # lista adresów do wycików
-    dir = "Zdjecia/"
+    dir = "zdjecia_testowe/"
     # lista zdjec
-    list_of_images = [dir + img for img in listdir('./{}'.format(dir))]
+    list_of_images = [dir + img for img in listdir('./{}'.format(dir)) if 'DS' not in img]
     # lista zdjec wycinkow
     # list_of_images = [dir + img for img in os.listdir('./{}'.format(dir)) if img.__contains__('res')]
     print(f'\nImages in {dir} directory : ', *list_of_images, sep='\n'), print('\n')
 
     # img = imread('Zdjecia/wycinek_5.jpg')
-    img_path = list_of_images[0]
+    img_path = list_of_images[1]
     print(f"Chosen image {img_path}")
     img = imread(img_path)
 
 
 ## ALGORITHM
     # creating set of parameters which will be given to segmentation main for finding cells and
-    parameters = Parameters(img_path=img_path, thresholdRange=41, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.7,
+    parameters = Parameters(img_path=img_path, thresholdRange=36, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.6,
                             CannyLowBoundry=0.1, CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False,
-                            CannySharpen=False, contourSizeLow=15, contourSizeHigh=500, whiteCellBoundry=193,
+                            CannySharpen=False, contourSizeLow=7, contourSizeHigh=500, whiteCellBoundry=186,
                             returnOriginalContours=False)
     segmentation_results = main(parameters)
-
+    print("--- Segmentation completed ---")
 
 ## CLASSIFICATION
-    # Supervised methods
+    ## Supervised methods
     black_path = "./Reference/black/"
     blue_path = "./Reference/blue/"
-    blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path)
-    blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, 15)
-    blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path)
+    blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path,
+                            load_reference_coordinates_path_black='./KNN_black_reference_coordicates.json',
+                            load_reference_coordinates_path_blue='./KNN_blue_reference_coordicates.json',
+                            working_state='load data')
+    blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path,
+                                                 model_path='./image_classification.model', imageResize=15)
+    blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path, working_state='load model')
 
     # Unsupervised methods
-    blackKmeans, blueKmeans, centroids = kMeans(k_iterations=3, num_of_clusters=4, cells=segmentation_results.cells)
-
+    # We use Kmeans two times it gives best results
+    blackKmeans, blueKmeans, centroids = kMeans(num_of_clusters=2, cells=segmentation_results.cells)
+    kblack, kblue, cent = kMeans(num_of_clusters=2, cells=blueKmeans)
+    blueKmeans = kblue
+    blackKmeans = blackKmeans + kblack
     # my simple method based on red part of mean RGB values
     black, blue = simple_color_classyfication(segmentation_results.cells)
 
-    print(f" KNN :: Black {len(blackKNN)} and blue {len(blueKNN)}  /n Finale result of algorithm is  ::  "
-          f"{len(blackKNN)/(len(blueKNN) + len(blackKNN))*100} % \n")
+    # print(f" KNN :: Black {len(blackKNN)} and blue {len(blueKNN)}  /n Finale result of algorithm is  ::  "
+    #       f"{len(blackKNN)/(len(blueKNN) + len(blackKNN))*100} % \n")
     print(f" SVC :: Black {len(blackSVC)} and blue {len(blueSVC)}  /n Finale result of algorithm is  ::  "
           f"{len(blackSVC)/(len(blueSVC) + len(blackSVC))*100} % \n")
     print(f" CNN :: Black {len(blackCNN)} and blue {len(blueCNN)}  /n Finale result of algorithm is"
@@ -72,18 +79,6 @@ if __name__ == '__main__':
 
     print("--- %s seconds ---" % (time() - start_time), ' time after algorithm ')
 
-# PLOT CLASSIFICATION RESULTS
-#     ax = plt.axes(projection='3d')
-#     for black in blackKmeans:
-#         color = 'red'
-#         ax.scatter(black[0], black[1], black[2], color=color)
-#     for blue in blueKmeans:
-#         color = 'green'
-#         ax.scatter(blue[0], blue[1], blue[2])
-#     plt.xlabel('wartosci R')
-#     plt.ylabel('wartosci G')
-#     plt.show()
-
 
 ## SAVE CELLS after SEGMENTATION
     # SAVE Cells in ./Cells  or   ../Reference
@@ -93,8 +88,8 @@ if __name__ == '__main__':
 
 
 ## SAVE CELLS after CLASSYFICATION
-    # save_cells(blackSVC, coordinates=None, name_addition=f'#', dir='Cells/black')
-    # save_cells(blueSVC, coordinates=None, name_addition=f'#', dir='Cells/blue')
+    # save_cells(blackKNN, coordinates=None, name_addition=f'#', dir='Cells/black')
+    # save_cells(blueKNN, coordinates=None, name_addition=f'#', dir='Cells/blue')
 
 
 # DISPLAY IMGAE WITH CONTOURS

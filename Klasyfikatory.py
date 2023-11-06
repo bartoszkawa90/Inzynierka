@@ -1,9 +1,5 @@
 # imports
 
-# NEW
-from matplotlib import pyplot as plt
-from mpl_toolkits import mplot3d
-
 # STANDARD
 from resources import *
 
@@ -21,6 +17,12 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score
 
+# for CNN
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+from tensorflow import constant
+from tensorflow.keras import layers
+
 
 def distance(x1, x2):
     return np.sqrt(np.sum((x1 - x2)**2))
@@ -37,20 +39,48 @@ def get_mean_rgb_from_cell(cell):
 
     return [rmean, gmean, bmean]
 
+def kmeans_class(img, num_of_clusters=2):
+    ''' group all pixels on image into n number of groups'''
+    X = img.reshape(-1, 3)
+    kmeans = KMeans(n_clusters=num_of_clusters, n_init=10)
+    kmeans.fit(X)
+
+    segmented_img = kmeans.cluster_centers_[kmeans.labels_]
+    segmented_img = segmented_img.reshape(img.shape)/255
+
+    if np.mean(kmeans.cluster_centers_[0]) > np.mean(kmeans.cluster_centers_[1]):
+        cell_centroid = kmeans.cluster_centers_[1]
+    else:
+        cell_centroid = kmeans.cluster_centers_[0]
+
+    # psróbowac ze zwracaniem centroid
+    return segmented_img, cell_centroid
+
+import json
+def save_set_of_KNN_coordinates(values, file_path):
+    file = open(file_path, 'w')
+    values = [list(v) for v in values]
+    json.dump(values, file, indent=6)
+    file.close()
+
+def load_set_of_KNN_coordinates(file_path):
+    file = open(file_path)
+    values = json.load(file)
+    return values
 
 
 ## ---------------------------------------------------------------------------------------------------------------------
 # bez nauczyciela
 # kMeans
-def kMeans(k_iterations=3, num_of_clusters=2, cells=[]):
+def kMeans(num_of_clusters=2, cells=[]):
     '''
     number od iteration does not really matter
     num of clusters is what matters , cluster with highest mean value is blue and the rest is ponetialy black
     '''
     # start
     black, blue, blackCenter, blueCenter, blueCenter2 = [], [], [], [], []
-    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
-
+    # cells_RGB = [get_mean_rgb_from_cell(kmeans_class(cell)[0]) for cell in cells]
+    cells_RGB = [kmeans_class(cell)[1] for cell in cells]
     # kMeans
     k_means = KMeans(n_clusters=num_of_clusters, random_state=0)
     model = k_means.fit(cells_RGB)
@@ -61,10 +91,9 @@ def kMeans(k_iterations=3, num_of_clusters=2, cells=[]):
     blueCenter = centroids[means.index(max(means))]
 
     for cell_id in range(len(cells_RGB)):
-        distances = [distance(center, cells_RGB[cell_id]) for center in centroids] #distance(centroids[0], cells_RGB[cell_id]), distance(centroids[1], cells_RGB[cell_id]),
-        #              distance(centroids[3], cells_RGB[cell_id])]
+        distances = [distance(center, cells_RGB[cell_id]) for center in centroids]
         nearest = centroids[distances.index(min(distances))]
-        if (nearest == blueCenter).all():# and np.mean(cells[cell_id]) > 170:
+        if (nearest == blueCenter).all():
             blue.append(cells[cell_id])
         else:
             black.append(cells[cell_id])
@@ -74,31 +103,63 @@ def kMeans(k_iterations=3, num_of_clusters=2, cells=[]):
 
 def simple_color_classyfication(cells):
     black, blue = [], []
-    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
+    # cells_RGB = [get_mean_rgb_from_cell(kmeans_class(cell)[0]) for cell in cells]
+    cells_RGB = [get_mean_rgb_from_cell(kmeans_class(cell)[0]) for cell in cells]
     for cell_id in range(len(cells)):
-        if cells_RGB[cell_id][2] > 165:
+        if cells_RGB[cell_id][2] > 165/255:
             blue.append(cells[cell_id])
         else:
             black.append(cells[cell_id])
 
     return black, blue
 
+
 # z nauczycielem
-def KNN(cells, blackCellsPath, blueCellsPath, k=3):
-    list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if ".DS" not in img]
-    list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if ".DS" not in img]
+def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordinates_path_black='',
+        save_reference_coordinates_path_blue='',
+        load_reference_coordinates_path_black='./KNN_black_reference_coordicates.json',
+        load_reference_coordinates_path_blue='./KNN_blue_reference_coordicates.json',
+        working_state='load data'):
 
-    black_cells, blue_cells, X, y = [], [], [], []
-    for cell_id in range(len(list_of_black_cells)):
-        black_cells.append(imread(list_of_black_cells[cell_id]))
-        y.append(0)
-    for cell_id in range(len(list_of_blue_cells)):
-        blue_cells.append(imread(list_of_blue_cells[cell_id]))
-        y.append(1)
+    # preparing cells for classification
+    y, X = [], []
+    cells_RGB = [kmeans_class(cell)[1] for cell in cells]
 
-    cells_RGB = [get_mean_rgb_from_cell(cell) for cell in cells]
-    black_RGB = [get_mean_rgb_from_cell(cell) for cell in black_cells]
-    blue_RGB = [get_mean_rgb_from_cell(cell) for cell in blue_cells]
+    # opening images and creating data based on saved reference cells
+    if working_state == 'create data':
+        list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if ".DS" not in img]
+        list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if ".DS" not in img]
+
+        black_cells, blue_cells, X, y = [], [], [], []
+        for cell_id in range(len(list_of_black_cells)):
+            # black_cells.append(imread(list_of_black_cells[cell_id]))
+            black_cells.append(imread(list_of_black_cells[cell_id]))
+            y.append(0)
+        for cell_id in range(len(list_of_blue_cells)):
+            blue_cells.append(imread(list_of_blue_cells[cell_id]))
+            y.append(1)
+
+        black_RGB = [kmeans_class(cell)[1] for cell in black_cells]
+        blue_RGB = [kmeans_class(cell)[1] for cell in blue_cells]
+
+    # if data was not created , load data from saved json files
+    if working_state == 'load data':
+        black_RGB = load_set_of_KNN_coordinates(load_reference_coordinates_path_black)
+        blue_RGB = load_set_of_KNN_coordinates(load_reference_coordinates_path_blue)
+        for _ in black_RGB:
+            y.append(0)
+        for _ in blue_RGB:
+            y.append(1)
+    print(f'{len(black_RGB)} black data cells were loaded '
+          f' {len(blue_RGB)} blue data cells were loaded')
+
+    # save reference coordinates based on reference cells if save path was specified
+    if save_reference_coordinates_path_black != '' and save_reference_coordinates_path_blue != '' \
+        and working_state != 'load data':
+        save_set_of_KNN_coordinates(black_RGB, save_reference_coordinates_path_black)
+        save_set_of_KNN_coordinates(blue_RGB, save_reference_coordinates_path_blue)
+        print(f'{len(black_RGB)} black data cells were saved into {save_reference_coordinates_path_black} '
+          f' {len(blue_RGB)} blue data cells were saved into {save_reference_coordinates_path_blue}')
     X = black_RGB + blue_RGB
 
     # test
@@ -123,10 +184,8 @@ def KNN(cells, blackCellsPath, blueCellsPath, k=3):
     black, blue = [], []
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(X, y)
-    # print('score', knn.score(X_test, y_test))
 
     for cell_id in range(len(cells)):
-        # print(knn.predict([cells_RGB[cell_id]]))
         if knn.predict([cells_RGB[cell_id]]) == 0:
             black.append(cells[cell_id])
         else:
@@ -175,7 +234,6 @@ def classification_using_svc(cells, blackCellsPath, blueCellsPath, imageResize=1
 
     # classify cells
     result = best_extimator.predict(cells_after_preparations)
-    print(result)
     black, blue = [], []
     for idx in range(len(cells)):
         if result[idx] == 0:
@@ -186,99 +244,103 @@ def classification_using_svc(cells, blackCellsPath, blueCellsPath, imageResize=1
     return black, blue
 
 
-
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
-import tensorflow as tf
-from tensorflow.keras import layers
-
-
-def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15):
-    list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if "cell" in img]
-    list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if "cell" in img]
-
-    # black_cells, blue_cells, X, y, cells_after_preparations = [], [], [], [], []
-    X, y, cells_after_preparations = [], [], []
-    for cell_id in range(len(list_of_black_cells)):
-        cell = skresize(imread(list_of_black_cells[cell_id]), (imageResize, imageResize))
-        # black_cells.append(cell.flatten())
-        X.append(cell)
-        y.append(0)
-    for cell_id in range(len(list_of_blue_cells)):
-        cell = skresize(imread(list_of_blue_cells[cell_id]), (imageResize, imageResize))
-        # blue_cells.append(cell.flatten())
-        X.append(cell)
-        y.append(1)
+def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15, model_path='./image_classification.model',
+                   working_state='load model', save_model=False, save_path=''):
 
     # prepare input data
+    black, blue, cells_after_preparations = [], [], []
     for cell_id in range(len(cells)):
         cell = skresize(cells[cell_id], (imageResize, imageResize))
-        # cell = tf.constant(cell)
-        # cell = tf.reshape()
         cells_after_preparations.append(cell)
 
-    # split data for test and train
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
-    X_train , X_test, y_train, y_test = tf.constant(X_train), tf.constant(X_test), tf.constant(y_train), tf.constant(y_test)
+    if working_state == 'create model':
+        list_of_blue_cells = [blueCellsPath + img for img in listdir(f'{blueCellsPath}') if "cell" in img]
+        list_of_black_cells = [blackCellsPath + img for img in listdir(f'{blackCellsPath}') if "cell" in img]
 
-    # creating model
-    model = Sequential()
-    model.add(Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=(imageResize, imageResize, 3)))
-    model.add(MaxPooling2D((3, 3)))
-    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
-    model.add(MaxPooling2D((2, 2)))
-    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
-    model.add(Flatten())
-    model.add(Dense(64, activation='relu'))
-    model.add(Dense(2, activation='softmax'))
-    # model = Sequential([
-    #     # layers.Rescaling(1./255, input_shape=(imageResize, imageResize, 3)),
-    #     layers.Conv2D(16, 3, padding='same', activation='relu'),
-    #     layers.MaxPooling2D(),
-    #     layers.Conv2D(32, 3, padding='same', activation='relu'),
-    #     layers.MaxPooling2D(),
-    #     layers.Conv2D(64, 3, padding='same', activation='relu'),
-    #     layers.MaxPooling2D(),
-    #     layers.Flatten(),
-    #     layers.Dense(128, activation='relu'),
-    #     layers.Dense(2)
-    # ])
+        X, y = [], []
+        for cell_id in range(len(list_of_black_cells)):
+            cell = skresize(imread(list_of_black_cells[cell_id]), (imageResize, imageResize))
+            X.append(cell)
+            y.append(0)
+        for cell_id in range(len(list_of_blue_cells)):
+            cell = skresize(imread(list_of_blue_cells[cell_id]), (imageResize, imageResize))
+            X.append(cell)
+            y.append(1)
+        # split data for test and train
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+        X_train , X_test, y_train, y_test = constant(X_train), constant(X_test), constant(y_train), constant(y_test)
+
+    ###  CNN model
+    ## load model
+    if working_state == 'load model':
+        model = load_model(model_path)
+
+    ## create and train model
+    if working_state == 'create model':
+        model = Sequential()
+        model.add(Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=(imageResize, imageResize, 3)))
+        model.add(MaxPooling2D((3, 3)))
+        model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
+        model.add(MaxPooling2D((2, 2)))
+        model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
+        model.add(MaxPooling2D((2, 2)))
+        model.add(Dropout(0.3))
+        model.add(Flatten())
+        model.add(Dense(64, activation='relu'))
+        model.add(Dense(2, activation='softmax'))
+
+        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+        model.fit(X_train, y_train, epochs=30, validation_data=(X_test, y_test))
+        loss, accuracy = model.evaluate(X_test, y_test)
+        print(f" CNN model loss : {loss}, and accuracy : {accuracy}")
+
+    # use loaded or created model
+    pred = []
+    try:
+        pred = model.predict(constant(cells_after_preparations))
+    except:
+        print("model was not loaded or created")
+
+    for cell_id in range(len(cells)):
+        if pred[cell_id][0] > pred[cell_id][1]:
+            black.append(cells[cell_id])
+        else:
+            blue.append(cells[cell_id])
+
+    if save_model and save_path != '':
+        model.save('/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/image_classification.model')
     
-    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-
-    model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
-    loss, accuracy = model.evaluate(X_test, y_test)
-    print(f" CNN model loss : {loss}, and accuracy : {accuracy}")
-
-    pred = model.predict(tf.constant(cells_after_preparations))
-    print(pred)
-
-
-
-    # black, blue = [], []
-    # for cell_id in range(len(cells)):
-    #     pred = model.predict(tf.constant(cells_after_preparations))
-    #     if pred[0][0] > pred[0][1]:
-    #         black.append(cells[cell_id])
-    #     else:
-    #         blue.append(cells[cell_id])
-    
-    return [],[]#black, blue
+    return black, blue
 
 
 
 
+# ### TEST
+# black_path = "./Reference/black/"
+# blue_path = "./Reference/blue/"
+# plot_photo(imread('./Reference/black/cell59#new9.jpg'))
+# black, blue = cnn_classifier([imread('./Reference/black/cell59#new9.jpg')]
+#        , black_path, blue_path, imageResize=15, working_state='create model')
+# #
+#
+# black, blue = cnn_classifier([imread('./Reference/blue/cell23#new10.jpg'),imread('./Reference/black/cell787.jpg')]
+#      , black_path, blue_path)
 
+# cell, cent = kmeans_class(imread('./Reference/blue/cell56.jpg'))
+# print(f'cent {cent}')
+# plot_photo(cell)
 
-### TEST
-black_path = "./Reference/black/"
-blue_path = "./Reference/blue/"
-# black, blue = KNN([imread('./Reference/black_test/xmin_144 xmax_50 ymin_1112 ymax_34 cell53#Szpiczak, Ki-67 ok. 95%.jpg')]
-#        , black_path, blue_path, 4)
-
-
-black, blue = cnn_classifier([imread('./Reference/blue/cell23#new10.jpg'),imread('./Reference/black/cell787.jpg')]
-     , black_path, blue_path)
+# black_path = "./Reference/black/"
+# blue_path = "./Reference/blue/"
+# blackKNN, blueKNN = KNN([], black_path, blue_path,
+#                             save_reference_coordinates_path_black='./KNN_black_reference_coordicates.json',
+#                             save_reference_coordinates_path_blue='./KNN_blue_reference_coordicates.json',
+#                             working_state='create data')
+#
+# black = load_set_of_KNN_coordinates('./KNN_black_reference_coordicates.json')
+#
+# print('')
 
 
 
