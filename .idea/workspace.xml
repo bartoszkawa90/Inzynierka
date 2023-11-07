@@ -4,50 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="6.11 robic aplikacje">
-      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/app/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cmodulepy.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klasyfikatory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klasyfikatory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resized/Zdj_9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/resized_Wycinek_4_59nieb_77czar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/resized_wycinek_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/resized_wycinek_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/resized_wycinek_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/resized_wycinek_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/wycinek_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/wycinek_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/wycinek_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/wycinek_4_59nieb_77czar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wycinki/wycinek_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/canny.model/fingerprint.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/canny.model/keras_metadata.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/canny.model/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/canny.model/variables/variables.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/canny.model/variables/variables.index" beforeDir="false" />
-    </list>
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="6.11 robic aplikacje juz ostatecznie" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,25 +32,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.Version_3">
     <configuration name="Document" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="inzynierka" />
@@ -165,6 +122,9 @@
       <module name="inzynierka" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/Python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -342,13 +302,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00027" summary="10.08 v2">
-      <created>1691622736218</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1691622736218</updated>
     </task>
     <task id="LOCAL-00028" summary="10.08 v2">
       <created>1691939469992</created>
@@ -686,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699278540065</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="6.11 robic aplikacje juz ostatecznie">
+      <created>1699308006101</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1699308006102</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +665,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="15.09" />
     <MESSAGE value="17.09 resized_wycinek_4 juz lepiej nie zadziała ale reszta nie za bardzo działa" />
     <MESSAGE value="18.09 - &#10;! - najwazniesze&#10;Co moze sie zmieniac :&#10;! - rozmiar sąsiedniego obszaru w imageThreshold raczej powinien byc domyslny 61 bo działa raczej najlepiej&#10;!!! - do kernela gaussa najlepiej 3,1 lub 5,2  -&gt; 3,1 daje ładniejsze i kompletniejsze komórki ale 5,2 moze dac takie&#10;      krórych 3,1 nie wykryło a powinno&#10; - filtrowanie kernelem gaussa lub wyostrzanie moze nieco poprawic albo pogorszyc&#10; - NMS raczej lepiej uzyc moze nie pomóc ale lepiej zeby było&#10; - w contourProcessing() trzeba dac granice do wywalenia za małych i za duzych konrórów domyslne raczej ok&#10;! - w filterWhiteCells mozna dac inną granice do wywalania białych komórek(niekomórek) ale to ewentualnie mozna&#10;      dac mniejszą granice" />
     <MESSAGE value="Próby z algorytmem watershed" />
@@ -730,7 +689,8 @@
     <MESSAGE value="15.10 klasyfikacja kmeans daje 77 dla poprawnych 82 procent" />
     <MESSAGE value="23.10 klasyfikacja CNN" />
     <MESSAGE value="6.11 robic aplikacje" />
-    <option name="LAST_COMMIT_MESSAGE" value="6.11 robic aplikacje" />
+    <MESSAGE value="6.11 robic aplikacje juz ostatecznie" />
+    <option name="LAST_COMMIT_MESSAGE" value="6.11 robic aplikacje juz ostatecznie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
