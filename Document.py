@@ -78,65 +78,70 @@ def create_set_of_data(func, path_to_images="/Users/bartoszkawa/Desktop/REPOS/Gi
 
 from tensorflow.keras.layers import Input
 from tensorflow.keras.models import load_model
+import tensorflow as tf
 
 
 #### Training Canny model
-# def create_model_for_Canny(image, images_path, reference_path):
-#     list_of_train_images = [images_path + img for img in listdir(f'{images_path}') if "DS" not in img]
-#     list_of_train_labels = [reference_path + img for img in listdir(f'{reference_path}') if "DS" not in img]
-#     list_of_train_images = np.sort(list_of_train_images)[:500]
-#     list_of_train_labels = np.sort(list_of_train_labels)[:500]
+def create_model_for_Canny(image, images_path, reference_path):
+    list_of_train_images = [images_path + img for img in listdir(f'{images_path}') if "DS" not in img]
+    list_of_train_labels = [reference_path + img for img in listdir(f'{reference_path}') if "DS" not in img]
+    # list_of_train_images = np.sort(list_of_train_images)[:500]
+    # list_of_train_labels = np.sort(list_of_train_labels)[:500]
 
-    #
-    # X, y = [], []
-    # for idx in range(len(list_of_train_images)):
-    #     X.append(skresize(cv2.cvtColor(imread(list_of_train_images[idx]), cv2.COLOR_BGR2GRAY), (1000, 1000)))
-    #     y.append(skresize(cv2.cvtColor(imread(list_of_train_labels[idx]), cv2.COLOR_BGR2GRAY), (1000, 1000)))
-    #     # X.append(imread(list_of_train_images[idx]))
-    #     # y.append(imread(list_of_train_labels[idx]))
-    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
-    # X_train , X_test, y_train, y_test = tf.constant(X_train), tf.constant(X_test), tf.constant(y_train), tf.constant(y_test)
-    #
-    # preprocessed_images = []
-    # for im in image:
-    #     preprocessed_images.append(skresize(cv2.cvtColor(im, cv2.COLOR_BGR2GRAY), (1000, 1000)))
-    #
-    # model = tf.keras.models.Sequential()
 
-    # # Input layer
-    # input_shape = (1000, 1000, 1)
-    # model.add(layers.InputLayer(input_shape=input_shape))
+    X, y = [], []
+    for idx in range(len(list_of_train_images)):
+        # X.append(skresize(cv2.cvtColor(imread(list_of_train_images[idx]), cv2.COLOR_BGR2GRAY), (1000, 1000)))
+        # y.append(skresize(cv2.cvtColor(imread(list_of_train_labels[idx]), cv2.COLOR_BGR2GRAY), (1000, 1000)))
+        X.append(cv2.cvtColor(imread(list_of_train_images[idx]), cv2.COLOR_BGR2GRAY))
+        y.append(cv2.cvtColor(imread(list_of_train_labels[idx]), cv2.COLOR_BGR2GRAY))
+        # X.append(imread(list_of_train_images[idx]))
+        # y.append(imread(list_of_train_labels[idx]))
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+    X_train , X_test, y_train, y_test = tf.constant(X_train), tf.constant(X_test), tf.constant(y_train), tf.constant(y_test)
+
+    preprocessed_images = []
+    for im in image:
+        preprocessed_images.append(cv2.cvtColor(im, cv2.COLOR_BGR2GRAY))
+        preprocessed_images.append(skresize(im, (1000, 1000)))
+
+    model = tf.keras.models.Sequential()
+
+    # Input layer
+    input_shape = (3000, 3000, 1)
+    model.add(layers.InputLayer(input_shape=input_shape))
+
+    # Convolutional layers
+    model.add(layers.Conv2D(32, (3, 3), activation='relu', padding='same'))
+    model.add(layers.MaxPooling2D((2, 2)))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(layers.MaxPooling2D((2, 2)))
+    model.add(layers.Conv2D(128, (3, 3), activation='relu', padding='same'))
+
+    # Up-sampling and Convolutional layers
+    model.add(layers.UpSampling2D((2, 2)))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(layers.UpSampling2D((2, 2)))
+    model.add(layers.Conv2D(1, (3, 3), activation='sigmoid', padding='same'))
+
+    # Compile the model
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+    model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
+    loss, accuracy = model.evaluate(X_test, y_test)
+    print(f" CNN model loss : {loss}, and accuracy : {accuracy}")
     #
-    # # Convolutional layers
-    # model.add(layers.Conv2D(32, (3, 3), activation='relu', padding='same'))
-    # model.add(layers.MaxPooling2D((2, 2)))
-    # model.add(layers.Conv2D(64, (3, 3), activation='relu', padding='same'))
-    # model.add(layers.MaxPooling2D((2, 2)))
-    # model.add(layers.Conv2D(128, (3, 3), activation='relu', padding='same'))
     #
-    # # Up-sampling and Convolutional layers
-    # model.add(layers.UpSampling2D((2, 2)))
-    # model.add(layers.Conv2D(64, (3, 3), activation='relu', padding='same'))
-    # model.add(layers.UpSampling2D((2, 2)))
-    # model.add(layers.Conv2D(1, (3, 3), activation='sigmoid', padding='same'))
-    #
-    # # Compile the model
-    # model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    #
-    # model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
-    # loss, accuracy = model.evaluate(X_test, y_test)
-    # print(f" CNN model loss : {loss}, and accuracy : {accuracy}")
-    # #
-    # #
-    # model.save('/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/canny.model')
-#     model = load_model('canny.model')
-#
-#     pred = model.predict(tf.constant(preprocessed_images))
-#     edged = CVCanny(cv2.resize(scale(pred[0], 255).astype(np.uint8), (3000, 3000)), 100, 200, 5, L2gradient=False)
-#     # plot_photo(cv2.resize(scale(pred[0], 255).astype(np.uint8), (3000, 3000)))
-#     plot_photo(edged)
+    model.save('/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/canny.model')
+    model = load_model('canny.model')
+
+    pred = model.predict(tf.constant(preprocessed_images))
+    edged = CVCanny(cv2.resize(scale(pred[0], 255).astype(np.uint8), (3000, 3000)), 100, 200, 5, L2gradient=False)
+    # plot_photo(cv2.resize(scale(pred[0], 255).astype(np.uint8), (3000, 3000)))
+    plot_photo(edged)
 # #
 # # ## NIE ODPALAC BO WYWALI I TAK TEN PROCESS
+# print('Canny model creation')
 # create_model_for_Canny(image=[imread('Zdjecia/Szpiczak, Ki-67 ok. 95%.jpg')],
 #                        images_path="/Users/bartoszkawa/Desktop/REPOS/GitLab/random_images_reshaped/",
 #                        reference_path="/Users/bartoszkawa/Desktop/REPOS/GitLab/random_images_after_Canny/")
@@ -246,7 +251,6 @@ def kNN(cells, blackCellsPath, blueCellsPath):
     return black_cells_result, blue_cells_result
 
 
-import cv2
 def edge_detection_HED(img):
     protoPath = "deploy.prototxt"
     modelPath = "hed_pretrained_bsds.caffemodel"
