@@ -1,9 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content%}
     <h1> <br> Homepage <br> </h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="file_upload">
-        <button type="submit">Wyslij</button>
+        <button type="submit">Confirm</button>
+        <br> </br>
+        <font size="4"> Current photo : {{ context.image_name }} </font>
+        <br> </br>
+        {% if context.image_name != "" %}
+            <img src="{% static 'app/image.jpg' %}" >
+        {% endif %}
     </form>
 {% endblock content%}

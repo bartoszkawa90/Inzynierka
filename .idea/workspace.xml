@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="juz cos zrobione z aplikacją">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Document.py" beforeDir="false" afterPath="$PROJECT_DIR$/Document.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-    </list>
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,12 +207,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.Document" />
+      <item itemvalue="Python.resources" />
       <item itemvalue="Python.Klasyfikatory" />
       <item itemvalue="Python.Notes" />
       <item itemvalue="Python.Version_3" />
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.resources" />
     </list>
     <recent_temporary>
       <list>
@@ -306,13 +302,6 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
-    </task>
-    <task id="LOCAL-00029" summary="Jeszcze jedna batalia z Convolution">
-      <created>1692354973096</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1692354973096</updated>
     </task>
     <task id="LOCAL-00030" summary="Cenvolution2D juz musi byc dobre">
       <created>1692381481767</created>
@@ -650,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699365793829</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Da sie wysyłać zdjecie">
+      <created>1699462485949</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1699462485949</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +665,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="18.09 - &#10;! - najwazniesze&#10;Co moze sie zmieniac :&#10;! - rozmiar sąsiedniego obszaru w imageThreshold raczej powinien byc domyslny 61 bo działa raczej najlepiej&#10;!!! - do kernela gaussa najlepiej 3,1 lub 5,2  -&gt; 3,1 daje ładniejsze i kompletniejsze komórki ale 5,2 moze dac takie&#10;      krórych 3,1 nie wykryło a powinno&#10; - filtrowanie kernelem gaussa lub wyostrzanie moze nieco poprawic albo pogorszyc&#10; - NMS raczej lepiej uzyc moze nie pomóc ale lepiej zeby było&#10; - w contourProcessing() trzeba dac granice do wywalenia za małych i za duzych konrórów domyslne raczej ok&#10;! - w filterWhiteCells mozna dac inną granice do wywalania białych komórek(niekomórek) ale to ewentualnie mozna&#10;      dac mniejszą granice" />
     <MESSAGE value="Próby z algorytmem watershed" />
     <MESSAGE value="Próby z algorytmem watershed raczej bedzie git" />
     <MESSAGE value="moze nie watershed bo to raczej nic nie dało ale to co tam uzyli mozna uzyc i działa tylko DOBRAC WARTOSCI DO MOICH FUNKCJI" />
@@ -694,7 +689,8 @@
     <MESSAGE value="6.11 robic aplikacje" />
     <MESSAGE value="6.11 robic aplikacje juz ostatecznie" />
     <MESSAGE value="juz cos zrobione z aplikacją" />
-    <option name="LAST_COMMIT_MESSAGE" value="juz cos zrobione z aplikacją" />
+    <MESSAGE value="Da sie wysyłać zdjecie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Da sie wysyłać zdjecie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
