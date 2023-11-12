@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie" />
+    <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie">
+      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/WebApp/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/WebApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/WebApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/db.sqlite3" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,12 +220,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.Document" />
-      <item itemvalue="Python.resources" />
       <item itemvalue="Python.Klasyfikatory" />
       <item itemvalue="Python.Notes" />
       <item itemvalue="Python.Version_3" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.resources" />
     </list>
     <recent_temporary>
       <list>

@@ -2,15 +2,21 @@
 {% load static %}
 {% block content%}
     <h1> <br> Homepage <br> </h1>
+    <h2>Upload Images</h2>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="file_upload">
-        <button type="submit">Confirm</button>
-        <br> </br>
-        <font size="4"> Current photo : {{ context.image_name }} </font>
-        <br> </br>
-        {% if context.image_name != "" %}
-            <img src="{% static 'app/image.jpg' %}" >
-        {% endif %}
+        {{ context.form.as_p }}
+        <button type="submit">Upload</button>
     </form>
+
+    <h3><font size="4"> Current photo : {{ context.image_name }} </font></h3>
+    <ul>
+        {% for image in context.image %}
+            <li><img src="{{ image.image.url }}" alt="Uploaded Image" width="600" height="650"></li>
+        {% empty %}
+            <li>No images uploaded yet.</li>
+        {% endfor %}
+    </ul>
+
 {% endblock content%}

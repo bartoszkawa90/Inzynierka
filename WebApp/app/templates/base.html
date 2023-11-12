@@ -11,6 +11,11 @@
 
     <link rel="stylesheet" type="test/css" href="{% static 'app/static/main.css' %}">
 
+    <style> textarea {
+        width: 150px;
+        height: 25px;
+    } </style>
+
     <title>WebApp</title>
 </head>
 <body>
@@ -44,10 +49,11 @@
           </div>
           <div class="col-md-4">
             <div class="content-section">
-              <h3> <br> Parameters <br> </h3>
+              <h3> <br> <br> <br> Parameters <br> </h3>
               <p class='text-muted'>Below you should choose value for each parameter.
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-light">Latest Posts</li>
+                  <li class="list-group-item list-group-item-light">Cells size for adaptive threshold:
+                      <textarea id="threshold_range" name="threshold_range" rows="1" cols="15"></textarea></li>
                   <li class="list-group-item list-group-item-light">Announcements</li>
                   <li class="list-group-item list-group-item-light">Calendars</li>
                   <li class="list-group-item list-group-item-light">etc</li>
