@@ -20,3 +20,48 @@
     </ul>
 
 {% endblock content%}
+
+{% block params %}
+
+    <div class="content-section">
+        <h3> <br> <br> Parameters <br> </h3>
+              <p class='text-muted'>Below you should choose value for each parameter.
+                <ul class="list-group">
+                <form method="get">
+                    {% csrf_token %}
+                    Cells size for adaptive threshold:<br>
+                    <input value="31" class="search" type="text" name="threshold_range" placeholder="default value: 31">
+                    <pre> default value: 31 <br> current value: {{ context.cur_params.threshold_range }} </pre> </input>
+
+                    Threshold black background mask: <br>
+                    <input value="20" class="search" type="text" name="threshold_mask" placeholder="default value: 20">
+                    <pre> default value: 20 <br> current value: {{ context.cur_params.threshold_mask }} </pre> </input>
+
+                    Size of smallest cells: <br>
+                    <input value="7" class="search" type="text" name="cell_low_size" placeholder="default value: 7">
+                    <pre> default value: 7 <br> current value: {{ context.cur_params.cell_low_size }} </pre> </input>
+
+                    Size of largest cells: <br>
+                    <input value="500" class="search" type="text" name="cell_high_size" placeholder="default value: 500">
+                    <pre> default value: 500 <br> current value: {{ context.cur_params.cell_high_size }} </pre> </input>
+
+                    Value to filter to bright cells: <br>
+                    <input value="187" class="search" type="text" name="white_cells_boundry" placeholder="default value: 187">
+                    <pre> default value: 187 <br> current value: {{ context.cur_params.white_cells_boundry }} </pre> </input>
+                    <br> <input type="submit">
+                </form>
+<!--                  <li class="list-group-item list-group-item-light">Cells size for adaptive threshold:<br>-->
+<!--                      <textarea id="threshold_range" name="threshold_range" rows="1" cols="15">31</textarea> <pre>default: 31 </li>-->
+<!--                  <li class="list-group-item list-group-item-light">Threshold black background mask:<br>-->
+<!--                    <textarea id="threshold_mask" name="threshold_mask" rows="1" cols="15">20</textarea>   <pre>default: 20</li>-->
+<!--                  <li class="list-group-item list-group-item-light">Size of smallest cells:<br>-->
+<!--                    <textarea id="cell_low_size" name="cell_low_size" rows="1" cols="15">7</textarea>   <pre>default: 7</li>-->
+<!--                  <li class="list-group-item list-group-item-light">Size of largest cells:<br>-->
+<!--                    <textarea id="cell_high_size" name="cell_high_size" rows="1" cols="15">500</textarea>   <pre>default: 500</li>-->
+<!--                  <li class="list-group-item list-group-item-light">Value to filter to bright cells:<br>-->
+<!--                    <textarea id="white_cells_boundry" name="white_cells_boundry" rows="1" cols="15">187</textarea>   <pre>default: 187</li>-->
+                </ul>
+              </p>
+    </div>
+
+{% endblock params %}

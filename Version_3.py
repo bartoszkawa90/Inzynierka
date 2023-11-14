@@ -31,7 +31,7 @@ if __name__ == '__main__':
     print(f'\nImages in {dir} directory : ', *list_of_images, sep='\n'), print('\n')
 
     # img = imread('Zdjecia/wycinek_5.jpg')
-    img_path = list_of_images[3]
+    img_path = list_of_images[0]
     print(f"Chosen image {img_path}")
     img = imread(img_path)
 
@@ -40,11 +40,11 @@ if __name__ == '__main__':
     # creating set of parameters which will be given to segmentation main for finding cells and
     parameters = Parameters(img_path=img_path, thresholdRange=31, thresholdMaskValue=40, CannyGaussSize=3, CannyGaussSigma=0.6,
                             CannyLowBoundry=0.1, CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False,
-                            CannySharpen=False, contourSizeLow=10, contourSizeHigh=500, whiteCellBoundry=187,
+                            contourSizeLow=10, contourSizeHigh=500, whiteCellBoundry=187,
                             returnOriginalContours=False)
     segmentation_results = main(parameters)
     print("--- Segmentation completed ---")
-
+    
 ## CLASSIFICATION
     ## Supervised methods
     black_path = "./Reference/black/"

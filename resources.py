@@ -37,7 +37,7 @@ class Set():
 
 class Parameters():
     def __init__(self, img_path, thresholdRange=36, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, CannySharpen=False, contourSizeLow=7,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, contourSizeLow=7,
          contourSizeHigh=500, whiteCellBoundry=186,  returnOriginalContours=False):
         self.img_path = img_path
         self.thresholdRange = thresholdRange
@@ -48,7 +48,6 @@ class Parameters():
         self.CannyHighBoundry = CannyHighBoundry
         self.CannyUseGauss = CannyUseGauss
         self.CannyPerformNMS = CannyPerformNMS
-        self.CannySharpen = CannySharpen
         self.contourSizeLow = contourSizeLow
         self.contourSizeHigh = contourSizeHigh
         self.whiteCellBoundry = whiteCellBoundry
@@ -360,7 +359,7 @@ def scale(arr, newMax):
 
 
 def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_y, lowBoundry=1.0, highBoundry=10.0,
-          performNMS=False, useGaussFilter=True, sharpenImage=False):
+          performNMS=False, useGaussFilter=True):
     '''
     :param grayImage: input image in gray scale
     :param mask_x: vertical kernel
@@ -388,11 +387,6 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
         #gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
     else:
         gImage = grayImage
-
-    # sharpen image ???
-    if sharpenImage:
-        # gImage = Convolution2D(gImage, sharpen, mode='same')
-        gImage = convolve(gImage, sharpen, mode='constant')
 
     # Gx = Convolution2D(gImage, mask_x, mode='same')
     # Gy = Convolution2D(gImage, mask_y, mode='same')
@@ -551,8 +545,7 @@ def main(params):
     # Finding edges
     # edged = Canny(blob, gaussSize=params.CannyGaussSize, gaussSigma=params.CannyGaussSigma,
     #               lowBoundry=params.CannyLowBoundry, highBoundry=params.CannyHighBoundry,
-    #               useGaussFilter=params.CannyUseGauss, performNMS=params.CannyPerformNMS,
-    #               sharpenImage=params.CannySharpen)
+    #               useGaussFilter=params.CannyUseGauss, performNMS=params.CannyPerformNMS)
     edged = CVCanny(blob, 70, 200, 5, L2gradient=False)
 
     contours, hierarchy = findContours(edged, RETR_TREE, CHAIN_APPROX_SIMPLE)
