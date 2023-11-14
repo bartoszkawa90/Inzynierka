@@ -4,6 +4,7 @@ from .forms import ImageForm
 from .models import Image
 import os
 from .resources import *
+from .classifiers import *
 
 acceptable_extensions = ['jpg', 'jpeg', 'pdf', 'png']
 parameters = ['threshold_range', 'threshold_mask', 'cell_low_size', 'cell_high_size', 'white_cells_boundry']
@@ -13,7 +14,13 @@ context = {
     'image_name': '',
     'form': '',
     'image': '',
-    'cur_params': default_params
+    'cur_params': default_params,
+    'state': 'start',
+    'cells_diversity': '',
+    'Kmeans': 0.0,
+    'KNN': 0.0,
+    'CNN': 0.0,
+    'time': 0.0
 }
 
 
@@ -50,35 +57,88 @@ def home(request, parameters=parameters):
         context['image_name'] = image_name
         context['form'] = form
         context['image'] = [images[0]]
-        some_images_saved = 1
+        context['state'] = 'image_uploaded'
 
-    elif request.method == 'POST' and 'Find contours' in request.POST:
+    elif request.method == 'POST' and 'Find contours' in request.POST and context['state'] == 'image_uploaded':
         print('Find contours')
         # calculate contours
+        start_time = time()
         saved_image_name = os.listdir("images")[0]
         saved_image = imread(os.path.join('images/', saved_image_name))
-        new_image = split(saved_image)[2]
-        # image = Image.objects.get(id=1)
-        # print('Image', image.name)
-        # form = ImageForm()
-        # form.Meta.model.image = new_image
-        # print(f' New form {form.is_valid()}')
-        # form.save()
-
+        # new_image = split(saved_image)[2]
         #
-        # parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
-        #                         thresholdMaskValue=context['cur_params']['threshold_mask'],
-        #                         CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
-        #                         CannyUseGauss=True, CannyPerformNMS=False,
-        #                         contourSizeLow=context['cur_params']['cell_low_size'],
-        #                         contourSizeHigh=context['cur_params']['cell_high_size'],
-        #                         whiteCellBoundry=context['cur_params']['white_cells_boundry'])
-        # segmentation_results = main(parameters)
-        # print("--- Segmentation completed ---")
+        # form = ImageForm(request.POST, request.FILES)
+        # if form.is_valid():
+        #     ## CLEAR DATABASE AND IMAGES DIR TO SAVE NEW IMAGE CORRECTLY
+        #     os.system('python manage.py flush --no-input')
+        #     try:
+        #         for file in os.listdir('images'):
+        #             os.remove(os.path.join('images/', file))
+        #     except:
+        #         print('[ERROR] some error with images in images occured')
+        #     form.Meta.model.image = [new_image]
+        #     form.save()
+        # try:
+        #     image_name = request.FILES['image'].name
+        #     images = Image.objects.all()
+        # except:
+        #     image_name = ''
+        #     images = [None]
+        # context['image_name'] = saved_image_name
+        # context['form'] = form
+        # context['image'] = new_image
 
 
-    # elif request.method == 'POST' and 'Calculate' in request.POST:
-    #     pass
+        parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
+                                thresholdMaskValue=context['cur_params']['threshold_mask'],
+                                CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
+                                CannyUseGauss=True, CannyPerformNMS=False,
+                                contourSizeLow=context['cur_params']['cell_low_size'],
+                                contourSizeHigh=context['cur_params']['cell_high_size'],
+                                whiteCellBoundry=context['cur_params']['white_cells_boundry'])
+        segmentation_results = main(parameters)
+        print("--- Segmentation completed ---")
+
+        black_path = "./Reference/black/"
+        blue_path = "./Reference/blue/"
+        blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path,
+                                load_reference_coordinates_path_black='.KNN_black_reference_coordicates.json',
+                                load_reference_coordinates_path_blue='.KNN_blue_reference_coordicates.json',
+                                working_state='load data')
+        blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, imageResize=15)
+        blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path,
+                                                     model_path='./image_classification.model', working_state='load model')
+
+        # Unsupervised methods
+        # We use Kmeans two times it gives best results
+        blackKmeans, blueKmeans, centroids = kMeans(num_of_clusters=2, cells=segmentation_results.cells)
+
+        ## IF THERE IS LARGE DIVERSITY OF CELLS USE KMEANS ONE MORE TIME
+        # if context['cells_diversity'] == 'low':
+            # kblack, kblue, cent = kMeans(num_of_clusters=2, cells=blueKmeans)
+            # blueKmeans = kblue
+            # blackKmeans = blackKmeans + kblack
+
+        # my simple method based on red part of mean RGB values
+        black, blue = simple_color_classyfication(segmentation_results.cells)
+
+        print(f" KNN :: Black {len(blackKNN)} and blue {len(blueKNN)}  /n Finale result of algorithm is  ::  "
+              f"{len(blackKNN)/(len(blueKNN) + len(blackKNN))*100} % \n")
+        print(f" SVC :: Black {len(blackSVC)} and blue {len(blueSVC)}  /n Finale result of algorithm is  ::  "
+              f"{len(blackSVC)/(len(blueSVC) + len(blackSVC))*100} % \n")
+        print(f" CNN :: Black {len(blackCNN)} and blue {len(blueCNN)}  /n Finale result of algorithm is"
+              f"  ::  {len(blackCNN)/(len(blueCNN) + len(blackCNN))*100} % \n")
+        print(f" Kmeans :: Black {len(blackKmeans)} and blue {len(blueKmeans)}  /n Finale result of algorithm is  ::  "
+              f"{len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100} % \n")
+        print(f" simple color classification :: Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is"
+              f"  ::  {len(black)/(len(blue) + len(black))*100} % \n")
+
+        print("--- %s seconds ---" % (time() - start_time), ' time after algorithm ')
+
+        context['Kmeans'] = len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100
+        context['KNN'] = len(blackKNN)/(len(blueKNN) + len(blackKNN))*100
+        context['CNN'] = len(blackCNN)/(len(blueCNN) + len(blackCNN))*100
+        context['time'] = (time() - start_time)
 
 
     # GET PARAMETERS FROM TEXTAREAS ------------------------------------------------------------------------------
@@ -90,7 +150,8 @@ def home(request, parameters=parameters):
             else:
                 cur_params[parameters[idx]] = int(request.GET.get(parameters[idx]))
         context['cur_params'] = cur_params
-        print(f'Current parameters  {cur_params}')
+        context['cells_diversity'] = request.GET.get('cells_diversity')
+        print(f'Current parameters  {cur_params} and cells diversity {context["cells_diversity"]}')
 
     return render(request, 'homepage.html', {'context': context})
 

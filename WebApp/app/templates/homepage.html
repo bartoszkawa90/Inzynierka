@@ -45,10 +45,14 @@
                     <input value="500" class="search" type="text" name="cell_high_size" placeholder="default value: 500">
                     <pre> default value: 500 <br> current value: {{ context.cur_params.cell_high_size }} </pre> </input>
 
-                    Value to filter to bright cells: <br>
+                    Value to filter too bright cells: <br>
                     <input value="187" class="search" type="text" name="white_cells_boundry" placeholder="default value: 187">
                     <pre> default value: 187 <br> current value: {{ context.cur_params.white_cells_boundry }} </pre> </input>
-                    <br> <input type="submit">
+
+                    Cells diversity: <br>
+                    <input value="low" class="search" type="text" name="cells_diversity" placeholder="default value: low">
+                    <pre> Specify a low or high value depending <br> on cell diversity <br> default value: "low" <br> current value: {{ context.cells_diversity }} </pre> </input>
+                    <br> <input type="submit" name="Submit parameters" value="Submit parameters">
                 </form>
                 <br> <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -57,22 +61,16 @@
                 <br> <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <button type="submit" name="Calculate" value="Calculate">Calculate</button>
-                </form>
-<!--                <form method="get">-->
-<!--                    {% csrf_token %}-->
-<!--                    <input value="Perform calculations" class="search" type="text" name="perform_calculations">-->
-<!--                    <br> <input type="submit">-->
-<!--                </form>-->
-<!--                  <li class="list-group-item list-group-item-light">Cells size for adaptive threshold:<br>-->
-<!--                      <textarea id="threshold_range" name="threshold_range" rows="1" cols="15">31</textarea> <pre>default: 31 </li>-->
-<!--                  <li class="list-group-item list-group-item-light">Threshold black background mask:<br>-->
-<!--                    <textarea id="threshold_mask" name="threshold_mask" rows="1" cols="15">20</textarea>   <pre>default: 20</li>-->
-<!--                  <li class="list-group-item list-group-item-light">Size of smallest cells:<br>-->
-<!--                    <textarea id="cell_low_size" name="cell_low_size" rows="1" cols="15">7</textarea>   <pre>default: 7</li>-->
-<!--                  <li class="list-group-item list-group-item-light">Size of largest cells:<br>-->
-<!--                    <textarea id="cell_high_size" name="cell_high_size" rows="1" cols="15">500</textarea>   <pre>default: 500</li>-->
-<!--                  <li class="list-group-item list-group-item-light">Value to filter to bright cells:<br>-->
-<!--                    <textarea id="white_cells_boundry" name="white_cells_boundry" rows="1" cols="15">187</textarea>   <pre>default: 187</li>-->
+                </form> <br>
+                <div name="Kmeans result" rows="1" cols="30">
+                    Result of Kmeans classification:  {{ context.Kmeans }}
+                </div> <br>
+                <div name="Kmeans result" rows="1" cols="30">
+                    Result of Kmeans classification:  {{ context.KNN }}
+                </div> <br>
+                <div name="Kmeans result" rows="1" cols="30">
+                    Result of Kmeans classification:  {{ context.CNN }}
+                </div> <br>
                 </ul>
               </p>
     </div>
