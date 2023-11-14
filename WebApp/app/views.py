@@ -102,12 +102,12 @@ def home(request, parameters=parameters):
         black_path = "./Reference/black/"
         blue_path = "./Reference/blue/"
         blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path,
-                                load_reference_coordinates_path_black='.KNN_black_reference_coordicates.json',
-                                load_reference_coordinates_path_blue='.KNN_blue_reference_coordicates.json',
+                                load_reference_coordinates_path_black='.static/KNN_black_reference_coordicates.json',
+                                load_reference_coordinates_path_blue='.static/KNN_blue_reference_coordicates.json',
                                 working_state='load data')
         blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, imageResize=15)
         blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path,
-                                                     model_path='./image_classification.model', working_state='load model')
+                                                     model_path='.static//image_classification.model', working_state='load model')
 
         # Unsupervised methods
         # We use Kmeans two times it gives best results
