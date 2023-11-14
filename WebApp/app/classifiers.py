@@ -73,8 +73,10 @@ class ClassifyOperations():
 
     @staticmethod
     def load_set_of_KNN_coordinates(file_path):
-        file = open(file_path)
+        file = open(file_path, 'r')
         values = json.load(file)
+        # with open(file_path) as file:
+        #     values = json.load(file)
         return values
 
 

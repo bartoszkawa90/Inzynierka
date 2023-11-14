@@ -5,6 +5,7 @@ from .models import Image
 import os
 from .resources import *
 from .classifiers import *
+from WebApp.settings import STATIC_URL
 
 acceptable_extensions = ['jpg', 'jpeg', 'pdf', 'png']
 parameters = ['threshold_range', 'threshold_mask', 'cell_low_size', 'cell_high_size', 'white_cells_boundry']
@@ -99,25 +100,28 @@ def home(request, parameters=parameters):
         segmentation_results = main(parameters)
         print("--- Segmentation completed ---")
 
-        black_path = "./Reference/black/"
-        blue_path = "./Reference/blue/"
+        black_path = "app/Reference/black/"
+        blue_path = "app/Reference/blue/"
+
+        # load_reference_coordinates_path_black=os.path.join(BASE_DIR, 'static', "KNN_black_reference_coordicates.json"),
+        # load_reference_coordinates_path_blue=os.path.join(BASE_DIR, 'static', "KNN_blue_reference_coordicates.json"),
         blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path,
-                                load_reference_coordinates_path_black='.static/KNN_black_reference_coordicates.json',
-                                load_reference_coordinates_path_blue='.static/KNN_blue_reference_coordicates.json',
+                                load_reference_coordinates_path_black='app/static/KNN_black_reference_coordicates.json',
+                                load_reference_coordinates_path_blue='app/static/KNN_blue_reference_coordicates.json',
                                 working_state='load data')
         blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, imageResize=15)
         blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path,
-                                                     model_path='.static//image_classification.model', working_state='load model')
+                                                     model_path='app/static/image_classification.model', working_state='load model')
 
         # Unsupervised methods
         # We use Kmeans two times it gives best results
         blackKmeans, blueKmeans, centroids = kMeans(num_of_clusters=2, cells=segmentation_results.cells)
 
         ## IF THERE IS LARGE DIVERSITY OF CELLS USE KMEANS ONE MORE TIME
-        # if context['cells_diversity'] == 'low':
-            # kblack, kblue, cent = kMeans(num_of_clusters=2, cells=blueKmeans)
-            # blueKmeans = kblue
-            # blackKmeans = blackKmeans + kblack
+        if context['cells_diversity'] == 'low':
+            kblack, kblue, cent = kMeans(num_of_clusters=2, cells=blueKmeans)
+            blueKmeans = kblue
+            blackKmeans = blackKmeans + kblack
 
         # my simple method based on red part of mean RGB values
         black, blue = simple_color_classyfication(segmentation_results.cells)
