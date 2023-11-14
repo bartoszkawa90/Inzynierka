@@ -7,13 +7,13 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ context.form.as_p }}
-        <button type="submit">Upload</button>
+        <button type="submit" name="Upload" value="Upload">Upload</button>
     </form>
 
     <h3><font size="4"> Current photo : {{ context.image_name }} </font></h3>
     <ul>
         {% for image in context.image %}
-            <li><img src="{{ image.image.url }}" alt="Uploaded Image" width="600" height="650"></li>
+            <li><img src="{{ image.image.url }}" alt="Uploaded Image" width="600" height="650" id="current_image"></li>
         {% empty %}
             <li>No images uploaded yet.</li>
         {% endfor %}
@@ -50,6 +50,19 @@
                     <pre> default value: 187 <br> current value: {{ context.cur_params.white_cells_boundry }} </pre> </input>
                     <br> <input type="submit">
                 </form>
+                <br> <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" name="Find contours" value="Find contours">Find contours</button>
+                </form>
+                <br> <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" name="Calculate" value="Calculate">Calculate</button>
+                </form>
+<!--                <form method="get">-->
+<!--                    {% csrf_token %}-->
+<!--                    <input value="Perform calculations" class="search" type="text" name="perform_calculations">-->
+<!--                    <br> <input type="submit">-->
+<!--                </form>-->
 <!--                  <li class="list-group-item list-group-item-light">Cells size for adaptive threshold:<br>-->
 <!--                      <textarea id="threshold_range" name="threshold_range" rows="1" cols="15">31</textarea> <pre>default: 31 </li>-->
 <!--                  <li class="list-group-item list-group-item-light">Threshold black background mask:<br>-->

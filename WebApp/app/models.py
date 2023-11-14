@@ -8,3 +8,6 @@ class Image(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_image(self):
+        return self.image

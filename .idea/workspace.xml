@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie">
-      <change afterPath="$PROJECT_DIR$/WebApp/images/Ki-67_60.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/resources.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/variables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/images/NET_G2_Ki-67_około_5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEBAPP/app/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/WEBAPP/app/templates/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/templates/homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/images/PTCL_Ki-67_około_70.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/images/Ziarniszczak_jajnika_Ki-67_ok._2.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
