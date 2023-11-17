@@ -37,7 +37,7 @@ class Set():
 
 class Parameters():
     def __init__(self, img_path, thresholdRange=36, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1,
-         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, contourSizeLow=7,
+         CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, contourSizeLow=8,
          contourSizeHigh=500, whiteCellBoundry=186,  returnOriginalContours=False):
         self.img_path = img_path
         self.thresholdRange = thresholdRange

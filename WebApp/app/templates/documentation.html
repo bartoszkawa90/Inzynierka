@@ -1,8 +1,32 @@
 {% extends "base.html" %}
 {% block content%}
     <h1> <br> Documentation <br></h1>
+    <h2> Parameters:</h2>
     <pre>
-        Parameters:
-            Image Adaptive threshold size:
+            Cells size for adaptive threshold:
+                Default value 31. This parameter describes the size of cells. If cells
+                are bigger this parameter should have value closer to 41 or 51 and if cells are smaller
+                value should be closer to 21. 31 is the optimal value.
+
+            Threshold black background mask:
+                Default value 20. This parameter describes how bright are pixels in black background.
+                If background is really dark the value of this parameter should be around 20.
+                If background is a little brighter and applications founds some green contours in black background
+                you should set parameter value to 25 or 30.
+
+            Size of smallest cells:
+                Default value 8. This parameter is approximation of smallest cell.
+                Every cell smaller than value of this parameter will not be
+                considered in counting cell's proportion.
+
+            Size of largest cells:
+                Default value 500. This parameter is approximation of largest cell.
+                Every cell bigger than value of this parameter will not be
+                considered in counting cell's proportion.
+
+            Value to filter too bright cells:
+                Default value 187. This
+
+            Cells diversity:
 
 {% endblock content%}

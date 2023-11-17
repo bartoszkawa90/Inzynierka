@@ -9,8 +9,8 @@ from WebApp.settings import STATIC_URL
 
 acceptable_extensions = ['jpg', 'jpeg', 'pdf', 'png']
 parameters = ['threshold_range', 'threshold_mask', 'cell_low_size', 'cell_high_size', 'white_cells_boundry']
-default_params = [31, 20, 7, 500, 187]
-default_params = {'threshold_range': 31, 'threshold_mask': 20, 'cell_low_size': 7, 'cell_high_size': 500, 'white_cells_boundry': 187}
+default_params = [31, 20, 8, 500, 187]
+default_params = {'threshold_range': 31, 'threshold_mask': 20, 'cell_low_size': 8, 'cell_high_size': 500, 'white_cells_boundry': 187}
 context = {
     'image_name': '',
     'form': '',
@@ -18,6 +18,7 @@ context = {
     'cur_params': default_params,
     'state': 'start',
     'cells_diversity': '',
+    'segmentation_results': SegmentationResult(),
     'Kmeans': 0.0,
     'KNN': 0.0,
     'CNN': 0.0,
@@ -66,30 +67,8 @@ def home(request, parameters=parameters):
         start_time = time()
         saved_image_name = os.listdir("images")[0]
         saved_image = imread(os.path.join('images/', saved_image_name))
-        # new_image = split(saved_image)[2]
-        #
-        # form = ImageForm(request.POST, request.FILES)
-        # if form.is_valid():
-        #     ## CLEAR DATABASE AND IMAGES DIR TO SAVE NEW IMAGE CORRECTLY
-        #     os.system('python manage.py flush --no-input')
-        #     try:
-        #         for file in os.listdir('images'):
-        #             os.remove(os.path.join('images/', file))
-        #     except:
-        #         print('[ERROR] some error with images in images occured')
-        #     form.Meta.model.image = [new_image]
-        #     form.save()
-        # try:
-        #     image_name = request.FILES['image'].name
-        #     images = Image.objects.all()
-        # except:
-        #     image_name = ''
-        #     images = [None]
-        # context['image_name'] = saved_image_name
-        # context['form'] = form
-        # context['image'] = new_image
 
-
+        print(f"--- Context Parameters before segmentation: {context['cur_params']}")
         parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
                                 thresholdMaskValue=context['cur_params']['threshold_mask'],
                                 CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
@@ -99,17 +78,43 @@ def home(request, parameters=parameters):
                                 whiteCellBoundry=context['cur_params']['white_cells_boundry'])
         segmentation_results = main(parameters)
         print("--- Segmentation completed ---")
+        drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
+
+        imwrite(os.path.join('images/', saved_image_name), segmentation_results.image)
+        context['segmentation_results'] = segmentation_results
+        # image = Image.objects.filter(id=1).update(
+        #     name='new '+saved_image_name,
+        #     image=os.path.join('images/', saved_image_name)
+        # )
+
+
+    # CALCULATE THE PROCENT OF BLACK CELLS WITH 3 METHODS -------------------------------------------------------------
+    elif request.method == 'POST' and 'Calculate' in request.POST and context['state'] == 'image_uploaded':
+        print('Calculate')
+        segmentation_results = context['segmentation_results']
+        # calculate contours
+        # start_time = time()
+        # saved_image_name = os.listdir("images")[0]
+        # saved_image = imread(os.path.join('images/', saved_image_name))
+
+        # parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
+        #                         thresholdMaskValue=context['cur_params']['threshold_mask'],
+        #                         CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
+        #                         CannyUseGauss=True, CannyPerformNMS=False,
+        #                         contourSizeLow=context['cur_params']['cell_low_size'],
+        #                         contourSizeHigh=context['cur_params']['cell_high_size'],
+        #                         whiteCellBoundry=context['cur_params']['white_cells_boundry'])
+        # segmentation_results = main(parameters)
+        # print("--- Segmentation completed ---")
 
         black_path = "app/Reference/black/"
         blue_path = "app/Reference/blue/"
 
-        # load_reference_coordinates_path_black=os.path.join(BASE_DIR, 'static', "KNN_black_reference_coordicates.json"),
-        # load_reference_coordinates_path_blue=os.path.join(BASE_DIR, 'static', "KNN_blue_reference_coordicates.json"),
         blackKNN, blueKNN = KNN(segmentation_results.cells, black_path, blue_path,
                                 load_reference_coordinates_path_black='app/static/KNN_black_reference_coordicates.json',
                                 load_reference_coordinates_path_blue='app/static/KNN_blue_reference_coordicates.json',
                                 working_state='load data')
-        blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, imageResize=15)
+        # blackSVC, blueSVC = classification_using_svc(segmentation_results.cells, black_path, blue_path, imageResize=15)
         blackCNN, blueCNN = cnn_classifier(segmentation_results.cells, black_path, blue_path,
                                                      model_path='app/static/image_classification.model', working_state='load model')
 
@@ -122,30 +127,30 @@ def home(request, parameters=parameters):
             kblack, kblue, cent = kMeans(num_of_clusters=2, cells=blueKmeans)
             blueKmeans = kblue
             blackKmeans = blackKmeans + kblack
-
-        # my simple method based on red part of mean RGB values
-        black, blue = simple_color_classyfication(segmentation_results.cells)
+        #
+        # # my simple method based on red part of mean RGB values
+        # black, blue = simple_color_classyfication(segmentation_results.cells)
 
         print(f" KNN :: Black {len(blackKNN)} and blue {len(blueKNN)}  /n Finale result of algorithm is  ::  "
               f"{len(blackKNN)/(len(blueKNN) + len(blackKNN))*100} % \n")
-        print(f" SVC :: Black {len(blackSVC)} and blue {len(blueSVC)}  /n Finale result of algorithm is  ::  "
-              f"{len(blackSVC)/(len(blueSVC) + len(blackSVC))*100} % \n")
+        # print(f" SVC :: Black {len(blackSVC)} and blue {len(blueSVC)}  /n Finale result of algorithm is  ::  "
+        #       f"{len(blackSVC)/(len(blueSVC) + len(blackSVC))*100} % \n")
         print(f" CNN :: Black {len(blackCNN)} and blue {len(blueCNN)}  /n Finale result of algorithm is"
               f"  ::  {len(blackCNN)/(len(blueCNN) + len(blackCNN))*100} % \n")
         print(f" Kmeans :: Black {len(blackKmeans)} and blue {len(blueKmeans)}  /n Finale result of algorithm is  ::  "
               f"{len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100} % \n")
-        print(f" simple color classification :: Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is"
-              f"  ::  {len(black)/(len(blue) + len(black))*100} % \n")
+        # print(f" simple color classification :: Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is"
+        #       f"  ::  {len(black)/(len(blue) + len(black))*100} % \n")
 
         print("--- %s seconds ---" % (time() - start_time), ' time after algorithm ')
 
-        context['Kmeans'] = len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100
-        context['KNN'] = len(blackKNN)/(len(blueKNN) + len(blackKNN))*100
-        context['CNN'] = len(blackCNN)/(len(blueCNN) + len(blackCNN))*100
-        context['time'] = (time() - start_time)
+        context['Kmeans'] = round((len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100), 3)
+        context['KNN'] = round((len(blackKNN)/(len(blueKNN) + len(blackKNN))*100), 3)
+        context['CNN'] = round((len(blackCNN)/(len(blueCNN) + len(blackCNN))*100), 3)
+        context['time'] = round((time() - start_time), 3)
 
 
-    # GET PARAMETERS FROM TEXTAREAS ------------------------------------------------------------------------------
+    # GET PARAMETERS  ------------------------------------------------------------------------------
     if request.method == 'GET' and 'threshold_range' in request.GET:
         cur_params = {}
         for idx in range(len(parameters)):

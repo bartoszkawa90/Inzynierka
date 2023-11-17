@@ -13,11 +13,12 @@
     <h3><font size="4"> Current photo : {{ context.image_name }} </font></h3>
     <ul>
         {% for image in context.image %}
-            <li><img src="{{ image.image.url }}" alt="Uploaded Image" width="600" height="650" id="current_image"></li>
+            <li><img src="{{ image.image.url }}" alt="Uploaded Image" width="670" height="800" id="current_image"></li>
         {% empty %}
             <li>No images uploaded yet.</li>
         {% endfor %}
     </ul>
+    <br> <h3><font size="4"> Counting completed in: {{context.time}} s</font></h3>
 
 {% endblock content%}
 
@@ -63,13 +64,13 @@
                     <button type="submit" name="Calculate" value="Calculate">Calculate</button>
                 </form> <br>
                 <div name="Kmeans result" rows="1" cols="30">
-                    Result of Kmeans classification:  {{ context.Kmeans }}
+                    Result of Kmeans classification:  {{ context.Kmeans }} %
                 </div> <br>
                 <div name="KNN result" rows="1" cols="30">
-                    Result of KNN classification:  {{ context.KNN }}
+                    Result of KNN classification:  {{ context.KNN }} %
                 </div> <br>
                 <div name="CNN result" rows="1" cols="30">
-                    Result of CNN classification:  {{ context.CNN }}
+                    Result of CNN classification:  {{ context.CNN }} %
                 </div> <br>
                 </ul>
               </p>
