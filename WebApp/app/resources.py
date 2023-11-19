@@ -20,7 +20,7 @@ from scipy.ndimage import convolve
 
 ## CLASSES
 
-class Set():
+class Set:
     def __init__(self, first, second):
         self.first = first
         self.second = second
@@ -35,7 +35,7 @@ class Set():
         print(f'first {self.first} second {self.second} \n')
 
 
-class Parameters():
+class Parameters:
     def __init__(self, img_path, thresholdRange=36, thresholdMaskValue=20, CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1,
          CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False, contourSizeLow=8,
          contourSizeHigh=500, whiteCellBoundry=186,  returnOriginalContours=False):
@@ -54,7 +54,7 @@ class Parameters():
         self.returnOriginalContours = returnOriginalContours
 
 
-class SegmentationResult():
+class SegmentationResult:
     def __init__(self, cells=[], coordinates=[], contours=(), image=[]):
         self.cells = cells
         self.coordinates = coordinates
@@ -524,8 +524,8 @@ def main(params):
         img = params.img_path
 
     # preprocessing
-    # img = preprocess(img, xmin=500, xmax=1000, ymin=500, ymax=1000)
-    img = preprocess(img)
+    img = preprocess(img, xmin=500, xmax=1000, ymin=500, ymax=1000)
+    # img = preprocess(img)
     print(f" Image after preprocessing {img.shape}")
 
     # get blue value
@@ -571,13 +571,14 @@ def main(params):
     # filter contours repetitions
     finalConts = filterRepetitions(goodConts, img)
 
+    image_copy = deepcopy(img)
     if params.returnOriginalContours:
-        cells = [extractCell(c, img) for c in contours]
+        cells = [extractCell(c, image_copy) for c in contours]
         coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
         cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
         return SegmentationResult(cells, coordinates, contours, img)
     else:
-        cells = [extractCell(c, img) for c in finalConts]
+        cells = [extractCell(c, image_copy) for c in finalConts]
         coordinates = [cell.get_firsts() for cell in cells]#list(cells_dicts.keys())
         cells = [cell.get_seconds() for cell in cells]#list(cells_dicts.values())
         return SegmentationResult(cells, coordinates, finalConts, img)

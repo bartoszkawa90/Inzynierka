@@ -25,7 +25,7 @@ from tensorflow import constant
 from tensorflow.keras import layers
 
 
-class ClassifyOperations():
+class ClassifyOperations:
     """
     methods made for purpose of classification functions
     """
@@ -73,7 +73,7 @@ class ClassifyOperations():
 
     @staticmethod
     def load_set_of_KNN_coordinates(file_path):
-        file = open(file_path, 'r')
+        file = open(file_path)
         values = json.load(file)
         # with open(file_path) as file:
         #     values = json.load(file)

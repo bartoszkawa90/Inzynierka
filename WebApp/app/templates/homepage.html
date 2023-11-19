@@ -18,7 +18,8 @@
             <li>No images uploaded yet.</li>
         {% endfor %}
     </ul>
-    <br> <h3><font size="4"> Counting completed in: {{context.time}} s</font></h3>
+    <br> <h3><font size="4"> Finding contours completed in: {{context.find_contours_time}} s</font></h3>
+    <h3><font size="4"> Cells classification completed in: {{context.classification_time}} s</font></h3>
 
 {% endblock content%}
 
@@ -50,9 +51,9 @@
                     <input value="187" class="search" type="text" name="white_cells_boundry" placeholder="default value: 187">
                     <pre> default value: 187 <br> current value: {{ context.cur_params.white_cells_boundry }} </pre> </input>
 
-                    Cells diversity: <br>
-                    <input value="low" class="search" type="text" name="cells_diversity" placeholder="default value: low">
-                    <pre> Specify a low or high value depending <br> on cell diversity <br> default value: "low" <br> current value: {{ context.cells_diversity }} </pre> </input>
+                    Cells differences: <br>
+                    <input value="low" class="search" type="text" name="cells_differences" placeholder="default value: low">
+                    <pre> Specify a low or high value depending <br> on cell differences <br> default value: "low" <br> current value: {{ context.cells_differences }} </pre> </input>
                     <br> <input type="submit" name="Submit parameters" value="Submit parameters">
                 </form>
                 <br> <form method="post" enctype="multipart/form-data">

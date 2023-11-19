@@ -5,10 +5,319 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie">
+      <change afterPath="$PROJECT_DIR$/WebApp/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell100.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell101.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell102.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell103.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell104.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell105.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell106.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell107.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell108.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell109.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell110.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell111.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell112.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell113.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell114.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell115.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell116.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell117.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell118.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell119.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell120.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell121.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell122.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell123.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell124.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell125.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell126.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell127.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell129.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell130.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell131.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell132.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell133.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell134.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell135.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell136.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell137.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell138.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell139.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell140.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell141.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell142.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell143.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell144.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell145.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell147.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell148.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell149.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell152.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell153.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell154.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell155.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell156.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell157.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell158.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell159.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell160.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell161.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell162.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell163.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell164.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell166.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell167.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell168.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell169.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell170.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell171.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell172.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell173.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell174.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell175.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell176.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell177.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell178.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell179.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell180.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell181.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell182.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell183.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell184.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell185.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell186.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell187.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell188.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell189.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell190.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell191.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell192.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell193.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell194.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell195.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell196.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell197.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell198.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell199.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell200.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell201.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell202.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell203.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell204.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell205.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell206.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell207.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell208.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell209.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell210.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell211.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell212.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell213.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell214.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell215.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell216.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell217.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell218.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell219.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell220.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell221.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell222.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell223.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell224.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell225.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell226.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell227.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell228.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell229.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell231.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell232.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell233.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell234.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell235.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell236.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell237.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell238.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell239.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell241.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell242.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell243.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell244.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell245.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell246.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell247.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell248.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell249.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell250.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell251.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell252.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell253.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell254.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell255.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell256.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell257.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell258.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell259.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell261.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell262.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell263.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell264.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell265.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell266.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell267.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell268.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell269.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell270.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell271.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell272.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell273.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell274.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell276.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell277.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell279.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell280.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell281.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell282.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell283.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell284.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell285.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell286.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell287.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell288.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell289.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell290.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell291.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell292.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell293.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell294.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell295.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell296.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell297.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell298.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell299.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell30.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell31.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell32.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell33.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell34.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell35.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell36.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell37.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell38.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell39.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell42.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell43.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell46.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell47.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell48.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell49.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell50.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell51.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell52.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell53.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell54.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell55.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell56.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell57.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell58.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell59.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell60.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell61.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell62.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell63.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell64.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell65.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell66.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell67.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell68.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell69.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell70.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell72.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell73.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell74.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell75.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell76.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell77.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell78.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell79.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell81.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell82.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell83.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell84.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell85.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell86.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell87.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell88.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell89.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell90.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell91.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell92.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell93.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell94.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell95.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell96.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell97.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell98.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/app/Cells/cell99.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/images/original_image.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Version_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Version_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/KNN_black_reference_coordicates.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/classifiers.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/classifiers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/app/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/resources.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/app/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/templates/homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/images/Rak_surowiczy_high-grade_Ki-67_ok._65.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/images/Rak_surowiczy_high-grade_Ki-67_ok._65.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +338,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2N2xv1y8c6B6d5GV3M2gCWTV8tC" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -43,6 +355,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -212,11 +525,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.Document" />
       <item itemvalue="Python.Klasyfikatory" />
       <item itemvalue="Python.Notes" />
       <item itemvalue="Python.Version_3" />
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.resources" />
     </list>
     <recent_temporary>
@@ -307,6 +620,8 @@
       <workItem from="1692127201153" duration="7000" />
       <workItem from="1692127227050" duration="24000" />
       <workItem from="1692172771939" duration="61000" />
+      <workItem from="1700301256396" duration="3032000" />
+      <workItem from="1700316158025" duration="60000" />
     </task>
     <task id="LOCAL-00030" summary="Cenvolution2D juz musi byc dobre">
       <created>1692381481767</created>

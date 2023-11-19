@@ -17,12 +17,14 @@ context = {
     'image': '',
     'cur_params': default_params,
     'state': 'start',
-    'cells_diversity': '',
-    'segmentation_results': SegmentationResult(),
+    'new_image': False,
+    'cells_differences': '',
+    'segmentation_results': [],
     'Kmeans': 0.0,
     'KNN': 0.0,
     'CNN': 0.0,
-    'time': 0.0
+    'find_contours_time': 0.0,
+    'classification_time': 0.0
 }
 
 
@@ -60,13 +62,63 @@ def home(request, parameters=parameters):
         context['form'] = form
         context['image'] = [images[0]]
         context['state'] = 'image_uploaded'
+        context['new_image'] = True
 
     elif request.method == 'POST' and 'Find contours' in request.POST and context['state'] == 'image_uploaded':
-        print('Find contours')
-        # calculate contours
-        start_time = time()
+        pass
+        # print('--- Find contours ---')
+        # contours_start_time = time()
+        #
+        # saved_image_name = os.listdir("images")[0]
+        # # if context['new_image']:
+        # #     try:
+        # #         print("--- Original image saved ---")
+        # #         imwrite('images/original_image.jpg', imread(os.path.join('images/', saved_image_name)))
+        # #         context['new_image'] = False
+        # #     except:
+        # #         print("--- Something wrong original image ---")
+        # # saved_image = imread('images/original_image.jpg')
+        # saved_image = imread(os.path.join('images/', saved_image_name))
+        #
+        # print(f"--- Context Parameters before segmentation: {context['cur_params']}")
+        # parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
+        #                         thresholdMaskValue=context['cur_params']['threshold_mask'],
+        #                         CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
+        #                         CannyUseGauss=True, CannyPerformNMS=False,
+        #                         contourSizeLow=context['cur_params']['cell_low_size'],
+        #                         contourSizeHigh=context['cur_params']['cell_high_size'],
+        #                         whiteCellBoundry=context['cur_params']['white_cells_boundry'])
+        # segmentation_results = main(parameters)
+        # print("--- Segmentation completed ---")
+        # drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
+        #
+        # imwrite(os.path.join('images/', saved_image_name), segmentation_results.image)
+        # context['segmentation_results'] = segmentation_results
+        # context['find_contours_time'] = round((time() - contours_start_time), 3)
+        # image = Image.objects.filter(id=1).update(
+        #     name='new '+saved_image_name,
+        #     image=os.path.join('images/', saved_image_name)
+        # )
+
+
+    # CALCULATE THE PROCENT OF BLACK CELLS WITH 3 METHODS -------------------------------------------------------------
+    elif request.method == 'POST' and 'Calculate' in request.POST and context['state'] == 'image_uploaded':
+
+
+
+        print('--- Find contours ---')
+        contours_start_time = time()
+
         saved_image_name = os.listdir("images")[0]
-        saved_image = imread(os.path.join('images/', saved_image_name))
+        if context['new_image']:
+            try:
+                print("--- Original image saved ---")
+                imwrite('images/original_image.jpg', imread(os.path.join('images/', saved_image_name)))
+                context['new_image'] = False
+            except:
+                print("--- Something wrong original image ---")
+        saved_image = imread('images/original_image.jpg')
+        # saved_image = imread(os.path.join('images/', saved_image_name))
 
         print(f"--- Context Parameters before segmentation: {context['cur_params']}")
         parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
@@ -77,35 +129,27 @@ def home(request, parameters=parameters):
                                 contourSizeHigh=context['cur_params']['cell_high_size'],
                                 whiteCellBoundry=context['cur_params']['white_cells_boundry'])
         segmentation_results = main(parameters)
-        print("--- Segmentation completed ---")
+        print(f"--- Segmentation completed ---\n--- Have {len(segmentation_results.cells)} cells after segmentation ---")
         drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
 
         imwrite(os.path.join('images/', saved_image_name), segmentation_results.image)
-        context['segmentation_results'] = segmentation_results
-        # image = Image.objects.filter(id=1).update(
-        #     name='new '+saved_image_name,
-        #     image=os.path.join('images/', saved_image_name)
-        # )
+        # context['segmentation_results'] = segmentation_results
+        context['find_contours_time'] = round((time() - contours_start_time), 3)
 
 
-    # CALCULATE THE PROCENT OF BLACK CELLS WITH 3 METHODS -------------------------------------------------------------
-    elif request.method == 'POST' and 'Calculate' in request.POST and context['state'] == 'image_uploaded':
+
+        #### DEBUG
+        iter = 1
+        for cell in segmentation_results.cells:
+            imwrite('app/Cells/cell'+str(iter)+'.jpg', cell)
+            iter += 1
+
+
+
+
         print('Calculate')
-        segmentation_results = context['segmentation_results']
-        # calculate contours
-        # start_time = time()
-        # saved_image_name = os.listdir("images")[0]
-        # saved_image = imread(os.path.join('images/', saved_image_name))
-
-        # parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
-        #                         thresholdMaskValue=context['cur_params']['threshold_mask'],
-        #                         CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
-        #                         CannyUseGauss=True, CannyPerformNMS=False,
-        #                         contourSizeLow=context['cur_params']['cell_low_size'],
-        #                         contourSizeHigh=context['cur_params']['cell_high_size'],
-        #                         whiteCellBoundry=context['cur_params']['white_cells_boundry'])
-        # segmentation_results = main(parameters)
-        # print("--- Segmentation completed ---")
+        # segmentation_results = context['segmentation_results']
+        class_start_time = time()
 
         black_path = "app/Reference/black/"
         blue_path = "app/Reference/blue/"
@@ -122,8 +166,8 @@ def home(request, parameters=parameters):
         # We use Kmeans two times it gives best results
         blackKmeans, blueKmeans, centroids = kMeans(num_of_clusters=2, cells=segmentation_results.cells)
 
-        ## IF THERE IS LARGE DIVERSITY OF CELLS USE KMEANS ONE MORE TIME
-        if context['cells_diversity'] == 'low':
+        ## IF THERE ARE VISIBLE DIFFERENCES BETWEEN TWO GROUPS OF CELLS USE KMEANS ONLY ONES
+        if context['cells_differences'] == 'low':
             kblack, kblue, cent = kMeans(num_of_clusters=2, cells=blueKmeans)
             blueKmeans = kblue
             blackKmeans = blackKmeans + kblack
@@ -142,13 +186,12 @@ def home(request, parameters=parameters):
         # print(f" simple color classification :: Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is"
         #       f"  ::  {len(black)/(len(blue) + len(black))*100} % \n")
 
-        print("--- %s seconds ---" % (time() - start_time), ' time after algorithm ')
+        print("--- %s seconds ---" % (time() - class_start_time), ' time after algorithm ')
 
-        context['Kmeans'] = round((len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100), 3)
-        context['KNN'] = round((len(blackKNN)/(len(blueKNN) + len(blackKNN))*100), 3)
-        context['CNN'] = round((len(blackCNN)/(len(blueCNN) + len(blackCNN))*100), 3)
-        context['time'] = round((time() - start_time), 3)
-
+        context['Kmeans'] = round(len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100, 3)
+        context['KNN'] = round(len(blackKNN)/(len(blueKNN) + len(blackKNN))*100, 3)
+        context['CNN'] = round(len(blackCNN)/(len(blueCNN) + len(blackCNN))*100, 3)
+        context['classification_time'] = round((time() - class_start_time), 3)
 
     # GET PARAMETERS  ------------------------------------------------------------------------------
     if request.method == 'GET' and 'threshold_range' in request.GET:
@@ -159,11 +202,14 @@ def home(request, parameters=parameters):
             else:
                 cur_params[parameters[idx]] = int(request.GET.get(parameters[idx]))
         context['cur_params'] = cur_params
-        context['cells_diversity'] = request.GET.get('cells_diversity')
-        print(f'Current parameters  {cur_params} and cells diversity {context["cells_diversity"]}')
+        context['cells_differences'] = request.GET.get('cells_differences')
+        print(f'Current parameters  {cur_params} and cells differences {context["cells_differences"]}')
 
     return render(request, 'homepage.html', {'context': context})
 
 
 def doc(request):
     return render(request, 'documentation.html')
+
+def terminal(request):
+    return render(request, 'terminal.html')

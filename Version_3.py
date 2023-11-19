@@ -13,7 +13,7 @@
 
 # STANDARD
 from resources import *
-from Klasyfikatory import *
+from classifiers import *
 
 
 
@@ -33,12 +33,13 @@ if __name__ == '__main__':
     # img = imread('Zdjecia/wycinek_5.jpg')
     img_path = list_of_images[0]
     print(f"Chosen image {img_path}")
-    img = imread(img_path)
+    # img = imread(img_path)
+    img = imread('Zdjecia/Rak surowiczy high-grade, Ki-67 ok. 65%.jpg')
 
 
 ## ALGORITHM
     # creating set of parameters which will be given to segmentation main for finding cells and
-    parameters = Parameters(img_path=img_path, thresholdRange=31, thresholdMaskValue=40, CannyGaussSize=3, CannyGaussSigma=0.6,
+    parameters = Parameters(img_path=img, thresholdRange=31, thresholdMaskValue=40, CannyGaussSize=3, CannyGaussSigma=0.6,
                             CannyLowBoundry=0.1, CannyHighBoundry=10.0, CannyUseGauss=True, CannyPerformNMS=False,
                             contourSizeLow=10, contourSizeHigh=500, whiteCellBoundry=187,
                             returnOriginalContours=False)
@@ -76,7 +77,7 @@ if __name__ == '__main__':
     print(f" CNN :: Black {len(blackCNN)} and blue {len(blueCNN)}  /n Finale result of algorithm is"
           f"  ::  {len(blackCNN)/(len(blueCNN) + len(blackCNN))*100} % \n")
     print(f" Kmeans :: Black {len(blackKmeans)} and blue {len(blueKmeans)}  /n Finale result of algorithm is  ::  "
-          f"{len(blackKmeans)/(len(blueKmeans) + len(blackKmeans))*100} % \n")
+          f"{(len(blackKmeans)/(len(blueKmeans) + len(blackKmeans)))*100} % \n")
     print(f" simple color classification :: Black {len(black)} and blue {len(blue)}  /n Finale result of algorithm is"
           f"  ::  {len(black)/(len(blue) + len(black))*100} % \n")
 
