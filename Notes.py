@@ -1,11 +1,4 @@
-import os
-import random
 
-import cv2
-import numpy as np
-import numpy.lib.stride_tricks
-
-from resources import *
 # from Document import *
 # from Klasyfikatory import *
 
@@ -120,3 +113,10 @@ from resources import *
 #
 
 
+
+# example_usage.py
+
+import example
+
+result = example.add(3, 4)
+print("Result of addition:", result)
