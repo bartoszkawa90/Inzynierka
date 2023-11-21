@@ -10,18 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie">
-      <change afterPath="$PROJECT_DIR$/WebApp/images/Szpiczak_Ki-67_ok._95.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/lib.macosx-14-arm64-cpython-311/example.cpython-311-darwin.so" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/temp.macosx-14-arm64-cpython-311/example.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example.cpython-311-darwin.so" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp/vercel.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/images/Histiocytoza_z_komorek_Langerhansa_Ki-67_ok._15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/images/original_image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/WebApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/WebApp/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
