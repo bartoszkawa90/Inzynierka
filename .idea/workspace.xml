@@ -10,15 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjecie">
-      <change afterPath="$PROJECT_DIR$/WebApp/media/images/26635mail_828.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApp/media/images/Histiocytoza_z_komorek_Langerhansa_Ki-67_ok._15.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/WebApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/build_files.sh" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/build_files.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/images/Szpiczak_Ki-67_ok._95.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/vercel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +322,7 @@
       <workItem from="1700301256396" duration="3032000" />
       <workItem from="1700316158025" duration="60000" />
       <workItem from="1700479835491" duration="6403000" />
-      <workItem from="1700753822169" duration="1136000" />
+      <workItem from="1700753822169" duration="1450000" />
     </task>
     <task id="LOCAL-00030" summary="Cenvolution2D juz musi byc dobre">
       <created>1692381481767</created>
