@@ -65,47 +65,6 @@ def home(request, parameters=parameters):
         context['new_image'] = True
 
     elif request.method == 'POST' and 'Find contours' in request.POST and context['state'] == 'image_uploaded':
-        pass
-        # print('--- Find contours ---')
-        # contours_start_time = time()
-        #
-        # saved_image_name = os.listdir("images")[0]
-        # # if context['new_image']:
-        # #     try:
-        # #         print("--- Original image saved ---")
-        # #         imwrite('images/original_image.jpg', imread(os.path.join('images/', saved_image_name)))
-        # #         context['new_image'] = False
-        # #     except:
-        # #         print("--- Something wrong original image ---")
-        # # saved_image = imread('images/original_image.jpg')
-        # saved_image = imread(os.path.join('images/', saved_image_name))
-        #
-        # print(f"--- Context Parameters before segmentation: {context['cur_params']}")
-        # parameters = Parameters(img_path=saved_image, thresholdRange=context['cur_params']['threshold_range'],
-        #                         thresholdMaskValue=context['cur_params']['threshold_mask'],
-        #                         CannyGaussSize=3, CannyGaussSigma=0.6, CannyLowBoundry=0.1, CannyHighBoundry=10.0,
-        #                         CannyUseGauss=True, CannyPerformNMS=False,
-        #                         contourSizeLow=context['cur_params']['cell_low_size'],
-        #                         contourSizeHigh=context['cur_params']['cell_high_size'],
-        #                         whiteCellBoundry=context['cur_params']['white_cells_boundry'])
-        # segmentation_results = main(parameters)
-        # print("--- Segmentation completed ---")
-        # drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
-        #
-        # imwrite(os.path.join('images/', saved_image_name), segmentation_results.image)
-        # context['segmentation_results'] = segmentation_results
-        # context['find_contours_time'] = round((time() - contours_start_time), 3)
-        # image = Image.objects.filter(id=1).update(
-        #     name='new '+saved_image_name,
-        #     image=os.path.join('images/', saved_image_name)
-        # )
-
-
-    # CALCULATE THE PROCENT OF BLACK CELLS WITH 3 METHODS -------------------------------------------------------------
-    elif request.method == 'POST' and 'Calculate' in request.POST and context['state'] == 'image_uploaded':
-
-
-
         print('--- Find contours ---')
         contours_start_time = time()
 
@@ -133,22 +92,14 @@ def home(request, parameters=parameters):
         drawContours(segmentation_results.image, segmentation_results.contours, -1, (0, 255, 0), 3)
 
         imwrite(os.path.join('images/', saved_image_name), segmentation_results.image)
-        # context['segmentation_results'] = segmentation_results
+        context['segmentation_results'] = segmentation_results
         context['find_contours_time'] = round((time() - contours_start_time), 3)
 
 
-
-        #### DEBUG
-        iter = 1
-        for cell in segmentation_results.cells:
-            imwrite('app/Cells/cell'+str(iter)+'.jpg', cell)
-            iter += 1
-
-
-
-
-        print('Calculate')
-        # segmentation_results = context['segmentation_results']
+    # CALCULATE THE PROCENT OF BLACK CELLS WITH 3 METHODS -------------------------------------------------------------
+    elif request.method == 'POST' and 'Calculate' in request.POST and context['state'] == 'image_uploaded':
+        print('--- Calculate ---')
+        segmentation_results = context['segmentation_results']
         class_start_time = time()
 
         black_path = "app/Reference/black/"
@@ -211,5 +162,5 @@ def home(request, parameters=parameters):
 def doc(request):
     return render(request, 'documentation.html')
 
-def terminal(request):
-    return render(request, 'terminal.html')
+# def terminal(request):
+#     return render(request, 'terminal.html')
