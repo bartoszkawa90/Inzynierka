@@ -524,7 +524,7 @@ def main(params):
         img = params.img_path
 
     # preprocessing
-    #img = preprocess(img, xmin=500, xmax=1000, ymin=500, ymax=1000)
+    # img = preprocess(img, xmin=500, xmax=1000, ymin=500, ymax=1000)
     img = preprocess(img)
     print(f" Image after preprocessing {img.shape}")
 

@@ -10,8 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="023e3a61-8315-4f76-ab8f-87c88654e1ff" name="Changes" comment="Da sie wysyłać zdjeciee">
+      <change afterPath="$PROJECT_DIR$/notes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/WebApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/variables.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +330,8 @@
       <workItem from="1700773560639" duration="284000" />
       <workItem from="1700917381939" duration="3021000" />
       <workItem from="1700920801894" duration="310000" />
-      <workItem from="1701005176037" duration="316000" />
+      <workItem from="1701005176037" duration="4254000" />
+      <workItem from="1701030746754" duration="36000" />
     </task>
     <task id="LOCAL-00030" summary="Cenvolution2D juz musi byc dobre">
       <created>1692381481767</created>
