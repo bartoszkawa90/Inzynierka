@@ -12,17 +12,17 @@ from skimage.transform import resize as skresize
 import json
 
 # for SVC
-from skimage.io import imread as skimread
-from skimage.transform import resize as skresize
-from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import accuracy_score
+# from skimage.io import imread as skimread
+# from skimage.transform import resize as skresize
+# from sklearn.svm import SVC
+# from sklearn.model_selection import train_test_split, GridSearchCV
+# from sklearn.metrics import accuracy_score
 
 # for CNN
-from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
-from tensorflow import constant
-from tensorflow.keras import layers
+# from tensorflow.keras.models import Sequential, load_model
+# from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+# from tensorflow import constant
+# from tensorflow.keras import layers
 
 
 class ClassifyOperations:
@@ -351,6 +351,37 @@ def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15, model_p
 # black = load_set_of_KNN_coordinates('./KNN_black_reference_coordicates.json')
 #
 # print('')
+
+
+
+#
+# {
+#     "version": 2,
+#     "builds": [
+#         {
+#             "src": "WebApp/wsgi.py",
+#             "use": "@vercel/python",
+#             "config": {"maxLambdaSize":  "15mb", "runtime":  "python3.9"}
+#         },
+#         {
+#             "src": "build_files.sh",
+#             "use": "@vercel/static_build",
+#             "config": {
+#                 "distDir":  "staticfiles_build"
+#             }
+#         }
+#     ],
+#     "routes": [
+#       {
+#           "src": "/(.*)",
+#           "dest": "WebApp/wsgi.py"
+#       },
+#       {
+#           "src": "/(.*)",
+#           "dest": "WebApp/wsgi.py"
+#       }
+#     ]
+# }
 
 
 

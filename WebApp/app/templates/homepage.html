@@ -51,9 +51,9 @@
                     <input value="187" class="search" type="text" name="white_cells_boundry" placeholder="default value: 187">
                     <pre> default value: 187 <br> current value: {{ context.cur_params.white_cells_boundry }} </pre> </input>
 
-                    Cells differences: <br>
-                    <input value="low" class="search" type="text" name="cells_differences" placeholder="default value: low">
-                    <pre> Specify a low or high value depending <br> on cell differences <br> default value: "low" <br> current value: {{ context.cells_differences }} </pre> </input>
+{#                    Cells differences: <br>#}
+{#                    <input value="low" class="search" type="text" name="cells_differences" placeholder="default value: low">#}
+{#                    <pre> Specify a low or high value depending <br> on cell differences <br> default value: "low" <br> current value: {{ context.cells_differences }} </pre> </input>#}
                     <br> <input type="submit" name="Submit parameters" value="Submit parameters">
                 </form>
                 <br> <form method="post" enctype="multipart/form-data">
@@ -64,15 +64,15 @@
                     {% csrf_token %}
                     <button type="submit" name="Calculate" value="Calculate">Calculate</button>
                 </form> <br>
-                <div name="Kmeans result" rows="1" cols="30">
-                    Result of Kmeans classification:  {{ context.Kmeans }} %
-                </div> <br>
+{#                <div name="Kmeans result" rows="1" cols="30">#}
+{#                    Result of Kmeans classification:  {{ context.Kmeans }} %#}
+{#                </div> <br>#}
                 <div name="KNN result" rows="1" cols="30">
-                    Result of KNN classification:  {{ context.KNN }} %
+                    Result of classification:  {{ context.KNN }} %
                 </div> <br>
-                <div name="CNN result" rows="1" cols="30">
-                    Result of CNN classification:  {{ context.CNN }} %
-                </div> <br>
+{#                <div name="CNN result" rows="1" cols="30">#}
+{#                    Result of CNN classification:  {{ context.CNN }} %#}
+{#                </div> <br>#}
                 </ul>
               </p>
     </div>

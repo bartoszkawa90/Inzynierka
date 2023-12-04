@@ -384,7 +384,7 @@ def Canny(grayImage=None, gaussSize=3, gaussSigma=1, mask_x=mask_x, mask_y=mask_
     if useGaussFilter:
         gaussKernel = gaussKernelGenerator(gaussSize, gaussSigma)
         gImage = convolve(convolve(grayImage, gaussKernel, mode='constant'), gaussKernel, mode='constant')
-        #gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
+        # gImage = Convolution2D(Convolution2D(grayImage, gaussKernel, mode='same'), gaussKernel, mode='same')
     else:
         gImage = grayImage
 
