@@ -1,5 +1,4 @@
 ## IMPORTS
-import skimage.morphology
 from variables import *
 from time import time
 from cv2 import imread, imwrite, imshow, namedWindow, resize, resizeWindow, waitKey, destroyWindow, threshold, morphologyEx, INTER_AREA
@@ -15,6 +14,7 @@ from functools import lru_cache
 
 from scipy.signal import convolve2d
 from scipy.ndimage import convolve
+from multiprocessing import Pool
 
 
 
@@ -60,6 +60,9 @@ class SegmentationResult():
         self.coordinates = coordinates
         self.contours = contours
         self.image = image
+    def print(self):
+        print(f'Cells: {self.cells} \n Coordinates: {self.coordinates} '
+              f'\n Contours: {self.contours} \n Image: {self.image}')
 
 
 
@@ -525,7 +528,7 @@ def main(params):
 
     # preprocessing
     # img = preprocess(img, xmin=500, xmax=1000, ymin=500, ymax=1000)
-    img = preprocess(img)
+    # img = preprocess(img)
     print(f" Image after preprocessing {img.shape}")
 
     # get blue value

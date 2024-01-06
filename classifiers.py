@@ -29,9 +29,10 @@ class ClassifyOperations():
     """
     methods made for purpose of classification functions
     """
+
     @staticmethod
     def distance(x1, x2):
-        return np.sqrt(np.sum((x1 - x2)**2))
+        return np.sqrt(np.sum((x1 - x2) ** 2))
 
     @staticmethod
     def get_mean_rgb_from_cell(cell):
@@ -54,7 +55,7 @@ class ClassifyOperations():
         kmeans.fit(X)
 
         segmented_img = kmeans.cluster_centers_[kmeans.labels_]
-        segmented_img = segmented_img.reshape(img.shape)/255
+        segmented_img = segmented_img.reshape(img.shape) / 255
 
         if np.mean(kmeans.cluster_centers_[0]) > np.mean(kmeans.cluster_centers_[1]):
             cell_centroid = kmeans.cluster_centers_[1]
@@ -110,11 +111,36 @@ def kMeans(num_of_clusters=2, cells=[]):
     return black, blue, centroids
 
 
+def multiKmeans(num_of_clusters=2, cells=[], imageResize=15):
+    black, blue, blackCenter, blueCenter, blueCenter2, cells_after_preparations = [], [], [], [], [], []
+    for cell_id in range(len(cells)):
+        cell = skresize(cells[cell_id], (imageResize, imageResize))
+        cells_after_preparations.append(cell.flatten())
+
+    k_means = KMeans(n_clusters=num_of_clusters, random_state=0)
+    model = k_means.fit(cells_after_preparations)
+    centroids = k_means.cluster_centers_
+
+    # classify
+    means = [np.mean(center) for center in centroids]
+    blueCenter = centroids[means.index(max(means))]
+
+    for cell_id in range(len(cells_after_preparations)):
+        distances = [ClassifyOperations.distance(center, cells_after_preparations[cell_id]) for center in centroids]
+        nearest = centroids[distances.index(min(distances))]
+        if (nearest == blueCenter).all():
+            blue.append(cells[cell_id])
+        else:
+            black.append(cells[cell_id])
+
+    return black, blue, centroids
+
+
 def simple_color_classyfication(cells):
     black, blue = [], []
     cells_RGB = [ClassifyOperations.get_mean_rgb_from_cell(ClassifyOperations.kmeans_class(cell)[0]) for cell in cells]
     for cell_id in range(len(cells)):
-        if cells_RGB[cell_id][2] > 165/255:
+        if cells_RGB[cell_id][2] > 165 / 255:
             blue.append(cells[cell_id])
         else:
             black.append(cells[cell_id])
@@ -128,7 +154,6 @@ def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordina
         load_reference_coordinates_path_black='./KNN_black_reference_coordicates.json',
         load_reference_coordinates_path_blue='./KNN_blue_reference_coordicates.json',
         working_state='load data'):
-
     # preparing cells for classification
     y, X = [], []
     cells_RGB = [ClassifyOperations.kmeans_class(cell)[1] for cell in cells]
@@ -163,11 +188,11 @@ def KNN(cells, blackCellsPath='', blueCellsPath='', k=3, save_reference_coordina
 
     # save reference coordinates based on reference cells if save path was specified
     if save_reference_coordinates_path_black != '' and save_reference_coordinates_path_blue != '' \
-        and working_state != 'load data':
+            and working_state != 'load data':
         ClassifyOperations.save_set_of_KNN_coordinates(black_RGB, save_reference_coordinates_path_black)
         ClassifyOperations.save_set_of_KNN_coordinates(blue_RGB, save_reference_coordinates_path_blue)
         print(f'{len(black_RGB)} black data cells were saved into {save_reference_coordinates_path_black} '
-          f' {len(blue_RGB)} blue data cells were saved into {save_reference_coordinates_path_blue}')
+              f' {len(blue_RGB)} blue data cells were saved into {save_reference_coordinates_path_blue}')
     X = black_RGB + blue_RGB
 
     # test
@@ -238,7 +263,7 @@ def classification_using_svc(cells, blackCellsPath, blueCellsPath, imageResize=1
     best_extimator = grid_search.best_estimator_
     y_prediction = best_extimator.predict(X_test)
     score = accuracy_score(y_prediction, y_test)
-    print(f"{score*100} % of samples were corretly classified")
+    print(f"{score * 100} % of samples were corretly classified")
 
     # classify cells
     result = best_extimator.predict(cells_after_preparations)
@@ -254,7 +279,6 @@ def classification_using_svc(cells, blackCellsPath, blueCellsPath, imageResize=1
 
 def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15, model_path='./image_classification.model',
                    working_state='load model', save_model=False, save_path=''):
-
     # prepare input data
     black, blue, cells_after_preparations = [], [], []
     for cell_id in range(len(cells)):
@@ -276,7 +300,7 @@ def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15, model_p
             y.append(1)
         # split data for test and train
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
-        X_train , X_test, y_train, y_test = constant(X_train), constant(X_test), constant(y_train), constant(y_test)
+        X_train, X_test, y_train, y_test = constant(X_train), constant(X_test), constant(y_train), constant(y_test)
 
     ###  CNN model
     ## load model
@@ -292,10 +316,12 @@ def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15, model_p
         model.add(MaxPooling2D((2, 2)))
         model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
         model.add(MaxPooling2D((2, 2)))
-        model.add(Dropout(0.3))
+        # model.add(Dropout(0.3))
         model.add(Flatten())
-        model.add(Dense(64, activation='relu'))
+        # model.add(Dense(64, activation='relu'))
         model.add(Dense(2, activation='softmax'))
+
+        model.summary()
 
         model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
@@ -318,22 +344,18 @@ def cnn_classifier(cells, blackCellsPath, blueCellsPath, imageResize=15, model_p
 
     if save_model and save_path != '':
         model.save('/Users/bartoszkawa/Desktop/REPOS/GitLab/inzynierka/image_classification.model')
-    
+
     return black, blue
-
-
-
 
 # ### TEST
 # black_path = "./Reference/black/"
 # blue_path = "./Reference/blue/"
-# plot_photo(imread('./Reference/black/cell59#new9.jpg'))
 # black, blue = cnn_classifier([imread('./Reference/black/cell59#new9.jpg')]
 #        , black_path, blue_path, imageResize=15, working_state='create model')
 # #
-#
+# print('--- EEEEOOOO ---')
 # black, blue = cnn_classifier([imread('./Reference/blue/cell23#new10.jpg'),imread('./Reference/black/cell787.jpg')]
-#      , black_path, blue_path)
+#      , black_path, blue_path, working_state='create model')
 
 # cell, cent = kmeans_class(imread('./Reference/blue/cell56.jpg'))
 # print(f'cent {cent}')
